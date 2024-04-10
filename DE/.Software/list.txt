@@ -1,0 +1,6 @@
+./
+./.ipynb_checkpoints
+./.xlsxFilesInput
+./Compiled Attendence
+./compile - Copy.ipynb
+./compile.ipynb
