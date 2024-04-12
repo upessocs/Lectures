@@ -1,3 +1,4 @@
 ./
-./Attendance
+./.Software
+./Compiled Attendence
 ./000 Syllabus.md
