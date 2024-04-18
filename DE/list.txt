@@ -1,4 +1,7 @@
 ./
 ./.Software
+./.tex
 ./Compiled Attendence
 ./000 Syllabus.md
+./Assignment I Unit 2.pdf
+./Assignment II Unit 3 ,4 and 5 Combined .pdf
