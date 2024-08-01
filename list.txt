@@ -1,4 +1,5 @@
 ./
+./.DE
 ./.git
 ./.github
-./DE
+./SoftComputing
