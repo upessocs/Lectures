@@ -66,11 +66,11 @@
 - Encoding  
 - Fitness Function  
 - Reproduction Methods:  
-  - Roulette Wheel  
-  - Boltzmann  
-  - Tournament  
-  - Rank  
-  - Steady State Selections  
+1. Roulette Wheel  
+2. Boltzmann  
+1. Tournament  
+1. Rank  
+1. Steady State Selections  
 - Convergence of GA  
 - Applications of GA  
 - Case Studies  
