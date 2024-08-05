@@ -1,5 +1,6 @@
 ./
 ./000 Syllabus.md
 ./001 UNIT I Introduction.md
-./002 UNIT I Introduction.md
+./002 Unit I Git basics.md
+./003 UNIT I Python basics.md
 ./UPES MCA Python Programming Syllabus.pdf
