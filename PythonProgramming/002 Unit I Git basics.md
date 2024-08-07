@@ -1,6 +1,125 @@
-# Basic Git commands
-> Use git-bash to execute it on windows
+# Git and GitHub
 
+## git config
+To set your username and email in the Git configuration, you'll use the `git config` command. Here's how you can do it:
+### **Setting Global Username and Email**
+This sets your username and email for all repositories on your system.
+1. **Open Terminal/Command Prompt**:
+- On **Linux/MacOS**: Use the Terminal.
+- On **Windows**: You can use Git Bash or Command Prompt.
+2. **Set Username**:
+```bash
+git config --global user.name "Your Name"
+```
+Replace `"Your Name"` with your actual name.
+3. **Set Email**:
+```bash
+git config --global user.email "your_email@example.com"
+```
+Replace `"your_email@example.com"` with your actual email address.
+### **Setting Username and Email for a Specific Repository**
+If you want to set a different username and email for a particular repository, navigate to the repository folder and run the same commands without the `--global` flag:
+1. **Navigate to Your Repository**:
+```bash
+cd /path/to/your/repository
+```
+2. **Set Username**:
+```bash
+git config user.name "Your Name"
+```
+3. **Set Email**:
+```bash
+git config user.email "your_email@example.com"
+```
+### **Verify Your Configuration**
+You can check your configuration settings with the following command:
+1. **Check Global Configuration**:
+```bash
+git config --global --list
+```
+2. **Check Repository-Specific Configuration**:
+```bash
+git config --list
+```
+This will display your configured username, email, and other settings.
+---
+## Git authentication
+To work with GitHub securely, you can use both Personal Access Tokens (PAT) and SSH key pairs for authentication. Below is a step-by-step guide for both methods.
+### 1. **Creating a Personal Access Token (PAT) and Adding It to Credential Manager**
+#### **Creating a Personal Access Token:**
+1. **Log in to GitHub**: Go to [github.com](https://github.com) and sign in.
+2. **Go to Settings**: Click on your profile icon in the top right corner and select **Settings**.
+3. **Access Developer Settings**: Scroll down and select **Developer settings** on the left-hand side.
+4. **Personal Access Tokens**: Click on **Personal access tokens** > **Tokens (classic)** > **Generate new token**.
+5. **Configure the Token**:
+- **Note**: Give your token a descriptive name.
+- **Expiration**: Set the expiration date (e.g., 30 days, 60 days, etc.).
+- **Select Scopes**: Choose the scopes for the token (e.g., `repo` for full control of private repositories).
+- **Generate Token**: Click **Generate token**.
+6. **Copy the Token**: Copy the token that appears (you won’t be able to see it again).
+#### **Adding PAT to Credential Manager (Windows):**
+1. **Open Credential Manager**: Search for “Credential Manager” in the Windows Start menu and open it.
+2. **Add Generic Credential**:
+- Click on **Windows Credentials**.
+- Click **Add a generic credential**.
+- **Internet or network address**: Enter `git:https://github.com`.
+- **Username**: Enter your GitHub username.
+- **Password**: Paste the Personal Access Token.
+3. **Save**: Click OK to save the credentials.
+Now, Git will use this PAT whenever you perform Git operations with GitHub.
+### 2. **Generating and Using SSH Key Pair for GitHub**
+#### **Generating SSH Key Pair:**
+1. **Open Terminal/Command Prompt**:
+- On **Linux/MacOS**: Use the Terminal.
+- On **Windows**: You can use Git Bash or Command Prompt.
+2. **Generate SSH Key**:
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+- If you’re using an older system that doesn’t support Ed25519, you can use RSA instead:
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+3. **Follow the Prompts**:
+- When asked for a file to save the key, press **Enter** to use the default location (`~/.ssh/id_ed25519` or `~/.ssh/id_rsa`).
+- Set a **passphrase** if you want extra security (or press Enter for no passphrase).
+#### **Adding the SSH Key to the SSH-Agent:**
+1. **Start the SSH-Agent**:
+- On **Linux/MacOS**:
+```bash
+eval "$(ssh-agent -s)"
+```
+- On **Windows**:
+```bash
+eval $(ssh-agent -s)
+```
+2. **Add SSH Key**:
+```bash
+ssh-add ~/.ssh/id_ed25519
+```
+#### **Adding SSH Key to GitHub:**
+1. **Copy SSH Public Key**:
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+Copy the output of the above command (your SSH public key).
+2. **Add to GitHub**:
+- Go to **GitHub** > **Settings** > **SSH and GPG keys** > **New SSH key**.
+- **Title**: Give the key a recognizable title.
+- **Key**: Paste your SSH public key.
+- Click **Add SSH key**.
+#### **Using the SSH Key with GitHub:**
+1. **Clone a Repository Using SSH**:
+```bash
+git clone git@github.com:username/repository.git
+```
+2. **Push/Pull Changes**:
+Now, Git will use SSH for authentication instead of a username and password.
+### Summary
+- **PAT**: Use this for HTTPS-based Git operations.
+- **SSH Key**: Use this for SSH-based Git operations, often preferred for its security and ease of use.
+---
+> Use git-bash to execute it on windows
 ### 1. `git init`
 **Description:** Initializes a new Git repository in the current directory.
 **Example:**
@@ -38,8 +157,7 @@ On branch main
 Your branch is up to date with 'origin/main'.
 Untracked files:
 (use "git add <file>..." to include in what will be committed)
-
-        newfile.txt
+ newfile.txt
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 **Usage:** Use this command to check the state of your working directory and staging area.
@@ -78,7 +196,7 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 1.21 KiB | 1.21 MiB/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
 To https://github.com/user/repo.git
-   abc1234..def5678  main -> main
+abc1234..def5678  main -> main
 ```
 **Usage:** Use this command to send your committed changes to a remote repository, making them accessible to others.
 ### 7. `git pull`
@@ -139,7 +257,6 @@ Fast-forward
 **Usage:** Use this command to integrate changes from one branch into another.
 These commands cover the basic operations in Git. Each command is powerful on its own, but their real strength lies in how they can be combined to manage your source code effectively.
 
-
 ### Understanding `git diff`, `git log`, and `git status`
 These three Git commands are essential for monitoring and understanding changes in your repository.
 ---
@@ -147,7 +264,7 @@ These three Git commands are essential for monitoring and understanding changes 
 **Description:** Displays the differences between various commits, the staging area, and your working directory.
 #### Use Cases:
 - **Unstaged changes:** To see changes that have been made but not yet staged.
-  
+
 **Example:**
 ```bash
 $ git diff
@@ -162,7 +279,7 @@ index e69de29..d95f3ad 100644
 +This is a new line.
 ```
 - **Staged vs. Last commit:** To see what has been staged for commit compared to the last commit.
-  
+
 **Example:**
 ```bash
 $ git diff --staged
@@ -177,7 +294,7 @@ index e69de29..d95f3ad 100644
 +This is a new line.
 ```
 - **Between commits or branches:** To see changes between two commits or branches.
-  
+
 **Example:**
 ```bash
 $ git diff commit1 commit2
@@ -190,7 +307,7 @@ index abc1234..def5678 100644
 +++ b/file.txt
 @@ -1,3 +1,5 @@
 +Added line in commit2
-   This is a new line.
+This is a new line.
 ```
 **Usage:** Use `git diff` to review changes before staging or committing, or to compare different versions of your code.
 ---
@@ -198,7 +315,7 @@ index abc1234..def5678 100644
 **Description:** Shows a list of commits in the repository’s history, with details like the commit hash, author, date, and commit message.
 #### Use Cases:
 - **Basic log:** View the commit history.
-  
+
 **Example:**
 ```bash
 $ git log
@@ -208,11 +325,10 @@ $ git log
 commit abc1234
 Author: John Doe <johndoe@example.com>
 Date:   Fri Aug 1 12:34:56 2024 +0000
-
-      Initial commit
+Initial commit
 ```
 - **Oneline summary:** View a concise version of the commit history.
-  
+
 **Example:**
 ```bash
 $ git log --oneline
@@ -224,7 +340,7 @@ def5678 Added new feature
 789abcd Fixed a bug
 ```
 - **Graph view:** Visualize the commit history with branches.
-  
+
 **Example:**
 ```bash
 $ git log --oneline --graph --all
@@ -242,7 +358,7 @@ $ git log --oneline --graph --all
 **Description:** Provides a summary of the current state of the working directory and staging area, showing which files are modified, staged, or untracked.
 #### Use Cases:
 - **Check status:** See the current state of your working directory and staging area.
-  
+
 **Example:**
 ```bash
 $ git status
@@ -251,18 +367,14 @@ $ git status
 ```
 On branch main
 Your branch is up to date with 'origin/main'.
-
 Changes not staged for commit:
-    (use "git add <file>..." to update what will be committed)
-    (use "git restore <file>..." to discard changes in working directory)
-          modified:   file.txt
-
+ (use "git add <file>..." to update what will be committed)
+ (use "git restore <file>..." to discard changes in working directory)
+ modified:   file.txt
 Untracked files:
-    (use "git add <file>..." to include in what will be committed)
-          newfile.txt
-
+ (use "git add <file>..." to include in what will be committed)
+ newfile.txt
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 **Usage:** Use `git status` frequently to keep track of your changes and understand what needs to be staged or committed.
-
 > These commands are key to tracking changes, understanding the history of your project, and managing your code effectively.
