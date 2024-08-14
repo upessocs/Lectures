@@ -45,7 +45,7 @@
 
 ## Report Format
 
-- **Structure:** Follow the IEEE template for consistency. The general structure includes:
+#### **Structure:** Follow the IEEE template for consistency. The general structure includes:
 1. **Title Page:** Project title, authors, affiliation, and date.
 1. **Abstract:** A brief summary of the project.
 1. **Keywords:** Relevant terms related to your project.
@@ -56,7 +56,7 @@
 1. **References:** Cite all sources using IEEE style.
 1. **Appendices:** Include supplementary materials like code snippets, raw data, or additional diagrams.
 
-- **Formatting:** Use the IEEE conference or journal template. Available on the [IEEE Author Center](https://ieeeauthorcenter.ieee.org/) or through your institution.
+> **Formatting:** Use the IEEE conference or journal template. Available on the [IEEE Author Center](https://ieeeauthorcenter.ieee.org/) or through your institution.
 
 ## Presentation Guidelines
 
@@ -77,6 +77,13 @@
 - **IEEE Templates:** Available on the [IEEE Author Center](https://ieeeauthorcenter.ieee.org/) or other academic resources provided by your institution.
 - **DevOps Tools:** Git, Jenkins, Docker, Kubernetes.
 - **Cloud Platforms:** AWS, Azure, Google Cloud.
+
+---
+
+## FAQs
+
+
+
 
 ---
 
