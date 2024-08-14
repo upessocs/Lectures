@@ -1,6 +1,7 @@
 ./
-./.DE
-./.git
+./CC AC CCVT Sem7
 ./.github
 ./PythonProgramming
 ./SoftComputing
+./.git
+./.DE
