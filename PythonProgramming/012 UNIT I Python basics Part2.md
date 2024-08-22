@@ -1,5 +1,3 @@
-Let's dive into each of these Python concepts with usage, syntax, and examples along with the expected output.
-
 ### 1. **Indenting Requirements**
 #### **Usage:** In Python, indentation is crucial as it defines the blocks of code. Unlike many other programming languages, Python uses whitespace (spaces or tabs) to define code blocks instead of curly braces.
 #### **Syntax:** 
