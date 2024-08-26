@@ -1,4 +1,7 @@
 ./
+./.dist
+./.ipynb_checkpoints
 ./000 Syllabus.md
 ./001 UNIT I Introduction.md
 ./00 Syllabux Soft Computing.pdf
+./013 Activation Functions.ipynb
