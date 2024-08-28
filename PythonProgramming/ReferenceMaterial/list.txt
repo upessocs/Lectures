@@ -1,0 +1,3 @@
+./
+./ThinkPython_chap01.ipynb
+./ThinkPython_chap02.ipynb
