@@ -872,7 +872,7 @@ print(squares)  # Output: [0, 4, 16, 36, 64]
 These are higher-order functions that apply a function to elements in an iterable (like a list).
 
 1. **`map()` Function:**
-   - Applies a given function to each item in an iterable and returns an iterator of the results.
+- Applies a given function to each item in an iterable and returns an iterator of the results.
 
 **Without `map()`:**
 ```python
@@ -897,7 +897,7 @@ print(upper_words)  # Output: ['HELLO', 'WORLD', 'PYTHON']
 ```
 
 2. **`filter()` Function:**
-   - Filters elements from an iterable based on a function that returns True or False.
+- Filters elements from an iterable based on a function that returns True or False.
 
 **Without `filter()`:**
 ```python
@@ -923,7 +923,7 @@ print(even_numbers)  # Output: [2, 4, 6]
 ```
 
 3. **`reduce()` Function:**
-   - Applies a rolling computation to sequential pairs of values in an iterable. This function is in the `functools` module.
+- Applies a rolling computation to sequential pairs of values in an iterable. This function is in the `functools` module.
 
 **Without `reduce()`:**
 ```python
@@ -948,7 +948,7 @@ product = reduce(multiply, numbers)
 
 print(product)  # Output: 24
 ```
-
+---
 ### Lambda Functions in Python
 
 **Lambda functions** are small, anonymous functions defined using the `lambda` keyword. They can take any number of arguments but only have one expression, which is returned.
@@ -1078,10 +1078,10 @@ print(addition(3, 4))  # Output: 7
 
 #### Use Cases
 
-- **`import`**: Use this when you need to access multiple components from a module, and you don’t mind using the module name as a prefix.
-- **`from ... import ...`**: Use this when you only need specific components from a module, and you want to avoid prefixing them with the module name.
-- **`from ... import *`**: Use sparingly, when you’re sure there won’t be naming conflicts or when you need quick access to everything in the module.
-- **`import ... as ...`**: Use this when you want to shorten a module or function name for convenience or avoid conflicts with existing names.
+- `import`: Use this when you need to access multiple components from a module, and you don’t mind using the module name as a prefix.
+- `from ... import ...`: Use this when you only need specific components from a module, and you want to avoid prefixing them with the module name.
+- `from ... import *`: Use sparingly, when you’re sure there won’t be naming conflicts or when you need quick access to everything in the module.
+- `import ... as ...`: Use this when you want to shorten a module or function name for convenience or avoid conflicts with existing names.
 
 ### Example Setup
 
