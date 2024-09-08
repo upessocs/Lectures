@@ -272,13 +272,13 @@ print(result)  # Output: 8
 ```
 
 - **Multiple Values**: Python functions can return multiple values as a tuple.
-  ```python
-  def swap(a, b):
-      return b, a
+```python
+def swap(a, b):
+    return b, a
 
-  x, y = swap(1, 2)
-  print(x, y)  # Output: 2 1
-  ```
+x, y = swap(1, 2)
+print(x, y)  # Output: 2 1
+```
 
 ### Modifying Global Variables
 
@@ -373,14 +373,8 @@ print(counter)  # Output: 1
 
 
 
-
-
-
-
 ---
-
----
-#### **8. Functions as "First-Class Citizens"**
+# **8. Functions as "First-Class Citizens"**
 
 **Advanced Explanation:**
 In Python, functions are first-class citizens, meaning they can be treated like any other object. You can assign them to variables, pass them as arguments, and return them from other functions.
@@ -434,6 +428,7 @@ print(apply_operation(triple, 5))  # Output: 15
 - The `apply_operation` function accepts another function (`func`) and a number, then applies the function to the number.
 - You can pass different functions to `apply_operation` to achieve different results.
 
+> You should search about `decoraters in python`
 ---
 
 #### **10. `map` and `filter`**
