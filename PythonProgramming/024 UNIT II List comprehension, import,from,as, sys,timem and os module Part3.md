@@ -182,16 +182,13 @@ print(test.add(3, 4))   # Output: 7
 #### 2. **`from ... import ...` Statement**
 The `from ... import ...` statement is used to import specific components from a module.
 
-**Example:**
+Example:
 
 ```python
 # main.py
-
 from test import PI, add
-
 print(PI)             # Output: 3.14159
 print(add(3, 4))      # Output: 7
-
 # This will raise an error because `multiply` is not imported
 # print(multiply(3, 4)) 
 ```
@@ -230,9 +227,7 @@ You can also alias specific components:
 
 ```python
 # main.py
-
 from test import add as addition
-
 print(addition(3, 4))  # Output: 7
 ```
 
@@ -248,7 +243,6 @@ print(addition(3, 4))  # Output: 7
 #### `test.py` (Module)
 ```python
 # test.py
-
 PI = 3.14159
 E = 2.71828
 
