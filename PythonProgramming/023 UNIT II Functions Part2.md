@@ -429,138 +429,12 @@ print(apply_operation(triple, 5))  # Output: 15
 - You can pass different functions to `apply_operation` to achieve different results.
 
 > You should search about `decoraters in python`
----
 
-#### **10. `map` and `filter`**
-
-**Advanced Explanation:**
-`map` and `filter` are built-in functions that allow you to apply a function to a collection of data. 
-- `map` applies a given function to each item of an iterable (like a list) and returns a map object (which is an iterator).
-- `filter` applies a function to each item of an iterable and returns a filter object containing only the items that return `True`.
-
-**Example Code:**
-
-```python
-# Using map to square each number in a list
-numbers = [1, 2, 3, 4, 5]
-squared = map(lambda x: x * x, numbers)
-print(list(squared))  # Output: [1, 4, 9, 16, 25]
-
-
-
-# Using filter to get only even numbers from a list
-even_numbers = filter(lambda x: x % 2 == 0, numbers)
-print(list(even_numbers))  # Output: [2, 4]
-```
-
-**Explanation:**
-- `map` applies the lambda function `x: x * x` to each number in `numbers`, returning a list of squared numbers.
-- `filter` applies the lambda function `x: x % 2 == 0` to each number, returning only the even numbers.
 
 ---
 
-#### **11. Mapping Functions in a Dictionary**
 
-**Advanced Explanation:**
-You can use dictionaries to map string keys to functions, enabling you to dynamically select and execute functions based on input.
-
-**Example Code:**
-
-```python
-def add(a, b):
-    return a + b
-
-def subtract(a, b):
-    return a - b
-
-operations = {
-    "add": add,
-    "subtract": subtract
-}
-
-# Selecting and executing a function from the dictionary
-operation = "add"
-result = operations[operation](10, 5)
-print(result)  # Output: 15
-```
-
-**Explanation:**
-- The `operations` dictionary maps strings like `"add"` and `"subtract"` to their respective functions.
-- You can dynamically select and call the appropriate function based on user input or other logic.
-
----
-
-#### **12. Lambda Functions**
-
-**Advanced Explanation:**
-A lambda function is a small anonymous function defined with the `lambda` keyword. Lambda functions can have any number of parameters but only one expression, which is evaluated and returned.
-
-**Example Code:**
-
-```python
-# Lambda function to add two numbers
-add = lambda a, b: a + b
-print(add(3, 5))  # Output: 8
-
-# Using a lambda function with map
-numbers = [1, 2, 3, 4]
-squared = map(lambda x: x * x, numbers)
-print(list(squared))  # Output: [1, 4, 9, 16]
-```
-
-**Explanation:**
-- The `add` lambda function performs the same operation as a regular function but is defined in a single line.
-- Lambda functions are often used with functions like `map`, `filter`, and `sorted`.
-
----
-
-#### **13. Inner Functions**
-
-**Advanced Explanation:**
-Inner functions are functions defined inside other functions. They can only be accessed within the enclosing function, making them useful for encapsulating functionality that doesn't need to be exposed globally.
-
-**Example Code:**
-
-```python
-def outer_function(text):
-    def inner_function():
-        return text.upper()
-    return inner_function()
-
-result = outer_function("hello")
-print(result)  # Output: HELLO
-```
-
-**Explanation:**
-- `inner_function` is defined inside `outer_function` and is used to transform the `text` to uppercase.
-- The inner function is only accessible within the `outer_function`, providing a way to encapsulate helper functions.
-
----
-
-#### **14. Closures**
-
-**Advanced Explanation:**
-A closure occurs when an inner function captures and remembers the environment (variables) of the enclosing function even after the outer function has finished executing. Closures allow you to create functions with persistent state.
-
-**Example Code:**
-
-```python
-def make_multiplier(n):
-    def multiplier(x):
-        return x * n
-    return multiplier
-
-times_three = make_multiplier(3)
-print(times_three(10))  # Output: 30
-```
-
-**Explanation:**
-- The `make_multiplier` function returns the `multiplier` function, which captures the value of `n` from its enclosing scope.
-- The `times_three` closure retains the value of `n = 3` and uses it to multiply any number passed to it.
-
----
-
-## **Introduction to `*args` and `**kwargs`:**
+# Introduction to `*args` and `**kwargs`:
 
 > Functions can accept  variable-length arguments (`*args` and `**kwargs`).
 
@@ -680,461 +554,139 @@ city: New York
 
 - A combined use of `*args` and `**kwargs` is helpful when writing functions that need to be highly flexible, such as a logging function that can handle any number of messages and various optional metadata.
 
----
-### **Python Modules**
-
-#### **Introduction to Modules:**
-
-Modules in Python are files containing Python code (functions, classes, variables) that can be imported and used in other Python programs. They help organize code into manageable sections and promote code reuse. Python comes with a rich set of built-in (standard) modules, and you can also create your own custom modules.
-
-To use a module, you need to import it using the `import` keyword.
 
 ---
 
-#### **Standard Modules**
+#### **10. Lambda Functions**
 
-Python’s standard library includes many modules that provide useful functionalities. Let's explore a few of these:
+**Advanced Explanation:**
+A lambda function is a small anonymous function defined with the `lambda` keyword. Lambda functions can have any number of parameters but only one expression, which is evaluated and returned.
 
----
-
-#### **1. `sys` Module:**
-
-The `sys` module provides access to some variables and functions that interact with the Python interpreter. It's often used for system-related tasks, like handling command-line arguments or exiting the program.
-
-**Key Functions and Use Cases:**
-
-- **`sys.argv`:** A list that contains command-line arguments passed to a Python script.
-- **`sys.exit()`:** Exits the Python program.
-- **`sys.path`:** A list of strings specifying the search path for modules.
-
-**Example:**
+**Example Code:**
 
 ```python
-import sys
-
-# Print the command-line arguments
-print("Command-line arguments:", sys.argv)
-
-# Exiting the program
-print("Exiting the program.")
-sys.exit(0)
-```
-
-**Explanation:**
-
-- `sys.argv` contains the list of arguments passed to the script. If you run the script with arguments, they'll be displayed.
-- `sys.exit(0)` stops the program. The number `0` typically indicates a successful exit.
-
----
-
-#### **2. `math` Module:**
-
-The `math` module provides access to mathematical functions like trigonometry, logarithms, and factorials. It is commonly used for performing mathematical operations.
-
-**Key Functions and Use Cases:**
-
-- **`math.sqrt(x)`:** Returns the square root of `x`.
-- **`math.factorial(x)`:** Returns the factorial of `x`.
-- **`math.pow(x, y)`:** Returns `x` raised to the power of `y`.
-- **`math.pi`:** The mathematical constant π (pi).
-
-**Example:**
-
-```python
-import math
-
-# Calculate the square root of 16
-print("Square root of 16:", math.sqrt(16))
-
-# Calculate the factorial of 5
-print("Factorial of 5:", math.factorial(5))
-
-# Calculate 2 raised to the power of 3
-print("2 raised to the power of 3:", math.pow(2, 3))
-
-# Value of pi
-print("Value of pi:", math.pi)
-```
-
-**Explanation:**
-
-- `math.sqrt(16)` returns `4.0`, the square root of `16`.
-- `math.factorial(5)` returns `120`, the factorial of `5`.
-- `math.pow(2, 3)` returns `8.0`, the value of `2` raised to the power of `3`.
-- `math.pi` returns the value of π.
-
----
-
-#### **3. `time` Module:**
-
-The `time` module provides various time-related functions, such as getting the current time, pausing the program, and measuring the time taken by a piece of code.
-
-**Key Functions and Use Cases:**
-
-- **`time.time()`:** Returns the current time in seconds since the Epoch (January 1, 1970).
-- **`time.sleep(seconds)`:** Pauses the program for the given number of seconds.
-- **`time.ctime(seconds)`:** Converts a time expressed in seconds since the Epoch to a string representing local time.
-
-**Example:**
-
-```python
-import time
-
-# Get the current time
-current_time = time.time()
-print("Current time (in seconds since Epoch):", current_time)
-
-# Pause the program for 2 seconds
-print("Pausing for 2 seconds...")
-time.sleep(2)
-
-# Get the current time as a readable string
-readable_time = time.ctime(current_time)
-print("Current time (readable):", readable_time)
-```
-
-**Explanation:**
-
-- `time.time()` returns the current time in seconds since the Epoch.
-- `time.sleep(2)` pauses the program for 2 seconds.
-- `time.ctime()` converts the time into a human-readable format.
-
----
-
-#### **4. The `dir` Function:**
-
-The `dir` function is a built-in function that returns a list of the names in the current local scope or the attributes of the given object. It's often used to explore the attributes and methods available in a module or object.
-
-**Key Use Cases:**
-
-- Listing all functions, variables, and classes in a module.
-- Exploring the attributes of objects.
-
-**Example:**
-
-```python
-import math
-
-# List all attributes in the math module
-print("Attributes in math module:")
-print(dir(math))
-
-# List all attributes in a string object
-my_string = "Hello, World!"
-print("\nAttributes in a string object:")
-print(dir(my_string))
-```
-
-**Explanation:**
-
-- `dir(math)` lists all the functions, variables, and constants available in the `math` module.
-- `dir(my_string)` lists all the methods and properties available for a string object.
-
-
-
-> Modules in Python allow you to organize your code and reuse functionalities across different programs. The standard modules `sys`, `math`, and `time` provide essential functionalities for interacting with the system, performing mathematical operations, and handling time-related tasks. The `dir` function is a powerful tool for introspecting modules and objects to understand their available attributes and methods.
-
-
-
-
----
-
-### List Comprehension in Python
-
-**List comprehension** is a concise way to create lists in Python. It allows you to generate a new list by applying an expression to each item in an existing iterable, often including a condition.
-
-**Without List Comprehension:**
-```python
-# Example: Creating a list of squares of even numbers from 0 to 9
-squares = []
-for i in range(10):
-    if i % 2 == 0:
-        squares.append(i ** 2)
-
-print(squares)  # Output: [0, 4, 16, 36, 64]
-```
-
-**With List Comprehension:**
-```python
-# The same functionality using list comprehension
-squares = [i ** 2 for i in range(10) if i % 2 == 0]
-
-print(squares)  # Output: [0, 4, 16, 36, 64]
-```
-
-**Use Cases:**
-- **Filtering:** Extracting elements from a list that meet a specific condition.
-- **Transformation:** Creating a new list where each element is the result of an expression applied to elements from an existing list.
-- **Flattening:** Converting a list of lists into a single list.
-
-### `map()`, `filter()`, and `reduce()` Functions in Python
-
-These are higher-order functions that apply a function to elements in an iterable (like a list).
-
-1. **`map()` Function:**
-- Applies a given function to each item in an iterable and returns an iterator of the results.
-
-**Without `map()`:**
-```python
-# Example: Converting a list of strings to uppercase
-def to_upper(word):
-    return word.upper()
-
-words = ['hello', 'world', 'python']
-upper_words = []
-for word in words:
-    upper_words.append(to_upper(word))
-
-print(upper_words)  # Output: ['HELLO', 'WORLD', 'PYTHON']
-```
-
-**With `map()`:**
-```python
-# Using map to achieve the same result
-upper_words = list(map(to_upper, words))
-
-print(upper_words)  # Output: ['HELLO', 'WORLD', 'PYTHON']
-```
-
-2. **`filter()` Function:**
-- Filters elements from an iterable based on a function that returns True or False.
-
-**Without `filter()`:**
-```python
-# Example: Filter even numbers from a list
-def is_even(num):
-    return num % 2 == 0
-
-numbers = [1, 2, 3, 4, 5, 6]
-even_numbers = []
-for num in numbers:
-    if is_even(num):
-        even_numbers.append(num)
-
-print(even_numbers)  # Output: [2, 4, 6]
-```
-
-**With `filter()`:**
-```python
-# Using filter to achieve the same result
-even_numbers = list(filter(is_even, numbers))
-
-print(even_numbers)  # Output: [2, 4, 6]
-```
-
-3. **`reduce()` Function:**
-- Applies a rolling computation to sequential pairs of values in an iterable. This function is in the `functools` module.
-
-**Without `reduce()`:**
-```python
-from functools import reduce
-
-# Example: Calculate the product of all numbers in a list
-def multiply(x, y):
-    return x * y
-
+# Lambda function to add two numbers
+add = lambda a, b: a + b
+print(add(3, 5))  # Output: 8
+
+# Using a lambda function with map
 numbers = [1, 2, 3, 4]
-product = 1
-for num in numbers:
-    product = multiply(product, num)
-
-print(product)  # Output: 24
+squared = map(lambda x: x * x, numbers)
+print(list(squared))  # Output: [1, 4, 9, 16]
 ```
 
-**With `reduce()`:**
-```python
-# Using reduce to achieve the same result
-product = reduce(multiply, numbers)
+**Explanation:**
+- The `add` lambda function performs the same operation as a regular function but is defined in a single line.
+- Lambda functions are often used with functions like `map`, `filter`, and `sorted`.
 
-print(product)  # Output: 24
-```
----
-### Lambda Functions in Python
-
-**Lambda functions** are small, anonymous functions defined using the `lambda` keyword. They can take any number of arguments but only have one expression, which is returned.
-
-**Without Lambdas:**
-```python
-# Example: Adding 10 to each element in a list
-def add_ten(x):
-    return x + 10
-
-numbers = [1, 2, 3]
-result = list(map(add_ten, numbers))
-
-print(result)  # Output: [11, 12, 13]
-```
-
-**With Lambdas:**
-```python
-# Using a lambda function to achieve the same result
-result = list(map(lambda x: x + 10, numbers))
-
-print(result)  # Output: [11, 12, 13]
-```
-
-**Use Cases of Lambdas:**
-- **Anonymous functions:** When a small function is needed for a short period and doesn’t require a formal definition.
-- **Conciseness:** Useful in `map()`, `filter()`, and `reduce()` for writing simple, inline functions.
-
-**Contrast With and Without Lambdas:**
-- **Without Lambdas:** Requires a named function, which can make the code longer and less readable for simple operations.
-- **With Lambdas:** Enables writing shorter and more readable code by embedding simple functions directly in the expressions where they are used.
 
 ---
 
-### `import`, `from`, and `as` in Python
 
-In Python, the `import` statement is used to bring in modules or specific components (like functions, variables, or classes) from a module into the current namespace so they can be used in your program.
+#### **11. `map` and `filter`**
 
-Let's break down the usage of `import`, `from`, and `as` with examples.
+**Advanced Explanation:**
+`map` and `filter` are built-in functions that allow you to apply a function to a collection of data. 
+- `map` applies a given function to each item of an iterable (like a list) and returns a map object (which is an iterator).
+- `filter` applies a function to each item of an iterable and returns a filter object containing only the items that return `True`.
 
-#### 1. **`import` Statement**
-The `import` statement is used to import an entire module.
-
-**Example:**
-Suppose you have a module `test.py` with the following content:
+**Example Code:**
 
 ```python
-# test.py
+# Using map to square each number in a list
+numbers = [1, 2, 3, 4, 5]
+squared = map(lambda x: x * x, numbers)
+print(list(squared))  # Output: [1, 4, 9, 16, 25]
 
-PI = 3.14159
-E = 2.71828
 
+
+# Using filter to get only even numbers from a list
+even_numbers = filter(lambda x: x % 2 == 0, numbers)
+print(list(even_numbers))  # Output: [2, 4]
+```
+
+**Explanation:**
+- `map` applies the lambda function `x: x * x` to each number in `numbers`, returning a list of squared numbers.
+- `filter` applies the lambda function `x: x % 2 == 0` to each number, returning only the even numbers.
+
+---
+
+#### **12. Mapping Functions in a Dictionary**
+
+**Advanced Explanation:**
+You can use dictionaries to map string keys to functions, enabling you to dynamically select and execute functions based on input.
+
+**Example Code:**
+
+```python
 def add(a, b):
     return a + b
 
-def multiply(a, b):
-    return a * b
+def subtract(a, b):
+    return a - b
+
+operations = {
+    "add": add,
+    "subtract": subtract
+}
+
+# Selecting and executing a function from the dictionary
+operation = "add"
+result = operations[operation](10, 5)
+print(result)  # Output: 15
 ```
 
-You can import the entire `test` module like this:
+**Explanation:**
+- The `operations` dictionary maps strings like `"add"` and `"subtract"` to their respective functions.
+- You can dynamically select and call the appropriate function based on user input or other logic.
+
+
+
+
+---
+
+#### **13. Inner Functions**
+
+**Advanced Explanation:**
+Inner functions are functions defined inside other functions. They can only be accessed within the enclosing function, making them useful for encapsulating functionality that doesn't need to be exposed globally.
+
+**Example Code:**
 
 ```python
-# main.py
-
-import test
-
-print(test.PI)          # Output: 3.14159
-print(test.add(3, 4))   # Output: 7
+def outer_function(text):
+    def inner_function():
+        return text.upper()
+    return inner_function()
+	
+result = outer_function("hello")
+print(result)  # Output: HELLO
 ```
 
-#### 2. **`from ... import ...` Statement**
-The `from ... import ...` statement is used to import specific components from a module.
+**Explanation:**
+- `inner_function` is defined inside `outer_function` and is used to transform the `text` to uppercase.
+- The inner function is only accessible within the `outer_function`, providing a way to encapsulate helper functions.
 
-**Example:**
+---
+
+#### **14. Closures**
+
+**Advanced Explanation:**
+A closure occurs when an inner function captures and remembers the environment (variables) of the enclosing function even after the outer function has finished executing. Closures allow you to create functions with persistent state.
+
+**Example Code:**
 
 ```python
-# main.py
+def make_multiplier(n):
+    def multiplier(x):
+        return x * n
+    return multiplier
 
-from test import PI, add
-
-print(PI)             # Output: 3.14159
-print(add(3, 4))      # Output: 7
-
-# This will raise an error because `multiply` is not imported
-# print(multiply(3, 4)) 
+times_three = make_multiplier(3)
+print(times_three(10))  # Output: 30
 ```
 
-#### 3. **`from ... import *` Statement**
-The `from ... import *` statement imports all the components from a module. However, it's generally not recommended as it can lead to conflicts and reduce code clarity.
+**Explanation:**
+- The `make_multiplier` function returns the `multiplier` function, which captures the value of `n` from its enclosing scope.
+- The `times_three` closure retains the value of `n = 3` and uses it to multiply any number passed to it.
 
-**Example:**
-
-```python
-# main.py
-
-from test import *
-
-print(PI)              # Output: 3.14159
-print(E)               # Output: 2.71828
-print(add(3, 4))       # Output: 7
-print(multiply(3, 4))  # Output: 12
-```
-
-#### 4. **`import ... as ...` Statement**
-The `import ... as ...` statement allows you to import a module or a specific component and give it a different name (alias) in your current namespace.
-
-**Example:**
-
-```python
-# main.py
-
-import test as t
-
-print(t.PI)          # Output: 3.14159
-print(t.add(3, 4))   # Output: 7
-```
-
-You can also alias specific components:
-
-```python
-# main.py
-
-from test import add as addition
-
-print(addition(3, 4))  # Output: 7
-```
-
-#### Use Cases
-
-- `import`: Use this when you need to access multiple components from a module, and you don’t mind using the module name as a prefix.
-- `from ... import ...`: Use this when you only need specific components from a module, and you want to avoid prefixing them with the module name.
-- `from ... import *`: Use sparingly, when you’re sure there won’t be naming conflicts or when you need quick access to everything in the module.
-- `import ... as ...`: Use this when you want to shorten a module or function name for convenience or avoid conflicts with existing names.
-
-### Example Setup
-
-#### `test.py` (Module)
-```python
-# test.py
-
-PI = 3.14159
-E = 2.71828
-
-def add(a, b):
-    return a + b
-
-def multiply(a, b):
-    return a * b
-
-def divide(a, b):
-    return a / b
-```
-
-#### `main.py` (Using the Module)
-```python
-# main.py
-
-# Importing the entire module
-import test
-
-print(test.PI)            # Output: 3.14159
-print(test.add(3, 4))     # Output: 7
-
-# Importing specific components
-from test import E, multiply
-
-print(E)                  # Output: 2.71828
-print(multiply(3, 4))     # Output: 12
-
-# Importing with an alias
-import test as t
-
-print(t.divide(10, 2))    # Output: 5.0
-
-# Importing specific components with an alias
-from test import add as addition
-
-print(addition(10, 20))   # Output: 30
-```
-
-### Summary
-
-- **`import test`**: Imports the entire `test` module.
-- **`from test import add`**: Imports only the `add` function from `test`.
-- **`from test import *`**: Imports everything from `test`.
-- **`import test as t`**: Imports the entire `test` module with the alias `t`.
-- **`from test import add as addition`**: Imports the `add` function from `test` with the alias `addition`.
-
-Each approach offers flexibility depending on how much of the module you need and how you want to manage names in your code.
+---
