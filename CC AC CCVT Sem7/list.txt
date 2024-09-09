@@ -1,3 +1,4 @@
 ./
 ./Project Resources
 ./000 Guidelines for Major Project I.md
+./README.md
