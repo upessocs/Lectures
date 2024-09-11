@@ -56,6 +56,52 @@ upper_words = list(map(to_upper, words))
 print(upper_words)  # Output: ['HELLO', 'WORLD', 'PYTHON']
 ```
 
+
+# `map()` in Python 3 
+
+In Python 3, the `map()` function returns a map object, which is essentially an iterator, rather than a list. This map object can be converted to a list, set, or other iterable type using the `list()`, `set()`, etc. functions.
+
+### Example:
+
+```python
+# Using map without converting the result
+def square(x):
+    return x * x
+
+numbers = [1, 2, 3, 4, 5]
+result = map(square, numbers)
+print(result)  # This will print a map object, like <map object at 0x...>
+```
+
+The `result` here is a map object. To get a list of the results, you can convert it like this:
+
+```python
+# Converting the map object to a list
+result = list(map(square, numbers))
+print(result)  # Output: [1, 4, 9, 16, 25]
+```
+
+### Why is it a map object?
+
+In Python 3, `map()` returns a lazy iterator to improve memory efficiency, especially when dealing with large datasets. This means the values are computed only when needed, rather than all at once. If you want to evaluate the result immediately, you can convert the map object to a list or other collection.
+
+### To summarize:
+
+- **Python 2**: ` `map()` returned a list.
+- **Python 3**: `map()` returns a map object (an iterator).
+
+If you'd like to process the map object directly without converting it, you can iterate over it:
+
+```python
+for value in result:
+    print(value)
+```
+---
+
+
+
+
+
 2. **`filter()` Function:**
 - Filters elements from an iterable based on a function that returns True or False.
 
