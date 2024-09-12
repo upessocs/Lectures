@@ -1,7 +1,0 @@
-./
-./.outdated
-./Fill Major-I Project Allocation Sheet.xlsx
-./Form 2021.pdf
-./IEEE Reference Style.pdf
-./Synopis_Refrence_template.pdf
-./Synopsis Template.docx

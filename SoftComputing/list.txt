@@ -1,8 +1,10 @@
 ./
-./.dist
 ./.ipynb_checkpoints
+./025 Logic Gates using Perceptron
+./Reference Material
 ./000 Syllabus.md
-./001 UNIT I Introduction.md
+./011 UNIT I Introduction.md
 ./00 Syllabux Soft Computing.pdf
-./014 Unit II ActivationFunctions.ipynb
-./015 Unit II Distance, Loss and Cost function.ipynb
+./Perceptron.pdf
+./024 Unit II ActivationFunctions.ipynb
+./025 Unit II Distance, Loss and Cost function.ipynb

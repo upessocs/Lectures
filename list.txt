@@ -2,6 +2,5 @@
 ./.DE
 ./.git
 ./.github
-./CC AC CCVT Sem7
 ./PythonProgramming
 ./SoftComputing

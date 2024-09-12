@@ -1,0 +1,4 @@
+./
+./Neural Representation of AND, OR, NOT, XOR and XNOR Logic Gates (Perceptron Algorithm).md
+./AND-GATE using-PERCEPTRON.ipynb
+./OR-GATE Using-Perceptron.ipynb
