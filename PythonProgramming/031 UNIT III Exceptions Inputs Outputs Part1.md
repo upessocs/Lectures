@@ -21,14 +21,14 @@ Python uses an exception-handling model where exceptions are objects. If an erro
 
 Python’s built-in exceptions are organized in a hierarchy. All exceptions inherit from the `BaseException` class.
 
-- `BaseException`
-  - `Exception`
-    - `ArithmeticError`
-      - `ZeroDivisionError`
-    - `FileNotFoundError`
-    - `ValueError`
-    - `TypeError`
-    - And many others…
+1 `BaseException`
+1.1 `Exception`
+1.1.1 `ArithmeticError`
+1.1.1.1 `ZeroDivisionError`
+1.1.2 `FileNotFoundError`
+1.1.3 `ValueError`
+1.1.4 `TypeError`
+ And many others…
 
 ### **Handling Exceptions in Python**
 
