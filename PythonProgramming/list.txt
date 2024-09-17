@@ -12,6 +12,7 @@
 ./023 UNIT II Functions Part2.md
 ./024 UNIT II List comprehension, import, from, as, sys, time and os module Part3.md
 ./025 UNIT II Assignment2.md
+./026 File Organizer.md
 ./026 Intro to HackerRank.md
 ./031 UNIT III Exceptions Inputs Outputs Part1.md
 ./034 UNIT III Reading Assignment.md
