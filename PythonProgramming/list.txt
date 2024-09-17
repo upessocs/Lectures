@@ -2,9 +2,9 @@
 ./.ipynb_checkpoints
 ./ReferenceMaterial
 ./000 Syllabus.md
-./001 UNIT I Introduction.md
-./002 Unit I Git basics.md
-./003 wsl and nix installation.md
+./001 Introduction to Python.md
+./002 GIT Basics.md
+./003 WSL and NIX installation.md
 ./011 UNIT I Python basics Part1.md
 ./012 UNIT I Python basics Part2.md
 ./013 UNIT I Assignment1.md

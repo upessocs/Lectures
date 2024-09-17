@@ -1,5 +1,26 @@
+# Install WSL and NIX on windows and use python and jupyter-lab in it
+## An alternative way to work with python
 
-### Step 1: Install WSL on Windows
+To install and run these three commands are required for first time
+
+- open cmd powershell on windows
+
+```cmd
+wsl --install -d ubuntu
+
+wsl
+
+curl -L https://nixos.org/nix/install | sh
+
+nix-shell -p python3 python3Packages.jupyterlab python3Packages.numpy python3Packages.pandas python3Packages.matplotlib --run "jupyter-lab ."
+
+
+
+```
+For detaile read next slide
+---
+
+## Step 1: Install WSL on Windows
 
 1. **Enable WSL Feature:**
 #### Open **PowerShell** as Administrator and run the following command to enable WSL:
@@ -64,6 +85,16 @@ curl -L https://nixos.org/nix/install | sh
 ```bash
 nix-env --version
 ```
-#### You should see the version of Nix installed.
+
+## Run `jupyter-lab` with some other python packages in `wsl` where nix is installed
+```bash
+nix-shell -p python3 python3Packages.jupyterlab python3Packages.numpy python3Packages.pandas python3Packages.matplotlib --run "jupyter-lab ."
+```
+
+
+---
+
+
+# More Info on Nix installation.
 
 [more info about nixos on https://nixos.org/download/](https://nixos.org/download/)
