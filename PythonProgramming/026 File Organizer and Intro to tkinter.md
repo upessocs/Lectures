@@ -330,6 +330,82 @@ button.grid(row=1, column=0, columnspan=2)  # Span across two columns
 - **row** and **column**: Specify the row and column positions for the widget.
 - **columnspan**: Makes the widget span multiple columns.
 
+
+
+
+---
+# pack, grid and place methods of tkinter
+In `tkinter`, you can easily customize widgets like labels and buttons by setting various attributes (such as text, font, color, etc.) and then attaching them to the main window (`root`) using methods like `pack()`, `grid()`, or `place()`.
+
+### Example: Customizing a Label and Button
+
+Here’s how you can customize a label and a button and attach them to the `root` window:
+
+```python
+import tkinter as tk
+
+# Create the root window
+root = tk.Tk()
+root.title("My Custom Window")  # Set window title
+
+# Customizing a Label
+label = tk.Label(root, 
+                 text="Hello, Tkinter!",  # Text displayed on the label
+                 font=("Helvetica", 16),  # Set font family and size
+                 fg="blue",  # Text color
+                 bg="yellow",  # Background color
+                 padx=10,  # Padding in the x direction
+                 pady=10)  # Padding in the y direction
+
+# Attaching the label to the root window using pack
+label.pack()  # You can use pack(), grid(), or place() for layout
+
+# Customizing a Button
+def on_button_click():
+    label.config(text="Button Clicked!")  # Change label text when button is clicked
+
+button = tk.Button(root, 
+                   text="Click Me",  # Text displayed on the button
+                   font=("Arial", 14),  # Font for button text
+                   fg="white",  # Button text color
+                   bg="green",  # Button background color
+                   activebackground="lightgreen",  # Background when pressed
+                   command=on_button_click)  # Function to call when clicked
+
+# Attaching the button to the root window
+button.pack(pady=20)  # Adds some space between the button and the label
+
+# Start the main event loop
+root.mainloop()
+```
+
+### Breakdown of Customizations:
+
+#### For the Label (`tk.Label`):
+- `text`: The text that appears on the label.
+- `font`: Sets the font family and size (e.g., `("Helvetica", 16)`).
+- `fg`: The color of the text (foreground).
+- `bg`: The background color of the label.
+- `padx` and `pady`: Padding around the label, in the x and y directions, respectively.
+
+#### For the Button (`tk.Button`):
+- `text`: The text that appears on the button.
+- `font`: Font and size for the button text.
+- `fg`: Color of the text on the button.
+- `bg`: The button's background color.
+- `activebackground`: The background color when the button is pressed.
+- `command`: The function to be executed when the button is clicked. Here, clicking the button changes the label’s text to "Button Clicked!".
+
+#### Layout:
+- `pack()`: Used to place the widgets in the window. It places the label and button vertically, one after the other.
+   - `pady=20`: Adds vertical space between the button and the label.
+
+You can also use other layout managers like `grid()` or `place()` to position your widgets more precisely:
+- `grid()` allows placing widgets in a table-like structure.
+- `place()` positions widgets at an exact x and y position within the window.
+
+
+
 ---
 
 ### Summary
