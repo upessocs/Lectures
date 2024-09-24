@@ -21,6 +21,7 @@
 ./034 UNIT III Reading Assignment JSON.md
 ./041 UNIT IV Classes Part1.md
 ./041 UNIT IV Regular Expressions and re module Part1.md
+./070 Reading Error Messages.md
 ./071 Convert to executable pyinstaller and pipenv.md
 ./072 Type Hinting.md
 ./UPES MCA Python Programming Syllabus.pdf
