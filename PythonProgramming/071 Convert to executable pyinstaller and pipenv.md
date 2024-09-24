@@ -15,6 +15,10 @@ pip install pyinstaller
 2. **Compile the `main.py` into an executable:**
 In the terminal, navigate to the directory containing `main.py` and run:
 ```bash
+pyinstaller main.py
+```
+or 
+```bash
 pyinstaller --onefile --windowed main.py
 ```
 - `--onefile`: Packs everything into a single `.exe` file.

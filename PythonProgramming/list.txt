@@ -5,6 +5,7 @@
 ./001 Introduction to Python.md
 ./002 GIT Basics.md
 ./003 WSL and NIX installation.md
+./004 Python Best Practices for extra marks.md
 ./011 UNIT I Python basics Part1.md
 ./012 UNIT I Python basics Part2.md
 ./013 UNIT I Assignment1.md
@@ -13,11 +14,14 @@
 ./024 UNIT II List comprehension, import, from, as, sys, time and os module Part3.md
 ./025 UNIT II Assignment2.md
 ./026 File Organizer and Intro to tkinter.md
-./027 pyinstaller and pipenv.md
 ./028 Intro to HackerRank.md
 ./031 UNIT III Exceptions Inputs Outputs Part1.md
-./032 UNIT III pickle Part2.md
-./033 UNIT III requests Part3.md
-./034 UNIT III Reading Assignment.md
+./032 UNIT III pickle module and pipes Part2.md
+./033 UNIT III FileDownloader and requests module Part3.md
+./034 UNIT III Reading Assignment JSON.md
+./041 UNIT IV Classes Part1.md
+./041 UNIT IV Regular Expressions and re module Part1.md
+./071 Convert to executable pyinstaller and pipenv.md
+./072 Type Hinting.md
 ./UPES MCA Python Programming Syllabus.pdf
 ./022 UNIT II List_copy Part1.1.ipynb

@@ -714,20 +714,75 @@ print(result)  # Output: HELLO
 
 #### **14. Closures**
 
-**Advanced Explanation:**
-A closure occurs when an inner function captures and remembers the environment (variables) of the enclosing function even after the outer function has finished executing. Closures allow you to create functions with persistent state.
 
-**Example Code:**
+In Python, a **closure** occurs when a nested function remembers the values from its enclosing function, even after the outer function has finished executing. Closures allow the inner function to access variables from the outer function, giving a way to maintain state across function calls.
+
+Here's a simple example:
+
+### Example 1: Basic Closure
 
 ```python
-def make_multiplier(n):
-    def multiplier(x):
-        return x * n
-    return multiplier
-
-times_three = make_multiplier(3)
-print(times_three(10))  # Output: 30
+def outer_function(message):
+    def inner_function():
+        print(message)
+    return inner_function
 ```
+
+In this example:
+1. `outer_function` takes an argument `message`.
+2. `inner_function` is defined inside `outer_function`, and it prints the value of `message`.
+3. `outer_function` returns `inner_function` without calling it.
+
+Now, let’s see the closure in action:
+
+```python
+closure = outer_function("Hello, World!")
+closure()
+```
+
+Output:
+```
+Hello, World!
+```
+
+### Explanation:
+- When you call `outer_function("Hello, World!")`, it returns `inner_function`.
+- `inner_function` still remembers the value of `message` from `outer_function` (which is "Hello, World!") even though `outer_function` has finished executing. This is the closure.
+
+### Example 2: Closure with State
+
+Closures are often used to maintain some internal state between calls.
+
+```python
+def counter():
+    count = 0
+    def increment():
+        nonlocal count
+        count += 1
+        return count
+    return increment
+```
+
+Here:
+1. `counter` creates a variable `count`.
+2. The inner function `increment` increases `count` and returns its value.
+3. `nonlocal` is used to modify the `count` variable from the outer function.
+
+Let's see how it works:
+
+```python
+counter1 = counter()
+print(counter1())  # Output: 1
+print(counter1())  # Output: 2
+
+counter2 = counter()
+print(counter2())  # Output: 1
+```
+
+### Explanation:
+- `counter1` and `counter2` maintain separate states for `count`, so calling one does not affect the other. Each closure retains its own version of `count`.
+
+Closures are particularly useful for **data hiding**, creating **function factories**, and implementing decorators or callback functions.
 
 **Explanation:**
 - The `make_multiplier` function returns the `multiplier` function, which captures the value of `n` from its enclosing scope.
