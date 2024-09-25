@@ -1,9 +1,9 @@
 ./
 ./.ipynb_checkpoints
-./00 Syllabus
-./000 Assignments
-./070 Other Important Concepts
-./080 ReferenceMaterial
+./000_Assignments
+./00_Syllabus
+./070_Other Important Concepts
+./080_ReferenceMaterial
 ./001 Introduction to Python.md
 ./011 UNIT I Python basics Part1.md
 ./012 UNIT I Python basics Part2.md
