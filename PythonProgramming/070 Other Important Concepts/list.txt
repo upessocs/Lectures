@@ -4,4 +4,5 @@
 ./004 Python Best Practices for extra marks.md
 ./070 Reading Error Messages.md
 ./071 Convert to executable pyinstaller and pipenv.md
-./072 Type Hinting.md
+./072 Managing dependencies and virtual environemnt with pipenv.md
+./073 Type Hinting.md

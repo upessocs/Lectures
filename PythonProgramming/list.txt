@@ -1,9 +1,9 @@
 ./
 ./.ipynb_checkpoints
-./00A Assignments
-./00Y Other Important Concepts
-./00Z ReferenceMaterial
-./000 Syllabus.md
+./00 Syllabus
+./000 Assignments
+./070 Other Important Concepts
+./080 ReferenceMaterial
 ./001 Introduction to Python.md
 ./011 UNIT I Python basics Part1.md
 ./012 UNIT I Python basics Part2.md
@@ -18,5 +18,4 @@
 ./033 UNIT III FileDownloader and requests module Part3.md
 ./041 UNIT IV Classes Part1.md
 ./041 UNIT IV Regular Expressions and re module Part1.md
-./UPES MCA Python Programming Syllabus.pdf
 ./022 UNIT II List_copy Part1.1.ipynb
