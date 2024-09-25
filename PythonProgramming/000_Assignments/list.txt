@@ -1,4 +1,5 @@
 ./
 ./013 UNIT I Assignment1.md
 ./025 UNIT II Assignment2.md
+./028 Intro to HackerRank MidSem Preview.md
 ./034 UNIT III Reading Assignment JSON.md

@@ -12,7 +12,6 @@
 ./023.1 UNIT II Wrapper Function passing function as argument  Part3.md
 ./024 UNIT II List comprehension, import, from, as, sys, time and os module Part3.md
 ./026 File Organizer and Intro to tkinter.md
-./028 Intro to HackerRank.md
 ./031 UNIT III Exceptions Inputs Outputs Part1.md
 ./032 UNIT III pickle module and pipes Part2.md
 ./033 UNIT III FileDownloader and requests module Part3.md
