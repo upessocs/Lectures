@@ -1,0 +1,114 @@
+To install Git on Windows Subsystem for Linux (WSL) and configure it for use with SSH, follow these steps:
+
+### Step 1: Install Git
+
+1. **Open WSL**: Start your WSL terminal (e.g., Ubuntu).
+
+2. **Update Package Lists**:
+   ```bash
+   sudo apt update
+   ```
+
+3. **Install Git**:
+   ```bash
+   sudo apt install git
+   ```
+
+4. **Verify Installation**:
+   ```bash
+   git --version
+   ```
+
+### Step 2: Configure Git
+
+1. **Set Your Username**:
+   ```bash
+   git config --global user.name "Your Name"
+   ```
+
+2. **Set Your Email**:
+   ```bash
+   git config --global user.email "your.email@example.com"
+   ```
+
+3. **Check Your Configuration**:
+   ```bash
+   git config --list
+   ```
+
+### Step 3: Enable SSH
+
+1. **Install SSH Client** (if not already installed):
+   ```bash
+   sudo apt install openssh-client
+   ```
+
+2. **Generate SSH Key Pair** (if you don’t have one):
+   ```bash
+   ssh-keygen -t rsa -b 4096 -C "your.email@example.com"
+   ```
+
+   - **Press Enter** to accept the default file location.
+   - **Enter a passphrase** for added security (optional).
+
+3. **Start the SSH Agent**:
+   ```bash
+   eval $(ssh-agent -s)
+   ```
+
+4. **Add Your SSH Key to the SSH Agent**:
+   ```bash
+   ssh-add ~/.ssh/id_rsa
+   ```
+
+5. **Copy Your SSH Key to the Clipboard**:
+   ```bash
+   cat ~/.ssh/id_rsa.pub
+   ```
+
+   - Copy the output to your clipboard. This is your public SSH key.
+
+6. **Add Your SSH Key to Your Git Hosting Service**:
+   - Go to your Git hosting service (like GitHub, GitLab, or Bitbucket).
+   - Navigate to **SSH and GPG keys** settings.
+   - Click on **New SSH Key** and paste your key.
+
+### Step 4: Test SSH Connection
+
+1. **Test your SSH connection** (for GitHub as an example):
+   ```bash
+   ssh -T git@github.com
+   ```
+
+   You should see a success message like:
+   ```
+   Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+   ```
+
+### Summary of Commands
+
+Here’s a quick summary of all commands:
+
+```bash
+# Open WSL terminal
+sudo apt update
+sudo apt install git
+git --version
+
+# Configure Git
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git config --list
+
+# Enable SSH
+sudo apt install openssh-client
+ssh-keygen -t rsa -b 4096 -C "your.email@example.com"
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub  # Copy this key
+
+# Test SSH
+ssh -T git@github.com
+```
+
+Let me know if you have any questions or need further assistance!

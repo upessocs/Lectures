@@ -4,6 +4,7 @@
 ./00_Syllabus
 ./070_Other Important Concepts
 ./080_ReferenceMaterial
+./000 Evaluation Mode.md
 ./001 Introduction to Python.md
 ./011 UNIT I Python basics Part1.md
 ./012 UNIT I Python basics Part2.md

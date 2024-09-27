@@ -2,6 +2,7 @@
 ./.ipynb_checkpoints
 ./.The differences between Artificial and Biological Neural Networks
 ./025 Logic Gates using Perceptron
+./HandWrittenClassNotes
 ./Reference Material
 ./000 Syllabus.md
 ./011 UNIT I Introduction.md
