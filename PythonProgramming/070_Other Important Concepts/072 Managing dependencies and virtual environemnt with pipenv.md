@@ -21,7 +21,7 @@ in this env. we install only required dependencies
 5. After install retry to execute using `pipenv run python main.py`
 6. Repete steps untill program is executed successfully and test all functions.
 7. Lock dependencies using `pipenv lock`
-8. Export requirements using `pipenv freeze > requirements.txt`
+8. Export requirements using `pipenv requirements`
 
 > Now you can share your `program files` together with three more files in the same directory
 > 1. `Pipfile`
@@ -34,8 +34,9 @@ in this env. we install only required dependencies
 2. Compile program in to executale using `pipenv run pyinstaller main.py`
 3. You may compare filesize of final executable
 
+#### Type `pipenv` in cmd form more info 
 
-> More Details in next slide
+> Detailed explaination in next slide
 ---
 
 
