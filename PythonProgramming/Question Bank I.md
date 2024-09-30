@@ -1,36 +1,43 @@
 # Question Bank I for Python 
 
 ### Basics of Python:
-1. **What is the difference between scripting mode and interactive mode in Python?**
-- **Answer**: In scripting mode, you write the code in a file and execute it, while in interactive mode, you type code in a Python shell (REPL) and execute it line by line.
+## What is the difference between scripting mode and interactive mode in Python?
+#### Answer:
+ In scripting mode, you write the code in a file and execute it, while in interactive mode, you type code in a Python shell (REPL) and execute it line by line.
 - **Explanation**: Scripting is used for writing complete programs, whereas interactive mode is good for testing small code snippets.
 
-2. **How do you install and use `pip`?**
-- **Answer**: Use `pip install <package>` to install packages. Example: `pip install requests` installs the requests module.
+## How do you install and use `pip`?
+#### Answer:
+ Use `pip install <package>` to install packages. Example: `pip install requests` installs the requests module.
 - **Explanation**: Pip is Python's package manager that allows easy installation of third-party packages.
 
-3. **What is JupyterLab, and how is it different from the Python shell?**
-- **Answer**: JupyterLab is an interactive environment supporting notebooks, code execution, and rich output (e.g., plots). Unlike the shell, JupyterLab allows for markdown notes and inline visualizations.
+## What is JupyterLab, and how is it different from the Python shell?
+#### Answer:
+ JupyterLab is an interactive environment supporting notebooks, code execution, and rich output (e.g., plots). Unlike the shell, JupyterLab allows for markdown notes and inline visualizations.
 
 ### Data Types and Their Methods:
-4. **What is the difference between `list`, `tuple`, and `set`?**
-- **Answer**: Lists are mutable, tuples are immutable, and sets are unordered collections of unique elements.
+## What is the difference between `list`, `tuple`, and `set`?
+#### Answer:
+ Lists are mutable, tuples are immutable, and sets are unordered collections of unique elements.
 - **Explanation**: Understanding the mutability and use cases of these data structures is key in Python.
 
-5. **Write a Python function to reverse a string.**
-- **Answer**: 
+## Write a Python function to reverse a string.
+#### Answer:
+ 
 ```python
 def reverse_string(s):
  return s[::-1]
 ```
 - **Explanation**: The slice operation `[:: -1]` is a common way to reverse a string.
 
-6. **How does the `type()` function work in Python? Give an example.**
-- **Answer**: `type()` returns the data type of an object. Example: `type(5)` returns `<class 'int'>`.
+## How does the `type()` function work in Python? Give an example.
+#### Answer:
+ `type()` returns the data type of an object. Example: `type(5)` returns `<class 'int'>`.
 
 ### File Handling:
-7. **Write Python code to read a file and count the number of lines.**
-- **Answer**:
+## Write Python code to read a file and count the number of lines.
+#### Answer:
+
 ```python
 with open('file.txt', 'r') as file:
  lines = file.readlines()
@@ -38,13 +45,15 @@ with open('file.txt', 'r') as file:
 ```
 - **Explanation**: The `with` statement is used to manage file contexts, and `readlines()` reads all lines into a list.
 
-8. **What does the `write()` method do in file handling?**
-- **Answer**: `write()` writes a string to a file. It does not add a newline unless explicitly specified.
+## What does the `write()` method do in file handling?
+#### Answer:
+ `write()` writes a string to a file. It does not add a newline unless explicitly specified.
 - **Explanation**: It is important to understand how to control file writing.
 
 ### Modules:
-9. **Explain how to use the `os` module to list all files in a directory.**
-- **Answer**:
+## Explain how to use the `os` module to list all files in a directory.
+#### Answer:
+
 ```python
 import os
 files = os.listdir()
@@ -52,8 +61,9 @@ print(files)
 ```
 - **Explanation**: The `os` module is used for interacting with the operating system, and `listdir()` lists the contents of a directory.
 
-10. **Write code using the `requests` module to fetch data from a URL.**
-- **Answer**:
+## Write code using the `requests` module to fetch data from a URL.
+#### Answer:
+
 ```python
 import requests
 response = requests.get('https://example.com')
@@ -61,8 +71,9 @@ print(response.text)
 ```
 - **Explanation**: `requests` simplifies working with HTTP requests.
 
-11. **How would you use the `tkinter` module to create a simple GUI window?**
-- **Answer**:
+## How would you use the `tkinter` module to create a simple GUI window?
+#### Answer:
+
 ```python
 import tkinter as tk
 root = tk.Tk()
@@ -72,11 +83,13 @@ root.mainloop()
 - **Explanation**: Tkinter is Python's standard library for GUI development.
 
 ### Debugging and Errors:
-12. **What is an `assert` statement in Python?**
-- **Answer**: The `assert` statement is used for debugging; it tests if a condition is true, and raises an `AssertionError` if it is false.
+## What is an `assert` statement in Python?
+#### Answer:
+ The `assert` statement is used for debugging; it tests if a condition is true, and raises an `AssertionError` if it is false.
 
-13. **Explain the try-except block in Python with an example.**
-- **Answer**:
+## Explain the try-except block in Python with an example.
+#### Answer:
+
 ```python
 try:
   x = 1 / 0
@@ -86,12 +99,14 @@ except ZeroDivisionError:
 - **Explanation**: The `try-except` block is used to handle exceptions and prevent the program from crashing.
 
 ### Functions:
-14. **What are the different types of function arguments in Python?**
-- **Answer**: Positional, keyword, default, *args (variable-length), and **kwargs (keyword-variable-length).
+## What are the different types of function arguments in Python?
+#### Answer:
+ Positional, keyword, default, *args (variable-length), and **kwargs (keyword-variable-length).
 - **Explanation**: Understanding argument types allows for more flexible function definitions.
 
-15. **Write a function that accepts *args and **kwargs and prints them.**
-- **Answer**:
+## Write a function that accepts args and **kwargs and prints them.**
+#### Answer:
+
 ```python
 def print_args_kwargs(*args, **kwargs):
   print(args)
@@ -99,12 +114,14 @@ def print_args_kwargs(*args, **kwargs):
 ```
 - **Explanation**: `*args` handles variable numbers of positional arguments, while `**kwargs` handles variable keyword arguments.
 
-16. **Explain the significance of `__name__ == "__main__"` in Python.**
-- **Answer**: It ensures that code is only run when the script is executed directly, not when imported as a module.
+## Explain the significance of `__name__ == "__main__"` in Python.
+#### Answer:
+ It ensures that code is only run when the script is executed directly, not when imported as a module.
 - **Explanation**: This is crucial for modularity in Python.
 
-17. **How can a function be passed as an object in Python?**
-- **Answer**:
+## How can a function be passed as an object in Python?
+#### Answer:
+
 ```python
 def greet():
   print("Hello!")
@@ -117,12 +134,14 @@ call_function(greet)
 - **Explanation**: Functions are first-class objects and can be passed as arguments to other functions.
 
 ### Pickle Module:
-18. **What is the `pickle` module used for?**
-- **Answer**: The `pickle` module is used for serializing and deserializing Python objects into a byte stream.
+## What is the `pickle` module used for?
+#### Answer:
+ The `pickle` module is used for serializing and deserializing Python objects into a byte stream.
 - **Explanation**: It is used when you need to save the state of an object to a file.
 
-19. **Write code to pickle and unpickle a Python object.**
-- **Answer**:
+## Write code to pickle and unpickle a Python object.
+#### Answer:
+
 ```python
 import pickle
 data = {'name': 'Alice', 'age': 30}
@@ -137,14 +156,15 @@ with open('data.pkl', 'rb') as file:
 - **Explanation**: Pickling helps with saving data and reloading it later, ensuring data persistence.
 
 ### Miscellaneous:
-20. **What is the difference between a shallow copy and a deep copy in Python?**
-- **Answer**: A shallow copy creates a new object but doesn't recursively copy objects inside it, whereas a deep copy creates copies of all nested objects.
+## What is the difference between a shallow copy and a deep copy in Python?
+#### Answer:
+ A shallow copy creates a new object but doesn't recursively copy objects inside it, whereas a deep copy creates copies of all nested objects.
 - **Explanation**: The `copy` module has `copy()` for shallow and `deepcopy()` for deep copies.
 
 
 
 
----
+
 
 ### 22. Write a Python function to calculate the factorial of a number.
 
@@ -171,7 +191,7 @@ print(factorial(5))  # Output: 120
 ```
 - **Explanation**: The `factorial` function uses recursion to compute the factorial of a number. It includes an assert statement to ensure the input is a non-negative integer.
 
----
+
 
 ### 23. What is the difference between `is` and `==`?
 
@@ -186,7 +206,7 @@ print(a is c)  # Output: True (c is the same object as a)
 ```
 - **Explanation**: `==` compares the values of two objects, while `is` checks if two objects are the same in memory (i.e., have the same identity).
 
----
+
 
 ### 24. Explain the `dir()` function.
 
@@ -271,10 +291,10 @@ print(my_list.count(2))  # Output: 2 (number of occurrences of 2)
 
 
 
----
 
 
-1. **What is the difference between the following imports?**
+
+## What is the difference between the following imports?
 
 ```python
 import math
@@ -282,16 +302,17 @@ from math import sqrt
 import math as m
 ```
 
-- **Answer**:
- - `import math`: Imports the entire `math` module. You access functions like `math.sqrt()`.
- - `from math import sqrt`: Imports only the `sqrt` function from `math`. You can use `sqrt()` directly.
- - `import math as m`: Imports the `math` module and renames it to `m`. You access functions like `m.sqrt()`.
+#### Answer:
+
+- `import math`: Imports the entire `math` module. You access functions like `math.sqrt()`.
+- `from math import sqrt`: Imports only the `sqrt` function from `math`. You can use `sqrt()` directly.
+- `import math as m`: Imports the `math` module and renames it to `m`. You access functions like `m.sqrt()`.
 
 - **Explanation**: These different import methods affect how functions or modules are accessed in your code.
 
 
 
-2. **Find the error in the following code and correct it:**
+## Find the error in the following code and correct it:
 
 ```python
 from os import listdir as ls
@@ -310,7 +331,7 @@ print(ls())
 
 
 
-3. **Find the error in the following code and explain it:**
+## Find the error in the following code and explain it:
 
 ```python
 from math import *
@@ -331,7 +352,7 @@ print(pi)
 
 
 
-4. **What will happen if you write the following code? Identify and fix the error:**
+## What will happen if you write the following code? Identify and fix the error:
 
 ```python
 from math import pi, e as exponential
@@ -352,7 +373,7 @@ print(exponential)
 
 
 
-5. **Find the error in the following code related to imports and fix it:**
+## Find the error in the following code related to imports and fix it:
 
 ```python
 import os as operating_system
@@ -373,7 +394,7 @@ print(operating_system.getcwd())
 
 ### Code with Errors (More Focused on Syntax and Logic):
 
-6. **Find and fix the error in this code that uses the `in` keyword:**
+## Find and fix the error in this code that uses the `in` keyword:
 
 ```python
 numbers = [1, 2, 3, 4]
@@ -389,7 +410,7 @@ else:
 
 
 
-7. **Find the error in the following code and fix it:**
+## Find the error in the following code and fix it:
 
 ```python
 my_list = [1, 2, 3, 4, 5]
@@ -410,7 +431,7 @@ if 3 in my_list:
 
 
 
-8. **Identify and fix the error in this function import:**
+## Identify and fix the error in this function import:
 
 ```python
 from random import randint as random_integer
@@ -429,7 +450,7 @@ print(random_integer(1, 10))
 
 
 
-9. **Detect and explain the error in this code snippet:**
+## Detect and explain the error in this code snippet:
 
 ```python
 from os import getcwd, remove as delete_file
@@ -460,7 +481,7 @@ you may skip next part form now
 
 
 
-10. **Explain the error in the following code and provide the correct version:**
+## Explain the error in the following code and provide the correct version:
 
 ```python
 from random import choice, sample
