@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <script src="https://generatorjs.github.io/generatorjs.cdn/generator.js"></script>
+   <script defer>
+      window.$ = GeneratorJs()
+      $.init()
+
+   </script>
+
+</head>
+
+<body style="background-color: grey;color:white; display:flex;flex-direction: column;">
+   <div id="app" >
+
+   </div>
+
+   <script>
+
+      //your app logic
+      append(app, "", "over") /* reset app */
+      // append(app, gen(header, "appheader", 'Header content', 'header'));
+      append(app, gen(main, "appmain", gen(div, "git", "", 'appmain container')));
+    
+   </script>
+
+<script>
+     function addGitBlock() {
+
+
+
+
+
+var Style = `
+#app,#git{
+display:flex;
+flex-direction:column;
+margin:0 auto;
+}
+code{
+display:block;
+margin:1em;
+padding:2em;
+background-color:brown;
+color:white;
+border-radius:1em;
+}"
+
+`
+
+gen(git, "appmain", gen(h1, "", "Generate script to configure git and github"), 'appmain container')
+
+append(git, gen(input, "username", "Github Username", "", { placeholder: "Github Username" }))
+append(git, gen(input, "email", "Github Email", "", { placeholder: "Github Email" }))
+append(git, gen(button, "generate", "Generate Script", "btn", { onclick: "generateScript()" }))
+
+loadscss(Style)
+}
+
+function generateScript() {
+   // log("gen")
+   var username = grab("#username")[0].value
+   var email = grab("#email")[0].value
+   // log(username)
+   // log(email)
+
+   var GitScript = `
+# copy this script and paste in to git bash to configure
+git config --global user.email "${email}"
+git config --global user.name = "${username}"
+
+ssh-keygen -t ed25519 -C "${email}"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+
+echo -c "\n\n Copy this key and paste in to url shown below"
+
+
+cat ~/.ssh/id_ed25519.pub
+
+
+echo -c "\n\n https://github.com/settings/keys "
+
+
+
+echo -c "after saving key on github\n #execute  ssh -T git@githubcom" 
+
+
+ssh -T git@github.com
+
+echo "not you can clone your repo and push in to it"
+
+
+
+
+`
+
+   append("#gitScript", "", "r")
+   append(git, gen(code, "gitScript", GitScript))
+}
+
+
+
+addGitBlock()
+</script>
+
+</body>
+
+</html>

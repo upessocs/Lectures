@@ -1,5 +1,89 @@
 # Git and GitHub
 
+---
+
+<div id="git"> </div>
+<script>
+     function addGitBlock() {
+
+
+
+
+
+var Style = `
+code{
+display:block;
+margin:1em;
+padding:2em;
+background-color:brown;
+color:white;
+border-radius:1em;
+}"
+
+`
+
+gen(git, "appmain", gen(h1, "", "Generate script to configure git and github"), 'appmain container')
+append(app, gen(footer, "appfooter", "Footer content", 'container'));
+
+append(git, gen(input, "username", "Github Username", "", { placeholder: "Github Username" }))
+append(git, gen(input, "email", "Github Email", "", { placeholder: "Github Email" }))
+append(git, gen(button, "generate", "Generate Script", "btn", { onclick: "generateScript()" }))
+
+loadscss(Style)
+}
+
+function generateScript() {
+   // log("gen")
+   var username = grab("#username")[0].value
+   var email = grab("#email")[0].value
+   // log(username)
+   // log(email)
+
+   var GitScript = `
+# copy this script and paste in to git bash to configure
+git config --global user.email "${email}"
+git config --global user.name = "${username}"
+
+ssh-keygen -t ed25519 -C "${email}"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+
+echo -c "\n\n Copy this key and paste in to url shown below"
+
+
+cat ~/.ssh/id_ed25519.pub
+
+
+echo -c "\n\n https://github.com/settings/keys "
+
+
+
+echo -c "after saving key on github\n #execute  ssh -T git@githubcom" 
+
+
+ssh -T git@github.com
+
+echo "not you can clone your repo and push in to it"
+
+
+
+
+`
+
+   append("#gitScript", "", "r")
+   append(git, gen(code, "gitScript", GitScript))
+}
+
+
+
+addGitBlock()
+</script>
+
+---
+
+
+
 ## git config
 To set your username and email in the Git configuration, you'll use the `git config` command. Here's how you can do it:
 ### **Setting Global Username and Email**
