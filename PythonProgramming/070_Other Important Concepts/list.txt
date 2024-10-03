@@ -7,3 +7,4 @@
 ./071 Convert to executable pyinstaller and pipenv.md
 ./072 Managing dependencies and virtual environemnt with pipenv.md
 ./073 Type Hinting.md
+./074 Decorators pythonic way to apply wrapper function.md

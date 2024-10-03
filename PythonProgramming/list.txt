@@ -10,7 +10,7 @@
 ./012 UNIT I Python basics Part2.md
 ./021 UNIT II Naming, Collections Part1.md
 ./023 UNIT II Functions Part2.md
-./023.1 UNIT II Wrapper Function passing function as argument  Part3.md
+./023.1 UNIT II Wrapper Function passing function as argument and Decorators in pythonPart3.md
 ./024 UNIT II List comprehension, import, from, as, sys, time and os module Part3.md
 ./026 File Organizer and Intro to tkinter.md
 ./031 UNIT III Exceptions Inputs Outputs Part1.md
