@@ -23,7 +23,7 @@
 -  **"Object-Oriented Programming: An Evolutionary Approach" by Brad Cox**: This book discusses the evolution of OOP, touching on Kay's original inspirations and how these concepts evolved into mainstream programming.
 
 3. **Articles and Papers**:
--  **"The Computer Revolution Hasn't Happened Yet"**: A talk by Alan Kay, where he discusses the potential of OOP and how he originally viewed objects as cells communicating with each other.
+-  **"The Computer Revolution Hasn't Happened Yet"**: A talk by Alan Kay, where he discusses the potential of OOP and how he originally viewed objects as cells communicating with each other [Video URL](https://www.youtube.com/watch?v=aYT2se94eU0).
 
 
 
