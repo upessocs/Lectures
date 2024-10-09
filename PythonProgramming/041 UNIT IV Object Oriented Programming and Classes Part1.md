@@ -35,7 +35,6 @@
 
 A **class** is a blueprint for creating objects in Python. It allows you to bundle data (attributes) and functionality (methods) together, making your code more modular, reusable, and organized. Python follows the principles of **Object-Oriented Programming (OOP)**, which include concepts like inheritance, encapsulation, and polymorphism.
 
-Let’s break down key concepts related to Python classes, followed by examples.
 
 ---
 
