@@ -16,7 +16,7 @@
 
 1. **Alan Kay's Talks and Interviews**:
 -  **"The Early History of Smalltalk"**: In this paper, Kay explains the origin of OOP and how his biological inspiration led to the development of Smalltalk, one of the first object-oriented programming languages.
--  **Alan Kay on OOP**: You can find videos and interviews where Kay discusses his reflections on OOP and why he felt "cell" would have been a better metaphor. [This interview](http://worrydream.com/refs/Kay%20-%20The%20Early%20History%20Of%20Smalltalk.pdf) provides some insights.
+-  **Alan Kay on OOP**: You can find [videos and interviews](https://www.youtube.com/results?search_query=allan+kay+cell+oriented+interview) where Kay discusses his reflections on OOP and why he felt "cell" would have been a better metaphor. [This paper](https://www.researchgate.net/publication/221501755_The_Early_History_of_Smalltalk) provides some insights.
 
 2. **Books on OOP and Smalltalk**:
 -  **"Smalltalk-80: The Language and Its Implementation"**: This book by Adele Goldberg and David Robson details Smalltalk, the language created by Kay's team, and presents the foundational principles of OOP that stemmed from Kay’s biological analogy.
