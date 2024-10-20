@@ -1,4 +1,5 @@
 ./
+./.dist
 ./.ipynb_checkpoints
 ./000_Assignments
 ./00_Syllabus
@@ -12,13 +13,18 @@
 ./023 UNIT II Functions Part2.md
 ./023.1 UNIT II Wrapper Function passing function as argument and Decorators in pythonPart3.md
 ./023.2 UNIT II Decorators example Part4.md
-./024 UNIT II List comprehension, import, from, as, sys, time and os module Part3.md
-./026 File Organizer and Intro to tkinter.md
+./024 UNIT V List comprehension, import, from, as, sys, time and os module Part3 UNIT IV .md
+./026 UNIT V TKINTER File Organizer and Intro to tkinter.md
 ./031 UNIT III Exceptions Inputs Outputs Part1.md
 ./032 UNIT III pickle module and pipes Part2.md
 ./033 UNIT III FileDownloader and requests module Part3.md
 ./033 UNIT III Some Important Functions Part4.md
 ./041 UNIT IV Object Oriented Programming and Classes Part1.md
 ./041 UNIT IV Regular Expressions and re module Part1.md
+./052 UNIT V Dictionary Comrehension.md
+./061 UNIT VI OS module.md
+./062 UNIT VI NUMPY module.md
+./063 UNIT VI MATPLOTLIB module.md
+./064 UNIT VI PANDAS module.md
 ./Question Bank I.md
 ./022 UNIT II List_copy Part1.1.ipynb
