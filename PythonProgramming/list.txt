@@ -27,4 +27,12 @@
 ./063 UNIT VI MATPLOTLIB module.md
 ./064 UNIT VI PANDAS module.md
 ./Question Bank I.md
+./multiple_plots.pdf
+./quadratic_plot.pdf
 ./022 UNIT II List_copy Part1.1.ipynb
+./062 UNIT VI NUMPY module.ipynb
+./063 UNIT VI MATPLOTLIB module.ipynb
+./064 UNIT VI PANDAS module.ipynb
+./combined_data.xlsx
+./data.xlsx
+./modified_data.xlsx
