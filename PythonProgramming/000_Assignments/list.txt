@@ -3,4 +3,5 @@
 ./025 UNIT II Assignment2.md
 ./028 Intro to HackerRank MidSem Preview.md
 ./034 UNIT III Reading Assignment JSON.md
+./040 UNIT IV Reading Assignment 2.md
 ./071 Project Assignments to be submitted before 1 week before End Sem.md
