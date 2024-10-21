@@ -132,7 +132,7 @@ Some commonly used dunder methods:
 
 ```python
 class Dog:
-    def __init__(self, name, age):
+    def __init__(self, name, age): #dunder init
         self.name = name
         self.age = age
     
@@ -463,4 +463,217 @@ print_area(rectangle)   # Output: The area is: 24
 - **Abstraction**: Hides internal complexity, exposing only what is necessary to the user.
 - **Polymorphism**: Enables flexibility in your code by allowing different types of objects to be handled uniformly.
 
-Using classes provides a structured approach to writing maintainable and scalable Python applications.
+> Using classes provides a structured approach to writing maintainable and scalable Python applications.
+
+
+---
+## Advanced Topics
+
+Sure! Let's break down these concepts in Python.
+
+### Public and Private Properties and Methods
+
+- **Public Properties/Methods**: These are accessible from outside the class. By default, all properties and methods in a class are public. You can access them using the dot notation.
+
+```python
+class MyClass:
+  def __init__(self):
+	  self.public_property = "I'm public!"
+  
+  def public_method(self):
+	  return "This is a public method."
+
+obj = MyClass()
+print(obj.public_property)  # Accessible
+print(obj.public_method())   # Accessible
+```
+
+- **Private Properties/Methods**: These are intended to be inaccessible from outside the class. In Python, you can denote a property or method as private by prefixing it with two underscores (`__`).
+
+```python
+class MyClass:
+  def __init__(self):
+	  self.__private_property = "I'm private!"
+  
+  def __private_method(self):
+	  return "This is a private method."
+  
+  def access_private(self):
+	  return self.__private_property
+
+obj = MyClass()
+# print(obj.__private_property)  # Raises an AttributeError
+print(obj.access_private())      # Accessible via public method
+```
+
+### Static and Class Methods
+
+- **Static Methods**: These are defined using the `@staticmethod` decorator. They do not take `self` or `cls` as the first parameter, meaning they don't access the instance or class properties/methods. They can be called on the class itself or on instances.
+
+```python
+class MyClass:
+  @staticmethod
+  def static_method():
+	  return "This is a static method."
+
+print(MyClass.static_method())  # Called on class
+obj = MyClass()
+print(obj.static_method())       # Called on instance
+```
+
+- **Class Methods**: These are defined using the `@classmethod` decorator. They take `cls` as the first parameter, allowing access to class properties/methods. They can be used to create factory methods or manipulate class state.
+
+```python
+class MyClass:
+  class_property = "I'm a class property."
+
+  @classmethod
+  def class_method(cls):
+	  return cls.class_property
+
+print(MyClass.class_method())  # Accessing class property
+```
+
+### Special Methods
+
+Special methods (or dunder methods) in Python allow you to define how your class behaves with built-in functions and operators.
+
+- **`__init__`**: This method is called when an instance of the class is created. It's used to initialize the object's attributes.
+
+```python
+class MyClass:
+  def __init__(self, value):
+	  self.value = value
+
+obj = MyClass(10)
+print(obj.value)  # Outputs: 10
+```
+
+- **`__repr__`**: This method is meant to provide a formal string representation of the object, which is useful for debugging. It's called by the built-in `repr()` function and in the interpreter.
+
+```python
+class MyClass:
+  def __init__(self, value):
+	  self.value = value
+
+  def __repr__(self):
+	  return f"MyClass(value={self.value})"
+
+obj = MyClass(10)
+print(repr(obj))  # Outputs: MyClass(value=10)
+```
+
+- **`__str__`**: This method is used to provide a more user-friendly string representation of the object, which is what gets displayed when you use `print()`.
+
+```python
+class MyClass:
+  def __init__(self, value):
+	  self.value = value
+
+  def __str__(self):
+	  return f"Value: {self.value}"
+
+obj = MyClass(10)
+print(obj)  # Outputs: Value: 10
+```
+
+### Summary
+
+- **Public vs. Private**: Public members are accessible anywhere; private members are restricted to the class itself.
+- **Static vs. Class Methods**: Static methods don’t have access to instance or class state, while class methods have access to class state.
+- **Special Methods**: These allow you to define how instances of your class behave with built-in functions and operators, like construction (`__init__`), representation (`__repr__`), and string conversion (`__str__`).
+
+
+
+---
+
+Special methods, also known as dunder methods (short for "double underscore"), are predefined methods in Python that allow you to define how your objects interact with built-in functions, operators, and type conversions. Here’s a rundown of some commonly used special methods:
+
+### 1. **Initialization and Representation**
+- **`__init__(self, ...)`**: Called when an object is instantiated. It initializes the object's attributes.
+  
+  ```python
+  class MyClass:
+      def __init__(self, value):
+          self.value = value
+  ```
+
+- **`__repr__(self)`**: Returns a string that represents the object and is meant for developers. Used by `repr()` and in the interactive interpreter.
+
+  ```python
+  def __repr__(self):
+      return f"MyClass(value={self.value})"
+  ```
+
+- **`__str__(self)`**: Returns a string that is meant to be readable and user-friendly. Used by `print()` and `str()`.
+
+  ```python
+  def __str__(self):
+      return f"Value: {self.value}"
+  ```
+
+### 2. **Comparison Operators**
+- **`__eq__(self, other)`**: Defines behavior for the equality operator (`==`).
+  
+- **`__ne__(self, other)`**: Defines behavior for the inequality operator (`!=`).
+
+- **`__lt__(self, other)`**: Defines behavior for less than (`<`).
+
+- **`__le__(self, other)`**: Defines behavior for less than or equal to (`<=`).
+
+- **`__gt__(self, other)`**: Defines behavior for greater than (`>`).
+
+- **`__ge__(self, other)`**: Defines behavior for greater than or equal to (`>=`).
+
+### 3. **Mathematical Operations**
+- **`__add__(self, other)`**: Defines behavior for addition (`+`).
+  
+- **`__sub__(self, other)`**: Defines behavior for subtraction (`-`).
+
+- **`__mul__(self, other)`**: Defines behavior for multiplication (`*`).
+
+- **`__truediv__(self, other)`**: Defines behavior for true division (`/`).
+
+- **`__floordiv__(self, other)`**: Defines behavior for floor division (`//`).
+
+- **`__mod__(self, other)`**: Defines behavior for modulo (`%`).
+
+- **`__pow__(self, other)`**: Defines behavior for exponentiation (`**`).
+
+### 4. **Container Methods**
+- **`__getitem__(self, key)`**: Defines behavior for accessing items using square brackets (`obj[key]`).
+  
+- **`__setitem__(self, key, value)`**: Defines behavior for setting items (`obj[key] = value`).
+
+- **`__delitem__(self, key)`**: Defines behavior for deleting items (`del obj[key]`).
+
+- **`__len__(self)`**: Returns the length of the object (used by `len()`).
+
+- **`__iter__(self)`**: Returns an iterator for the object (used in loops).
+
+- **`__next__(self)`**: Defines behavior for the `next()` function when iterating.
+
+### 5. **Context Managers**
+- **`__enter__(self)`**: Called when entering a context (with statement).
+  
+- **`__exit__(self, exc_type, exc_value, traceback)`**: Called when exiting a context.
+
+### 6. **Callable Objects**
+- **`__call__(self, ...)`**: Allows an instance of a class to be called as a function.
+
+  ```python
+  class MyClass:
+      def __call__(self, x):
+          return x + 1
+  ```
+
+### 7. **Attribute Access**
+- **`__getattr__(self, name)`**: Called when an attribute is not found.
+  
+- **`__setattr__(self, name, value)`**: Called when an attribute is set.
+
+- **`__delattr__(self, name)`**: Called when an attribute is deleted.
+
+### Summary
+Special methods allow you to control and customize the behavior of your classes in Python, making them more intuitive and easier to work with. By implementing these methods, you can define how instances of your class behave with built-in operators, functions, and context management.
+
