@@ -1,4 +1,5 @@
 ./
+./.dist
 ./.ipynb_checkpoints
 ./.The differences between Artificial and Biological Neural Networks
 ./025 Logic Gates using Perceptron
@@ -12,3 +13,4 @@
 ./Perceptron.pdf
 ./024 Unit II ActivationFunctions.ipynb
 ./025 Unit II Distance, Loss and Cost function.ipynb
+./Fuzzification_Defuzzification.ipynb
