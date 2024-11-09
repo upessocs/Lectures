@@ -4,4 +4,6 @@
 ./U2 Early NN Architectures.pdf
 ./U3 Gradient Decent and Back Propagation.pdf
 ./U4 Fully Set Theory Cont. Part 2.pdf
+./U4 Fully Set Theory Cont. Part 3.pdf
+./U4 Fully Set Theory Cont. Part 4.pdf
 ./U4 Fully Set Theory.pdf
