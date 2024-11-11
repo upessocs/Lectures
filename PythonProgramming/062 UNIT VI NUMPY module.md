@@ -184,6 +184,207 @@ Inverse:
  [ 1.5 -0.5]]
 ```
 
+
+
+
+---
+
+## List of some commonly used **NumPy** functions along with their usage:
+### **1. Array Creation Functions**
+#### **`np.array()`**  
+Converts a list or a list of lists into a NumPy array.  
+```python
+np.array([1, 2, 3])
+```
+#### **`np.zeros()`**  
+Creates an array filled with zeros.  
+```python
+np.zeros((3, 4))  # 3x4 matrix of zeros
+```
+#### **`np.ones()`**  
+Creates an array filled with ones.  
+```python
+np.ones((2, 3))  # 2x3 matrix of ones
+```
+#### **`np.eye()`**  
+Creates an identity matrix.  
+```python
+np.eye(3)  # 3x3 identity matrix
+```
+#### **`np.arange()`**  
+Returns an array with evenly spaced values within a specified range.  
+```python
+np.arange(0, 10, 2)  # [0, 2, 4, 6, 8]
+```
+#### **`np.linspace()`**  
+Returns evenly spaced values over a specified range, useful for generating points on a graph.  
+```python
+np.linspace(0, 1, 5)  # [0.  0.25 0.5  0.75 1. ]
+```
+### **2. Array Manipulation Functions**
+#### **`np.reshape()`**  
+Reshapes the array to a new shape without changing its data.  
+```python
+arr = np.array([1, 2, 3, 4, 5, 6])
+arr.reshape(2, 3)
+```
+#### **`np.flatten()`**  
+Converts a multi-dimensional array into a 1D array.  
+```python
+arr = np.array([[1, 2], [3, 4]])
+arr.flatten()  # [1, 2, 3, 4]
+```
+#### **`np.transpose()`**  
+Transposes the array (switches rows and columns).  
+```python
+arr = np.array([[1, 2], [3, 4]])
+arr.T  # or np.transpose(arr)
+```
+#### **`np.concatenate()`**  
+Joins two or more arrays along an existing axis.  
+```python
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+np.concatenate((arr1, arr2))  # [1 2 3 4 5 6]
+```
+#### **`np.split()`**  
+Splits an array into multiple sub-arrays.  
+```python
+arr = np.array([1, 2, 3, 4, 5, 6])
+np.split(arr, 3)  # [array([1, 2]), array([3, 4]), array([5, 6])]
+```
+### **3. Mathematical Functions**
+#### **`np.add()`**  
+Adds two arrays element-wise.  
+```python
+np.add([1, 2], [3, 4])  # [4, 6]
+```
+#### **`np.subtract()`**  
+Subtracts two arrays element-wise.  
+```python
+np.subtract([5, 6], [1, 2])  # [4, 4]
+```
+#### **`np.multiply()`**  
+Multiplies two arrays element-wise.  
+```python
+np.multiply([1, 2], [3, 4])  # [3, 8]
+```
+#### **`np.divide()`**  
+Divides two arrays element-wise.  
+```python
+np.divide([10, 20], [2, 5])  # [5.0, 4.0]
+```
+#### **`np.power()`**  
+Raises elements of the array to the power of a given exponent.  
+```python
+np.power([2, 3], 2)  # [4, 9]
+```
+#### **`np.sin()`, `np.cos()`, `np.tan()`**  
+Trigonometric functions.  
+```python
+np.sin(np.pi / 2)  # 1.0
+```
+#### **`np.sqrt()`**  
+Square root of each element in the array.  
+```python
+np.sqrt([1, 4, 9])  # [1. 2. 3.]
+```
+#### **`np.log()`**  
+Natural logarithm of each element in the array.  
+```python
+np.log([1, np.e, np.e**2])  # [0. 1. 2.]
+```
+### **4. Array Statistics and Aggregation Functions**
+#### **`np.sum()`**  
+Computes the sum of all elements or along a specified axis.  
+```python
+np.sum([1, 2, 3])  # 6
+```
+#### **`np.mean()`**  
+Computes the mean (average) of the array.  
+```python
+np.mean([1, 2, 3, 4])  # 2.5
+```
+#### **`np.median()`**  
+Computes the median of the array.  
+```python
+np.median([1, 3, 2, 4])  # 2.5
+```
+#### **`np.std()`**  
+Computes the standard deviation of the array.  
+```python
+np.std([1, 2, 3, 4])  # 1.118
+```
+#### **`np.var()`**  
+Computes the variance of the array.  
+```python
+np.var([1, 2, 3, 4])  # 1.25
+```
+#### **`np.min()` / `np.max()`**  
+Returns the minimum or maximum value of the array.  
+```python
+np.min([1, 2, 3])  # 1
+np.max([1, 2, 3])  # 3
+```
+#### **`np.argmin()` / `np.argmax()`**  
+Returns the index of the minimum or maximum value.  
+```python
+np.argmin([1, 2, 3])  # 0
+np.argmax([1, 2, 3])  # 2
+```
+### **5. Array Comparison Functions**
+#### **`np.equal()`**  
+Compares arrays element-wise for equality.  
+```python
+np.equal([1, 2], [1, 3])  # [True, False]
+```
+#### **`np.less()` / `np.greater()`**  
+Compares arrays element-wise for less than or greater than.  
+```python
+np.less([1, 2], [2, 1])  # [True, False]
+np.greater([1, 2], [0, 2])  # [True, False]
+```
+### **6. Linear Algebra Functions**
+#### **`np.dot()`**  
+Computes the dot product of two arrays.  
+```python
+np.dot([1, 2], [3, 4])  # 11
+```
+#### **`np.linalg.inv()`**  
+Computes the inverse of a matrix.  
+```python
+np.linalg.inv([[1, 2], [3, 4]])  # array([[-2. ,  1. ], [ 1.5, -0.5]])
+```
+#### **`np.linalg.eig()`**  
+Computes the eigenvalues and eigenvectors of a matrix.  
+```python
+np.linalg.eig([[4, -2], [1,  1]])  # eigenvalues and eigenvectors
+```
+### **7. Random Sampling Functions**
+#### **`np.random.rand()`**  
+Generates random numbers from a uniform distribution over [0, 1).  
+```python
+np.random.rand(2, 3)  # 2x3 array of random numbers
+```
+#### **`np.random.randint()`**  
+Generates random integers within a specified range.  
+```python
+np.random.randint(0, 10, size=5)  # array of 5 random integers from 0 to 9
+```
+#### **`np.random.randn()`**  
+Generates random numbers from the standard normal distribution.  
+```python
+np.random.randn(2, 3)  # 2x3 array of random normal values
+```
+### **8. Broadcasting Functions**
+#### **`np.broadcast()`**  
+Returns a view of the broadcasting rules between two arrays.  
+```python
+np.broadcast(np.array([1, 2]), np.array([1, 2, 3]))
+```
+
+> This is a general overview of the most commonly used **NumPy** functions. There are many more specialized functions and techniques in **NumPy**, and it's worth diving into the [official documentation](https://numpy.org/) for more advanced functionality.
+
 ---
 
 # **8. Example Assignment (Q&A)**
