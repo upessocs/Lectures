@@ -16,7 +16,7 @@
 - **Natural Selection** means that individuals with higher fitness are more likely to survive, reproduce, and pass on their genes to the next generation.
 
 ### 4 **Crossover (Recombination)**:
-- In **sexual reproduction**, two parents combine their genes to produce offspring. 
+- In **reproduction**, two parents combine their genes to produce offspring. 
 - During this process, sections of DNA from each parent are **crossed over** and combined, creating a unique combination of traits in the offspring.
 
 ### 5 **Mutation**:
