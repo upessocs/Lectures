@@ -22,8 +22,46 @@ app = FastAPI()
 
 
 
+@app.get("/")
+def read_root():
+    return {"Hello":"FastAPI",
+            "test":"http://10.3.10.46:8000/attendance"}
 
-html = '''
+
+@app.get("/attendance/")
+def read_root():
+	with open("index.html","r") as htmlFile:
+		html = htmlFile.read()
+    return HTMLResponse(html)
+
+
+sapid= []
+
+
+@app.get("/markattendance/{item_id}")
+def read_item(item_id: int, q: Union[str, None] = None):
+    global sapid
+    sapid.append(item_id)
+    sapid = list(set(sapid))
+    print(f"\n {sapid} \n")
+    data= {"Present":sapid}
+    df = pd.DataFrame(data)
+    df.to_excel("B3B4Attendance.xlsx")
+
+
+    return {"Attendance marked": item_id}
+
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
+
+
+```
+
+`index.html`
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +102,8 @@ html = '''
     <div class="result" id="result"></div>
 
     <script>
-        const predefinedPart = "http://10.3.10.46:8000/markattendance/";
+		const serverAddress = `http://127.0.0.1:8080/`
+        const predefinedPart = serverAddress + "/markattendance/";
 
         document.getElementById("urlForm").addEventListener("submit", function (event) {
             event.preventDefault(); // Prevent page reload
@@ -82,46 +121,8 @@ html = '''
 </body>
 </html>
 
-'''
-
-@app.get("/")
-def read_root():
-    return {"Hello":"FastAPI",
-            "test":"http://10.3.10.46:8000/attendance"}
-
-
-@app.get("/attendance/")
-def read_root():
-    return HTMLResponse(html)
-
-
-sapid= []
-
-
-@app.get("/markattendance/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    global sapid
-    sapid.append(item_id)
-    sapid = list(set(sapid))
-    print(f"\n {sapid} \n")
-    data= {"Present":sapid}
-    df = pd.DataFrame(data)
-    df.to_excel("B3B4Attendance.xlsx")
-
-
-    return {"Attendance marked": item_id}
-
-
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
-
-
-
-
-
-
 ```
+
 
 
 ### Explanation of the Code
@@ -336,3 +337,175 @@ project/
 
 
 - [reference](https://fastapi.tiangolo.com/#create-it)
+
+---
+Here's the corrected and improved version of your FastAPI attendance module code and its accompanying HTML file, with explanations for the changes.
+
+---
+# Alternative code with better error handeling
+
+### **Python Code (FastAPI Application)**
+
+#### Corrected Code:
+```python
+# FastAPI Attendance Module
+
+# Install dependencies: pip install fastapi uvicorn pandas
+
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+import uvicorn
+from typing import Union
+import pandas as pd
+
+app = FastAPI()
+
+# Route to test FastAPI setup
+@app.get("/")
+def read_root():
+    return {
+        "message": "Welcome to the FastAPI Attendance Module",
+        "attendance_url": "http://127.0.0.1:8000/attendance/"
+    }
+
+# Route to serve the HTML form
+@app.get("/attendance/", response_class=HTMLResponse)
+def attendance_form():
+    try:
+        with open("index.html", "r") as htmlFile:
+            html = htmlFile.read()
+        return HTMLResponse(content=html)
+    except FileNotFoundError:
+        return HTMLResponse(content="<h1>index.html file not found</h1>", status_code=404)
+
+# List to store SAP IDs
+sapid = []
+
+# Route to mark attendance
+@app.get("/markattendance/{item_id}")
+def mark_attendance(item_id: int, q: Union[str, None] = None):
+    global sapid
+    sapid.append(item_id)
+    sapid = list(set(sapid))  # Remove duplicates
+    print(f"\nSAP IDs marked as present: {sapid}\n")
+    data = {"Present": sapid}
+    df = pd.DataFrame(data)
+    df.to_excel("B3B4Attendance.xlsx", index=False)  # Save the Excel file
+    return {"Attendance marked for": item_id, "current_attendance_list": sapid}
+
+# Run the application
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+```
+
+---
+
+### **Changes and Explanations**
+1. **Code Documentation**:
+   - Added meaningful comments for clarity.
+   - Added the installation command in a comment for missing dependencies.
+
+2. **`attendance_form` Route**:
+   - Used `response_class=HTMLResponse` explicitly to ensure the HTML file is served correctly.
+   - Added a `FileNotFoundError` handler to return an error message if `index.html` is not found.
+
+3. **Global List `sapid`**:
+   - Duplicates are removed using `list(set(sapid))` to ensure unique entries.
+
+4. **Excel File Handling**:
+   - Added `index=False` in `df.to_excel` to prevent an extra index column in the Excel file.
+
+5. **Consistent Endpoint URLs**:
+   - Ensured consistency in URLs (`http://127.0.0.1:8000/`).
+
+---
+
+### **HTML Code (index.html)**
+
+#### Corrected Code:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Module</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 10px;
+        }
+        input {
+            margin-right: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance Module</h1>
+    <p>Enter SAP ID to mark attendance:</p>
+    <form id="urlForm">
+        <input type="text" id="userInput" placeholder="Enter SAP ID" required />
+        <button type="submit">Generate URL</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <script>
+        const serverAddress = "http://127.0.0.1:8000";
+        const predefinedPart = `${serverAddress}/markattendance/`;
+
+        document.getElementById("urlForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent page reload
+            const userInput = document.getElementById("userInput").value.trim();
+
+            if (userInput) {
+                const generatedUrl = predefinedPart + encodeURIComponent(userInput);
+                const resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = `Generated URL: <a href="${generatedUrl}" target="_blank">${generatedUrl}</a>`;
+            } else {
+                alert("Please enter a valid SAP ID.");
+            }
+        });
+    </script>
+</body>
+</html>
+```
+
+---
+
+### **Changes and Explanations**
+1. **HTML Structure**:
+   - Renamed the title to "Attendance Module" for relevance.
+   - Improved labels and placeholders for user input for better user experience.
+
+2. **JavaScript URL Generation**:
+   - Fixed the `serverAddress` URL to match the FastAPI server (`http://127.0.0.1:8000`).
+   - Used ES6 template literals (`${}`) for cleaner string concatenation.
+
+3. **Validation**:
+   - Added a more user-friendly error alert when no SAP ID is entered.
+
+---
+
+### **Running the Application**
+1. Save the Python code as `main.py`.
+2. Save the HTML file as `index.html` in the same directory.
+3. Run the FastAPI server:
+   ```bash
+   python main.py
+   ```
+4. Open `http://127.0.0.1:8000/attendance/` in a browser to access the HTML form.
+5. Enter a SAP ID to generate a URL and test the attendance marking functionality.
