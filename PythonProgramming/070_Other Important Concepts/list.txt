@@ -8,3 +8,4 @@
 ./072 Managing dependencies and virtual environemnt with pipenv.md
 ./073 Type Hinting.md
 ./074 Decorators pythonic way to apply wrapper function.md
+./FastAPI Attendance.md
