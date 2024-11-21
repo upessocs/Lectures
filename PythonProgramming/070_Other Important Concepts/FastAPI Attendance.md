@@ -61,7 +61,10 @@ if __name__ == "__main__":
 ```
 
 `index.html`
+
+
 ```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -402,21 +405,21 @@ if __name__ == "__main__":
 
 ### **Changes and Explanations**
 1. **Code Documentation**:
-   - Added meaningful comments for clarity.
-   - Added the installation command in a comment for missing dependencies.
+- Added meaningful comments for clarity.
+- Added the installation command in a comment for missing dependencies.
 
 2. **`attendance_form` Route**:
-   - Used `response_class=HTMLResponse` explicitly to ensure the HTML file is served correctly.
-   - Added a `FileNotFoundError` handler to return an error message if `index.html` is not found.
+- Used `response_class=HTMLResponse` explicitly to ensure the HTML file is served correctly.
+- Added a `FileNotFoundError` handler to return an error message if `index.html` is not found.
 
 3. **Global List `sapid`**:
-   - Duplicates are removed using `list(set(sapid))` to ensure unique entries.
+- Duplicates are removed using `list(set(sapid))` to ensure unique entries.
 
 4. **Excel File Handling**:
-   - Added `index=False` in `df.to_excel` to prevent an extra index column in the Excel file.
+- Added `index=False` in `df.to_excel` to prevent an extra index column in the Excel file.
 
 5. **Consistent Endpoint URLs**:
-   - Ensured consistency in URLs (`http://127.0.0.1:8000/`).
+- Ensured consistency in URLs (`http://127.0.0.1:8000/`).
 
 ---
 
@@ -488,15 +491,15 @@ if __name__ == "__main__":
 
 ### **Changes and Explanations**
 1. **HTML Structure**:
-   - Renamed the title to "Attendance Module" for relevance.
-   - Improved labels and placeholders for user input for better user experience.
+- Renamed the title to "Attendance Module" for relevance.
+- Improved labels and placeholders for user input for better user experience.
 
 2. **JavaScript URL Generation**:
-   - Fixed the `serverAddress` URL to match the FastAPI server (`http://127.0.0.1:8000`).
-   - Used ES6 template literals (`${}`) for cleaner string concatenation.
+- Fixed the `serverAddress` URL to match the FastAPI server (`http://127.0.0.1:8000`).
+- Used ES6 template literals (`${}`) for cleaner string concatenation.
 
 3. **Validation**:
-   - Added a more user-friendly error alert when no SAP ID is entered.
+- Added a more user-friendly error alert when no SAP ID is entered.
 
 ---
 
