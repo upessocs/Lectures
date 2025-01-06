@@ -1,0 +1,3 @@
+./
+./000 Syllabus DevOps sem6 fullstack.pdf
+./001 Syllabus DevOps_lab sem6 fullstack.pdf
