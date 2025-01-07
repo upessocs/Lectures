@@ -1,3 +1,5 @@
 ./
+./100 DevOpsLab
+./001 L01.md
 ./000 Syllabus DevOps sem6 fullstack.pdf
 ./001 Syllabus DevOps_lab sem6 fullstack.pdf
