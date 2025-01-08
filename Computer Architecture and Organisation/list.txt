@@ -1,2 +1,4 @@
 ./
+./000 Syllabus COA.md
+./010 Unit 1.md
 ./000 Syllabus COA Computer Organization and Architecture.pdf
