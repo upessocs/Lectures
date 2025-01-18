@@ -6,6 +6,9 @@
 ./040 Need for version control.md
 ./041 Git installation.md
 ./042 Git Authentication and usage.md
-./043 Subversion (SVN).md
+./043 Git BRANCH, MERGE and REBASE.md
+./044 Git REMOTE and SUBMODULE.md
+./045 Git STASH.md
+./046 Subversion (SVN).md
 ./000 Syllabus DevOps sem6 fullstack.pdf
 ./001 Syllabus DevOps_lab sem6 fullstack.pdf

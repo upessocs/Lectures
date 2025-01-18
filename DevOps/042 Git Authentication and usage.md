@@ -79,10 +79,21 @@ setTimeout(addGitBlock(),4000);
 </script>
 
 ---
+## finding help on Git commands:
 
+| **Command**                  | **Description**                                              | **Example**              |
+|------------------------------|--------------------------------------------------------------|--------------------------|
+| `git help <command>`         | Opens the full manual page for a Git command.                | `git help commit`        |
+| `git <command> --help`       | Equivalent to `git help <command>`.                          | `git commit --help`      |
+| `man git-<command>`          | Opens the manual using the `man` command.                    | `man git-commit`         |
+| `git <command> -h`           | Provides a brief summary of the command’s usage and options. | `git commit -h`          |
+| `git help -a`                | Lists all available Git commands.                           | `git help -a`            |
+| `git help -g`                | Lists Git guides and concept documents.                     | `git help -g`            |
+| Contextual Help              | Running a command incorrectly or without args shows a hint. | `git commit`             |
+| Online Documentation         | Opens the Git documentation on the web.                     | `https://git-scm.com/doc`|
 
-
-## git config
+---
+# git config
 To set your username and email in the Git configuration, you'll use the `git config` command. Here's how you can do it:
 ### **Setting Global Username and Email**
 This sets your username and email for all repositories on your system.
