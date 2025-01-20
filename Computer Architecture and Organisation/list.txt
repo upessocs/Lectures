@@ -1,7 +1,10 @@
 ./
+./Unit 1 Booth's Multiplication Algorithm
 ./000 Syllabus COA.md
 ./010 Unit 1.md
-./Unit 1 Endians.md
-./Unit 1 Signed Numbers.md
+./011 Unit 1 Endians.md
+./012 Unit 1 Signed Numbers.md
+./013 Unit 1 Complement.md
+./014 Unit 1 Booth's Multiplication Algorithm.md
 ./000 Syllabus COA Computer Organization and Architecture.pdf
 ./Unit-1_Digital Computers_ppt.pdf
