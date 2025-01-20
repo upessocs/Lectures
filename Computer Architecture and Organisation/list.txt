@@ -1,5 +1,4 @@
 ./
-./Unit 1 Booth's Multiplication Algorithm
 ./000 Syllabus COA.md
 ./010 Unit 1.md
 ./011 Unit 1 Endians.md
