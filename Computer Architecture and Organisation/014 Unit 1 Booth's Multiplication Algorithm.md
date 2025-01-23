@@ -77,3 +77,95 @@ Here, $M = 23 = (010111) and Q = -9 = (110111)$
 $Q_{n + 1 } \= 1$, it means the output is negative.
 
 Hence, $23 * -9 = 2's$ complement of $111100110001 => (00001100111)$
+
+
+---
+
+
+# Example:
+
+### **Need for Booth's Multiplication Algorithm**
+
+Booth's multiplication algorithm is a technique used to efficiently perform multiplication of signed binary numbers in **2's complement representation**. It is widely used in computer processors because it:
+
+1. **Handles signed numbers directly**: It eliminates the need for separate steps to handle the sign of the numbers.
+2. **Reduces the number of addition/subtraction operations**: By grouping consecutive 1s in the multiplier, it minimizes unnecessary operations, improving efficiency.
+3. **Optimizes hardware implementation**: It is well-suited for binary arithmetic hardware, making it faster and more compact.
+
+---
+
+### **Key Idea**
+
+The algorithm works by analyzing **two consecutive bits** (current and previous) of the multiplier to decide whether to:
+- Add the multiplicand.
+- Subtract the multiplicand.
+- Do nothing (shift only).
+
+This decision reduces the number of operations compared to a straightforward binary multiplication.
+
+---
+
+### **Booth's Multiplication Algorithm**
+
+#### **Inputs**:
+- Multiplicand (\(M\)) – the number to be multiplied.
+- Multiplier (\(Q\)) – the number by which the multiplicand is multiplied.
+- A register (\(A\)) initialized to 0.
+- A bit (\(Q_{-1}\)) initialized to 0 to track the previous bit.
+- The number of bits (\(n\)) in the binary representation.
+
+#### **Steps**:
+#### 1. **Initialize**:
+- Set \( A = 0 \), \( Q_{-1} = 0 \), and load \( Q \) with the multiplier.
+- \( n \): Number of bits in the multiplier.
+
+#### 2. **Repeat \( n \) times**:
+A. Inspect the last bit of \( Q \) (\(Q_0\)) and \( Q_{-1}\):
+- **If \( Q_0 = 1 \) and \( Q_{-1} = 0 \)**: Subtract \( M \) from \( A \) (\(A = A - M\)).
+- **If \( Q_0 = 0 \) and \( Q_{-1} = 1 \)**: Add \( M \) to \( A \) (\(A = A + M\)).
+- **If \( Q_0 = Q_{-1} \)**: No operation is performed.
+B. Perform an **arithmetic right shift** on \( A \), \( Q \), and \( Q_{-1}\) (preserve the sign bit of \( A \)).
+
+#### 3. **After \( n \) iterations**, the product is in the combined \( A \) and \( Q \) registers.
+
+---
+
+### **Example: Booth's Multiplication**
+Multiply \( -3 \) (\(M\)) and \( 3 \) (\(Q\)) in 4-bit binary representation.
+
+1. **Represent numbers in 4-bit 2's complement**:
+- \( M = -3 \): \( 1101 \)
+- \( Q = 3 \): \( 0011 \)
+
+2. **Initialize**:
+- \( A = 0000 \)
+- \( Q = 0011 \)
+- \( Q_{-1} = 0 \)
+- \( n = 4 \)
+
+#### Iteration Table:
+| Step | \( A \)   | \( Q \)   | \( Q_{-1} \) | Operation         |
+|------|-----------|-----------|--------------|-------------------|
+| Init | \( 0000 \) | \( 0011 \) | \( 0 \)      | Initialize        |
+| 1    | \( 1101 \) | \( 0011 \) | \( 0 \)      | Subtract \( M \)  |
+|      | \( 1110 \) | \( 1001 \) | \( 1 \)      | Right shift       |
+| 2    | \( 1110 \) | \( 1001 \) | \( 1 \)      | No operation      |
+|      | \( 1111 \) | \( 0100 \) | \( 1 \)      | Right shift       |
+| 3    | \( 0000 \) | \( 0100 \) | \( 1 \)      | Add \( M \)       |
+|      | \( 0000 \) | \( 1010 \) | \( 0 \)      | Right shift       |
+| 4    | \( 0000 \) | \( 1010 \) | \( 0 \)      | No operation      |
+|      | \( 0000 \) | \( 1101 \) | \( 0 \)      | Right shift       |
+
+#### Final Result:
+Combine \( A \) and \( Q \): \( 0000 1101 \). In decimal, this is \( -9 \), which is the correct product of \( -3 \times 3 \).
+
+---
+
+### **Advantages of Booth's Algorithm**
+1. Efficient for numbers with large groups of 1s in the multiplier.
+2. Works seamlessly with signed numbers.
+3. Saves hardware resources by minimizing additions and subtractions.
+
+### **Disadvantages**
+1. Slightly more complex to implement compared to straightforward binary multiplication.
+2. Performance can degrade for certain bit patterns with alternating 1s and 0s.

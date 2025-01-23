@@ -12,8 +12,8 @@ Adds a new remote repository reference.
 git remote add <name> <url>
 ```
 
-- **`<name>`**: The alias for the remote (e.g., `origin`, `upstream`).
-- **`<url>`**: The URL of the remote repository.
+- `<name>`: The alias for the remote (e.g., `origin`, `upstream`).
+- `<url>`: The URL of the remote repository.
 
 **Example:**
 ```bash
@@ -234,8 +234,8 @@ Git submodules allow you to include one Git repository as a subdirectory of anot
 git submodule add <repository-url> <path>
 ```
 
-- **`<repository-url>`**: URL of the submodule repository.
-- **`<path>`**: Path where the submodule will be added (optional).
+- `<repository-url>`: URL of the submodule repository.
+- `<path>`: Path where the submodule will be added (optional).
 
 **Example:**
 ```bash
