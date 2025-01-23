@@ -224,4 +224,4 @@ git stash apply
 | `git stash clear`    | Clear all stashes.                                       |
 | `git stash branch`   | Create a branch from a stash for isolated work.          |
 
-This allows seamless switching between tasks while keeping your work safe! Let me know if you'd like more details or examples.
+This allows seamless switching between tasks while keeping your work safe!
