@@ -1,7 +1,7 @@
 ./
-./100 DevOpsLab
 ./B1B2B3
 ./B4B5B6
+./tempgit
 ./001 L01.md
 ./040 Need for version control.md
 ./041 Git installation.md
@@ -10,5 +10,6 @@
 ./044 Git REMOTE and SUBMODULE.md
 ./045 Git STASH.md
 ./046 Subversion (SVN).md
-./000 Syllabus DevOps sem6 fullstack.pdf
-./001 Syllabus DevOps_lab sem6 fullstack.pdf
+./000 Syllabus DevOps sem6 CCVT.pdf
+./047 subversion-cheat-sheet-v1.pdf
+./048 SVN cheat sheet.pdf

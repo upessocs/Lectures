@@ -20,10 +20,8 @@ sudo apt update  # For Debian/Ubuntu
 sudo yum update  # For CentOS/RHEL
 ```
 #### 2.  Install Subversion:
-```bash
-sudo apt install subversion -y  # Debian/Ubuntu
-sudo yum install subversion -y  # CentOS/RHEL
-```
+
+[Download page](https://subversion.apache.org/packages.html)
 
 ### **On macOS**
 Use Homebrew to install Subversion:
@@ -34,7 +32,7 @@ brew install svn
 ### On Nix
 
 ```nix
-nix-shell -p subversion
+nix-shell -p subversion subversionClient tkrev
 
 ```
 

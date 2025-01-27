@@ -3,6 +3,7 @@
 ./.git
 ./.github
 ./Computer Architecture and Organisation
-./DevOps
+./DevOps CCVT
+./DevOps Lab FullStack
 ./PythonProgramming
 ./SoftComputing
