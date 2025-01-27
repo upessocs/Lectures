@@ -1,7 +1,4 @@
 ./
-./B1B2B3
-./B4B5B6
-./tempgit
 ./001 L01.md
 ./040 Need for version control.md
 ./041 Git installation.md
