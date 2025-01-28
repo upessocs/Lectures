@@ -9,4 +9,5 @@
 ./Experiment 5 VCS.md
 ./Experiment 6 Git.md
 ./Experiment 7 Containerisation.md
+./Jenkins, Groovy, Pipelines.md
 ./001 Syllabus DevOps_lab sem6 fullstack.pdf
