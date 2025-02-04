@@ -1,12 +1,13 @@
 ./
-./001 L01.md
-./040 Need for version control.md
-./041 Git installation.md
-./042 Git Authentication and usage.md
-./043 Git BRANCH, MERGE and REBASE.md
-./044 Git REMOTE and SUBMODULE.md
-./045 Git STASH.md
-./046 Subversion (SVN).md
+./001 Course Plan.md
+./011 Unit 1 Introduction.md
+./031 Need for version control.md
+./032 Git installation.md
+./033 Git Authentication and usage.md
+./034 Git BRANCH, MERGE and REBASE.md
+./035 Git REMOTE and SUBMODULE.md
+./036 Git STASH.md
+./037 Subversion (SVN).md
 ./000 Syllabus DevOps sem6 CCVT.pdf
-./047 subversion-cheat-sheet-v1.pdf
-./048 SVN cheat sheet.pdf
+./03a subversion-cheat-sheet-v1.pdf
+./04b SVN cheat sheet.pdf
