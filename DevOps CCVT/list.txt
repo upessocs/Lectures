@@ -8,6 +8,7 @@
 ./035 Git REMOTE and SUBMODULE.md
 ./036 Git STASH.md
 ./037 Subversion (SVN).md
+./038 Mercurial DVCS (HG).md
 ./000 Syllabus DevOps sem6 CCVT.pdf
 ./03a subversion-cheat-sheet-v1.pdf
 ./04b SVN cheat sheet.pdf
