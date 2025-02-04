@@ -22,6 +22,7 @@ Mercurial is a **distributed version control system (DVCS)** designed for effici
 - **Windows**: Download and install from [Mercurial's official website](https://www.mercurial-scm.org/).
 - **Linux**: Use your package manager (e.g., `sudo apt-get install mercurial` for Ubuntu).
 - **macOS**: Use Homebrew (`brew install mercurial`).
+- **NIX**: `nix-shell -p mercurial`
 
 #### **2. Basic Commands**
 

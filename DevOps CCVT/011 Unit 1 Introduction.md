@@ -619,3 +619,47 @@ A **CD pipeline** is an automated series of steps that take code from developmen
 ---
 
 > By following best practices and adapting to emerging trends, organizations can unlock the full potential of DevOps to deliver better software faster and more efficiently.
+
+
+---
+
+
+## **CI/CD**
+CI/CD stands for **Continuous Integration (CI) and Continuous Delivery/Deployment (CD)**. It is a DevOps practice that automates software development, testing, and deployment to deliver software faster and with fewer errors.
+
+### **1. Continuous Integration (CI)**
+- Developers frequently merge code changes into a shared repository.
+- Automated build and testing are triggered to detect issues early.
+- Ensures that new code integrates smoothly with existing code.
+- **Example Tools:** GitHub Actions, Jenkins, GitLab CI, Travis CI.
+
+### **2. Continuous Delivery (CD - Continuous Delivery)**
+- Extends CI by ensuring that the software is always in a deployable state.
+- After passing CI tests, the software is automatically packaged and made ready for deployment.
+- Manual approval is required before deployment to production.
+- **Example Tools:** Jenkins, GitHub Actions, GitLab CI/CD, ArgoCD.
+
+### **3. Continuous Deployment (CD - Continuous Deployment)**
+- Automates the entire process, including deployment to production.
+- No manual intervention is required; new code is automatically released.
+- Requires a highly mature CI/CD pipeline with extensive automated testing.
+- **Example Tools:** Kubernetes, ArgoCD, Spinnaker.
+
+---
+
+## **Difference Between Continuous Delivery and Continuous Deployment**
+
+| Feature               | Continuous Delivery (CD - Delivery) | Continuous Deployment (CD - Deployment) |
+|-----------------------|----------------------------------|----------------------------------|
+| **Definition**        | Code is always ready for deployment but requires manual approval. | Code is automatically deployed to production without manual approval. |
+| **Automation Level**  | Automates everything **except production deployment**. | Fully automated, including production deployment. |
+| **Manual Approval**   | Required before production deployment. | No manual approval; automatic deployment. |
+| **Risk Factor**       | Lower risk; allows human oversight. | Higher risk but enables faster releases. |
+| **Use Case**         | Preferred when regulations, security reviews, or business decisions require approval. | Suitable for companies needing rapid, frequent updates (e.g., Netflix, Amazon). |
+
+
+
+### **Summary**
+- **CI ensures code is tested and merged frequently.**
+- **CD (Delivery) keeps code ready for deployment but requires manual approval.**
+- **CD (Deployment) automates the entire process, including production deployment.**
