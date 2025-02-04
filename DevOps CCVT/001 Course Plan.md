@@ -1,7 +1,7 @@
 # DevOps CCVT Course Plan
 
 | **Lecture No.** | **Topic to be Covered**                                                                 | **Related CO** |
-|------------------|-----------------------------------------------------------------------------------------|----------------|
+|:------------------|:-----------------------------------------------------------------------------------------|----------------|
 | 1                | Introduction to DevOps: Definition, Challenges of Traditional IT Systems                | CO1            |
 | 2                | History and Emergence of DevOps                                                         | CO1            |
 | 3                | DevOps Principles and Agile Methodology                                                 | CO1            |
@@ -42,7 +42,9 @@
 
 
 
- ## Class Tests
+##  Class Tests
+
+
  
 | Class Test | Tentative schedule |
 |:---|:---|
