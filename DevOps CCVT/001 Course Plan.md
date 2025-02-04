@@ -1,5 +1,24 @@
 # DevOps CCVT Course Plan
 
+### Course Objectives
+
+The objective of this course are
+1. To learn fundamental of DevOps.
+2. To get the knowledge of DevOps applications.
+3. To learn DevOps principles, lifecycles and tools.
+4. To know testing, deployment, monitoring, issue tracking and workflow for DevOps based solutions.
+
+
+### Course Outcomes
+
+On completion of this course, the students will be able to
+
+|CO1| Explain the DevOps fundamentals and business applications.|
+|CO2| Apply the DevOps tools for real world problem solving.|
+|CO3| Apply the high-throughput and data intensive applications programming.
+|CO4| Apply testing, deployment, monitoring, issue tracking and workflow for DevOps based solutions.|
+
+
 | **Lecture No.** | **Topic to be Covered**                                                                 | **Related CO** |
 |:---|:---|---:|
 | 1                | Introduction to DevOps: Definition, Challenges of Traditional IT Systems                | CO1            |
