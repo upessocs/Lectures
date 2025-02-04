@@ -13,6 +13,8 @@ The objective of this course are
 
 On completion of this course, the students will be able to
 
+|CO's| Outcomes |
+|:---|:---|
 |CO1| Explain the DevOps fundamentals and business applications.|
 |CO2| Apply the DevOps tools for real world problem solving.|
 |CO3| Apply the high-throughput and data intensive applications programming.
