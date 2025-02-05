@@ -1,8 +1,6 @@
 # Subversion (SVN)
 
-Apache Subversion (often referred to as SVN) is a version control system that allows you to manage and track changes to your files and directories over time. Below is a step-by-step guide to install and use Subversion:
-
----
+Apache Subversion (often referred to as SVN) is a version control system that allows you to manage and track changes to your files and directories over time. Below is a step-by-step guide to install and use Subversion.
 
 ## **1. Install Apache Subversion**
 
@@ -155,7 +153,7 @@ user2 = password2
 - Always update your working copy before starting new work.
 - Use meaningful commit messages.
 - Organize your repository structure (e.g., `trunk`, `branches`, `tags`).
-- 
+
 
 ---
 # Linux
@@ -317,8 +315,8 @@ If you're using **TortoiseSVN** on Windows, you can set up an SVN server and use
 2. Right-click on **Repositories** in the left pane and select **Create New Repository**.
 3. Choose a repository name (e.g., `myrepo`) and select **FSFS** as the repository type.
 4. Set up permissions:
-   - Choose **Custom permissions**.
-   - Add users (e.g., `alice` and `bob`) and assign them read/write access.
+- Choose **Custom permissions**.
+- Add users (e.g., `alice` and `bob`) and assign them read/write access.
 
 #### Step 3: Access the Repository URL
 1. After creating the repository, VisualSVN Server will display the repository URL (e.g., `https://your-pc-name/svn/myrepo`).

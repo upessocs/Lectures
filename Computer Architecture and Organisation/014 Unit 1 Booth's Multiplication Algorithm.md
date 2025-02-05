@@ -107,6 +107,8 @@ This decision reduces the number of operations compared to a straightforward bin
 
 ### **Booth's Multiplication Algorithm**
 
+![](./.014/01Booths.png)
+
 #### **Inputs**:
 - Multiplicand (\(M\)) – the number to be multiplied.
 - Multiplier (\(Q\)) – the number by which the multiplicand is multiplied.
