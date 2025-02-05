@@ -11,7 +11,7 @@ On completion of this course, the students will be able to
 
 |CO's| Outcomes |
 |:---|:---|
-|CO1| Analyze the components and organization of digital computers.
+|CO1| Analyze the components and organization of digital computers.|
 |CO2| Apply knowledge of instruction codes, instruction formats, and addressing modes to analyze and design computer instructions in different CPU architectures.|
 |CO3| Examine the design and organization of control units in digital computers to comprehend their role in executing instructions and managing system operations.|
 |CO4| Analyze the organization and performance implications of memory units and input –output systems in digital computer systems.|
