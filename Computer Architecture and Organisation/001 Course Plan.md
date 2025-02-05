@@ -20,7 +20,6 @@ On completion of this course, the students will be able to
 
 ## Course Plan
 
-Here is a table formatted with Lecture No, Topics, CO, and Date (left blank for you to fill in):  
 
 | Lecture No | Topics | CO | Date |
 |:---|:---|:---|:---|
