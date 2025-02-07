@@ -51,11 +51,11 @@ b. Clone the repository to your local system and make small changes (e.g., updat
 
 3. **Configure the CI Pipeline:**  
 a. For GitHub Actions:  
-  - Create a `.github/workflows/ci.yml` file in your repository.  
-  - Define the CI workflow, including steps to install dependencies, run tests, and build the project.  
+- Create a `.github/workflows/ci.yml` file in your repository.  
+- Define the CI workflow, including steps to install dependencies, run tests, and build the project.  
 b. For GitLab CI/CD:  
-  - Create a `.gitlab-ci.yml` file.  
-  - Specify stages like `build`, `test`, and `deploy`.  
+- Create a `.gitlab-ci.yml` file.  
+- Specify stages like `build`, `test`, and `deploy`.  
 
 4. **Run the CI Pipeline:**  
 a. Push changes to the repository.  
