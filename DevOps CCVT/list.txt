@@ -11,5 +11,7 @@
 ./037 Unit 3 Subversion (SVN).md
 ./038 Unit 3 Mercurial DVCS (HG).md
 ./000 Syllabus DevOps sem6 CCVT.pdf
+./01a Unit 1 Realted Agile waterfall scum.pdf
+./01b Unit 1 Realted Kanban.pdf
 ./03a subversion-cheat-sheet-v1.pdf
 ./04b SVN cheat sheet.pdf
