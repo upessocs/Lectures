@@ -1,0 +1,5 @@
+./
+./Addressing Modes
+./Instruction execution and straight line sequencing in CO
+./Addressing Modes.md
+./Instruction execution and straight line sequencing in CO.md

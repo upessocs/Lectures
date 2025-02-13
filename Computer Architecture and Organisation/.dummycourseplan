@@ -1,0 +1,3600 @@
+<h1 class="unnumbered" id="course-plan"><u>COURSE PLAN</u></h1>
+<table>
+<colgroup>
+<col style="width: 49%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>Target</p>
+</blockquote></th>
+<th><blockquote>
+<p>50% (marks)</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Level-1</p>
+</blockquote></td>
+<td><blockquote>
+<p>40% (population)</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Level-2</p>
+</blockquote></td>
+<td><blockquote>
+<p>50% (population)</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Level-3</p>
+</blockquote></td>
+<td><blockquote>
+<p>60% (population)</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<h2 id="method-of-evaluation">Method of Evaluation</h2>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>UG</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Internal assessment (50%)-Tests-Quizzes, Assignments/Project</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Mid Examination (20%), Exam</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>End examination (30%), Exam</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>Internal Assessment Component</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Weightage in calculation of Internal Assessment (100
+marks)</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Quiz 1</p>
+</blockquote></td>
+<td><blockquote>
+<p>15%</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Quiz 2</p>
+</blockquote></td>
+<td><blockquote>
+<p>15%</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Class Test 1</p>
+</blockquote></td>
+<td><blockquote>
+<p>15%</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Class Test 2</p>
+</blockquote></td>
+<td><blockquote>
+<p>15%</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Assignment 1/Project</p>
+</blockquote></td>
+<td><blockquote>
+<p>20%</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Assignment 2/Project</p>
+</blockquote></td>
+<td><blockquote>
+<p>20%</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li><p><strong>Passing Criteria</strong></p></li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>Scale</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>UG</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p><strong>Out of 10point scale</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>SGPA – “5.0” in each semester CGPA – “5.0”</p>
+<p>Min. Individual Course Grade – “C” Course Grade Point – “3.0”</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>*for UG, passing marks are 35/100 in a paper</p>
+</blockquote>
+<ol start="2" type="1">
+<li><p><strong>Prerequisite(s):</strong> Basic Knowledge of computer
+systems, Concept of Digital Electronics</p></li>
+<li><p><strong>Course Objectives</strong></p></li>
+</ol>
+<blockquote>
+<p>To equip students with the necessary knowledge and skills to
+comprehend, analyze, and design digital computer systems, ensuring they
+can effectively develop and optimize software applications and
+systems.</p>
+</blockquote>
+<h2 id="pedagogy">Pedagogy</h2>
+<ul>
+<li><p>Proper session plan</p></li>
+<li><p>Presentation</p></li>
+<li><p>Class Test</p></li>
+<li><p>Quizzes</p></li>
+<li><p>Assignments/Projects</p></li>
+<li><p>Voice over Presentation &amp; Video lectures</p></li>
+<li><p>Performance Tests</p></li>
+</ul>
+<ol start="4" type="1">
+<li><p><strong>References</strong></p></li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>Text Books</p>
+</blockquote></th>
+<th><ol type="1">
+<li><p>M. M. Mano, "Computer System Architecture", Revised 3rd Edition,
+Pearson Education, 2017.</p></li>
+<li><p>Carl Hamacher, Zvonko Vranesic , Safwat Zaky, and Naraig
+Manjikian, "Computer Organization and Embedded Systems", 6th Edition,
+McGraw Hill, Standard Edition, 2023.</p></li>
+<li><p>David A. Patterson, and John L. Hennessy, "Computer Organization
+and Design MIPS Edition: The Hardware/Software Interface", 5th Edition,
+The Morgan Kaufmann Series in Computer Architecture and Design, Morgan
+Kaufmann, 2020.</p></li>
+</ol></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Web resources</p>
+</blockquote></td>
+<td><blockquote>
+<p>NPTEL</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Journals</p>
+</blockquote></td>
+<td><blockquote>
+<p>Information about advanced research about any topics of syllabus from
+SCI/SCIE/Scopus</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>Reference books</p>
+</blockquote></td>
+<td><ol type="1">
+<li><p>John P. Hayes, "Computer Architecture and Organization", 3rd
+Edition, McGraw-Hill Education, 2017.</p></li>
+<li><p>William Stallings, "Computer Organization and Architecture:
+Designing for Performance", 11th Edition, Pearson, 2022.</p></li>
+</ol></td>
+</tr>
+</tbody>
+</table>
+<h1 class="unnumbered"
+id="guidelines-to-study-the-subject"><u>GUIDELINES TO STUDY THE
+SUBJECT</u></h1>
+<h2 class="unnumbered" id="instructions-to-students">Instructions to
+Students:</h2>
+<ol type="1">
+<li><p>Go through the 'Syllabus' uploaded on the My UPES- LMS platform
+to find out the Reading List.</p></li>
+<li><p>Get your schedule and try to pace your studies as close to the
+timeline as possible.</p></li>
+<li><p>Get your on-line lecture notes (Content, videos) at <u>Lecture
+Notes</u> section. These are our lecture notes. Make sure you use them
+during this course.</p></li>
+<li><p>Check your LMS student portal regularly.</p></li>
+<li><p>Go through study material.</p></li>
+<li><p>Check mails and announcements on LMS student portal.</p></li>
+<li><p>Keep updated with the posts, assignments and examinations which
+shall be conducted on the LMS student portal.</p></li>
+<li><p>Be regular, so that you do not suffer in any way.</p></li>
+<li><p><strong>Cell Phones and other Electronic Communication
+Devices:</strong> Cell phones and other electronic communication devices
+are not permitted in classes during the Tests. Such devices MUST be
+turned off in the classroom.</p></li>
+<li><p><strong>E-Mail and online learning tool:</strong> Each student in
+the class should have an e-mail id and a pass word to access the LMS
+system regularly. Regularly, important information – Date of conducting
+class tests, guest lectures, via online learning tool. The best way to
+arrange meetings with us or ask specific questions is by email and prior
+appointment. All the assignments preferably should be uploaded on an
+online learning tool. Various research papers/reference material will be
+mailed/uploaded on online learning platform from time to time.</p></li>
+<li><p><strong>Attendance:</strong> Students are required to have a
+minimum attendance of 75% in each subject. Students with less than the
+said percentage shall NOT be allowed to appear in the end semester
+examination.</p></li>
+</ol>
+<blockquote>
+<p>This much should be enough to get you organized and on your way to
+having a great semester! If you need us for anything, send your feedback
+through e-mail <u><a href="mailto:abc@ddn.upes.ac.in">to</a> your
+concerned faculty.</u> Please use an appropriate subject line to
+indicate your message details.</p>
+</blockquote>
+<h1 class="unnumbered" id="related-outcomes">RELATED OUTCOMES</h1>
+<ol type="1">
+<li><p><strong>The expected outcomes of the Program:</strong></p></li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 91%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>PO1</p>
+</blockquote></th>
+<th><blockquote>
+<p>Engineering knowledge: Apply the knowledge of mathematics, science,
+engineering</p>
+<p>fundamentals, and an engineering specialization to the solution of
+complex engineering problems.</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>PO2</p>
+</blockquote></td>
+<td><blockquote>
+<p>Problem analysis: Identify, formulate, review research literature,
+and analyze complex</p>
+<p>engineering problems reaching substantiated conclusions using first
+principles of mathematics, natural sciences, and engineering
+sciences.</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 91%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>PO3</p>
+</blockquote></th>
+<th><blockquote>
+<p>Design/development of solutions: Design solutions for complex
+engineering problems and design system components or processes that meet
+the specified needs with appropriate consideration for the public health
+and safety, and the cultural, societal, and environmental</p>
+<p>considerations.</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>PO4</p>
+</blockquote></td>
+<td><blockquote>
+<p>Conduct investigations of complex problems: Use research-based
+knowledge and research</p>
+<p>methods including design of experiments, analysis and interpretation
+of data, and synthesis of the information to provide valid
+conclusions.</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>PO5</p>
+</blockquote></td>
+<td><blockquote>
+<p>Modern tool usage: Create, select, and apply appropriate techniques,
+resources, and modern</p>
+<p>engineering and IT tools including prediction and modeling to complex
+engineering activities with an understanding of the limitations.</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>PO6</p>
+</blockquote></td>
+<td><blockquote>
+<p>Engineer and society: Apply reasoning informed by contextual
+knowledge to assess societal, health, safety, legal and cultural issues
+and the consequent responsibilities relevant to the professional
+engineering practice.</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>PO7</p>
+</blockquote></td>
+<td><blockquote>
+<p>Environment and sustainability: Understand the impact of professional
+engineering solutions in societal and environmental contexts, and
+demonstrate the knowledge of, and need for sustainable development.</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>PO8</p>
+</blockquote></td>
+<td><blockquote>
+<p>Ethics: Apply ethical principles and commit to professional ethics
+and responsibilities and norms of engineering practice.</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>PO9</p>
+</blockquote></td>
+<td><blockquote>
+<p>Individual and teamwork: Function effectively as an individual, and
+as a member or leader in diverse teams, and in multidisciplinary
+settings.</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>PO10</p>
+</blockquote></td>
+<td><blockquote>
+<p>Communication: Communicate effectively on complex engineering
+activities with the engineering community and with society at large,
+such as being able to comprehend and write effective reports and design
+documentation, make effective presentations, and give and receive</p>
+<p>clear instructions.</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>PO11</p>
+</blockquote></td>
+<td><blockquote>
+<p>Project management and finance: Demonstrate knowledge and
+understanding of the engineering and management principles and apply
+these to one’s own work, as a member and leader in a team, to manage
+projects and in multidisciplinary environments.</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>PO12</p>
+</blockquote></td>
+<td><blockquote>
+<p>Life-long learning: Recognize the need for and have the preparation
+and ability to engage in independent and life-long learning in the
+broadest context of technological change.</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><p><strong>The expected outcomes of the Specific
+Program:</strong></p></li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 91%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>PSO1</p>
+</blockquote></th>
+<th><blockquote>
+<p>Perform system and application programming using computer system
+concepts, the principles of data structures, algorithm development,
+problem-solving, and optimization techniques.</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 91%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>PSO2</p>
+</blockquote></th>
+<th><blockquote>
+<p>Apply software development and project management methodologies,
+integrating principles from both front-end and back-end development, and
+effectively utilize contemporary tools and technologies.</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>PSO3</p>
+</blockquote></td>
+<td><blockquote>
+<p>Exhibit a commitment to ethical practices, societal responsibilities,
+and continuous learning, contributing to the advancement of technology
+and addressing challenges in diverse computing domains.</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<ol start="3" type="1">
+<li><p><strong>The expected outcomes of the Specific
+Program:</strong></p></li>
+</ol>
+<blockquote>
+<p>On completion of this course, the students will be able to</p>
+<p><strong>CO1:</strong> Analyze the components and organization of
+digital computers.</p>
+<p><strong>CO2:</strong> Apply knowledge of instruction codes,
+instruction formats, and addressing modes to analyze and design computer
+instructions in different CPU architectures.</p>
+<p><strong>CO3:</strong> Examine the design and organization of control
+units in digital computers to comprehend their role in executing
+instructions and managing system operations.</p>
+<p><strong>CO4:</strong> Analyze the organization and performance
+implications of memory units and input –output systems in digital
+computer systems.</p>
+<p><strong>CO5:</strong> Assess the benefits and challenges of
+pipelining computer architecture on system performance and
+throughput.</p>
+</blockquote>
+<ol start="4" type="1">
+<li><p><strong>Co-Relationship Matrix</strong></p></li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>Program</strong></p>
+<p><strong>Outcomes</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO1</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO2</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO3</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO4</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO5</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO6</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO7</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO8</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO9</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO10</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO11</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PO12</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PSO1</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PSO2</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>PSO3</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p><strong>Course Outcomes</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO 1</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO 2</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO 3</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO 4</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO 5</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>-</strong></p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>Average</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p>1</p>
+</blockquote></th>
+<th><blockquote>
+<p>0.6</p>
+</blockquote></th>
+<th><blockquote>
+<p>2</p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>-</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p>1</p>
+</blockquote></th>
+<th><blockquote>
+<p>1</p>
+</blockquote></th>
+<th><blockquote>
+<p>1</p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>-</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>-</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>-</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>-</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p>3</p>
+</blockquote></th>
+<th><blockquote>
+<p>2</p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>-</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>-</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<blockquote>
+<p><strong>1 – Weakly Mapped (Low) 2 – Moderately Mapped (Medium) 3 –
+Strongly Mapped (High) “_” means there is no correlation</strong></p>
+</blockquote>
+<ol start="5" type="1">
+<li><p><strong>Course outcomes assessment plan:</strong></p></li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 21%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>components</strong></p>
+<p><strong>Course Outcomes</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Quiz</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Class Test</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Lab Test</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Project/Assignment</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Any other</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO 1</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>□</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO 2</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>□</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO 3</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>□</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO 4</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>□</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO 5</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>☑</p>
+</blockquote></td>
+<td><blockquote>
+<p>□</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<h1 class="unnumbered"
+id="overview-of-course-deliverybroad-plan-of-course-coverage"><u>OVERVIEW
+OF COURSE DELIVERY/BROAD PLAN OF COURSE COVERAGE</u></h1>
+<blockquote>
+<p><strong>Course Activities:</strong></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 25%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th rowspan="2"><blockquote>
+<p><strong>S.</strong></p>
+<p><strong>No.</strong></p>
+</blockquote></th>
+<th rowspan="2"><blockquote>
+<p><strong>Description</strong></p>
+</blockquote></th>
+<th colspan="3"><blockquote>
+<p><strong>Planned</strong></p>
+</blockquote></th>
+<th colspan="3"><blockquote>
+<p><strong>Actual</strong></p>
+</blockquote></th>
+<th rowspan="2"><blockquote>
+<p><strong>Remarks</strong></p>
+</blockquote></th>
+</tr>
+<tr class="odd">
+<th><blockquote>
+<p><strong>From</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>To</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>No. of Ses</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>From</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>TO</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>No. of Ses</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 25%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>1.</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p>Digital Computers Unit I</p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th><blockquote>
+<p>8</p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p><strong>2.</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>Basic Computer Organization and Design- Unit II</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>3.</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>Control Organization- Unit-III</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>4.</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>Memory Organization- Unit-IV</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>5.</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>Input Output Organization</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>6.</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p>Pipelining</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong><br />
+</strong></p>
+<h1 class="unnumbered" id="session-plan-unit-i"><u>SESSION PLAN</u>
+UNIT-I</h1>
+<blockquote>
+<p><strong>Digital Computers</strong></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 5%" />
+<col style="width: 58%" />
+<col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="4"><blockquote>
+<p>Session Plan</p>
+</blockquote></th>
+<th colspan="4"><blockquote>
+<p>Actual Delivery</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>L</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td><blockquote>
+<p>CO</p>
+</blockquote></td>
+<td><blockquote>
+<p>L</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>To</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>e</p>
+</blockquote></td>
+<td><blockquote>
+<p>D</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Ma</p>
+</blockquote></td>
+<td><blockquote>
+<p>e</p>
+</blockquote></td>
+<td><blockquote>
+<p>D</p>
+</blockquote></td>
+<td><blockquote>
+<p>pic</p>
+</blockquote></td>
+<td><blockquote>
+<p>Ac</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>ct</p>
+</blockquote></td>
+<td><blockquote>
+<p>at</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>ppe</p>
+</blockquote></td>
+<td><blockquote>
+<p>ct</p>
+</blockquote></td>
+<td><blockquote>
+<p>at</p>
+</blockquote></td>
+<td><blockquote>
+<p>s</p>
+</blockquote></td>
+<td><blockquote>
+<p>hie</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>.</p>
+</blockquote></td>
+<td>e</td>
+<td><blockquote>
+<p>Topics to be Covered</p>
+</blockquote></td>
+<td><blockquote>
+<p>d</p>
+</blockquote></td>
+<td><blockquote>
+<p>.</p>
+</blockquote></td>
+<td>e</td>
+<td><blockquote>
+<p>Co</p>
+</blockquote></td>
+<td><blockquote>
+<p>ved</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 5%" />
+<col style="width: 61%" />
+<col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th><blockquote>
+<p>ver ed</p>
+</blockquote></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Introduction about digital computer, Why digital computer?
+Classification about computing and non-computing systems,</p>
+<p>Overview of different blocks of computer</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO 1</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Introduction to CPU (Registers, ALU, Clock, Control unit),
+Memory,</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO 1</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>I/O subsystems, Common Bus System (External and Internal Bus: Address
+Bus, Data Bus and Control Bus);</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO 1,C O2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Evolution of Computer Systems, Von Neumann Architecture and Harvard
+Architecture</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO 1,C O2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Big Endian and Little Endian, Signed Arithmetic- Addition,
+Subtraction, Multiplication,</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO 1,C O2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Data representation: Number System, r complement and r-1</p>
+<p>complement arithmetic, Unsigned and Signed number representation,
+Preliminary idea of combinational circuits</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO 1,C O2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Register Transfer Language (RTL) and Micro operations (Arithmetic,
+Logical and Shift micro operations),</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO 1,C O2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Arithmetic Logic and Shift unit hardware implementation,Register
+transfer, Bus and memory transfer</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO 1,C O2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong><br />
+</strong></p>
+<h1 class="unnumbered" id="unit-ii">UNIT-II</h1>
+<blockquote>
+<p><strong>Basic Computer Organization and Design</strong></p>
+</blockquote>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 50%" />
+<col style="width: 8%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="4"><blockquote>
+<p>Session Plan</p>
+</blockquote></th>
+<th colspan="4"><blockquote>
+<p>Actual Delivery</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Lec t.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Dat e</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topics to be Covered</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Mapp ed</p>
+</blockquote></td>
+<td><blockquote>
+<p>Lec t.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Dat e</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topic s Cover</p>
+<p>ed</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Achiev ed</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Instruction codes and format</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Stored program organization</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Instruction cycles, Instruction Formats, Instruction types</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Timing and control, Instruction and Instruction sequencing</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Addressing types, Memory Reference</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Stack organization</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Some common CPU architectures(Intel IA-32 Architecture, ARM)</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong><br />
+</strong></p>
+<h1 class="unnumbered" id="unit-iii"><u>UNIT-III</u></h1>
+<blockquote>
+<p><strong>Control Unit Organization</strong></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 53%" />
+<col style="width: 8%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 8%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="4"><blockquote>
+<p>Session Plan</p>
+</blockquote></th>
+<th colspan="4"><blockquote>
+<p>Actual Delivery</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Lect</p>
+<p>.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Date</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topics to be Covered</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Mapped</p>
+</blockquote></td>
+<td><blockquote>
+<p>Lect</p>
+<p>.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Date</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topics Covere d</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Ac hie</p>
+<p>ve d</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Introduction Control Unit Design, Hardwired Control Unit and Timing
+Signals</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO3</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 53%" />
+<col style="width: 8%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 8%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>2</p>
+</blockquote></th>
+<th></th>
+<th><blockquote>
+<p>Microprogrammed control unit:</p>
+<p>control memory, Address sequencing</p>
+</blockquote></th>
+<th><blockquote>
+<p>CO3</p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Designing of microprogrammed control uni Control Transfer, Fetch
+Cycle</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO3</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Comparison of hardwired and microprogrammed control units,</p>
+<p>RISC and CISC Processors</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO3</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Arithmetic and logic unit design</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO3,C O1</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Designing a hypothetical processor with minimum number of
+Instruction</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO3,C O2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 class="unnumbered" id="unit-iv"><u>UNIT-IV</u></h1>
+<blockquote>
+<p><strong>Memory Organization</strong></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 58%" />
+<col style="width: 7%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 6%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="4"><blockquote>
+<p>Session Plan</p>
+</blockquote></th>
+<th colspan="4"><blockquote>
+<p>Actual Delivery</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Le ct.</p>
+</blockquote></td>
+<td><blockquote>
+<p>D</p>
+<p>at e</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topics to be Covered</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Map ped</p>
+</blockquote></td>
+<td><blockquote>
+<p>Le ct.</p>
+</blockquote></td>
+<td><blockquote>
+<p>D</p>
+<p>at e</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topi cs Cov</p>
+<p>ered</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Achi eved</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Memory Hierarchy ,memory Locations &amp; Addresses,</p>
+<p>Semiconductor Memory, Static and Dynamic Memory</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO1,</p>
+<p>CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Main Memory, Memory address map,</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO1, CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Auxiliary Memory, Associative Memory, hardware organization Cache
+Memory</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO1, CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 58%" />
+<col style="width: 7%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 6%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>4</p>
+</blockquote></th>
+<th></th>
+<th><blockquote>
+<p>Secondary Memories: Optical Magnetic Tape, Magnetic Disk and
+Controllers.</p>
+</blockquote></th>
+<th><blockquote>
+<p>CO1, CO4</p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Cache Memory: Principle of Locality, Cache mapping techniques</p>
+</blockquote></td>
+<td>CO4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Virtual memory, address space and memory space</p>
+</blockquote></td>
+<td>CO4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Memory management hardware, segmented page mapping</p>
+</blockquote></td>
+<td>CO4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Memory protection and numerical example</p>
+</blockquote></td>
+<td>CO4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 class="unnumbered" id="unit-v"><u>UNIT-V</u></h1>
+<blockquote>
+<p><strong>Input Output Organization</strong></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 43%" />
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="4"><blockquote>
+<p>Session Plan</p>
+</blockquote></th>
+<th colspan="4"><blockquote>
+<p>Actual Delivery</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>Lect.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Date</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topics to be Covered</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Mapped</p>
+</blockquote></td>
+<td><blockquote>
+<p>Lect.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Date</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topics Covered</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Achieved</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>I/O and their brief description</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Bus Interface, Bus arbitration, Data Transfer</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO4,CO1</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Asynchronous data transfer and modes of transfer</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Types of Interrupts, I/O Interrupts,</p>
+<p>priority interrupt</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Interrupt cycle, software routines</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Direct Memory Access, controller and transfer</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Input output processor</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Serial communication and its protocols</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 class="unnumbered" id="unit-vi"><u>UNIT-VI</u></h1>
+<blockquote>
+<p><strong>Pipelining</strong></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 7%" />
+<col style="width: 44%" />
+<col style="width: 9%" />
+<col style="width: 6%" />
+<col style="width: 7%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="4"><blockquote>
+<p>Session Plan</p>
+</blockquote></th>
+<th colspan="4"><blockquote>
+<p>Actual Delivery</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td colspan="4"></td>
+<td colspan="4"></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>Le ct.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Date</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topics to be Covered</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Mappe d</p>
+</blockquote></td>
+<td><blockquote>
+<p>Lect</p>
+<p>.</p>
+</blockquote></td>
+<td><blockquote>
+<p>Date</p>
+</blockquote></td>
+<td><blockquote>
+<p>Topics Covered</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO</p>
+<p>Achieve d</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Pipelining general consideration</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Arithmetic pipeline, Instruction pipeline</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Shared memory and distributed memory</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Vector processing</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Array processors</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Four-Segment Instruction Pipeline Pipelining Conflicts: Resource
+conflicts</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>RISC and CISC pipeline</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td><blockquote>
+<p>Pipelining in ColdFire Processors, Pipelining in Intel Processors</p>
+</blockquote></td>
+<td><blockquote>
+<p>CO5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 class="unnumbered" id="periodic-monitoring"><u>PERIODIC
+MONITORING</u></h1>
+<blockquote>
+<p><strong>Actual date of completion and remarks, if any</strong></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>Components</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>From</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>To</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>From</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>To</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>From</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>To</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p><strong>Duration (Mention from and to dates)</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>Percentage of Syllabus covered</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 18%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th rowspan="2"><blockquote>
+<p><strong>Lectures</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Planned</strong></p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+<tr class="odd">
+<th><blockquote>
+<p><strong>Taken</strong></p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2"><blockquote>
+<p><strong>Tutorials/Discussions</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>Planned</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>Taken</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td rowspan="4"><blockquote>
+<p><strong>Test/quizzes</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>Planned</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>Taken</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO's Addressed</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO's Achieved</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td rowspan="4"><blockquote>
+<p><strong>Assignments</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>Planned</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>Taken</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO's Addressed</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO's Achieved</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td colspan="2"><blockquote>
+<p><strong>Signature of Faculty</strong></p>
+</blockquote></td>
+<td colspan="2"></td>
+<td colspan="2"></td>
+<td colspan="2"></td>
+</tr>
+<tr class="even">
+<td colspan="2"><blockquote>
+<p><strong>Head of the Department</strong></p>
+</blockquote></td>
+<td colspan="2"></td>
+<td colspan="2"></td>
+<td colspan="2"></td>
+</tr>
+<tr class="odd">
+<td colspan="2"><blockquote>
+<p><strong>A.M.R.C</strong></p>
+</blockquote></td>
+<td colspan="2"></td>
+<td colspan="2"></td>
+<td colspan="2"></td>
+</tr>
+</tbody>
+</table>
+<h1 class="unnumbered" id="periodic-monitoring-1"><u>PERIODIC
+MONITORING</u></h1>
+<blockquote>
+<p><strong>Attainment of the Course (Learning) Outcomes:</strong></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 31%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>Components</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Attainment level</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Action plan</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Remark</strong></p>
+<p><strong>(AMC)</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="4"><blockquote>
+<p><strong>Assignment</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>CO1:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO2:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO3:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO4:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td rowspan="4"><blockquote>
+<p><strong>Quiz/test</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>CO1:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO2:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO3:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO4:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td rowspan="3"><blockquote>
+<p><strong>Mid Semester</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>CO1:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO2:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO3:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 31%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><blockquote>
+<p><strong>CO4:</strong></p>
+</blockquote></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="4"><blockquote>
+<p><strong>End Semester</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>CO1:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO2:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO3:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO4:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td rowspan="4"><blockquote>
+<p><strong>Any Other</strong></p>
+</blockquote></td>
+<td><blockquote>
+<p><strong>CO1:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO2:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p><strong>CO3:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p><strong>CO4:</strong></p>
+</blockquote></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Signature of HOD/ Dean Signature of Faculty</strong></p>
+<p><strong>Date Date</strong></p>
+</blockquote>
+<h1 class="unnumbered" id="indirect-assessment"><u>INDIRECT
+ASSESSMENT</u></h1>
+<h2 class="unnumbered"
+id="sample-format-for-indirect-assessment-of-course-outcomes">Sample
+format for Indirect Assessment of Course outcomes:</h2>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>NAME:</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>ENROLLMENT NO:</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>SAP ID:</p>
+</blockquote></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>COURSE:</p>
+</blockquote></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>PROGRAM:</p>
+</blockquote></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Please rate the following aspects of course outcomes of --.</p>
+<p>Use the scale 1-3*</p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 71%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>course Outcomes</p>
+</blockquote></th>
+<th><blockquote>
+<p>Statement</p>
+</blockquote></th>
+<th><blockquote>
+<p>1</p>
+</blockquote></th>
+<th><blockquote>
+<p>2</p>
+</blockquote></th>
+<th><blockquote>
+<p>3</p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>CO1</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>CO2</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>CO3</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>CO4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>CO5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>CO6</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 class="unnumbered" id="instructions-for-faculty"><u>INSTRUCTIONS FOR
+FACULTY</u></h1>
+<h2 class="unnumbered" id="instructions-for-faculty-1">Instructions for
+faculty</h2>
+<h2 class="unnumbered" id="section"></h2>
+<ul>
+<li><p>Faculty should keep track of the students with low attendance and
+counsel them regularly.</p></li>
+<li><p>Course coordinator will arrange to communicate the short
+attendance (as per UPES policy) cases to the students and their parents
+monthly.</p></li>
+<li><p>Topics covered in each class should be recorded in the table of
+RECORD OF CLASS TEACHING (Suggested Format).</p></li>
+<li><p>Internal assessment marks should be communicated to the students
+twice in a semester.</p></li>
+<li><p>The file will be audited by respective Academic Monitoring and
+Review Committee (AMRC) members for theory as well as for lab as per
+AMRC schedule.</p></li>
+<li><p>The faculty is required to maintain these files for a period of
+at least three years.</p></li>
+<li><p>This register should be handed over to the head of department,
+whenever the faculty member goes on long leave or leaves the
+Colleges/University.</p></li>
+<li><p>For labs, continuous evaluation format (break-up given in the
+guidelines for result preparation in the same file) should be
+followed.</p></li>
+<li><p>Department should monitor the actual execution of the components
+of continuous lab evaluation regularly.</p></li>
+<li><p>Instructor should maintain record of experiments conducted by the
+students in the lab weekly.</p></li>
+<li><p>Instructor should promote students for self-study and to make
+concept diary, due weightage in the internal should be given under
+faculty assessment for the same.</p></li>
+<li><p>Course outcome assessment: To assess the fulfilment of course
+outcomes two different approaches have been decided. Degree of
+fulfillment of course outcomes will be assessed in different ways
+through direct assessment and indirect assessment. In Direct Assessment,
+it is measured through quizzes, tests, assignment, Mid-term and/or
+End-term examinations. It is suggested that each examination is designed
+in such a way that it can address one or two outcomes (depending upon
+the course completion). Indirect assessment is done through the student
+survey which needs to be designed by the faculty (sample format is given
+below) and it shall be conducted towards the end of course completion.
+The evaluation of the achievement of the Course Outcomes shall be done
+by analyzing the inputs received through Direct and Indirect Assessments
+and then corrective actions suggested for further improvement.</p></li>
+</ul>
+<h1 class="unnumbered" id="checklist"><u>CHECKLIST</u></h1>
+<blockquote>
+<p><strong>Check list Course Outcomes Attainment (COA)</strong></p>
+</blockquote>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 52%" />
+<col style="width: 13%" />
+<col style="width: 10%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p><strong>SI.N</strong></p>
+<p><strong>o</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Description</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Date of Submissio</strong></p>
+<p><strong>n</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Checke d</strong></p>
+</blockquote></th>
+<th><blockquote>
+<p><strong>Remarks</strong></p>
+</blockquote></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td><blockquote>
+<p>Class Tests marks</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td><blockquote>
+<p>Quiz marks</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td><blockquote>
+<p>Assignment marks</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td><blockquote>
+<p>Mid Semester Marks</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td><blockquote>
+<p>End Semester Marks</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td><blockquote>
+<p>Check in COA format</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td><blockquote>
+<p>Whether respective CO of Class tests,</p>
+<p>Quiz’s, Assignments, Mid and End semester maximum marks entered or
+not</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td><blockquote>
+<p>Ensure that all data got filled as per requirement</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>9</p>
+</blockquote></td>
+<td><blockquote>
+<p>Copy of quiz paper with the model answer and two/three answer
+sheets</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>10</p>
+</blockquote></td>
+<td><blockquote>
+<p>Copies of all test papers with two/three answer sheets</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>11</p>
+</blockquote></td>
+<td><blockquote>
+<p>Copies of all assignments with two or three model assignments</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>12</p>
+</blockquote></td>
+<td><blockquote>
+<p>Manual attendance sheet</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>13</p>
+</blockquote></td>
+<td><blockquote>
+<p>Copy of faculty time table</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>14</p>
+</blockquote></td>
+<td><blockquote>
+<p>Course Plan</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>15</p>
+</blockquote></td>
+<td><blockquote>
+<p>Class Tests, Quiz and assignment marks as per COs</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>16</p>
+</blockquote></td>
+<td><blockquote>
+<p>Copy of midterm examination paper and model</p>
+<p>solution</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>17</p>
+</blockquote></td>
+<td><blockquote>
+<p>Copy of end term examination paper and model solution</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>18</p>
+</blockquote></td>
+<td><blockquote>
+<p>List of minor/major project work given to the student</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>19</p>
+</blockquote></td>
+<td><blockquote>
+<p>Detailed internal assessment sheet</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>20</p>
+</blockquote></td>
+<td><blockquote>
+<p>Copy of final grade sheet (which was submitted to SRE) must be
+attached at the end of semester</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>21</p>
+</blockquote></td>
+<td><blockquote>
+<p>Copy of quiz /test conducted for lab</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>22</p>
+</blockquote></td>
+<td><blockquote>
+<p>Rubrics wise marks in Lab ( Day to day evaluation sheet)</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 52%" />
+<col style="width: 13%" />
+<col style="width: 10%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><blockquote>
+<p>23</p>
+</blockquote></th>
+<th><blockquote>
+<p>Copy of course attainment sheet (both pages)</p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>24</p>
+</blockquote></td>
+<td><blockquote>
+<p>Indirect Attainment Sheet</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Signature of HOD/ Dean Signature of Faculty</strong></p>
+<p><strong>Date Date</strong></p>
+<p><strong><u>Planning for Remedial Classes</u></strong></p>
+</blockquote>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 12%" />
+<col style="width: 6%" />
+<col style="width: 5%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 3%" />
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 10%" />
+<col style="width: 8%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th rowspan="4"><blockquote>
+<p><strong>Sl.</strong></p>
+<p><strong>No.</strong></p>
+</blockquote></th>
+<th rowspan="4"><blockquote>
+<p><strong>Name of Student</strong></p>
+</blockquote></th>
+<th rowspan="4"><blockquote>
+<p><strong>Roll No.</strong></p>
+</blockquote></th>
+<th rowspan="4"><blockquote>
+<p><strong>Sap ID</strong></p>
+</blockquote></th>
+<th rowspan="4"><blockquote>
+<p><strong>Mid Sem Marks</strong></p>
+</blockquote></th>
+<th colspan="7"><blockquote>
+<p><strong>Remedial Classes Held</strong></p>
+</blockquote></th>
+<th rowspan="4"><blockquote>
+<p><strong>Class test on the basis of</strong></p>
+<p><strong>Remedial Classes</strong></p>
+</blockquote></th>
+<th rowspan="4"><blockquote>
+<p><strong>End Sem Marks</strong></p>
+</blockquote></th>
+<th rowspan="4"><blockquote>
+<p><strong>Improvement (Y/N)</strong></p>
+</blockquote></th>
+</tr>
+<tr class="odd">
+<th><blockquote>
+<p><strong>Date</strong></p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+<tr class="header">
+<th><blockquote>
+<p><strong>Venue</strong></p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+<tr class="odd">
+<th><blockquote>
+<p><strong>Time</strong></p>
+</blockquote></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Signature of HOD/ Dean Signature of Faculty</strong></p>
+<p><strong>Date Date</strong></p>
+</blockquote>
