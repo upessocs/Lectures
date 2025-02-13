@@ -1,5 +1,8 @@
 ./
-./Addressing Modes
-./Instruction execution and straight line sequencing in CO
-./Addressing Modes.md
+./.Addressing Modes
+./.Instruction execution and straight line sequencing in CO
+./023 Addressing Modes.md
 ./Instruction execution and straight line sequencing in CO.md
+./021 Instruction_Unit-2.pdf
+./022 Types_of Instruction_Unit2_RB.pptx
+./024 Stack Organization_Unit2_RB.pptx
