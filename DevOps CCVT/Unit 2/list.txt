@@ -1,3 +1,4 @@
 ./
 ./022 Github Actions.md
+./023 Dockerize python fastapi server with github actions and upload to docker registery.md
 ./actions-cheat-sheet.pdf
