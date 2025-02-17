@@ -2,6 +2,7 @@
 ./.014
 ./UNIT 1
 ./UNIT 2
+./UNIT 3
 ./000 Syllabus COA.md
 ./001 Course Plan.md
 ./000 Syllabus COA Computer Organization and Architecture.pdf
