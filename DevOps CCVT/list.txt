@@ -1,17 +1,5 @@
 ./
-./001 Course Plan.md
-./011 Unit 1 Introduction.md
-./011 Unit 1 Waterfall and SCRUM.md
-./031 Unit 3 Need for version control.md
-./032 Unit 3 Git installation.md
-./033 Unit 3 Git Authentication and usage.md
-./034 Unit 3 Git BRANCH, MERGE and REBASE.md
-./035 Unit 3 Git REMOTE and SUBMODULE.md
-./036 Unit 3 Git STASH.md
-./037 Unit 3 Subversion (SVN).md
-./038 Unit 3 Mercurial DVCS (HG).md
-./000 Syllabus DevOps sem6 CCVT.pdf
-./01a Unit 1 Realted Agile waterfall scum.pdf
-./01b Unit 1 Realted Kanban.pdf
-./03a subversion-cheat-sheet-v1.pdf
-./04b SVN cheat sheet.pdf
+./Unit 1
+./Unit 2
+./Unit 3
+./000 DevOps Sem 6 CCVT Syllabus.pdf
