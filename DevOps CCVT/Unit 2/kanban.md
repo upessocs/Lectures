@@ -11,12 +11,12 @@ The core principles of Kanban are:
 ### **Dummy Kanban Board**
 A Kanban board is divided into columns that represent different stages of your workflow. Here’s a simple example:
 
-```
+
 | Backlog       | To Do         | In Progress   | Done          |
 |:---------------|:---------------|:---------------|:---------------|
 | Task 1        | Task 2        | Task 3        | Task 4        |
 | Task 5        |               |               |               |
-```
+
 
 - **Backlog**: Tasks that are not yet started.
 - **To Do**: Tasks ready to be worked on.
@@ -64,12 +64,12 @@ Limiting WIP is key to avoiding overload and maintaining a smooth workflow. Here
 - If the column reaches the limit, no new tasks can be moved into it until a task is completed and moved to **Done**.
 
 2. **Example WIP limits**:
-```
+
 | Backlog       | To Do (WIP: 5) | In Progress (WIP: 3) | Done          |
 |:---------------|:----------------|:----------------------|:---------------|
 | Task 1        | Task 2         | Task 3               | Task 4        |
 | Task 5        | Task 6         | Task 7               |               |
-```
+
 
 - If **In Progress** already has 3 tasks (Task 3, Task 7, and another), you cannot move another task into it until one is completed.
 
