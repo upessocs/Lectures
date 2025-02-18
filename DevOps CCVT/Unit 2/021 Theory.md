@@ -1,4 +1,4 @@
-# **Lecture 1: Business Needs for DevOps**  
+# **Business Needs for DevOps**  
 
 ## **Why is DevOps Needed?**  
 Traditional software development and IT operations were often separated, leading to:  
@@ -10,11 +10,11 @@ Traditional software development and IT operations were often separated, leading
 DevOps bridges this gap by integrating **development (Dev) and operations (Ops)** through automation, collaboration, and continuous monitoring.
 
 ## **DevOps Benefits**  
-1. **Faster Time to Market** – Reduces development cycles and speeds up feature releases.  
-2. **Improved Software Quality** – Continuous testing and monitoring prevent defects early.  
-3. **Increased Collaboration** – Teams work together using shared tools and processes.  
-4. **Scalability and Flexibility** – Cloud-based infrastructure and automation improve deployment.  
-5. **Cost Efficiency** – Reduces infrastructure costs and minimizes downtime.  
+1. **Faster Time to Market** --  Reduces development cycles and speeds up feature releases.  
+2. **Improved Software Quality** --  Continuous testing and monitoring prevent defects early.  
+3. **Increased Collaboration** --  Teams work together using shared tools and processes.  
+4. **Scalability and Flexibility** --  Cloud-based infrastructure and automation improve deployment.  
+5. **Cost Efficiency** --  Reduces infrastructure costs and minimizes downtime.  
 
 ## **What is the Driving Factor?**  
 - Market competition requires rapid innovation.  
@@ -26,16 +26,16 @@ Industries need DevOps to stay competitive, reduce time-to-market, and enhance p
 
 ---
 
-# **Lecture 2: Silos in Software Development & DevOps Team Structures**  
+# **Silos in Software Development & DevOps Team Structures**  
 
 ## **Understanding Silos in Software Development**  
 In traditional software development, different teams (development, testing, operations, security) work separately, creating **silos**.  
 
 ### **Problems with Silos:**  
-1. **Lack of Communication** – Teams work in isolation, leading to misunderstandings.  
-2. **Slow Delivery** – Sequential workflows increase delays.  
-3. **Operational Bottlenecks** – Changes require multiple approvals and handovers.  
-4. **Difficult Debugging** – Issues take longer to resolve due to lack of shared responsibility.  
+1. **Lack of Communication** --  Teams work in isolation, leading to misunderstandings.  
+2. **Slow Delivery** --  Sequential workflows increase delays.  
+3. **Operational Bottlenecks** --  Changes require multiple approvals and handovers.  
+4. **Difficult Debugging** --  Issues take longer to resolve due to lack of shared responsibility.  
 
 ## **DevOps Teams and Cross-Functional Collaboration**  
 DevOps teams **break down silos** by promoting **cross-functional collaboration**, where developers, testers, operations, and security teams work together.  
@@ -58,11 +58,11 @@ A company releases software updates once every six months. Due to siloed teams:
 
 ---
 
-# **Lecture 3: DevOps Practices & Key Processes**  
+# **DevOps Practices & Key Processes**  
 
 ## **Continuous Integration vs. Continuous Deployment vs. Continuous Delivery**  
 | Concept | Definition | Example |
-|---------|------------|------------|
+|:---------|:------------|:------------|
 | **Continuous Integration (CI)** | Developers frequently merge code changes into a shared repository, followed by automated tests. | A developer pushes code to GitHub, and automated tests run immediately. |
 | **Continuous Delivery (CD)** | Code is automatically tested and prepared for deployment but requires manual approval. | A new feature is ready for release, pending business approval. |
 | **Continuous Deployment** | Fully automated deployment pipeline where every change goes live automatically. | A new bug fix is deployed to production without manual intervention. |
@@ -87,12 +87,12 @@ A company releases software updates once every six months. Due to siloed teams:
 
 ---
 
-# **Lecture 4: Agile vs. DevOps & Case Study on Siloed Development**  
+# **Agile vs. DevOps & Case Study on Siloed Development**  
 
 ## **Agile vs. DevOps: Differences & Similarities**  
 
 | Feature | Agile | DevOps |
-|---------|-------|--------|
+|:---------|:-------|:--------|
 | **Focus** | Development process & iterations | End-to-end software delivery |
 | **Methodology** | Scrum, Kanban | CI/CD, automation |
 | **Teams** | Developers & testers | Developers, testers, and operations |
