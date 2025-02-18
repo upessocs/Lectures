@@ -4,6 +4,7 @@ Apache Subversion (often referred to as SVN) is a version control system that al
 
 ## Linux
 
+## Server Side
 ### **1. Setting Up SVN Server with `svnserve`**
 
 #### Step 1: Install Subversion
@@ -56,6 +57,73 @@ sudo svnserve -d -r /var/svn/repos
 The `-d` flag runs it in daemon mode, and `-r` specifies the root directory for repositories.
 
 ---
+# Restart your SVN server
+## To restart your SVN server after editing the repository configuration, follow these steps:
+
+### 1. **Stop the SVN Server**
+The command depends on how you started the server:
+
+- If running as a **service**:
+  ```sh
+  sudo systemctl stop svnserve
+  ```
+  or  
+  ```sh
+  service svnserve stop
+  ```
+
+- If started manually with `svnserve`:
+  Find the process ID and kill it:
+  ```sh
+  pkill svnserve
+  ```
+  or  
+  ```sh
+  ps aux | grep svnserve
+  kill <PID>
+  ```
+
+### 2. **Edit the Repository Configuration**
+Navigate to your repository’s configuration directory:
+```sh
+cd /path/to/repo/conf/
+```
+Edit the relevant configuration files using a text editor:
+```sh
+nano svnserve.conf  # Main server config
+nano passwd         # User authentication
+nano authz          # Access control
+```
+Save changes and exit the editor.
+
+### 3. **Start the SVN Server Again**
+- If using **systemd**:
+  ```sh
+  sudo systemctl start svnserve
+  ```
+
+- If running manually:
+  ```sh
+  svnserve -d -r /path/to/repositories
+  ```
+
+- If using a specific port:
+  ```sh
+  svnserve -d -r /path/to/repositories --listen-port=3690
+  ```
+
+Verify that the server is running:
+```sh
+ps aux | grep svnserve
+```
+or
+```sh
+netstat -tulnp | grep 3690
+```
+
+---
+
+# Client Side
 
 ### **2. Common SVN Commands**
 

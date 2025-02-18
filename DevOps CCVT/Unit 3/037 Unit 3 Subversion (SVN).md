@@ -2,162 +2,9 @@
 
 Apache Subversion (often referred to as SVN) is a version control system that allows you to manage and track changes to your files and directories over time. Below is a step-by-step guide to install and use Subversion.
 
-## **1. Install Apache Subversion**
+## Linux
 
-### **On Windows**
-#### 1.  **Download VisualSVN Server (recommended)**:
-- Download from [VisualSVN Server](https://www.visualsvn.com/server/).
-- Run the installer and follow the setup wizard to configure the server, repository location, and users.
-#### 2.  **Command-line SVN Client**:
-- Install TortoiseSVN from [TortoiseSVN](https://tortoisesvn.net/) to get a graphical client and command-line tools.
-
-### **On Linux**
-#### 1.  Update your package index:
-```bash
-sudo apt update  # For Debian/Ubuntu
-sudo yum update  # For CentOS/RHEL
-```
-#### 2.  Install Subversion:
-
-[Download page](https://subversion.apache.org/packages.html)
-
-### **On macOS**
-Use Homebrew to install Subversion:
-```bash
-brew install svn
-```
-
-### On Nix
-
-```nix
-nix-shell -p subversion subversionClient tkrev
-
-```
-
----
-
-## **2. Set Up an SVN Repository**
-
-### **Create a Local Repository**
-#### 1.  Create a directory for your repository:
-```bash
-mkdir ~/svn_repo
-```
-#### 2.  Initialize the repository:
-```bash
-svnadmin create ~/svn_repo/my_project
-```
-
-### **Start SVN Server (Optional)**
-If you want remote access to the repository:
-#### 1.  Start the SVN server (using `svnserve`):
-```bash
-svnserve -d -r ~/svn_repo
-```
-This starts the server in daemon mode, making repositories available at `svn://<hostname>/my_project`.
-
----
-
-## **3. Basic SVN Commands**
-
-### **Checkout a Repository**
-To get a working copy of the repository:
-```bash
-svn checkout file:///path/to/svn_repo/my_project
-```
-For remote repositories:
-```bash
-svn checkout svn://<hostname>/my_project
-```
-
-### **Add Files to the Repository**
-#### 1.  Navigate to your working directory:
-```bash
-cd my_project
-```
-#### 2.  Add new files:
-```bash
-svn add file.txt
-```
-#### 3.  Commit the changes:
-```bash
-svn commit -m "Added file.txt"
-```
-
-### **Update Your Working Copy**
-To sync with the latest changes in the repository:
-```bash
-svn update
-```
-
-### **Check Status**
-To see the status of your working copy:
-```bash
-svn status
-```
-
-### **View Logs**
-To view commit history:
-```bash
-svn log
-```
-
-### **Delete Files**
-#### 1.  Remove a file from the repository:
-```bash
-svn delete file.txt
-```
-#### 2.  Commit the changes:
-```bash
-svn commit -m "Deleted file.txt"
-```
-
----
-
-## **4. Access Control (Optional)**
-
-### Edit `svnserve.conf`
-#### 1.  Open the configuration file:
-```bash
-nano ~/svn_repo/my_project/conf/svnserve.conf
-```
-#### 2.  Enable authentication by setting:
-```
-[general]
-anon-access = none
-auth-access = write
-password-db = passwd
-```
-#### 3.  Edit the `passwd` file in the same directory to add users:
-```
-[users]
-user1 = password1
-user2 = password2
-```
-
----
-
-## **5. Using TortoiseSVN (Windows GUI Client)**
-
-#### 1.  **Install TortoiseSVN**:
-- Download and install from [TortoiseSVN](https://tortoisesvn.net/).
-#### 2.  **Checkout Repository**:
-- Right-click in a folder > "SVN Checkout".
-- Enter the repository URL and destination folder.
-#### 3.  **Perform SVN Operations**:
-- Right-click files or folders to commit, update, or view logs.
-
----
-
-## **6. Best Practices**
-- Always update your working copy before starting new work.
-- Use meaningful commit messages.
-- Organize your repository structure (e.g., `trunk`, `branches`, `tags`).
-
-
----
-# Linux
-
+## Server Side
 ### **1. Setting Up SVN Server with `svnserve`**
 
 #### Step 1: Install Subversion
@@ -210,6 +57,73 @@ sudo svnserve -d -r /var/svn/repos
 The `-d` flag runs it in daemon mode, and `-r` specifies the root directory for repositories.
 
 ---
+# Restart your SVN server
+## To restart your SVN server after editing the repository configuration, follow these steps:
+
+### 1. **Stop the SVN Server**
+The command depends on how you started the server:
+
+- If running as a **service**:
+  ```sh
+  sudo systemctl stop svnserve
+  ```
+  or  
+  ```sh
+  service svnserve stop
+  ```
+
+- If started manually with `svnserve`:
+  Find the process ID and kill it:
+  ```sh
+  pkill svnserve
+  ```
+  or  
+  ```sh
+  ps aux | grep svnserve
+  kill <PID>
+  ```
+
+### 2. **Edit the Repository Configuration**
+Navigate to your repository’s configuration directory:
+```sh
+cd /path/to/repo/conf/
+```
+Edit the relevant configuration files using a text editor:
+```sh
+nano svnserve.conf  # Main server config
+nano passwd         # User authentication
+nano authz          # Access control
+```
+Save changes and exit the editor.
+
+### 3. **Start the SVN Server Again**
+- If using **systemd**:
+  ```sh
+  sudo systemctl start svnserve
+  ```
+
+- If running manually:
+  ```sh
+  svnserve -d -r /path/to/repositories
+  ```
+
+- If using a specific port:
+  ```sh
+  svnserve -d -r /path/to/repositories --listen-port=3690
+  ```
+
+Verify that the server is running:
+```sh
+ps aux | grep svnserve
+```
+or
+```sh
+netstat -tulnp | grep 3690
+```
+
+---
+
+# Client Side
 
 ### **2. Common SVN Commands**
 
@@ -350,7 +264,7 @@ svn commit -m "Merging feature-x into trunk"
 svn copy http://your-svn-server/svn/myrepo/trunk http://your-svn-server/svn/myrepo/tags/release-1.0 -m "Tagging release 1.0"
 ```
 
----
+
 
 ### **Workflow Without `trunk`**
 If you choose not to use a `trunk`, you can still manage your repository, but you’ll need to define your own structure. For example:
@@ -386,7 +300,7 @@ While you can work without a `trunk` in SVN, it’s generally best to follow the
 
 ---
 
-How to create `trunk` directory in SVN repo 
+# How to create `trunk` directory in SVN repo 
 
 In SVN (Subversion), you can create the **`trunk`** directory either **on the server side** or **from the client side**. Both approaches are valid, but the choice depends on your workflow and access permissions. Here's a detailed explanation of both methods:
 
@@ -534,7 +448,6 @@ By following these steps, you can create the `trunk` directory (and other standa
 ---
 
 
----
 
 ### **3. Example Workflow**
 
@@ -552,97 +465,3 @@ By following these steps, you can create the `trunk` directory (and other standa
 - Use `svn help` to get help on any command.
 - Use `svn diff` to see differences between versions.
 - Use `svn revert` to undo local changes.
-
---- 
-# Windows
-
-
-If you're using **TortoiseSVN** on Windows, you can set up an SVN server and use it with TortoiseSVN. Below, I'll guide you through the process of creating an SVN server on Windows and using TortoiseSVN to interact with it.
-
-### **1. Setting Up an SVN Server on Windows**
-
-#### Step 1: Install VisualSVN Server
-1. Download and install **VisualSVN Server** (free version available) from [VisualSVN's official website](https://www.visualsvn.com/).
-2. During installation, choose the default options unless you have specific requirements.
-
-#### Step 2: Create a Repository
-1. Open **VisualSVN Server Manager** (installed with VisualSVN Server).
-2. Right-click on **Repositories** in the left pane and select **Create New Repository**.
-3. Choose a repository name (e.g., `myrepo`) and select **FSFS** as the repository type.
-4. Set up permissions:
-- Choose **Custom permissions**.
-- Add users (e.g., `alice` and `bob`) and assign them read/write access.
-
-#### Step 3: Access the Repository URL
-1. After creating the repository, VisualSVN Server will display the repository URL (e.g., `https://your-pc-name/svn/myrepo`).
-2. Note this URL, as you'll use it to connect with TortoiseSVN.
-
----
-
-### **2. Using TortoiseSVN to Interact with the Repository**
-
-#### Step 1: Install TortoiseSVN
-1. Download and install **TortoiseSVN** from [TortoiseSVN's official website](https://tortoisesvn.net/).
-2. Restart your computer after installation.
-
-#### Step 2: Check Out the Repository
-1. Open **File Explorer** and navigate to the folder where you want to check out the repository.
-2. Right-click in the folder and select **SVN Checkout**.
-3. Enter the repository URL (e.g., `https://your-pc-name/svn/myrepo`).
-4. Click **OK** and enter your credentials (username and password) if prompted.
-5. A working copy of the repository will be created in the selected folder.
-
-#### Step 3: Add Files to the Repository
-1. Create a new file (e.g., `file.txt`) in the checked-out folder.
-2. Right-click the file and select **TortoiseSVN > Add**.
-3. Right-click in the folder and select **SVN Commit**.
-4. Enter a commit message (e.g., "Added file.txt") and click **OK**.
-
-#### Step 4: Update Your Working Copy
-1. Right-click in the working copy folder and select **SVN Update**.
-2. This will sync your working copy with the latest changes from the repository.
-
-#### Step 5: View Repository Status
-1. Right-click in the working copy folder and select **TortoiseSVN > Check for Modifications**.
-2. This will show you the status of your files (e.g., modified, added, or conflicted).
-
-#### Step 6: View Change History
-1. Right-click in the working copy folder and select **TortoiseSVN > Show Log**.
-2. This will display the commit history of the repository.
-
-#### Step 7: Create a Branch
-1. Right-click in the working copy folder and select **TortoiseSVN > Branch/Tag**.
-2. Enter the branch name (e.g., `branches/feature-branch`) and a commit message.
-3. Click **OK** to create the branch.
-
-#### Step 8: Switch to a Branch
-1. Right-click in the working copy folder and select **TortoiseSVN > Switch**.
-2. Enter the branch URL (e.g., `https://your-pc-name/svn/myrepo/branches/feature-branch`).
-3. Click **OK** to switch to the branch.
-
-#### Step 9: Merge Changes
-1. Right-click in the working copy folder and select **TortoiseSVN > Merge**.
-2. Choose **Merge a range of revisions** or **Reintegrate a branch**.
-3. Follow the prompts to merge changes from the branch to the trunk.
-
-#### Step 10: Resolve Conflicts
-1. If conflicts occur during an update or merge, right-click the conflicted file and select **TortoiseSVN > Edit Conflicts**.
-2. Resolve the conflicts and mark the file as resolved:
-   - Right-click the file and select **TortoiseSVN > Resolved**.
-
-#### Step 11: Delete a File
-1. Right-click the file you want to delete and select **TortoiseSVN > Delete**.
-2. Commit the change by right-clicking in the folder and selecting **SVN Commit**.
-
----
-
-### **3. Example Workflow with TortoiseSVN**
-
-1. **Create a Repository**: Use VisualSVN Server to create a repository.
-2. **Check Out the Repository**: Use TortoiseSVN to check out the repository to your local machine.
-3. **Add Files**: Add files to the repository and commit them.
-4. **Create a Branch**: Create a branch for a new feature.
-5. **Switch to the Branch**: Work on the branch and commit changes.
-6. **Merge Changes**: Merge the branch back into the trunk.
-7. **Update and Resolve Conflicts**: Regularly update your working copy and resolve conflicts if necessary.
-
