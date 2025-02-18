@@ -97,6 +97,14 @@
  ```  
 
 6. **Build a Custom Docker Image:**  
+
+`app.py`
+```python
+sapid=12312312
+
+print(f"my sap id is {sapit}")
+```
+
 - Create a simple Dockerfile:  
  ```Dockerfile
  FROM python:3.9-slim  
