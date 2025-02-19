@@ -1,6 +1,8 @@
-# Create Docker image of fastapi api server using github actions
+# Continious Delivery with Github Actions
 
-## podman install steps
+## Create Docker image of fastapi api server using github actions
+
+### podman install steps
 
 install `podman-cli` from [https://podman.io/](https://podman.io/)
 
@@ -77,11 +79,12 @@ jobs:
             - name: Build & Push Image
               run: |
                 echo ${{ secrets.DOCKERTOKEN }} | docker login -u "prateekrajgautam" --password-stdin
-                docker build -t prateekrajgautam/upesmajorproject:v0.1 .
-                docker push prateekrajgautam/upesmajorproject:v0.1
+                docker build -t dockerhub_username/dockerhub_image_name:v0.1 .
+                docker push dockerhub_username/dockerhub_image_name:v0.1
 
 ```
-
+1. Create docker token from https://app.docker.com/settings/personal-access-tokens/
+2. You need to add DOCKERTOKEN to your `https://github.com/<usernamd/reponame>/settings/variables/actions/new`
 
 ---
 # docker token
