@@ -210,7 +210,7 @@ jobs:
 
 ### **Possible Steps You Might Need**
 | Step | Purpose |
-|------|---------|
+|: ------|: ---------|
 | `actions/checkout@v4` | Checks out your repository code |
 | `actions/setup-python@v4` | Sets up Python |
 | `actions/setup-node@v4` | Sets up Node.js |
@@ -239,7 +239,7 @@ Would you like to:
 Both **GitHub Actions** and **Jenkins** are CI/CD tools, but they have different approaches:  
 
 | Feature            | GitHub Actions                           | Jenkins                              |
-|--------------------|----------------------------------------|--------------------------------------|
+|: --------------------|: ----------------------------------------|: --------------------------------------|
 | **Setup**         | No installation, built into GitHub     | Requires manual installation & setup |
 | **Configuration** | YAML-based workflows (`.github/workflows/`) | Groovy-based pipeline (`Jenkinsfile`) |
 | **Execution**     | Runs on GitHub-hosted or self-hosted runners | Runs on self-hosted agents (nodes) |
@@ -336,7 +336,7 @@ pipeline {
 
 ### **Comparison of Parallel Execution**
 | Feature          | GitHub Actions                           | Jenkins                              |
-|-----------------|----------------------------------------|--------------------------------------|
+|: -----------------|: ----------------------------------------|: --------------------------------------|
 | **Syntax**      | YAML (`strategy.matrix`)               | Groovy (`parallel` block)           |
 | **Execution**   | Automatically spins up parallel jobs  | Requires multiple agents (nodes)    |
 | **Scaling**     | GitHub-hosted runners or self-hosted  | Needs Jenkins agent setup           |

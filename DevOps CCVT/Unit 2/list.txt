@@ -1,6 +1,6 @@
 ./
-./.dist
 ./021 Theory.md
 ./022 Github Actions.md
 ./023 Dockerize python fastapi server with github actions and upload to docker registery.md
+./kanban.md
 ./actions-cheat-sheet.pdf
