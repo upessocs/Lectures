@@ -1,3 +1,5 @@
 ./
+./.dist
 ./.img
+./031 Lean, Deming's, and Kaizen.md
 ./041 git-flow workflow.md
