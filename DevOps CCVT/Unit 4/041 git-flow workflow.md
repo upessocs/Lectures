@@ -48,9 +48,9 @@ Git Flow consists of **five primary branch types**, each with a specific role:
 
 ---
 
-![](./.img/gitflow1.png)
+![](.img/gitflow1.png)
 ---
-![](./.img/gitflow2.png)
+![](.img/gitflow2.png)
 
 ---
 ## **Git Flow Commands with Tags**  
