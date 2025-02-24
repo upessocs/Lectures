@@ -41,42 +41,40 @@ Key **Lean** principles in **DevOps**:
 
 ---
 
-## **Lean, Deming's Principles, and Kaizen: Detailed Explanation**
-
-### **1. Lean Manufacturing**
+# **1. Lean Manufacturing**
 Lean Manufacturing is a production philosophy developed by **Toyota** in the mid-20th century, primarily under the **Toyota Production System (TPS)**. The goal is to **eliminate waste (Muda), improve efficiency, and deliver high-quality products with minimal resources**.
 
-#### **Key Principles of Lean Manufacturing**
-1. **Eliminate Waste (Muda)**
+## **Key Principles of Lean Manufacturing**
+##### 1. **Eliminate Waste (Muda)**
 - Waste includes unnecessary inventory, waiting times, defects, and overproduction.
 - In DevOps, this translates to removing inefficient manual processes, redundant code, and unnecessary approvals.
 
-2. **Continuous Flow & Just-in-Time (JIT)**
+##### 2. **Continuous Flow & Just-in-Time (JIT)**
 - Ensures smooth transitions between production stages.
 - In DevOps, CI/CD pipelines ensure software moves seamlessly from development to deployment.
 
-3. **Pull System**
+##### 3. **Pull System**
 - Production is based on demand, not overproduction.
 - In DevOps, features and updates are released based on user needs rather than fixed schedules.
 
-4. **Built-in Quality (Jidoka)**
+##### 4. **Built-in Quality (Jidoka)**
 - Defects are identified and corrected at the source rather than later in the process.
 - In DevOps, automated testing ensures software quality before deployment.
 
-5. **Continuous Improvement (Kaizen)**
+##### 5. **Continuous Improvement (Kaizen)**
 - Focus on constant improvements to processes.
 - In DevOps, iterative software development enhances system reliability.
 
-6. **Respect for People**
+##### 6. **Respect for People**
 - Encourages teamwork and empowers employees.
 - In DevOps, collaboration between developers and operations fosters a shared responsibility.
 
 ---
 
-### **2. Deming’s Principles**
+# **2. Deming’s Principles**
 Dr. **W. Edwards Deming** was a quality management pioneer who introduced **Total Quality Management (TQM)** and emphasized **statistical process control, system thinking, and continuous improvement**.
 
-#### **Deming’s 14 Points (Key Principles for Quality Management)**
+## **Deming’s 14 Points (Key Principles for Quality Management)**
 1. **Create constancy of purpose** – Focus on long-term goals rather than short-term profits.  
 2. **Adopt a new philosophy** – Embrace continuous improvement and quality.  
 3. **Cease dependence on inspection** – Integrate quality into the process rather than relying on final inspections.  
@@ -92,14 +90,14 @@ Dr. **W. Edwards Deming** was a quality management pioneer who introduced **Tota
 13. **Encourage education and self-improvement** – Continuous learning enhances skills.  
 14. **Transform the organization** – A cultural shift towards quality and improvement.  
 
-#### **Deming’s Influence on DevOps**
+## **Deming’s Influence on DevOps**
 - **PDCA (Plan-Do-Check-Act) Cycle** – Basis for continuous integration and feedback loops.
 - **System Thinking** – Encourages seeing the entire software lifecycle rather than isolated tasks.
 - **Quality Management** – Emphasizes automation and proactive defect detection.
 
 ---
 
-### **3. Kaizen (Continuous Improvement)**
+# **3. Kaizen (Continuous Improvement)**
 Kaizen is a **Japanese philosophy** meaning **"change for better."** It emphasizes **small, continuous improvements** that lead to significant long-term benefits.
 
 #### **Key Principles of Kaizen**
