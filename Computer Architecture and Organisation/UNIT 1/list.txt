@@ -1,4 +1,5 @@
 ./
+./.rtl
 ./010 Unit 1.md
 ./011 Unit 1 Endians.md
 ./012 Unit 1 Signed Numbers.md
@@ -7,4 +8,5 @@
 ./013_3 Unit 1 Fixed and Floating Point representation IEEE single and doule precision representation.md
 ./014 Unit 1 Booth's Multiplication Algorithm.md
 ./015 RTL (Register-Transfer Level).md
+./016 Restoring Division.md
 ./Unit-1_Digital Computers_ppt.pdf

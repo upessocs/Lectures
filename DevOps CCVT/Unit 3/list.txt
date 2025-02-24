@@ -1,5 +1,4 @@
 ./
-./.dist
 ./031 Theory.md
 ./031 Unit 3 Need for version control.md
 ./032 Unit 3 Git installation.md

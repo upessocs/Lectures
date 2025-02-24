@@ -1,6 +1,7 @@
 ./
 ./011 Unit 1 Introduction.md
 ./011 Unit 1 Waterfall and SCRUM.md
+./kanban.md
 ./013 Unit 1 DOP011GU01.pdf
 ./01a Unit 1 Realted Agile waterfall scum.pdf
 ./01b Unit 1 Realted Kanban.pdf

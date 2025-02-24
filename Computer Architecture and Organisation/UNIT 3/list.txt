@@ -1,3 +1,4 @@
 ./
-./.dist
 ./031 Summary.md
+./032 RISC vs CISC.md
+./033 Hardwired Logic vs Programmed Logic.md
