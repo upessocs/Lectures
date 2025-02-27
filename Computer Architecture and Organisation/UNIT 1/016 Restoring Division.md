@@ -45,7 +45,7 @@ Restoring division is a method used to perform division of binary numbers, inclu
 **Divide 7 (0111) by 3 (0011)**
 
 | Step | Action                        | Remainder (R) | Quotient (Q) | Divisor (D) | Explanation                                                                 |
-|: ------|: -------------------------------|: ---------------|: --------------|: -------------|: -----------------------------------------------------------------------------|
+|:-----|:------------------------------|:--------------|:-------------|:------------|:----------------------------------------------------------------------------|
 | 1    | Initialize                    | 0000          | 0111         | 0011        | R = 0, Q = Dividend (7), D = Divisor (3).                                   |
 | 2    | Shift R and Q left            | 0000          | 1110         | 0011        | Shift R and Q left by 1 bit.                                                |
 | 3    | Subtract D from R             | 1101 (-3)     | 1110         | 0011        | R = R - D = 0000 - 0011 = 1101 (negative).                                 |
@@ -74,7 +74,7 @@ Restoring division is a method used to perform division of binary numbers, inclu
 **Divide -6 (1010) by 3 (0011)**
 
 | Step | Action                        | Remainder (R) | Quotient (Q) | Divisor (D) | Explanation                                                                 |
-|: ------|: -------------------------------|: ---------------|: --------------|: -------------|: -----------------------------------------------------------------------------|
+|:-----|:------------------------------|:--------------|:-------------|:------------|:----------------------------------------------------------------------------|
 | 1    | Initialize                    | 0000          | 1010         | 0011        | R = 0, Q = Dividend (-6 in 2's complement), D = Divisor (3).                |
 | 2    | Shift R and Q left            | 0000          | 0100         | 0011        | Shift R and Q left by 1 bit.                                                |
 | 3    | Subtract D from R             | 1101 (-3)     | 0100         | 0011        | R = R - D = 0000 - 0011 = 1101 (negative).                                 |
