@@ -40,8 +40,9 @@ CISC focuses on reducing the number of instructions per program by making each i
 
 ### **Comparison Between RISC and CISC**
 
+
 | Feature                  | RISC                                   | CISC                                   |
-|: --------------------------|: ----------------------------------------|: ----------------------------------------|
+|:--------------------------|:----------------------------------------|:----------------------------------------|
 | **Instruction Set**      | Small, simple instructions            | Large, complex instructions           |
 | **Instruction Length**   | Fixed-length                          | Variable-length                       |
 | **Execution Time**       | Single clock cycle per instruction    | Multiple clock cycles per instruction |
@@ -89,7 +90,7 @@ CISC focuses on reducing the number of instructions per program by making each i
 ### **Advantages and Disadvantages**
 
 | **Aspect**         | **RISC Advantages**                              | **RISC Disadvantages**                  | **CISC Advantages**                              | **CISC Disadvantages**                  |
-|: ---------------------|: -------------------------------------------------|: -----------------------------------------|: -------------------------------------------------|: -----------------------------------------|
+|:---------------------|:-------------------------------------------------|:-----------------------------------------|:-------------------------------------------------|:-----------------------------------------|
 | **Performance**     | Faster execution due to pipelining              | Limited functionality per instruction   | Complex operations in single instructions       | Slower execution due to complexity      |
 | **Power Efficiency**| More power-efficient                            | Requires more instructions for tasks    | Less power-efficient                            | Higher power consumption                |
 | **Complexity**      | Simpler design, easier to implement            | Requires more memory for instructions   | Complex design, harder to implement            | Requires microcode for instructions     |

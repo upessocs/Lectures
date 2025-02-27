@@ -63,7 +63,7 @@ Programmed logic uses a microprogram (a sequence of microinstructions stored in 
 ### **Comparison Between Hardwired and Programmed Logic**
 
 | **Aspect**            | **Hardwired Logic**                              | **Programmed Logic**                              |
-|: ------------------------|: -------------------------------------------------|: -------------------------------------------------|
+|:------------------------|:-------------------------------------------------|:-------------------------------------------------|
 | **Implementation**     | Fixed hardware circuits (logic gates, FSMs)     | Microprogram stored in control memory           |
 | **Speed**              | Faster                                          | Slower due to microinstruction fetch/decode     |
 | **Flexibility**        | Inflexible; changes require hardware redesign   | Flexible; microprogram can be updated           |
@@ -102,7 +102,7 @@ Programmed logic uses a microprogram (a sequence of microinstructions stored in 
 ### **Advantages and Disadvantages**
 
 | **Aspect**         | **Hardwired Logic Advantages**                  | **Hardwired Logic Disadvantages**        | **Programmed Logic Advantages**          | **Programmed Logic Disadvantages**      |
-|: ---------------------|: ------------------------------------------------|: ------------------------------------------|: ------------------------------------------|: ------------------------------------------|
+|:---------------------|:------------------------------------------------|:------------------------------------------|:------------------------------------------|:------------------------------------------|
 | **Performance**     | Faster execution                               | Inflexible                              | Flexible and easier to modify            | Slower execution                        |
 | **Design**          | Optimized for speed                            | Complex and time-consuming to design     | Simpler and easier to design             | Requires additional hardware            |
 | **Cost**            | Higher initial cost                            | Difficult to debug                       | Lower initial cost                       | Higher overhead for microinstructions   |
