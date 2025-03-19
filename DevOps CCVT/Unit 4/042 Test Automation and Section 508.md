@@ -2,11 +2,11 @@
 
 Test automation refers to the use of specialized tools and scripts to automate the execution of tests, compare actual outcomes with expected results, and report the results. It involves writing code to perform repetitive and complex testing tasks that would otherwise be done manually. Test automation is commonly used for:
 
-1. **Unit Testing**: Testing individual components or functions of an application.
-2. **Integration Testing**: Testing how different modules or services work together.
-3. **End-to-End (E2E) Testing**: Testing the entire application workflow from start to finish.
-4. **Performance Testing**: Testing the application's performance under load.
-5. **Regression Testing**: Ensuring that new changes do not break existing functionality.
+##### 1. **Unit Testing**: Testing individual components or functions of an application.
+##### 2. **Integration Testing**: Testing how different modules or services work together.
+##### 3. **End-to-End (E2E) Testing**: Testing the entire application workflow from start to finish.
+##### 4. **Performance Testing**: Testing the application's performance under load.
+##### 5. **Regression Testing**: Ensuring that new changes do not break existing functionality.
 
 ---
 
@@ -70,43 +70,43 @@ DevOps is a set of practices that combines software development (Dev) and IT ope
 
 In a typical DevOps pipeline, test automation is integrated at multiple stages:
 
-1. **Code Commit**:
+##### 1. **Code Commit**:
 - Unit tests and static code analysis are run automatically to catch issues early.
 
-2. **Build Stage**:
+##### 2. **Build Stage**:
 - Integration tests are executed to ensure that different components work together.
 
-3. **Deployment Stage**:
+##### 3. **Deployment Stage**:
 - End-to-end tests and performance tests are run to validate the application in a staging environment.
 
-4. **Post-Deployment**:
+##### 4. **Post-Deployment**:
 - Smoke tests and regression tests are performed in the production environment to ensure stability.
 
 ---
 
 ### **Key Tools for Test Automation in DevOps**
 
-1. **Unit Testing**:
+##### 1. **Unit Testing**:
 - Tools: `JUnit` (Java), `pytest` (Python), `NUnit` (.NET)
 - Purpose: Test individual functions or methods.
 
-2. **Integration Testing**:
+##### 2. **Integration Testing**:
 - Tools: `Postman`, `SoapUI`, `RestAssured`
 - Purpose: Test interactions between modules or services.
 
-3. **End-to-End Testing**:
+##### 3. **End-to-End Testing**:
 - Tools: `Selenium`, `Cypress`, `Playwright`
 - Purpose: Test the entire application workflow.
 
-4. **Performance Testing**:
+##### 4. **Performance Testing**:
 - Tools: `JMeter`, `Gatling`, `k6`
 - Purpose: Test the application's performance under load.
 
-5. **CI/CD Integration**:
+##### 5. **CI/CD Integration**:
 - Tools: `Jenkins`, `GitLab CI/CD`, `CircleCI`, `GitHub Actions`
 - Purpose: Automate the execution of tests in the pipeline.
 
-6. **Test Reporting**:
+##### 6. **Test Reporting**:
 - Tools: `Allure`, `ExtentReports`, `pytest-html`
 - Purpose: Generate detailed test reports for analysis.
 
@@ -114,41 +114,41 @@ In a typical DevOps pipeline, test automation is integrated at multiple stages:
 
 ### **Challenges of Test Automation in DevOps**
 
-1. **Initial Setup Effort**:
+##### 1. **Initial Setup Effort**:
 - Writing and maintaining automated tests requires time and expertise.
 
-2. **Flaky Tests**:
+##### 2. **Flaky Tests**:
 - Tests that produce inconsistent results can undermine trust in automation.
 
-3. **Test Data Management**:
+##### 3. **Test Data Management**:
 - Managing test data for different environments can be complex.
 
-4. **Tool Selection**:
+##### 4. **Tool Selection**:
 - Choosing the right tools for the team and project is critical.
 
-5. **Continuous Maintenance**:
+##### 5. **Continuous Maintenance**:
 - Automated tests need to be updated as the application evolves.
 
 ---
 
 ### **Best Practices for Test Automation in DevOps**
 
-1. **Start Small**:
+##### 1. **Start Small**:
 - Begin with critical test cases and gradually expand coverage.
 
-2. **Prioritize Tests**:
+##### 2. **Prioritize Tests**:
 - Focus on high-risk areas and frequently used features.
 
-3. **Use Version Control**:
+##### 3. **Use Version Control**:
 - Store test scripts in version control systems (e.g., Git) for collaboration and tracking.
 
-4. **Integrate Early**:
+##### 4. **Integrate Early**:
 - Integrate automated tests into the CI/CD pipeline from the start.
 
-5. **Monitor and Optimize**:
+##### 5. **Monitor and Optimize**:
 - Regularly review test results and optimize tests for reliability and performance.
 
-6. **Collaborate Across Teams**:
+##### 6. **Collaborate Across Teams**:
 - Ensure that developers, testers, and operations teams work together on test automation.
 
 ---
@@ -176,28 +176,28 @@ Accessibility means designing digital content so that people with disabilities c
 
 ## Manual Testing for Section 508 Compliance
 
-1. **Keyboard Navigation**
+##### 1. **Keyboard Navigation**
 - Navigate the site using only the `Tab` and `Shift + Tab` keys.
 - Ensure focus moves logically and is visible.
 - Check if dropdowns, buttons, and modals can be accessed and closed.
 
-2. **Screen Reader Compatibility**
+##### 2. **Screen Reader Compatibility**
 - Use tools like NVDA (Windows) or VoiceOver (macOS).
 - Ensure headings, links, and form elements are read correctly.
 - Test navigation landmarks (`<nav>`, `<main>`, `<header>`).
 
-3. **Color Contrast and Text Readability**
+##### 3. **Color Contrast and Text Readability**
 - Use contrast checkers to ensure sufficient contrast (minimum 4.5:1 for normal text).
 - Avoid using color alone to convey information.
 
-4. **Alternative Text for Images**
+##### 4. **Alternative Text for Images**
 - Inspect `<img>` elements to ensure `alt` attributes are present and meaningful.
 
-5. **Forms and Labels**
+##### 5. **Forms and Labels**
 - Verify that all form inputs have `<label>` elements.
 - Ensure error messages are clear and programmatically linked to inputs.
 
-6. **ARIA Roles and Attributes**
+##### 6. **ARIA Roles and Attributes**
 - Check if ARIA attributes (`role`, `aria-labelledby`, `aria-describedby`) are used properly.
 
 ## Using Firefox Developer Tools for Accessibility Testing
@@ -206,23 +206,23 @@ Firefox Developer Tools include an **Accessibility Panel** that helps identify c
 
 ### Steps to Inspect Accessibility Issues
 
-1. **Open Developer Tools**  
+##### 1. **Open Developer Tools**  
 - Press `F12` or `Ctrl + Shift + I` (`Cmd + Option + I` on macOS).
 - Navigate to the **Accessibility** tab.
 
-2. **Check Keyboard Focus**  
+##### 2. **Check Keyboard Focus**  
 - Use the **Tab** key and verify the focus outline.
 - Inspect the `tabindex` attribute in the **Inspector** panel.
 
-3. **Use the Accessibility Tree**  
+##### 3. **Use the Accessibility Tree**  
 - View how elements are structured for assistive technologies.
 - Ensure important elements have the right roles.
 
-4. **Contrast Checker**  
+##### 4. **Contrast Checker**  
 - Click on an element and check the **Contrast** ratio.
 - Ensure text meets WCAG 2.1 contrast guidelines.
 
-5. **Text Labels and ARIA Roles**  
+##### 5. **Text Labels and ARIA Roles**  
 - Inspect elements for missing labels.
 - Ensure ARIA attributes are used correctly.
 
