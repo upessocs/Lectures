@@ -3,3 +3,5 @@
 ./.img
 ./031 Lean, Deming's, and Kaizen.md
 ./041 git-flow workflow.md
+./042 Test Automation and Section 508.md
+./043 Backend API testing.md
