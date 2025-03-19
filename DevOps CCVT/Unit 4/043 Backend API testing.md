@@ -2,11 +2,11 @@
 
 In this tutorial, we'll cover how to automate backend API testing using **FastAPI** for the server and **Requests** for testing. We'll follow a structured approach:
 
-1. **Setting Up the FastAPI Server**
-2. **Running the Server**
-3. **Writing Automated Tests using Requests**
-4. **Enhancing Tests with Pytest**
-5. **Expanding the Idea for Real-World Projects**
+#### 1. **Setting Up the FastAPI Server**
+#### 2. **Running the Server**
+#### 3. **Writing Automated Tests using Requests**
+#### 4. **Enhancing Tests with Pytest**
+#### 5. **Expanding the Idea for Real-World Projects**
 
 ---
 
@@ -121,47 +121,47 @@ test()
 
 ### Key Improvements and Comments
 
-1. **Descriptive Comments**:
-   - Added comments to explain the purpose of each function and endpoint.
-   - Included example usage in the API endpoint docstrings.
+#### 1. **Descriptive Comments**:
+- Added comments to explain the purpose of each function and endpoint.
+- Included example usage in the API endpoint docstrings.
 
-2. **Test Case Descriptions**:
-   - Added a `description` field to each test case for better readability and debugging.
+#### 2. **Test Case Descriptions**:
+- Added a `description` field to each test case for better readability and debugging.
 
-3. **Error Handling in Tests**:
-   - The `assert` statement now includes a descriptive error message to help identify which test case failed.
+#### 3. **Error Handling in Tests**:
+- The `assert` statement now includes a descriptive error message to help identify which test case failed.
 
-4. **Scalability**:
-   - The test framework is modular, making it easy to add more test cases or endpoints.
+#### 4. **Scalability**:
+- The test framework is modular, making it easy to add more test cases or endpoints.
 
 ---
 
 ### How to Expand for Testing Automation
 
-1. **Add More Test Cases**:
-   - Include edge cases (e.g., negative numbers, zero, large numbers).
-   - Test invalid inputs (e.g., non-integer values) if the API includes input validation.
+#### 1. **Add More Test Cases**:
+- Include edge cases (e.g., negative numbers, zero, large numbers).
+- Test invalid inputs (e.g., non-integer values) if the API includes input validation.
 
-2. **Parameterized Testing**:
-   - Use a library like `pytest` to parameterize tests and avoid repetitive code.
+#### 2. **Parameterized Testing**:
+- Use a library like `pytest` to parameterize tests and avoid repetitive code.
 
-3. **Test Other HTTP Methods**:
-   - Add tests for `POST`, `PUT`, `DELETE`, etc., if the API supports them.
+#### 3. **Test Other HTTP Methods**:
+- Add tests for `POST`, `PUT`, `DELETE`, etc., if the API supports them.
 
-4. **Environment Configuration**:
-   - Use environment variables or a configuration file to manage different environments (e.g., development, staging, production).
+#### 4. **Environment Configuration**:
+- Use environment variables or a configuration file to manage different environments (e.g., development, staging, production).
 
-5. **Integration with CI/CD**:
-   - Integrate the test script into a CI/CD pipeline (e.g., GitHub Actions, Jenkins) to automate testing on every code change.
+#### 5. **Integration with CI/CD**:
+- Integrate the test script into a CI/CD pipeline (e.g., GitHub Actions, Jenkins) to automate testing on every code change.
 
-6. **Performance Testing**:
-   - Use tools like `locust` or `k6` to test the API's performance under load.
+#### 6. **Performance Testing**:
+- Use tools like `locust` or `k6` to test the API's performance under load.
 
-7. **Mocking External Dependencies**:
-   - If the API depends on external services, use mocking libraries like `responses` or `unittest.mock` to simulate those services.
+#### 7. **Mocking External Dependencies**:
+- If the API depends on external services, use mocking libraries like `responses` or `unittest.mock` to simulate those services.
 
-8. **Reporting**:
-   - Generate test reports using libraries like `pytest-html` or `allure` for better visibility into test results.
+#### 8. **Reporting**:
+- Generate test reports using libraries like `pytest-html` or `allure` for better visibility into test results.
 
 ---
 
