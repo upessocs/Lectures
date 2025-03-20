@@ -1,5 +1,8 @@
 # **Backend API Test Automation with FastAPI and Requests**
 
+GitHub Resource [https://github.com/upessocs/devops-test-automation](https://github.com/upessocs/devops-test-automation)
+
+
 In this tutorial, we'll cover how to automate backend API testing using **FastAPI** for the server and **Requests** for testing. We'll follow a structured approach:
 
 #### 1. **Setting Up the FastAPI Server**
