@@ -1,182 +1,275 @@
+# **Backend API Test Automation with FastAPI and Requests**
+
+GitHub Resource [https://github.com/upessocs/devops-test-automation](https://github.com/upessocs/devops-test-automation)
 
 
-## **1. Introduction to Ansible**
+In this tutorial, we'll cover how to automate backend API testing using **FastAPI** for the server and **Requests** for testing. We'll follow a structured approach:
 
-
->  Learn **Ansible** and use it to configure an **EC2 instance** on **AWS**. 
-
-### **What is Ansible?**
-- Ansible is an open-source **automation tool** for **configuration management**, **application deployment**, and **orchestration**.
-- It follows an **agentless** architecture, using SSH for Linux and WinRM for Windows.
-- Uses YAML-based **playbooks** to define automation tasks.
-
-### **Key Concepts**
-| Component       | Description |
-|----------------|------------|
-| **Inventory** | Defines the list of managed nodes (EC2 instances, servers, etc.). |
-| **Playbooks** | YAML files containing a sequence of automation steps. |
-| **Tasks** | Individual actions in playbooks (e.g., installing a package). |
-| **Modules** | Built-in functionality to perform tasks (e.g., `yum`, `apt`, `service`). |
-| **Roles** | Pre-defined reusable automation scripts. |
+#### 1. **Setting Up the FastAPI Server**
+#### 2. **Running the Server**
+#### 3. **Writing Automated Tests using Requests**
+#### 4. **Enhancing Tests with Pytest**
+#### 5. **Expanding the Idea for Real-World Projects**
 
 ---
 
-## **2. Install Ansible on Your Local Machine**
-### **On Ubuntu/Linux**
-```bash
-sudo apt update
-sudo apt install -y ansible
+## **1. Setting Up the FastAPI Server**
+We'll first create a simple API with three endpoints: **add, subtract, and multiply**.
+
+### **Install FastAPI and Uvicorn**
+If you haven't already, install FastAPI and Uvicorn:
+
+```sh
+pip install fastapi uvicorn
 ```
 
-### **On macOS**
-```bash
-brew install ansible
-```
 
-### **On Windows (WSL)**
-1. Enable WSL (Windows Subsystem for Linux) and install Ubuntu.
-2. Run:
-   ```bash
-   sudo apt update
-   sudo apt install -y ansible
-   ```
+### `apiserver.py`
+
+```python
+from fastapi import FastAPI
+
+# Initialize the FastAPI app
+app = FastAPI()
+
+# Root endpoint
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+# Addition endpoint
+@app.get("/add/{num1}/{num2}")
+def add(num1: int, num2: int):
+    """
+    Adds two numbers.
+    Example: /add/2/3 returns {"result": 5}
+    """
+    return {"result": num1 + num2}
+
+# Subtraction endpoint
+@app.get("/subtract/{num1}/{num2}")
+def subtract(num1: int, num2: int):
+    """
+    Subtracts the second number from the first.
+    Example: /subtract/5/3 returns {"result": 2}
+    """
+    return {"result": num1 - num2}
+
+# Multiplication endpoint
+@app.get("/multiply/{num1}/{num2}")
+def multiply(num1: int, num2: int):
+    """
+    Multiplies two numbers.
+    Example: /multiply/2/3 returns {"result": 6}
+    """
+    return {"result": num1 * num2}
+
+# Run the app using Uvicorn
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("apiserver:app", host="0.0.0.0", port=8000, reload=True)
+```
 
 ---
 
-## **3. Set Up AWS Credentials for Ansible**
-Ansible uses **boto3** and **botocore** to interact with AWS. Install them:
-```bash
-pip install boto3 botocore
-```
+### `testAutomation.py`
 
-**Configure AWS CLI (Required for Ansible to authenticate):**
-```bash
-aws configure
+```python
+import requests
+
+# Define test cases for the API endpoints
+testcases = [
+    {
+        "url": "http://localhost:8000/add/2/2",
+        "expected": 4,
+        "description": "Test addition of 2 and 2"
+    },
+    {
+        "url": "http://localhost:8000/subtract/2/2",
+        "expected": 0,
+        "description": "Test subtraction of 2 from 2"
+    },
+    {
+        "url": "http://localhost:8000/multiply/2/2",
+        "expected": 4,
+        "description": "Test multiplication of 2 and 2"
+    }
+]
+
+def test():
+    """
+    Runs automated tests on the API endpoints.
+    Asserts that the API response matches the expected result.
+    """
+    for case in testcases:
+        # Make a GET request to the API endpoint
+        response = requests.get(case["url"])
+        
+        # Parse the JSON response
+        result = response.json()["result"]
+        
+        # Assert that the result matches the expected value
+        assert result == case["expected"], f"Test failed: {case['description']}. Expected {case['expected']}, got {result}"
+        
+        # Print success message if the test passes
+        print(f"Test passed: {case['description']}")
+    
+    print("All tests passed!")
+
+# Run the test function
+test()
 ```
-You'll be prompted to enter:
-- **AWS Access Key ID**
-- **AWS Secret Access Key**
-- **Default region** (e.g., `us-east-1`)
-- **Output format** (default: `json`)
 
 ---
 
-## **4. Create an EC2 Instance Using Ansible**
-### **Step 1: Define an Inventory File**
-Create `inventory.ini`:
-```ini
-[aws_servers]
-ec2-instance ansible_host=your-ec2-public-ip ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa
+### Key Improvements and Comments
+
+#### 1. **Descriptive Comments**:
+- Added comments to explain the purpose of each function and endpoint.
+- Included example usage in the API endpoint docstrings.
+
+#### 2. **Test Case Descriptions**:
+- Added a `description` field to each test case for better readability and debugging.
+
+#### 3. **Error Handling in Tests**:
+- The `assert` statement now includes a descriptive error message to help identify which test case failed.
+
+#### 4. **Scalability**:
+- The test framework is modular, making it easy to add more test cases or endpoints.
+
+---
+
+### How to Expand for Testing Automation
+
+#### 1. **Add More Test Cases**:
+- Include edge cases (e.g., negative numbers, zero, large numbers).
+- Test invalid inputs (e.g., non-integer values) if the API includes input validation.
+
+#### 2. **Parameterized Testing**:
+- Use a library like `pytest` to parameterize tests and avoid repetitive code.
+
+#### 3. **Test Other HTTP Methods**:
+- Add tests for `POST`, `PUT`, `DELETE`, etc., if the API supports them.
+
+#### 4. **Environment Configuration**:
+- Use environment variables or a configuration file to manage different environments (e.g., development, staging, production).
+
+#### 5. **Integration with CI/CD**:
+- Integrate the test script into a CI/CD pipeline (e.g., GitHub Actions, Jenkins) to automate testing on every code change.
+
+#### 6. **Performance Testing**:
+- Use tools like `locust` or `k6` to test the API's performance under load.
+
+#### 7. **Mocking External Dependencies**:
+- If the API depends on external services, use mocking libraries like `responses` or `unittest.mock` to simulate those services.
+
+#### 8. **Reporting**:
+- Generate test reports using libraries like `pytest-html` or `allure` for better visibility into test results.
+
+---
+
+### Example of Expanded Test Automation with `pytest`
+
+```python
+import pytest
+import requests
+
+# Define test cases as a list of tuples for parameterized testing
+testcases = [
+    ("http://localhost:8000/add/2/2", 4, "Test addition of 2 and 2"),
+    ("http://localhost:8000/subtract/2/2", 0, "Test subtraction of 2 from 2"),
+    ("http://localhost:8000/multiply/2/2", 4, "Test multiplication of 2 and 2"),
+    ("http://localhost:8000/add/-1/1", 0, "Test addition of -1 and 1"),
+    ("http://localhost:8000/multiply/0/5", 0, "Test multiplication by zero"),
+]
+
+@pytest.mark.parametrize("url, expected, description", testcases)
+def test_api(url, expected, description):
+    """
+    Parameterized test for API endpoints.
+    """
+    response = requests.get(url)
+    result = response.json()["result"]
+    assert result == expected, f"{description}. Expected {expected}, got {result}"
+
+# Run tests using pytest
+if __name__ == "__main__":
+    pytest.main()
 ```
 
 ---
 
-### **Step 2: Write an Ansible Playbook to Launch an EC2 Instance**
-Create `launch-ec2.yml`:
+### Summary
+
+- Your current implementation is a solid foundation for API development and testing.
+- By adding descriptive comments, improving test case management, and integrating with tools like `pytest`, you can create a robust and scalable testing framework.
+- Expanding the framework to include performance testing, CI/CD integration, and reporting will make it even more powerful.
+
+
+
+
+# Expanding the Idea for Real-World Projects**
+Now that we have a basic API with automated tests, how can this be applied in real-world projects?
+
+### **1 Add Database Integration**
+Instead of simple arithmetic, imagine an API that fetches/stores data in a **PostgreSQL** or **MongoDB** database. Testing would involve:
+- **Checking data integrity** after each API call.
+- **Mocking database connections** for isolated testing.
+
+### **2 Authentication and Authorization**
+- Add **OAuth2, JWT, or API keys** for secure endpoints.
+- Test unauthorized access to ensure security.
+
+### **3 CI/CD Integration**
+- Use **GitHub Actions / Jenkins** to automate testing on each code push.
+- Example **GitHub Action for Pytest**:
+
 ```yaml
-- name: Launch EC2 instance
-  hosts: localhost
-  connection: local
-  gather_facts: False
-  tasks:
-    - name: Create an EC2 instance
-      amazon.aws.ec2_instance:
-        name: "Ansible-EC2"
-        key_name: "your-key-pair"
-        instance_type: "t2.micro"
-        security_groups: ["default"]
-        image_id: "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI (Change based on region)
-        region: "us-east-1"
-        wait: yes
-      register: ec2
+name: API Tests
+on: [push, pull_request]
 
-    - name: Add new instance to inventory
-      add_host:
-        name: "{{ ec2.instances[0].public_ip_address }}"
-        groups: aws_servers
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          sudo apt install python3 pipenv -y
+          pipenv install fastapi uvicorn pytest requests
+
+      - name: Start FastAPI server
+        run: pipenv run python3 apiserver.py &
+        env:
+          PYTHONUNBUFFERED: 1
+
+      - name: Wait for server to be ready
+        run: sleep 5  # Wait to ensure the server is up
+
+      - name: Run tests
+        run: pipenv run pytest automation_test_pytest.py
+
 ```
-Run the playbook:
-```bash
-ansible-playbook launch-ec2.yml
-```
+
+### **4 Advanced Error Handling & Logging**
+- Use Python's `logging` module to track API requests/responses.
+- Store logs in **CloudWatch** or **Elastic Stack**.
+
+### **5 Performance & Load Testing**
+- Use **`pytest-benchmark`** or **`locust.io`** to simulate high-traffic conditions.
 
 ---
 
-## **5. Configure EC2 Instance Using Ansible**
-Once the EC2 instance is running, we can install and configure software on it.
-
-### **Step 1: Write a Playbook to Configure EC2**
-Create `configure-ec2.yml`:
-```yaml
-- name: Configure EC2 instance
-  hosts: aws_servers
-  become: yes
-  tasks:
-    - name: Update packages
-      apt:
-        update_cache: yes
-
-    - name: Install Nginx
-      apt:
-        name: nginx
-        state: present
-
-    - name: Start and Enable Nginx
-      service:
-        name: nginx
-        state: started
-        enabled: yes
-```
-
-Run the playbook:
-```bash
-ansible-playbook -i inventory.ini configure-ec2.yml
-```
-
----
-
-## **6. Verify the Configuration**
-### **Check if Nginx is Running**
-```bash
-ssh -i ~/.ssh/id_rsa ubuntu@your-ec2-public-ip
-systemctl status nginx
-```
-
-### **Access the Nginx Web Page**
-Open your browser and go to:
-```
-http://your-ec2-public-ip
-```
-You should see the **Nginx default page**.
-
----
-
-## **7. Cleanup - Terminate the EC2 Instance**
-To terminate the EC2 instance, create `terminate-ec2.yml`:
-```yaml
-- name: Terminate EC2 instance
-  hosts: localhost
-  connection: local
-  gather_facts: False
-  tasks:
-    - name: Terminate EC2 instance
-      amazon.aws.ec2_instance:
-        state: absent
-        instance_ids: "{{ ec2.instances[0].id }}"
-        region: "us-east-1"
-```
-Run the playbook:
-```bash
-ansible-playbook terminate-ec2.yml
-```
-
----
-
-## **Conclusion**
-You have successfully:
-* Installed Ansible  
-* Launched an EC2 instance  
-* Configured Nginx using Ansible  
-* Terminated the EC2 instance  
-
-This process can be extended to automate large-scale deployments. 
+## **Final Thoughts**
+In this tutorial, we:
+Built a **FastAPI server** with three endpoints  
+Wrote **automated tests** using `requests`  
+Improved testing with **pytest**  
+Discussed **expanding to real-world applications**  
