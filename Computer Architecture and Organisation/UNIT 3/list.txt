@@ -3,4 +3,3 @@
 ./032 RISC vs CISC.md
 ./033 Hardwired Logic vs Programmed Logic.md
 ./034 MicroProgrammed.pptx
-./035 Cache Memory.pptx
