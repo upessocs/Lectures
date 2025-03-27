@@ -1,5 +1,12 @@
 # Jenkins Pipeline for Building and Deploying a FastAPI Docker Image
 
+### Install
+
+Preferred mode to install jenkins is using docker 
+
+https://github.com/jenkinsci/docker/blob/master/README.md
+
+
 ## What Jenkins Needs to Do
 
 Jenkins will perform similar tasks to your GitHub Actions workflow, but with more flexibility and control. For your FastAPI Docker image, Jenkins needs to:
