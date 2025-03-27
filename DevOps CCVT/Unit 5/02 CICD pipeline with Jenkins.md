@@ -2,9 +2,9 @@
 
 ### Install
 
-Preferred mode to install jenkins is using docker 
+Preferred mode to install [jenkins](https://www.jenkins.io/) is using docker 
 
-https://github.com/jenkinsci/docker/blob/master/README.md
+[Install instructions](https://github.com/jenkinsci/docker/blob/master/README.md)
 
 
 ## What Jenkins Needs to Do
