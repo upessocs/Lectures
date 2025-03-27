@@ -6,6 +6,8 @@ Preferred mode to install [jenkins](https://www.jenkins.io/) is using docker
 
 [Install instructions](https://github.com/jenkinsci/docker/blob/master/README.md)
 
+[How to create first pipeline (Official Reference)](https://www.jenkins.io/doc/pipeline/tour/hello-world/)
+
 
 ## What Jenkins Needs to Do
 
