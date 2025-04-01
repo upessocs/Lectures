@@ -2,9 +2,10 @@
 
 ### Install
 
-Preferred mode to install [jenkins](https://www.jenkins.io/) is using docker 
+Preferred mode to install [jenkins](https://www.jenkins.io/) is using docker   
 
-[Install instructions](https://github.com/jenkinsci/docker/blob/master/README.md)
+[Install instructions](https://github.com/jenkinsci/docker/blob/master/README.md)  
+
 
 [How to create first pipeline (Official Reference)](https://www.jenkins.io/doc/pipeline/tour/hello-world/)
 
@@ -49,11 +50,11 @@ The main differences from GitHub Actions are:
 
 #### 3. Configure the Pipeline
 1. In the pipeline configuration:
-   - Under "Pipeline", select "Pipeline script from SCM"
-   - Choose "Git" as SCM
-   - Enter your repository URL
-   - Specify the branch (e.g., "main")
-   - For "Script Path", enter "Jenkinsfile" (this will be in your repo)
+- Under "Pipeline", select "Pipeline script from SCM"
+- Choose "Git" as SCM
+- Enter your repository URL
+- Specify the branch (e.g., "main")
+- For "Script Path", enter "Jenkinsfile" (this will be in your repo)
 
 #### 4. Create a Jenkinsfile in Your Repository
 Create a file named `Jenkinsfile` in your project root with this content:
