@@ -3,6 +3,9 @@
 ./devopslab 10003
 ./000 WSL Install.md
 ./Ansible Tutorial for Beginners Playbook & Examples.md
+./Exp 10.md
+./Exp 11.md
+./Exp 13 Jenkins, Groovy, Pipelines.md
 ./Experiment 1 DevOps.md
 ./Experiment 2 ARA.md
 ./Experiment 3 CI.md
@@ -12,5 +15,4 @@
 ./Experiment 7 Containerisation.md
 ./Experiment 8 GITHUB ACTIONS Dockerize python fastapi server with github actions and upload to docker registery.md
 ./Experiment 9 Subversion (SVN).md
-./Jenkins, Groovy, Pipelines.md
 ./001 Syllabus DevOps_lab sem6 fullstack.pdf
