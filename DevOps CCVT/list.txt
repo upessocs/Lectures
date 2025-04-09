@@ -5,6 +5,7 @@
 ./Unit 4
 ./Unit 5
 ./Unit 6
+./Unit 7
 ./003 WSL Install.md
 ./Question  Bank I.md
 ./000 DevOps Sem 6 CCVT Syllabus.pdf
