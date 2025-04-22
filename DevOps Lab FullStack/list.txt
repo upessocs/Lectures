@@ -15,4 +15,5 @@
 ./Experiment 7 Containerisation.md
 ./Experiment 8 GITHUB ACTIONS Dockerize python fastapi server with github actions and upload to docker registery.md
 ./Experiment 9 Subversion (SVN).md
+./Lab Exam.md
 ./001 Syllabus DevOps_lab sem6 fullstack.pdf
