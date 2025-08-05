@@ -1,6 +1,7 @@
 <style>
     :root{
-        --hue:300;
+        --hue:340;
+        --hueAscent:10;
     }
 </style>
 

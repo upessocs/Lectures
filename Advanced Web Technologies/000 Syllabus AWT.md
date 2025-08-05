@@ -4,24 +4,24 @@
 |:---|:---|:---|
 | 3 | 1 | 4 |  
 
-## Unit I: Introduction to jQuery 
-`9 Lecture Hours`  
+## Unit I: Introduction to jQuery  `9 Lecture Hours`
+  
 What is jQuery? Setting up jQuery code environment, linking to a jQuery file on a CDN server, understanding jQuery selectors to target HTML elements, jQuery Filters, Event Handling (Click, hover, submit etc.), creating animations with jQuery, Applying CSS properties. 
 
-## Unit II: Front End Development using Angular JS 
-`9 Lecture Hours`  
+## Unit II: Front End Development using Angular JS  `9 Lecture Hours`
+  
 Introduction to Angular JS – Role of angular JS in web development, basic architecture and core concepts, creating a simple angular JS application, Angular JS Directives – built-in directives and custom directives, two-way data binding and basic usage of filters for data formatting, Controllers, angular forms and events, form validation, Debugging AngularJS applications using developer tools. 
 
-## Unit-III: Server-Side Development using Node JS 
-`9 Lecture Hours`  
+## Unit-III: Server-Side Development using Node JS  `9 Lecture Hours`
+  
 Introduction: What is Node JS? Advantages of Node JS, Traditional Web Server Model, Node.js Process Model, Environment Setup, Installing on Windows, Node JS console, Node JS modules and its types, Functions, Buffer, Understanding Node event driven framework, Event Emitter class, Events and Event Loop, inheriting events, Node Package Manager. 
 
-## Unit-IV: State Management and Working with Data 
-`9 Lecture Hours`  
+## Unit-IV: State Management and Working with Data  `9 Lecture Hours`
+  
 Sessions and Cookies: Introduction to session control, creating and destroying sessions and session variables, starting a session, registering session variables, what is a Cookie? Setting up Cookies, Deleting Cookies, Query string. Introduction to MongoDB: Setting up MongoDB, hosting and authenticating into database, Model Creation, Managing Database Connections, and Performing basic operations.  
 
-## Unit-V: Data visualization with D3.js 
-`9 Lecture Hours`  
+## Unit-V: Data visualization with D3.js  `9 Lecture Hours`
+  
 Overview of Object-Oriented Concepts, Object Model of ODMG, Object Definition Language, Object Query Language, Object Database Conceptual Design, Distributed Database Concepts, Data Fragmentation, Replication and Allocation Techniques for Distributed Design, Types of Distributed Database Systems, Query Processing in Distributed Databases, Overview of Concurrency Control and recovery techniques in Distributed Databases.
 
 ---
@@ -48,8 +48,10 @@ Overview of Object-Oriented Concepts, Object Model of ODMG, Object Definition La
 ---
 
 ### **Course Objectives (COs)**  
-By the end of this course, students should be able to:  
-1. **Understand** the fundamentals of jQuery and its role in simplifying DOM manipulation and event handling.  
+
+By the end of this course, students should be able to:
+
+1. **Understand** the fundamentals of jQuery and its role in simplifying DOM manipulation and event handling.
 2. **Explore** AngularJS as a front-end framework, focusing on directives, data binding, and form validation.  
 3. **Learn** server-side development using Node.js, including its event-driven architecture and module system.  
 4. **Implement** state management techniques such as sessions, cookies, and query strings in web applications.  
