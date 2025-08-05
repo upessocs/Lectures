@@ -14,8 +14,7 @@
 ---
 
 ### **jQuery Website**
-The official jQuery website is:  
-👉 [https://jquery.com/](https://jquery.com/)  
+The official jQuery website is:  [https://jquery.com/](https://jquery.com/)  
 
 Here, you can find:
 - Documentation & API references ([https://api.jquery.com/](https://api.jquery.com/))
@@ -348,4 +347,5 @@ Both are used for:
 
 - [https://htmlcheatsheet.com/jquery/](https://htmlcheatsheet.com/jquery/)
 - [https://www.jquerycheatsheet.com/](https://www.jquerycheatsheet.com/)
+
 - [https://jquery.com/](https://jquery.com/)
