@@ -1,0 +1,205 @@
+Mon May 5 21:26:41 2025 +0530	Update list.txt
+Mon May 5 21:22:59 2025 +0530	Update list.txt
+Mon May 5 21:22:02 2025 +0530	Create Question Bank II.md
+Tue Apr 22 07:28:02 2025 +0000	update
+Tue Apr 22 07:06:52 2025 +0000	update
+Tue Apr 22 12:32:50 2025 +0530	labexam
+Thu Apr 17 11:24:05 2025 +0000	unit 6 short summary
+Thu Apr 17 09:30:05 2025 +0000	cao unit 6
+Wed Apr 16 10:12:08 2025 +0000	conclude devops
+Wed Apr 9 14:39:51 2025 +0530	unit7
+Wed Apr 9 07:31:03 2025 +0000	unit 5
+Tue Apr 8 09:32:06 2025 +0000	unit6
+Tue Apr 8 09:29:10 2025 +0000	unit6
+Tue Apr 8 10:52:45 2025 +0530	exp
+Tue Apr 1 09:03:17 2025 +0000	update
+Mon Mar 31 12:56:19 2025 +0530	docx upload
+Thu Mar 27 07:33:20 2025 +0000	update
+Thu Mar 27 06:19:01 2025 +0000	install link
+Thu Mar 27 06:09:47 2025 +0000	how to select tool
+Thu Mar 27 06:03:42 2025 +0000	install link
+Thu Mar 27 06:00:35 2025 +0000	jenkins pipeline
+Fri Mar 21 06:07:58 2025 +0000	unit 4 devops
+Thu Mar 20 09:28:12 2025 +0000	update
+Thu Mar 20 07:24:04 2025 +0000	Test Automation Backend Testing
+Thu Mar 20 11:33:21 2025 +0530	unit 3 cao ppt updated
+Wed Mar 19 14:22:04 2025 +0530	update
+Wed Mar 19 08:48:25 2025 +0000	test automation
+Wed Mar 19 08:44:53 2025 +0000	test automation
+Wed Mar 19 08:42:53 2025 +0000	test automation
+Tue Mar 18 06:50:28 2025 +0000	url
+Fri Feb 28 00:36:27 2025 +0530	qb
+Thu Feb 27 07:17:50 2025 +0000	table
+Thu Feb 27 12:44:23 2025 +0530	table update
+Mon Feb 24 09:05:25 2025 +0000	update
+Mon Feb 24 08:53:57 2025 +0000	lean deming kaizen
+Mon Feb 24 08:30:05 2025 +0000	readme updated
+Mon Feb 24 13:54:28 2025 +0530	update
+Wed Feb 19 16:12:47 2025 +0530	update Continious Delivery using GH Actions
+Wed Feb 19 09:08:53 2025 +0000	update
+Wed Feb 19 07:28:26 2025 +0000	cpu design
+Wed Feb 19 07:22:41 2025 +0000	rtl img
+Wed Feb 19 05:54:16 2025 +0000	gitflow
+Tue Feb 18 19:14:51 2025 +0000	gitflow
+Tue Feb 18 10:12:30 2025 +0000	table
+Tue Feb 18 09:31:22 2025 +0000	Kanban
+Tue Feb 18 07:07:05 2025 +0000	update content
+Tue Feb 18 07:01:55 2025 +0000	restructure
+Tue Feb 18 06:55:22 2025 +0000	dockerize
+Tue Feb 18 12:21:02 2025 +0530	svn
+Tue Feb 18 01:46:13 2025 +0530	cao unit 3
+Tue Feb 18 01:40:38 2025 +0530	clean
+Tue Feb 18 01:39:24 2025 +0530	theory
+Mon Feb 17 09:20:27 2025 +0000	dockerize fastapi ghactions
+Mon Feb 17 08:37:19 2025 +0000	restructure
+Fri Feb 14 06:05:36 2025 +0000	stack
+Fri Feb 14 05:58:46 2025 +0000	rtl
+Thu Feb 13 08:59:37 2025 +0000	cao unit2
+Thu Feb 13 14:26:49 2025 +0530	rename
+Thu Feb 13 08:53:36 2025 +0000	addressing mode
+Thu Feb 13 14:16:04 2025 +0530	unit 2
+Fri Feb 7 08:26:22 2025 +0000	wsl
+Fri Feb 7 08:17:11 2025 +0000	kanban
+Fri Feb 7 07:42:16 2025 +0000	svn trunk
+Wed Feb 5 09:20:18 2025 +0000	minor
+Wed Feb 5 05:50:44 2025 +0000	minor change
+Wed Feb 5 05:50:00 2025 +0000	minor change
+Wed Feb 5 05:48:22 2025 +0000	minor change
+Wed Feb 5 01:06:03 2025 +0530	CAO Course Plan
+Wed Feb 5 00:54:57 2025 +0530	CO
+Wed Feb 5 00:52:35 2025 +0530	CO
+Wed Feb 5 00:49:07 2025 +0530	rename unit wise
+Wed Feb 5 00:19:39 2025 +0530	update
+Wed Feb 5 00:18:17 2025 +0530	update
+Wed Feb 5 00:00:19 2025 +0530	Mercurial
+Tue Feb 4 23:52:15 2025 +0530	rorder[D[D[D[D[D[D[Ce[F[D[F[B
+Tue Feb 4 13:12:13 2025 +0000	course plan
+Tue Feb 4 13:00:28 2025 +0000	IEEE double precision ..
+Tue Feb 4 12:26:16 2025 +0000	course plan
+Tue Feb 4 14:08:58 2025 +0530	Update 046 Subversion (SVN) with window using tortoise.md
+Tue Jan 28 13:00:17 2025 +0530	uddate
+Tue Jan 28 12:55:44 2025 +0530	update lab
+Tue Jan 28 11:46:53 2025 +0530	git labexperiments
+Mon Jan 27 14:49:16 2025 +0530	update
+Mon Jan 27 14:43:38 2025 +0530	update
+Fri Jan 24 00:17:32 2025 +0530	update
+Fri Jan 24 00:14:41 2025 +0530	arithematic and etc
+Mon Jan 20 12:12:27 2025 +0530	update booth
+Mon Jan 20 11:51:18 2025 +0530	XMerge branch 'main' of github.com:upessocs/Lectures
+Mon Jan 20 11:51:04 2025 +0530	boots
+Sat Jan 18 20:15:56 2025 +0530	git complete
+Wed Jan 15 12:51:32 2025 +0530	endians signed
+Tue Jan 14 16:26:48 2025 +0530	version control and git
+Tue Jan 14 14:32:38 2025 +0530	subversion
+Tue Jan 14 14:27:09 2025 +0530	subversion
+Fri Jan 10 13:10:06 2025 +0530	update
+Thu Jan 9 15:56:11 2025 +0530	update cao
+Thu Jan 9 14:55:34 2025 +0530	update devops
+Wed Jan 8 12:51:42 2025 +0530	cao ch01
+Wed Jan 8 12:26:15 2025 +0530	update
+Wed Jan 8 12:17:04 2025 +0530	cao unit 1
+Tue Jan 7 16:15:20 2025 +0530	update
+Tue Jan 7 16:05:12 2025 +0530	update l01
+Tue Jan 7 15:05:30 2025 +0530	update
+Tue Jan 7 15:03:39 2025 +0530	l01
+Mon Jan 6 13:27:19 2025 +0530	Syllabus updated
+Thu Nov 21 13:16:29 2024 +0530	style update
+Thu Nov 21 13:13:21 2024 +0530	update alternative code
+Thu Nov 21 13:00:25 2024 +0530	update FastAPI
+Thu Nov 21 09:51:08 2024 +0530	fastapi
+Wed Nov 20 14:52:35 2024 +0530	Assignment form
+Tue Nov 12 16:26:18 2024 +0530	update ga
+Mon Nov 11 17:00:57 2024 +0530	update numpy list of methods
+Sat Nov 9 15:45:17 2024 +0530	soft computing genetic algo
+Sat Nov 9 15:35:11 2024 +0530	soft computing genetic algo
+Thu Oct 24 01:18:09 2024 +0530	update fuzzy2
+Thu Oct 24 01:11:49 2024 +0530	update fuzzy notebook
+Tue Oct 22 00:56:13 2024 +0530	file link
+Tue Oct 22 00:55:01 2024 +0530	fuzzy
+Tue Oct 22 00:53:43 2024 +0530	fuzzyfication_defuzzification
+Mon Oct 21 12:20:40 2024 +0530	oops and re module updated
+Sun Oct 20 17:54:25 2024 +0530	ipynb
+Sun Oct 20 17:03:33 2024 +0530	reading assignment
+Sun Oct 20 16:58:51 2024 +0530	Project assignment
+Sun Oct 20 16:38:34 2024 +0530	dictionary comprehension, numpy, pandas, matplotlib
+Wed Oct 9 14:48:12 2024 +0530	update
+Wed Oct 9 13:51:29 2024 +0530	video url
+Wed Oct 9 13:45:57 2024 +0530	update alan kay oops video
+Sun Oct 6 00:43:16 2024 +0530	update fuzzy part2
+Fri Oct 4 12:38:55 2024 +0530	decorator with example
+Thu Oct 3 18:26:06 2024 +0530	include decorators
+Tue Oct 1 16:19:37 2024 +0530	first time git script[D[D[D[D[D[D[D[D[D[Dsetup git script
+Mon Sep 30 13:34:54 2024 +0530	update qb
+Mon Sep 30 13:25:12 2024 +0530	update question bank
+Fri Sep 27 15:13:00 2024 +0530	update url in evaluation
+Fri Sep 27 15:06:06 2024 +0530	evaluation scheme
+Wed Sep 25 18:51:10 2024 +0530	hacker rank moved
+Wed Sep 25 18:23:15 2024 +0530	renamed
+Wed Sep 25 18:19:49 2024 +0530	.decorators
+Wed Sep 25 18:14:38 2024 +0530	restructure and pipenv
+Wed Sep 25 16:24:00 2024 +0530	wrapper function
+Wed Sep 25 16:20:04 2024 +0530	restructure
+Tue Sep 24 15:51:31 2024 +0530	update reading errors
+Tue Sep 24 15:40:41 2024 +0530	init unit 4 and some improvements
+Mon Sep 23 13:26:12 2024 +0530	requests and pickle
+Thu Sep 19 14:44:55 2024 +0530	pyinstaller and pipenv
+Wed Sep 18 12:46:33 2024 +0530	update file organizer and tkinter intro
+Tue Sep 17 11:35:46 2024 +0530	renamed lectures
+Tue Sep 17 10:58:47 2024 +0530	File Organizer Assignment
+Mon Sep 16 09:42:24 2024 +0530	merge Merge branch 'main' of github.com:upessocs/Lectures
+Mon Sep 16 09:42:10 2024 +0530	hacker rank intro
+Sat Sep 14 01:40:38 2024 +0530	update unit3
+Sat Sep 14 01:11:57 2024 +0530	update
+Thu Sep 12 12:39:37 2024 +0530	update
+Thu Sep 12 12:32:51 2024 +0530	soft computing notes and resources
+Wed Sep 11 13:44:39 2024 +0530	Unit 3 init
+Wed Sep 11 13:25:51 2024 +0530	update unit 2
+Tue Sep 10 00:36:03 2024 +0530	update A2
+Tue Sep 10 00:33:51 2024 +0530	Assignment 2 UpdateAdded
+Mon Sep 9 13:10:25 2024 +0530	format updated
+Mon Sep 9 12:44:12 2024 +0530	restructure
+Mon Sep 9 01:07:31 2024 +0530	update map filter and reduce
+Mon Sep 9 01:02:39 2024 +0530	update functions
+Tue Sep 3 00:46:08 2024 +0530	update Function to include list comprehension, map filter reduce and lambda functions, and import, from, as in python
+Wed Aug 28 17:52:04 2024 +0530	update deepcopy Unit 2
+Wed Aug 28 16:12:25 2024 +0530	update assignment submission url
+Wed Aug 28 14:52:16 2024 +0530	update names
+Wed Aug 28 10:55:44 2024 +0530	update unit 2
+Tue Aug 27 00:35:01 2024 +0530	update activation fn and python unit 2 added
+Fri Aug 23 08:08:56 2024 +0530	update assignment
+Thu Aug 22 15:36:50 2024 +0530	Assignment
+Thu Aug 22 14:53:27 2024 +0530	assignment
+Thu Aug 22 14:40:54 2024 +0530	debug
+Thu Aug 22 14:34:27 2024 +0530	update nix
+Thu Aug 22 14:29:37 2024 +0530	CC AC res and python unit1 part 2, wsl and nix installation
+Tue Aug 20 15:33:34 2024 +0530	added thinkpython
+Wed Aug 14 13:49:03 2024 +0530	res
+Wed Aug 14 13:38:58 2024 +0530	update guidelines
+Wed Aug 14 13:36:24 2024 +0530	update
+Wed Aug 14 13:33:14 2024 +0530	CCVT guidelines
+Wed Aug 7 12:32:25 2024 +0530	update git for authentication
+Wed Aug 7 10:06:14 2024 +0530	python init
+Mon Aug 5 23:36:45 2024 +0530	git commands
+Mon Aug 5 13:52:51 2024 +0530	002 py
+Fri Aug 2 09:55:54 2024 +0530	update
+Fri Aug 2 09:54:28 2024 +0530	update
+Fri Aug 2 09:48:04 2024 +0530	update syllabus soft comp
+Fri Aug 2 09:42:38 2024 +0530	lecure one
+Thu Aug 1 17:01:17 2024 +0530	update python
+Thu Aug 1 10:53:42 2024 +0530	update
+Thu Aug 1 10:50:01 2024 +0530	upadte
+Thu Aug 1 10:47:08 2024 +0530	001
+Thu Aug 1 10:44:28 2024 +0530	init softcomputing
+Sat May 11 01:40:36 2024 +0530	unknown sync
+Thu Apr 18 14:18:04 2024 +0530	compiled attendance and assignment 2
+Fri Apr 12 18:06:13 2024 +0530	update compiled attendance
+Fri Apr 12 15:20:40 2024 +0530	update
+Fri Apr 12 12:51:31 2024 +0530	update list
+Fri Apr 12 12:44:54 2024 +0530	upload attendanve
+Wed Apr 10 18:21:23 2024 +0530	compiled attendence script updated
+Sat Apr 6 17:34:13 2024 +0530	update attendance
+Sat Apr 6 17:30:55 2024 +0530	added attendance
+Wed Apr 3 15:56:36 2024 +0530	init files
+Wed Apr 3 15:40:06 2024 +0530	Create static.yml
+Wed Apr 3 15:39:33 2024 +0530	init  basics
+Wed Apr 3 15:35:23 2024 +0530	first commit

@@ -1,9 +1,11 @@
 ./
 ./.DE
+./.dist
 ./.git
 ./.github
+./Advanced Web Technologies
 ./Computer Architecture and Organisation
 ./DevOps CCVT
-./DevOps Lab FullStack
+./Linux Lab
 ./PythonProgramming
 ./SoftComputing
