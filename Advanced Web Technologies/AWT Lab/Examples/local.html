@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local jQuery</title>
+  <!-- <script src="./jquery-3.7.1.js"></script> Make sure this file exists locally -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+</head>
+<body>
+  <h1>Testing Local jQuery</h1>
+  <p>time taken is <span id="time">being estimated</span></p>
+  <script>
+    const start = performance.now();
+
+    $(document).ready(function () {
+      const end = performance.now();
+      var timeTaken = end - start;
+      console.log("Local jQuery load time: " + (end - start).toFixed(2) + " ms");
+      $(time).html(timeTaken +" ms");
+    });
+  </script>
+</body>
+</html>

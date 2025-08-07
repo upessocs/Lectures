@@ -286,6 +286,7 @@ paragraphs.forEach(p => p.style.display = "none");
 $("p.hidden").hide();
 ```
 **Advantages**: Simplified selection (CSS-style syntax), method chaining.  
+
 **Experiment**: Compare performance (e.g., `document.querySelectorAll` vs. `$()`).  
 
 ---
@@ -305,6 +306,7 @@ items[items.length - 1].style.backgroundColor = "yellow";
 $("li:first, li:last").css("background-color", "yellow");
 ```
 **Advantages**: Built-in filters (`:first`, `:last`, `:even`, `:odd`).  
+
 **Experiment**: Filter tables rows by odd/even indices.  
 
 ---
@@ -328,6 +330,7 @@ $("#menu").hover(
 );
 ```
 **Advantages**: Combined events (`hover()`), simplified `this` binding.  
+
 **Experiment**: Handle form `submit` events with `preventDefault()`.  
 
 ---
@@ -348,6 +351,7 @@ list.appendChild(newItem);
 $("#myList").append("<li>New Item</li>");
 ```
 **Advantages**: One-liner DOM updates, HTML string support.  
+
 **Experiment**: Compare `append()` vs. `appendTo()`.  
 
 ---
@@ -367,6 +371,7 @@ $("#box").click(function() {
 });
 ```
 **Advantages**: Pre-built animations (`fadeIn()`, `slideUp()`, etc.).  
+
 **Experiment**: Chain animations (`fadeOut()` → `fadeIn()`).  
 
 ---
@@ -386,6 +391,7 @@ document.querySelectorAll("button").forEach(btn => {
 $("button").addClass("active");
 ```
 **Advantages**: Batch operations, toggle/remove classes easily.  
+
 **Experiment**: Toggle a dark/light theme with `toggleClass()`.  
 
 ---
@@ -407,6 +413,7 @@ $.get("https://api.example.com/data", function(data) {
 });
 ```
 **Advantages**: Simplified syntax, error handling via `.fail()`.  
+
 **Experiment**: Load JSON data into a table.  
 
 ---
