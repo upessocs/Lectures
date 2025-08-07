@@ -28,6 +28,9 @@ Here, you can find:
 jQuery can be added to a project in multiple ways:
 
 #### **1. CDN (Recommended for quick use)**
+
+
+
 ```html
 <!-- Using jQuery's official CDN -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -42,12 +45,16 @@ jQuery can be added to a project in multiple ways:
   ```
 
 #### **3. Using npm/yarn (For Node.js/bundlers)**
+
+
 ```bash
 npm install jquery
 # or
 yarn add jquery
 ```
 Then import it in JavaScript:
+
+
 ```javascript
 import $ from 'jquery';
 ```
@@ -57,17 +64,20 @@ import $ from 'jquery';
 ### **Use Cases**
 jQuery is useful for:
 1. **DOM Manipulation** – Selecting, modifying, and traversing HTML elements.
-   ```javascript
-   $("#myElement").hide();
-   ```
+
+```javascript
+$("#myElement").hide();
+```
 2. **Event Handling** – Simplified click, hover, and form events.
-   ```javascript
-   $("button").click(() => alert("Clicked!"));
-   ```
+
+```javascript
+$("button").click(() => alert("Clicked!"));
+```
 3. **AJAX Requests** – Easy HTTP requests.
-   ```javascript
-   $.get("https://api.example.com/data", (data) => console.log(data));
-   ```
+
+```javascript
+$.get("https://api.example.com/data", (data) => console.log(data));
+```
 4. **Animations** – Built-in effects like `fadeIn()`, `slideUp()`, etc.
 5. **Cross-browser Compatibility** – Works consistently across old browsers.
 
@@ -108,7 +118,7 @@ Both are used for:
 ### **Key Differences**  
 
 | Feature               | jQuery                              | Vanilla JavaScript                          |
-|-----------------------|-------------------------------------|---------------------------------------------|
+|:-----|:-----|:-----|
 | **Syntax**            | Shorter, chainable methods (`$()`)  | Verbose (`document.querySelector()`)        |
 | **Browser Support**   | Handles cross-browser issues        | Requires manual polyfills for old browsers  |
 | **AJAX**              | Simplified (`$.ajax()`)             | Uses `fetch()` or `XMLHttpRequest`          |
@@ -132,7 +142,7 @@ Both are used for:
 ### **Key Differences**  
 
 | Feature          | jQuery                            | React / Vue / Angular                     |
-|------------------|-----------------------------------|-------------------------------------------|
+|:-----|:-----|:-----|
 | **Purpose**      | DOM manipulation & utilities      | Full-featured **component-based** apps    |
 | **Rendering**    | Direct DOM updates (imperative)   | Virtual DOM / Reactive rendering          |
 | **State Mgmt**   | Manual (no built-in solution)     | Built-in state management (Redux, Pinia)  |
@@ -162,7 +172,7 @@ Both are used for:
 
 ### **Alternatives to jQuery**  
 | Use Case               | jQuery                | Modern Alternative               |
-|------------------------|-----------------------|-----------------------------------|
+|:-----|:-----|:-----|
 | **DOM Selection**      | `$("#element")`       | `document.querySelector()`       |
 | **AJAX**               | `$.ajax()`            | `fetch()` + `axios`              |
 | **Animations**         | `$(el).fadeIn()`      | CSS Transitions/GSAP             |
@@ -177,42 +187,104 @@ Both are used for:
 ### **Lecture 1: Introduction to jQuery & Setup**  
 **Task**: Change text color of a `<div>` on button click.  
 - **Conventional Method**:  
-  ```html
-  <button id="btn">Click Me</button>
-  <div id="content">Hello World</div>
-  <script>
-    document.getElementById("btn").addEventListener("click", function() {
-      document.getElementById("content").style.color = "red";
-    });
-  </script>
-  ```
+
+```html
+<button id="btn">Click Me</button>
+<div id="content">Hello World</div>
+<script>
+  document.getElementById("btn").addEventListener("click", function() {
+    document.getElementById("content").style.color = "red";
+  });
+</script>
+```
 - **jQuery Method**:  
-  ```html
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+```html
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#btn").click(function() {
+      $("#content").css("color", "red");
+    });
+  });
+</script>
+```
+**Advantages**: Shorter syntax, cross-browser compatibility, built-in `document.ready`.  
+
+---
+# Experiment: Set up a local jQuery file vs. CDN and test loading time.  
+
+## ⚗️ Objective
+
+Compare **loading time** between:
+
+1. A **local jQuery file**
+2. jQuery loaded via a **CDN (Content Delivery Network)**
+
+
+## Step 1: Prepare Two HTML Files
+
+Create two HTML files in the same directory:
+
+### 🔹 `index.html`
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local jQuery</title>
+  <script src="./jquery-3.7.1.js"></script> Make sure this file exists locally
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script> -->
+</head>
+<body>
+  <h1>Testing Local jQuery</h1>
+  <p>time taken is <span id="time">being estimated</span></p>
   <script>
-    $(document).ready(function() {
-      $("#btn").click(function() {
-        $("#content").css("color", "red");
-      });
+    const start = performance.now();
+
+    $(document).ready(function () {
+      const end = performance.now();
+      var timeTaken = end - start;
+      console.log("Local jQuery load time: " + (end - start).toFixed(2) + " ms");
+      $(time).html(timeTaken +" ms");
     });
   </script>
-  ```
-**Advantages**: Shorter syntax, cross-browser compatibility, built-in `document.ready`.  
-**Experiment**: Set up a local jQuery file vs. CDN and test loading time.  
+</body>
+</html>
+```
+
+> 📁 Place `jquery-3.7.1.min.js` in the same folder as this HTML file (download from [jquery.com](https://jquery.com/download/)).
+
+
+---
+
+## Step 2: Open Developer Tools
+
+In your browser (Chrome/Firefox):
+
+1. Right-click → Inspect → go to **Console** and **Network** tabs.
+2. Open both files one at a time (in separate tabs or windows).
+3. Look for:
+
+   * Console output: will show jQuery load time using `performance.now()`.
+   * Network tab: shows resource size, transfer time, and cache behavior.
+
 
 ---
 
 ### **Lecture 2: jQuery Selectors**  
 **Task**: Hide all `<p>` elements with class `hidden`.  
 - **Conventional Method**:  
-  ```javascript
-  let paragraphs = document.querySelectorAll("p.hidden");
-  paragraphs.forEach(p => p.style.display = "none");
-  ```
+
+```javascript
+let paragraphs = document.querySelectorAll("p.hidden");
+paragraphs.forEach(p => p.style.display = "none");
+```
 - **jQuery Method**:  
-  ```javascript
-  $("p.hidden").hide();
-  ```
+
+```javascript
+$("p.hidden").hide();
+```
 **Advantages**: Simplified selection (CSS-style syntax), method chaining.  
 **Experiment**: Compare performance (e.g., `document.querySelectorAll` vs. `$()`).  
 
@@ -221,15 +293,17 @@ Both are used for:
 ### **Lecture 3: jQuery Filters**  
 **Task**: Highlight the first and last `<li>` in a list.  
 - **Conventional Method**:  
-  ```javascript
-  let items = document.querySelectorAll("li");
-  items[0].style.backgroundColor = "yellow";
-  items[items.length - 1].style.backgroundColor = "yellow";
-  ```
+
+```javascript
+let items = document.querySelectorAll("li");
+items[0].style.backgroundColor = "yellow";
+items[items.length - 1].style.backgroundColor = "yellow";
+```
 - **jQuery Method**:  
-  ```javascript
-  $("li:first, li:last").css("background-color", "yellow");
-  ```
+
+```javascript
+$("li:first, li:last").css("background-color", "yellow");
+```
 **Advantages**: Built-in filters (`:first`, `:last`, `:even`, `:odd`).  
 **Experiment**: Filter tables rows by odd/even indices.  
 
@@ -238,18 +312,21 @@ Both are used for:
 ### **Lecture 4: Event Handling**  
 **Task**: Toggle a menu on hover.  
 - **Conventional Method**:  
-  ```javascript
-  let menu = document.getElementById("menu");
-  menu.addEventListener("mouseenter", () => menu.style.display = "block");
-  menu.addEventListener("mouseleave", () => menu.style.display = "none");
-  ```
+
+
+```javascript
+let menu = document.getElementById("menu");
+menu.addEventListener("mouseenter", () => menu.style.display = "block");
+menu.addEventListener("mouseleave", () => menu.style.display = "none");
+```
 - **jQuery Method**:  
-  ```javascript
-  $("#menu").hover(
-    () => $(this).show(), 
-    () => $(this).hide()
-  );
-  ```
+
+```javascript
+$("#menu").hover(
+  () => $(this).show(), 
+  () => $(this).hide()
+);
+```
 **Advantages**: Combined events (`hover()`), simplified `this` binding.  
 **Experiment**: Handle form `submit` events with `preventDefault()`.  
 
@@ -258,16 +335,18 @@ Both are used for:
 ### **Lecture 5: DOM Manipulation**  
 **Task**: Add a new `<li>` to a list.  
 - **Conventional Method**:  
-  ```javascript
-  let list = document.getElementById("myList");
-  let newItem = document.createElement("li");
-  newItem.textContent = "New Item";
-  list.appendChild(newItem);
-  ```
+
+```javascript
+let list = document.getElementById("myList");
+let newItem = document.createElement("li");
+newItem.textContent = "New Item";
+list.appendChild(newItem);
+```
 - **jQuery Method**:  
-  ```javascript
-  $("#myList").append("<li>New Item</li>");
-  ```
+
+```javascript
+$("#myList").append("<li>New Item</li>");
+```
 **Advantages**: One-liner DOM updates, HTML string support.  
 **Experiment**: Compare `append()` vs. `appendTo()`.  
 
@@ -276,15 +355,17 @@ Both are used for:
 ### **Lecture 6: Animations**  
 **Task**: Fade out a div on click.  
 - **Conventional Method**:  
-  ```javascript
-  // Requires manual CSS transitions/animations.
-  ```
+
+```javascript
+// Requires manual CSS transitions/animations.
+```
 - **jQuery Method**:  
-  ```javascript
-  $("#box").click(function() {
-    $(this).fadeOut("slow");
-  });
-  ```
+
+```javascript
+$("#box").click(function() {
+  $(this).fadeOut("slow");
+});
+```
 **Advantages**: Pre-built animations (`fadeIn()`, `slideUp()`, etc.).  
 **Experiment**: Chain animations (`fadeOut()` → `fadeIn()`).  
 
@@ -293,15 +374,17 @@ Both are used for:
 ### **Lecture 7: CSS & Styling**  
 **Task**: Add a class to buttons dynamically.  
 - **Conventional Method**:  
-  ```javascript
-  document.querySelectorAll("button").forEach(btn => {
-    btn.classList.add("active");
-  });
-  ```
+
+```javascript
+document.querySelectorAll("button").forEach(btn => {
+  btn.classList.add("active");
+});
+```
 - **jQuery Method**:  
-  ```javascript
-  $("button").addClass("active");
-  ```
+
+```javascript
+$("button").addClass("active");
+```
 **Advantages**: Batch operations, toggle/remove classes easily.  
 **Experiment**: Toggle a dark/light theme with `toggleClass()`.  
 
@@ -310,17 +393,19 @@ Both are used for:
 ### **Lecture 8: AJAX with jQuery**  
 **Task**: Fetch data from an API.  
 - **Conventional Method**:  
-  ```javascript
-  fetch("https://api.example.com/data")
-    .then(response => response.json())
-    .then(data => console.log(data));
-  ```
+
+```javascript
+fetch("https://api.example.com/data")
+  .then(response => response.json())
+  .then(data => console.log(data));
+```
 - **jQuery Method**:  
-  ```javascript
-  $.get("https://api.example.com/data", function(data) {
-    console.log(data);
-  });
-  ```
+
+```javascript
+$.get("https://api.example.com/data", function(data) {
+  console.log(data);
+});
+```
 **Advantages**: Simplified syntax, error handling via `.fail()`.  
 **Experiment**: Load JSON data into a table.  
 
