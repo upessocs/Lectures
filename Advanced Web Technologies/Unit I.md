@@ -226,7 +226,7 @@ Compare **loading time** between:
 
 Create two HTML files in the same directory:
 
-### 🔹 `index.html`
+### `index.html`
 
 ```html
 <!DOCTYPE html>
@@ -266,8 +266,8 @@ In your browser (Chrome/Firefox):
 2. Open both files one at a time (in separate tabs or windows).
 3. Look for:
 
-   * Console output: will show jQuery load time using `performance.now()`.
-   * Network tab: shows resource size, transfer time, and cache behavior.
+* Console output: will show jQuery load time using `performance.now()`.
+* Network tab: shows resource size, transfer time, and cache behavior.
 
 
 ---
