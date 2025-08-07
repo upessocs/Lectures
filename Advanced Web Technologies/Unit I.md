@@ -214,7 +214,7 @@ Both are used for:
 ---
 # Experiment: Set up a local jQuery file vs. CDN and test loading time.  
 
-## ⚗️ Objective
+## Objective
 
 Compare **loading time** between:
 
@@ -253,7 +253,7 @@ Create two HTML files in the same directory:
 </html>
 ```
 
-> 📁 Place `jquery-3.7.1.min.js` in the same folder as this HTML file (download from [jquery.com](https://jquery.com/download/)).
+> Place `jquery-3.7.1.min.js` in the same folder as this HTML file (download from [jquery.com](https://jquery.com/download/)).
 
 
 ---
