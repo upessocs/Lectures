@@ -3,11 +3,11 @@
 ## **1. Installing Git**
 
 ### **Windows (using git-scm)**
-1. **Download Git**:
+##### 1. **Download Git**:
    - Go to [https://git-scm.com/downloads](https://git-scm.com/downloads)
    - Click on "Download for Windows"
 
-2. **Run the Installer**:
+##### 2. **Run the Installer**:
    - Double-click the downloaded `.exe` file.
    - Follow the setup wizard (default options are fine for most users).
    - Select **"Git from the command line and also from 3rd-party software"** (recommended).
@@ -16,7 +16,7 @@
    - Choose **"Use MinTTY"** (better terminal experience).
    - Click **Install**.
 
-3. **Verify Installation**:
+##### 3. **Verify Installation**:
    - Open **Git Bash** (installed with Git) or **Command Prompt**.
    - Run:
      ```bash
@@ -27,17 +27,17 @@
 ---
 
 ### **macOS (using Homebrew)**
-1. **Install Homebrew (if not installed)**:
+##### 1. **Install Homebrew (if not installed)**:
    ```bash
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
-2. **Install Git**:
+##### 2. **Install Git**:
    ```bash
    brew install git
    ```
 
-3. **Verify Installation**:
+##### 3. **Verify Installation**:
    ```bash
    git --version
    ```
@@ -45,19 +45,19 @@
 ---
 
 ### **Ubuntu (using apt)**
-1. **Update Package List**:
+##### 1. **Update Package List**:
    
    ```bash
    sudo apt update
    ```
 
-2. **Install Git**:
+##### 2. **Install Git**:
    
    ```bash
    sudo apt install git -y
    ```
 
-3. **Verify Installation**:
+##### 3. **Verify Installation**:
    
    ```bash
    git --version
@@ -154,7 +154,7 @@ git config --list
 
 ## **Summary of Commands**
 | Command | Description |
-| :-----| :-----|
+|:---|:---|
 | `git --version` | Check Git installation |
 | `git config --global user.name "..."` | Set your name |
 | `git config --global user.email "..."` | Set your email |
