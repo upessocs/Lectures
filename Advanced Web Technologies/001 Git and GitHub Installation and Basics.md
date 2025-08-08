@@ -46,16 +46,19 @@
 
 ### **Ubuntu (using apt)**
 1. **Update Package List**:
+   
    ```bash
    sudo apt update
    ```
 
 2. **Install Git**:
+   
    ```bash
    sudo apt install git -y
    ```
 
 3. **Verify Installation**:
+   
    ```bash
    git --version
    ```
@@ -64,12 +67,14 @@
 
 ## **2. Git Configuration (All Platforms)**
 Set your name and email (required before making commits):
+
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
 Check your settings:
+
 ```bash
 git config --list
 ```
@@ -79,7 +84,7 @@ git config --list
 ## **3. Creating & Cloning a Repository**
 ### **Creating a New Repository on GitHub**
 1. Go to [GitHub.com](https://github.com) and log in.
-2. Click **"+" → "New repository"**.
+2. Click **"+" and "New repository"** or directly visit `github.new`.
 3. Enter a **Repository name**.
 4. Choose **Public/Private**.
 5. Check **"Add a README.md"** (recommended).
@@ -90,6 +95,7 @@ git config --list
 2. Copy the **HTTPS URL** (e.g., `https://github.com/username/repo.git`).
 3. Open **Terminal (macOS/Linux) or Git Bash (Windows)**.
 4. Run:
+   
    ```bash
    git clone https://github.com/username/repo.git
    cd repo
@@ -98,21 +104,24 @@ git config --list
 ---
 
 ## **4. Making & Pushing Changes**
-1. **Edit the `README.md`** (add your name and SAP ID).
-2. **Check changes**:
+##### 1. **Edit the `README.md`** (add your name and SAP ID).
+##### 2. **Check changes**:
    ```bash
    git status  # Shows modified files
    git diff    # Shows exact changes
    ```
-3. **Stage changes**:
+##### 3. **Stage changes**:
    ```bash
    git add README.md
+
+   # or to add all changed in repo folder
+   git add .
    ```
-4. **Commit changes**:
+##### 4. **Commit changes**:
    ```bash
    git commit -m "Added name and SAP ID"
    ```
-5. **Push to GitHub**:
+##### 5. **Push to GitHub**:
    ```bash
    git push origin main
    ```
@@ -127,15 +136,16 @@ git config --list
 ---
 
 ## **Troubleshooting**
-- **Permission denied (publickey)?**  
-  → Use HTTPS instead of SSH for cloning.
+**Permission denied (publickey)?**  
+> Use HTTPS instead of SSH for cloning.
   
-- **GitHub authentication failing?**  
-  → Use a **Personal Access Token (PAT)** instead of a password.  
-  → Generate one in GitHub **Settings → Developer Settings → Personal Access Tokens**.
+**GitHub authentication failing?**  
+> Use a **Personal Access Token (PAT)** instead of a password.  
+> Generate one in GitHub **Settings → Developer Settings → Personal Access Tokens**.
 
-- **Line ending issues (Windows)?**  
-  → Ensure Git is configured with `core.autocrlf=true`:
+**Line ending issues (Windows)?**  
+> Ensure Git is configured with `core.autocrlf=true`:
+ 
   ```bash
   git config --global core.autocrlf true
   ```
@@ -144,23 +154,23 @@ git config --list
 
 ## **Summary of Commands**
 | Command | Description |
-|---------|-------------|
+| :-----| :-----|
 | `git --version` | Check Git installation |
 | `git config --global user.name "..."` | Set your name |
 | `git config --global user.email "..."` | Set your email |
 | `git clone <URL>` | Clone a repository |
 | `git status` | Check file changes |
 | `git diff` | View changes in files |
-| `git add <file>` | Stage changes |
+| `git add <file>` or `git add .`| Stage changes |
 | `git commit -m "message"` | Commit changes |
 | `git push origin main` | Push to GitHub |
 
 
 ---
 
-# To Do
+# To Do / Assignment
   
-# add day1 work and commit it and push   
+# Add day1 work in repo folder, and commit it, and push changes   
 1. Try adding folder `day1` with files like `index.html`
 2. Use `git add .`, `git commit -m "Lecture 1 progress"`, and `git push`.
 3. Check whether changes are reflected on your github repository url.
