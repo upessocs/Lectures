@@ -1,5 +1,7 @@
 ./
+./.demo
 ./AWT Lab
 ./000 Syllabus AWT.md
+./001 Git and GitHub Installation and Basics.md
 ./Unit I.md
 ./Syllabus CSEG2071 Advanced Web Technologies BCA.pdf
