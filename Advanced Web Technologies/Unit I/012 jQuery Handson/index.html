@@ -22,7 +22,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -30,23 +30,24 @@
         header {
             text-align: center;
             margin-bottom: 40px;
-            padding: 20px;
+            padding: 30px;
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
         
         h1 {
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 2.5rem;
         }
         
         .intro {
             margin-bottom: 30px;
             background: white;
-            padding: 25px;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
         
         .content-wrapper {
@@ -61,7 +62,7 @@
             background: white;
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
         
         .questions {
@@ -71,38 +72,40 @@
         
         .concept-group {
             margin-bottom: 25px;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            overflow: hidden;
         }
         
         .concept-title {
             background: #3498db;
             color: white;
-            padding: 12px 15px;
-            border-radius: 5px;
+            padding: 15px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-weight: 600;
         }
         
         .concept-content {
-            padding: 15px;
+            padding: 20px;
             background: #f8f9fa;
-            border-radius: 0 0 5px 5px;
             display: none;
         }
         
         .question {
             background: white;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
         
         .question-header {
             background: #2c3e50;
             color: white;
-            padding: 15px 20px;
+            padding: 18px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -110,48 +113,77 @@
         }
         
         .question-content {
-            padding: 20px;
+            padding: 25px;
             display: none;
         }
         
         .hint-box {
             background: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 15px;
-            margin: 15px 0;
+            border-left: 5px solid #2196f3;
+            padding: 18px;
+            margin: 18px 0;
             border-radius: 0 5px 5px 0;
         }
         
         .code-example {
             background: #272822;
             color: #f8f8f2;
-            padding: 15px;
-            border-radius: 5px;
+            padding: 18px;
+            border-radius: 8px;
             overflow-x: auto;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
+            margin: 18px 0;
+            font-family: 'Fira Code', monospace;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #575757;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
         }
         
         .practice-area {
             background: #f5f5f5;
             padding: 20px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border: 1px dashed #bbb;
+            border-radius: 8px;
+            margin: 18px 0;
+            border: 2px dashed #bbb;
         }
         
         .btn {
             background: #3498db;
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 12px 18px;
+            border-radius: 6px;
             cursor: pointer;
             transition: background 0.3s;
+            font-weight: 600;
+            margin: 5px;
         }
         
         .btn:hover {
             background: #2980b9;
+        }
+        
+        .btn-show-code {
+            background: #2ecc71;
+        }
+        
+        .btn-show-code:hover {
+            background: #27ae60;
+        }
+        
+        .solution-code {
+            display: none;
+            margin-top: 15px;
         }
         
         .active .concept-content {
@@ -168,6 +200,14 @@
         
         .active .arrow {
             transform: rotate(90deg);
+        }
+        
+        .example-output {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
         }
         
         @media (max-width: 900px) {
@@ -192,6 +232,7 @@
             <h2>Basic HTML, CSS, and JavaScript Structure</h2>
             <p>Before diving into jQuery, it's important to understand the basic structure of a web page:</p>
             <div class="code-example">
+                <button class="copy-btn">Copy</button>
                 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -205,9 +246,12 @@
     &lt;!-- HTML content goes here --&gt;
     &lt;div id="content"&gt;Hello World!&lt;/div&gt;
     
+    &lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
     &lt;script&gt;
-        // JavaScript code goes here
-        document.getElementById("content").style.color = "blue";
+        // jQuery code goes here
+        $(document).ready(function() {
+            $("#content").css("color", "blue");
+        });
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
@@ -227,9 +271,12 @@
                     <div class="concept-content">
                         <p>jQuery selectors allow you to select and manipulate HTML elements using CSS-style syntax.</p>
                         <div class="code-example">
+                            <button class="copy-btn">Copy</button>
                             <code>$("p") // Selects all &lt;p&gt; elements<br>
 $("#id") // Selects element with id="id"<br>
-$(".class") // Selects elements with class="class"</code>
+$(".class") // Selects elements with class="class"<br>
+$("div p") // Selects all &lt;p&gt; elements inside &lt;div&gt; elements<br>
+$("ul li:first") // Selects the first &lt;li&gt; element of the &lt;ul&gt;</code>
                         </div>
                     </div>
                 </div>
@@ -242,11 +289,14 @@ $(".class") // Selects elements with class="class"</code>
                     <div class="concept-content">
                         <p>jQuery provides methods to manipulate the DOM, such as changing content, styles, and structure.</p>
                         <div class="code-example">
+                            <button class="copy-btn">Copy</button>
                             <code>.html() // Get or set HTML content<br>
 .text() // Get or set text content<br>
 .css() // Get or set style properties<br>
 .addClass() // Add one or more classes<br>
-.removeClass() // Remove one or more classes</code>
+.removeClass() // Remove one or more classes<br>
+.attr() // Get or set attributes<br>
+.val() // Get or set form field values</code>
                         </div>
                     </div>
                 </div>
@@ -257,11 +307,14 @@ $(".class") // Selects elements with class="class"</code>
                         <span class="arrow">▶</span>
                     </div>
                     <div class="concept-content">
-                        <p>jEvent handling in jQuery is simpler than in vanilla JavaScript.</p>
+                        <p>Event handling in jQuery is simpler than in vanilla JavaScript.</p>
                         <div class="code-example">
+                            <button class="copy-btn">Copy</button>
                             <code>.click() // Bind click event handler<br>
 .on() // Bind event handler for specified events<br>
-.hover() // Bind mouseenter and mouseleave events</code>
+.hover() // Bind mouseenter and mouseleave events<br>
+.submit() // Bind form submit event handler<br>
+.keypress() // Bind keypress event handler</code>
                         </div>
                     </div>
                 </div>
@@ -274,10 +327,12 @@ $(".class") // Selects elements with class="class"</code>
                     <div class="concept-content">
                         <p>jQuery makes it easy to create visual effects and animations.</p>
                         <div class="code-example">
+                            <button class="copy-btn">Copy</button>
                             <code>.hide() / .show() // Hide or show elements<br>
 .fadeIn() / .fadeOut() // Fade elements in or out<br>
 .slideDown() / .slideUp() // Slide elements down or up<br>
-.animate() // Create custom animations</code>
+.animate() // Create custom animations<br>
+.delay() // Delay execution of next animation</code>
                         </div>
                     </div>
                 </div>
@@ -290,6 +345,7 @@ $(".class") // Selects elements with class="class"</code>
                     <div class="concept-content">
                         <p>jQuery simplifies AJAX requests for loading data asynchronously.</p>
                         <div class="code-example">
+                            <button class="copy-btn">Copy</button>
                             <code>$.ajax() // Perform asynchronous HTTP request<br>
 $.get() // Load data from the server using GET<br>
 $.post() // Load data from the server using POST<br>
@@ -315,6 +371,13 @@ $.post() // Load data from the server using POST<br>
                             <p>This is a paragraph.</p>
                             <p>This is another paragraph.</p>
                             <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>$("p").css("color", "blue");</code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -331,13 +394,20 @@ $.post() // Load data from the server using POST<br>
                         <div class="practice-area">
                             <div id="main">This is the main content that should be hidden.</div>
                             <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>$("#main").hide();</code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="question">
                     <div class="question-header">
-                        <span>3. Change the HTML content of a div with class "subcontainer"</span>
+                        <span>3. Change the HTML content of a div with class "container"</span>
                         <span class="arrow">▶</span>
                     </div>
                     <div class="question-content">
@@ -347,6 +417,13 @@ $.post() // Load data from the server using POST<br>
                         <div class="practice-area">
                             <div class="subcontainer">Original content</div>
                             <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>$(".subcontainer").html("&lt;strong&gt;New content added successfully!&lt;/strong&gt;");</code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -363,6 +440,15 @@ $.post() // Load data from the server using POST<br>
                         <div class="practice-area">
                             <button id="alert-btn">Click Me</button>
                             <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>$("#alert-btn").click(function() {
+    alert("Button clicked!");
+});</code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -379,6 +465,13 @@ $.post() // Load data from the server using POST<br>
                         <div class="practice-area">
                             <div id="fade-element" style="display: none;">This element will fade in.</div>
                             <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>$("#fade-element").fadeIn(1000);</code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -396,6 +489,15 @@ $.post() // Load data from the server using POST<br>
                             <div id="class-target">This element will get a new class.</div>
                             <button id="add-class-btn">Add Class</button>
                             <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>$("#add-class-btn").click(function() {
+    $("#class-target").addClass("highlight");
+});</code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -412,6 +514,135 @@ $.post() // Load data from the server using POST<br>
                         <div class="practice-area">
                             <div id="api-data">Data will appear here</div>
                             <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>$.getJSON("https://jsonplaceholder.typicode.com/posts/1", function(data) {
+    $("#api-data").html("&lt;strong&gt;Title:&lt;/strong&gt; " + data.title);
+}).fail(function() {
+    $("#api-data").html("Failed to fetch data. Using placeholder instead.");
+    $("#api-data").html("&lt;strong&gt;Title:&lt;/strong&gt; sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+});</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-header">
+                        <span>8. Create a slide toggle effect for a menu</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    <div class="question-content">
+                        <div class="hint-box">
+                            <strong>Hint:</strong> Use the .slideToggle() method.
+                        </div>
+                        <div class="practice-area">
+                            <button id="toggle-btn">Toggle Menu</button>
+                            <div id="menu" style="display: none; background: #f0f0f0; padding: 10px;">
+                                <ul>
+                                    <li>Menu Item 1</li>
+                                    <li>Menu Item 2</li>
+                                    <li>Menu Item 3</li>
+                                </ul>
+                            </div>
+                            <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>$("#toggle-btn").click(function() {
+    $("#menu").slideToggle();
+});</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-header">
+                        <span>9. Validate a form before submission</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    <div class="question-content">
+                        <div class="hint-box">
+                            <strong>Hint:</strong> Use the .submit() event handler and event.preventDefault().
+                        </div>
+                        <div class="practice-area">
+                            <form id="validate-form">
+                                <input type="text" id="name" placeholder="Enter your name" required>
+                                <input type="email" id="email" placeholder="Enter your email" required>
+                                <button type="submit">Submit</button>
+                            </form>
+                            <div id="form-message"></div>
+                            <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>$("#validate-form").submit(function(e) {
+    e.preventDefault();
+    var name = $("#name").val();
+    var email = $("#email").val();
+    
+    if (name === "" || email === "") {
+        $("#form-message").html("Please fill all fields").css("color", "red");
+    } else {
+        $("#form-message").html("Form submitted successfully!").css("color", "green");
+        // You would typically submit the form to a server here
+    }
+});</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <div class="question-header">
+                        <span>10. Create a simple image slider</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    <div class="question-content">
+                        <div class="hint-box">
+                            <strong>Hint:</strong> Use .fadeOut() and .fadeIn() with a counter variable.
+                        </div>
+                        <div class="practice-area">
+                            <div class="image-slider">
+                                <img src="https://via.placeholder.com/400x200/3498db/ffffff?text=Image+1" class="slider-img" style="display:block;">
+                                <img src="https://via.placeholder.com/400x200/e74c3c/ffffff?text=Image+2" class="slider-img" style="display:none;">
+                                <img src="https://via.placeholder.com/400x200/2ecc71/ffffff?text=Image+3" class="slider-img" style="display:none;">
+                                <br>
+                                <button id="prev-btn">Previous</button>
+                                <button id="next-btn">Next</button>
+                            </div>
+                            <button class="btn try-btn">Try Solution</button>
+                            <button class="btn btn-show-code">Show Code</button>
+                        </div>
+                        <div class="solution-code">
+                            <div class="code-example">
+                                <button class="copy-btn">Copy</button>
+                                <pre><code>var currentSlide = 0;
+var slides = $(".slider-img");
+
+function showSlide(index) {
+    slides.fadeOut(300);
+    $(slides[index]).fadeIn(300);
+}
+
+$("#next-btn").click(function() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+});
+
+$("#prev-btn").click(function() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+});</code></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -431,6 +662,25 @@ $.post() // Load data from the server using POST<br>
                 $(this).parent().toggleClass("active");
             });
             
+            // Show code buttons
+            $(".btn-show-code").click(function(e) {
+                e.stopPropagation();
+                $(this).parent().siblings(".solution-code").slideToggle();
+                
+            });
+            
+            // Copy buttons
+            $(".copy-btn").click(function() {
+                const code = $(this).siblings("pre").text() || $(this).siblings("code").text();
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalText = $(this).text();
+                    $(this).text("Copied!");
+                    setTimeout(() => {
+                        $(this).text(originalText);
+                    }, 2000);
+                });
+            });
+            
             // Try solution buttons
             $(".try-btn").click(function(e) {
                 e.stopPropagation();
@@ -448,7 +698,7 @@ $.post() // Load data from the server using POST<br>
                         $("#main").hide();
                         break;
                     case 2:
-                        $(".subcontainer").html("<p>New content added successfully!</p>");
+                        $(".subcontainer").html("<strong>New content added successfully!</strong>");
                         break;
                     case 3:
                         $("#alert-btn").click(function() {
@@ -465,7 +715,7 @@ $.post() // Load data from the server using POST<br>
                         // Add some CSS for the highlight class
                         $("<style>")
                             .prop("type", "text/css")
-                            .html(".highlight { background: yellow; padding: 10px; }")
+                            .html(".highlight { background: yellow; padding: 10px; border-radius: 5px; }")
                             .appendTo("head");
                         break;
                     case 6:
@@ -473,8 +723,44 @@ $.post() // Load data from the server using POST<br>
                             $("#api-data").html("<strong>Title:</strong> " + data.title);
                         }).fail(function() {
                             $("#api-data").html("Failed to fetch data. Using placeholder instead.");
-                            // Fallback data in case API is not accessible
                             $("#api-data").html("<strong>Title:</strong> sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+                        });
+                        break;
+                    case 7:
+                        $("#toggle-btn").click(function() {
+                            $("#menu").slideToggle();
+                        });
+                        break;
+                    case 8:
+                        $("#validate-form").submit(function(e) {
+                            e.preventDefault();
+                            var name = $("#name").val();
+                            var email = $("#email").val();
+                            
+                            if (name === "" || email === "") {
+                                $("#form-message").html("Please fill all fields").css("color", "red");
+                            } else {
+                                $("#form-message").html("Form submitted successfully!").css("color", "green");
+                            }
+                        });
+                        break;
+                    case 9:
+                        var currentSlide = 0;
+                        var slides = $(".slider-img");
+                        
+                        function showSlide(index) {
+                            slides.fadeOut(300);
+                            $(slides[index]).fadeIn(300);
+                        }
+                        
+                        $("#next-btn").click(function() {
+                            currentSlide = (currentSlide + 1) % slides.length;
+                            showSlide(currentSlide);
+                        });
+                        
+                        $("#prev-btn").click(function() {
+                            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                            showSlide(currentSlide);
                         });
                         break;
                 }
