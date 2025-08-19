@@ -194,4 +194,11 @@
 </html>
 ```
 
+## Have a look at below links
+
+
+- [https://htmlcheatsheet.com/jquery/](https://htmlcheatsheet.com/jquery/)
+- [https://quickref.me/jquery.html](https://quickref.me/jquery.html)
+- [https://www.jquerycheatsheet.com/](https://www.jquerycheatsheet.com/)
+
 

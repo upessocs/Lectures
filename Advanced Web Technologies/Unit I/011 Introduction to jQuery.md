@@ -438,6 +438,7 @@ $.get("https://api.example.com/data", function(data) {
 # Resources and references
 
 - [https://htmlcheatsheet.com/jquery/](https://htmlcheatsheet.com/jquery/)
+- [https://quickref.me/jquery.html](https://quickref.me/jquery.html)
 - [https://www.jquerycheatsheet.com/](https://www.jquerycheatsheet.com/)
 
 - [https://jquery.com/](https://jquery.com/)
