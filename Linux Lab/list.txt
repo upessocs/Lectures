@@ -1,2 +1,5 @@
 ./
+./.demo
+./Experiment 1 Install WSL, virtualbox, create virtual machine with linux os like ubuntu, linuxmint, or debian.md
+./Experiment 2 Linux file systems, permissions, and essential commands.md
 ./001 Courseplan Linux Lab.pdf
