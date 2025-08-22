@@ -54,6 +54,9 @@ touch -t 202401151430 dated_file.txt
 - `-a`: Change only access time
 - `-m`: Change only modification time
 
+---
+
+
 #### The `cp` Command (Recap)
 Copies files and directories to new locations.
 
@@ -89,6 +92,10 @@ cp -i source.txt destination.txt
 - `-v`: Verbose output
 - `-u`: Update (copy only when source is newer)
 
+
+---
+
+
 #### The `mv` Command (Recap)
 Moves or renames files and directories.
 
@@ -116,6 +123,8 @@ mv file1.txt file2.txt file3.txt /destination/
 # Interactive move (prompt before overwrite)
 mv -i source.txt destination.txt
 ```
+---
+
 
 #### The `rm` Command
 Removes (deletes) files and directories permanently.
@@ -155,8 +164,10 @@ rmdir empty_directory
 - `-f`: Force (no prompts, ignore non-existent files)
 - `-i`: Interactive (prompt for each file)
 - `-v`: Verbose output
+---
 
-### Viewing File Contents
+
+## Viewing File Contents
 
 #### The `cat` Command (Recap)
 Concatenates and displays file contents.
@@ -186,6 +197,8 @@ cat -n filename.txt
 # Show non-printing characters
 cat -A filename.txt
 ```
+---
+
 
 #### The `less` Command
 Views file contents one page at a time with navigation controls.
@@ -220,6 +233,8 @@ less -N filename.txt
 # Case-insensitive search
 less -i filename.txt
 ```
+---
+
 
 #### The `head` Command
 Displays the first few lines of a file.
@@ -281,6 +296,7 @@ tail -c 50 filename.txt
 tail -n +100 filename.txt
 ```
 
+
 ---
 
 ## Lab Section II: File Permissions and Ownership
@@ -300,20 +316,19 @@ drwxr-xr-x 2 user group 4096 Jan 15 14:25 mydir
 ```
 
 **Breaking Down the Output:**
-```bash
--rw-r--r-- 1 user group 1234 Jan 15 14:30 document.txt
-│││││││││  │ │    │     │    │           │
-│││││││││  │ │    │     │    │           └── filename
-│││││││││  │ │    │     │    └── modification time
-│││││││││  │ │    │     └── file size
-│││││││││  │ │    └── group owner
-│││││││││  │ └── user owner
-│││││││││  └── number of links
-│││││││└── others permissions (r--)
-││││└──── group permissions (r--)
-││└───── owner permissions (rw-)
-└────── file type (-=file, d=directory, l=link)
-```
+
+1. file type (-=file, d=directory, l=link)
+2. owner permissions (rw-)
+3. group permissions (r--)
+4. others permissions (r--)
+5. number of links
+6. user owner
+7. group owner
+8. file size
+9. modification time
+10. filename
+
+
 
 ### Permission Types
 
@@ -328,16 +343,18 @@ drwxr-xr-x 2 user group 4096 Jan 15 14:25 mydir
 - **x (execute)**: Run file as program or enter directory
 
 #### Numeric Representation:
-- **4**: read (r)
-- **2**: write (w)
-- **1**: execute (x)
+- **4** : read (r)
+- **2** : write (w)
+- **1** : execute (x)
 
 **Common Permission Combinations:**
-- **7** (rwx): 4+2+1 = read, write, execute
-- **6** (rw-): 4+2+0 = read, write
-- **5** (r-x): 4+0+1 = read, execute
-- **4** (r--): 4+0+0 = read only
-- **0** (---): 0+0+0 = no permissions
+- **7** : (rwx): 4+2+1 = read, write, execute
+- **6** : (rw-): 4+2+0 = read, write
+- **5** : (r-x): 4+0+1 = read, execute
+- **4** : (r--): 4+0+0 = read only
+- **0** : (---): 0+0+0 = no permissions
+---
+
 
 ### The `chmod` Command
 Changes file permissions.
@@ -371,13 +388,15 @@ chmod u=rwx,g=rx,o=r file.txt  # Owner: rwx, Group: rx, Others: r
 ```
 
 **Symbols:**
-- **u**: owner (user)
-- **g**: group
-- **o**: others
-- **a**: all (u+g+o)
-- **+**: add permission
-- **-**: remove permission
-- **=**: set exact permission
+- **u** : owner (user)
+- **g** : group
+- **o** : others
+- **a** : all (u+g+o)
+- **+** : add permission
+- **-** : remove permission
+- **=** : set exact permission
+---
+
 
 ### The `chown` Command
 Changes file ownership.
@@ -519,6 +538,8 @@ find /home -name "*.tmp" -exec rm {} \;
 # Find with multiple conditions
 find /home -name "*.txt" -size +1M -mtime -7
 ```
+---
+
 
 ### Pattern Searching with `grep`
 
@@ -590,6 +611,8 @@ grep "[aeiou]" file.txt      # any vowel
 grep -E "(error|warning)" logfile.txt
 grep -E "[0-9]{3}-[0-9]{3}-[0-9]{4}" contacts.txt  # phone numbers
 ```
+---
+
 
 ### File Archiving with `tar`
 
@@ -691,7 +714,9 @@ zless largefile.txt.gz
 zgrep "pattern" largefile.txt.gz
 ```
 
-### Creating Links with `ln`
+---
+
+## Creating Links with `ln`
 
 The `ln` command creates links between files.
 
@@ -751,122 +776,3 @@ ln -s /opt/app/v2.1 /opt/app/current
 # Configuration management
 ln -s /etc/nginx/sites-available/mysite /etc/nginx/sites-enabled/
 ```
-
----
-
-## Practical Exercises
-
-### Exercise 1: File Management Workflow
-
-```bash
-# 1. Create a project directory structure
-mkdir -p project/{src,docs,backup}
-
-# 2. Create some files
-touch project/src/main.cpp project/src/utils.cpp
-touch project/docs/README.md project/docs/manual.txt
-
-# 3. Add content to files
-echo "# Project Documentation" > project/docs/README.md
-echo "int main() { return 0; }" > project/src/main.cpp
-
-# 4. Copy files for backup
-cp -r project/src project/backup/src_backup
-
-# 5. Create archive
-tar -czf project_backup.tar.gz project/
-
-# 6. Set appropriate permissions
-chmod 755 project/src/*.cpp
-chmod 644 project/docs/*
-```
-
-### Exercise 2: Permission Management
-
-```bash
-# 1. Create test files with different permissions
-touch public.txt private.txt script.sh
-
-# 2. Set specific permissions
-chmod 644 public.txt    # readable by all, writable by owner
-chmod 600 private.txt   # accessible only by owner
-chmod 755 script.sh     # executable by all
-
-# 3. Create group and change ownership (if you have sudo)
-sudo chown user:developers script.sh
-
-# 4. Verify permissions
-ls -l public.txt private.txt script.sh
-```
-
----
-
-## Question Bank/Exam
-
-### Question 1
-You need to find all `.log` files in `/var` that are larger than 10MB and were modified in the last 7 days. Write the command to accomplish this.
-
-**Answer:**
-
-```bash
-find /var -name "*.log" -size +10M -mtime -7
-```
-
-### Question 2
-Explain the difference between these two commands:
-
-```bash
-ln file1.txt file2.txt
-ln -s file1.txt file3.txt
-```
-
-**Answer:**
-- `ln file1.txt file2.txt` creates a hard link where both files share the same inode and data
-- `ln -s file1.txt file3.txt` creates a symbolic link where file3.txt is a pointer to file1.txt
-
-### Question 3
-What does the permission string `-rwxr-x---` mean, and what is its numeric equivalent?
-
-**Answer:**
-- Owner: read, write, execute (7)
-- Group: read, execute (5)
-- Others: no permissions (0)
-- Numeric equivalent: 750
-
-### Question 4
-You want to create a compressed archive of your entire home directory, excluding any `.tmp` files. Write the command to do this.
-
-**Answer:**
-
-```bash
-tar -czf home_backup.tar.gz --exclude="*.tmp" /home/username
-```
-
-### Question 5
-Write a command sequence to:
-1. Find all files containing the word "password" in the current directory and subdirectories
-2. Display the results with line numbers
-3. Save the results to a file called "security_audit.txt"
-
-**Answer:**
-
-```bash
-grep -rn "password" . > security_audit.txt
-```
-or
-
-```bash
-grep -rn "password" . | tee security_audit.txt
-```
-
----
-
-## Summary
-
-- **File Operations**: Creating, copying, moving, and removing files and directories
-- **Content Viewing**: Using cat, less, head, and tail for file examination
-- **Permissions**: Understanding and modifying file permissions and ownership
-- **Advanced Operations**: Searching with find and grep, archiving with tar, compression with gzip
-- **Link Management**: Creating hard and symbolic links
-
-> These commands form the foundation of Linux system administration and daily file management tasks. Practice these commands regularly to build muscle memory and efficiency in Linux environments.

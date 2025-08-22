@@ -1,6 +1,5 @@
 ./
 ./.DE
-./.dist
 ./.git
 ./.github
 ./Advanced Web Technologies
