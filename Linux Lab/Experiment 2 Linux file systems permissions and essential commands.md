@@ -1,10 +1,17 @@
+<style>
+    code{
+        padding-inline: 2em;
+    }
+</style>
+
 # Experiment 2 
 
 ## Linux file systems permissions and essential commands
 
 ### Table of Contents
 1. Theory: Understanding Linux File Systems
-2. File Permissions and Ownership
+2. File Permission
+3. s and Ownership
 3. Basic Navigation Commands
 4. File Operations
 5. File Viewing and Editing
