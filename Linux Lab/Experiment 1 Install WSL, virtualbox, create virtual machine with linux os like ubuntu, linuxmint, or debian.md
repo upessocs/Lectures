@@ -8,8 +8,8 @@ Windows Subsystem for Linux (WSL) lets you run a GNU/Linux environment directly 
 
 
 <iframe
-  width="560"
-  height="315"
+  width="100%"
+  aspect-ratio: 16/9
   src="https://www.youtube-nocookie.com/embed/KZCNLvRnHc0"
   title="YouTube video player"
   frameborder="0"
@@ -25,7 +25,7 @@ Windows Subsystem for Linux (WSL) lets you run a GNU/Linux environment directly 
 1.  **Open PowerShell as Administrator**: Press `Win + X` and select "Windows PowerShell (Admin)" or "Terminal (Admin)".
 2.  **Run the WSL Installation Command**:
     ```powershell
-    wsl --install
+    wsl --install -d ubuntu
     ```
     This single command does the following:
     *   Enables the required **"Virtual Machine Platform"** and **"Windows Subsystem for Linux"** optional components.
@@ -40,7 +40,7 @@ Windows Subsystem for Linux (WSL) lets you run a GNU/Linux environment directly 
 
 **Troubleshooting WSL Installation:**
 
-*   **If `wsl --install` fails or the command is not recognized:**
+*   **If `wsl --install -d ubuntu` fails or the command is not recognized:**
     *   **Enable features manually:** Open "Turn Windows features on or off" in the Start Menu. Check the boxes for **"Virtual Machine Platform"** and **"Windows Subsystem for Linux"**. Click OK, reboot, and then run `wsl --install` again.
 
 *   **Error: "The virtual machine could not be started because a required feature is not installed."**
@@ -93,7 +93,7 @@ VirtualBox is a traditional Type 2 hypervisor for running full-fledged virtual m
 ### **Part 3: Creating a Virtual Machine with Linux Mint**
 
 #### **Step 1: Download Linux Mint**
-1.  Go to the [Linux Mint download page](https://linuxmint.com/download.php).
+1.  Go to the [Linux Mint (cinnamon) download page](https://linuxmint.com/download.php).
 2.  Choose the edition you prefer (**Cinnamon** is the most feature-complete). Choose **64-bit**.
 3.  Download the ISO file. This is a disk image that VirtualBox will use as the installation source.
 
