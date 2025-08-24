@@ -8,8 +8,8 @@ Windows Subsystem for Linux (WSL) lets you run a GNU/Linux environment directly 
 
 
 <iframe
-  width="100%"
-  aspect-ratio: 16/9
+  width="70%"
+  height="60%"
   src="https://www.youtube-nocookie.com/embed/KZCNLvRnHc0"
   title="YouTube video player"
   frameborder="0"
@@ -64,6 +64,7 @@ Windows Subsystem for Linux (WSL) lets you run a GNU/Linux environment directly 
 After enabling virtualization, Windows should automatically enable the **Hypervisor** (Windows Hypervisor Platform). WSL will now work.
 
 **Verify WSL is working:** Open a new PowerShell or Command Prompt and type:
+
 ```powershell
 wsl -l -v
 ```
