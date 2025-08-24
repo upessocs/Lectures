@@ -18,7 +18,7 @@ Windows Subsystem for Linux (WSL) lets you run a GNU/Linux environment directly 
 </iframe>
 
 
-![Youtube](https://youtu.be/KZCNLvRnHc0)
+[Youtube](https://youtu.be/KZCNLvRnHc0)
 
 
 #### **Step 1: Enable WSL and Virtualization Features**
