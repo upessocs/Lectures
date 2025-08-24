@@ -6,6 +6,21 @@
 
 Windows Subsystem for Linux (WSL) lets you run a GNU/Linux environment directly on Windows.
 
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/KZCNLvRnHc0"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen>
+</iframe>
+
+
+![Youtube](https://youtu.be/KZCNLvRnHc0)
+
+
 #### **Step 1: Enable WSL and Virtualization Features**
 1.  **Open PowerShell as Administrator**: Press `Win + X` and select "Windows PowerShell (Admin)" or "Terminal (Admin)".
 2.  **Run the WSL Installation Command**:
