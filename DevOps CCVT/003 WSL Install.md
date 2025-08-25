@@ -8,6 +8,7 @@ WSL (Windows Subsystem for Linux) allows you to run a Linux distribution on Wind
 
 ## **Step 1: Install WSL and Ubuntu Distribution**
 Open **PowerShell as Administrator** and run:  
+
 ```powershell
 wsl --install -d Ubuntu
 ```
@@ -21,10 +22,12 @@ This command:
 
 ## **Step 2: Verify Installation**
 Once the installation is complete, restart your computer and verify WSL is installed:  
+
 ```powershell
 wsl --list --verbose
 ```
 OR  
+
 ```powershell
 wsl -l -v
 ```
@@ -34,6 +37,7 @@ This will show:
 - Running status  
 
 If Ubuntu is installed but not set as the default, you can check the default distro:
+
 ```powershell
 wsl --list --verbose
 ```
@@ -41,10 +45,12 @@ wsl --list --verbose
 
 ## **Step 3: Set a Default Distribution**
 To set Ubuntu as the default Linux distribution:
+
 ```powershell
 wsl --set-default Ubuntu
 ```
 OR
+
 ```powershell
 wsl -s Ubuntu
 ```
@@ -55,14 +61,17 @@ Now, whenever you run `wsl` in the terminal, it will launch Ubuntu by default.
 
 ## **Step 4: Check Installed Distributions**
 To view all installed Linux distributions:
+
 ```powershell
 wsl --list --all
 ```
 If you want to install a new one, use:
+
 ```powershell
 wsl --install -d <DistroName>
 ```
 For example:
+
 ```powershell
 wsl --install -d Debian
 ```
@@ -70,18 +79,22 @@ wsl --install -d Debian
 
 ## **Step 5: Check and Change WSL Version**
 WSL supports **WSL 1** and **WSL 2**. To check which version your distro is using:
+
 ```powershell
 wsl --list --verbose
 ```
 To set a distribution to WSL 2:
+
 ```powershell
 wsl --set-version Ubuntu 2
 ```
 To set a distribution to WSL 1:
+
 ```powershell
 wsl --set-version Ubuntu 1
 ```
 To make **WSL 2** the default for all future installations:
+
 ```powershell
 wsl --set-default-version 2
 ```
@@ -127,6 +140,7 @@ This happens if **Virtualization** is disabled in BIOS.
 
 ### **4. "DNS Resolution Issues Inside WSL"**
 If WSL is unable to connect to the internet:
+
 ```bash
 echo "[network]" | sudo tee -a /etc/wsl.conf
 echo "generateResolvConf = false" | sudo tee -a /etc/wsl.conf
@@ -134,6 +148,7 @@ sudo rm /etc/resolv.conf
 echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
 ```
 Then restart WSL:
+
 ```powershell
 wsl --shutdown
 ```
@@ -141,10 +156,12 @@ wsl --shutdown
 
 ## **Uninstalling WSL**
 To completely remove WSL:
+
 ```powershell
 wsl --unregister Ubuntu
 ```
 To disable WSL:
+
 ```powershell
 dism.exe /online /disable-feature /featurename:Microsoft-Windows-Subsystem-Linux
 ```
