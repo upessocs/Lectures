@@ -1,5 +1,7 @@
 ./
+./.demo
 ./Experiment 1 Install WSL, virtualbox, create virtual machine with linux os like ubuntu, linuxmint, or debian.md
 ./Experiment 2 Linux file systems permissions and essential commands.md
 ./Experiment 3 Linux File Manipulation and System Manipulation I.md
+./Experiment 4 and 5 BASH or SHELL scripting.md
 ./001 Courseplan Linux Lab.pdf

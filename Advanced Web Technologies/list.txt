@@ -1,7 +1,6 @@
 ./
 ./.demo
 ./AWT Lab
-./New folder
 ./Unit I jQuery
 ./Unit II AngularJS
 ./000 Syllabus AWT.md
