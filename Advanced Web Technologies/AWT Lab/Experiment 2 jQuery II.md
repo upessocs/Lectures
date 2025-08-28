@@ -1,4 +1,4 @@
-# AngularJS Lab Manual — Experiments 2–4
+# Jquery and AngularJS Lab Manual — Experiments 
 
 **Audience:** Beginners to AngularJS (1.x) and jQuery. Assumes basic HTML/CSS/JavaScript knowledge.
 
