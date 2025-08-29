@@ -78,6 +78,7 @@ angular-lab/
 
 ### exp2/index.html
 
+
 ```html
 <!doctype html>
 <html>
@@ -176,10 +177,5 @@ body { font-family: Arial, sans-serif; padding: 20px; }
 * Modify the animation so it toggles back to original size when clicking the button again (use `.is(':animated')` guard and track a boolean state).
 
 ---
-
-
-# Instructor Hints (for grading)
-
-* Award points for correctness of functionality, code readability, and use of Angular features (two-way binding, form state, filters).
 
 

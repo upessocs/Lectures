@@ -67,6 +67,34 @@
     </div>
     ```
 
+
+## Final `index.html` should look like
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myHelloWorldApp">
+    <!-- Create a view -->
+    <div ng-controller="HelloWorldController">
+        <h1> {{ message }}</h1>
+    </div>   
+
+    <script>
+        // Create a module. The array [] is for dependencies (none for now).
+        var app = angular.module('myHelloWorldApp', []);
+
+        // Create a controller. The $scope is the application model.
+        app.controller('HelloWorldController', function($scope) {
+        // $scope is the glue (model) between the controller and the view.
+            $scope.message = "Hello, World!";
+        });
+    </script>
+    </body>
+</html>
+```
 ---
 
 ### Lecture Hour 2: Directives & Data Binding
