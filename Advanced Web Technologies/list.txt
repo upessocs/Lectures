@@ -7,3 +7,4 @@
 ./001 Git and GitHub Installation and Basics.md
 ./001 Syllabus CSEG2071 Advanced Web Technologies BCA.pdf
 ./000 Course Plan AWT Advanced Web Technologies  BCA CSEG2071 Prateek.docx
+./Prateek_Raj_Gautam_CSO_Advanced Web Technologies  BCA CSEG2071 CoursePlan.docx

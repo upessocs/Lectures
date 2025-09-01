@@ -1,5 +1,22 @@
 # **Git Installation and Basic Tutorial (Windows, macOS, Ubuntu)**
 
+
+
+
+
+
+<iframe
+  width="70%"
+  height="60%"
+  src="https://www.youtube-nocookie.com/embed/uGnkvpD44Pg"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen>
+</iframe>
+
+[Video](https://youtu.be/uGnkvpD44Pg)
+
 ## **1. Installing Git**
 
 ### **Windows (using git-scm)**
