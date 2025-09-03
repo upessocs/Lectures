@@ -175,9 +175,9 @@ AngularJS arrays are like JavaScript arrays:
 
 ### Example
 ```html
-<div ng-app="" ng-init="points=\[1,15,19,2,40\]">
+<div ng-app="" ng-init="points=[1,15,19,2,40]">
 
-<p>The third result is {{ points\[2\] }}</p>
+<p>The third result is {{ points[2] }}</p>
 
 </div>
 ```
@@ -187,9 +187,9 @@ Same example using `ng-bind`:
 
 ### Example
 ```html
-<div ng-app="" ng-init="points=\[1,15,19,2,40\]">
+<div ng-app="" ng-init="points=[1,15,19,2,40]">
 
-<p>The third result is <span ng-bind="points\[2\]"></span></p>
+<p>The third result is <span ng-bind="points[2]"></span></p>
 
 </div>
 ```
@@ -234,7 +234,7 @@ A module is created by using the AngularJS function `angular.module`
 ```html
 <div ng-app="myApp">...</div>
 
-<script>var app = angular.module("myApp", \[\]); </script>
+<script>var app = angular.module("myApp", []); </script>
 ```
 The "myApp" parameter refers to an HTML element in which the application will run.
 
@@ -255,7 +255,7 @@ Add a controller to your application, and refer to the controller with the `ng-c
 
 <script>
 
-var app = angular.module(**"myApp"**, \[\]);
+var app = angular.module(**"myApp"**, []);
 
 app.controller(**"myCtrl"**, function($scope) {  
   $scope.firstName = "John";  
@@ -285,7 +285,7 @@ In addition you can use the module to add your own directives to your applicatio
 <div ng-app="myApp" w3-test-directive></div>
 
 <script>  
-var app = angular.module("myApp", \[\]);
+var app = angular.module("myApp", []);
 
 app.directive("w3TestDirective", function() {  
   return {  
@@ -329,11 +329,11 @@ In this example, "myApp.js" contains an application module definition, while "my
 
 ### myApp.js
 ```js
-var app = angular.module(**"myApp"**, \[\]);
+var app = angular.module(**"myApp"**, []);
 
-The \[\] parameter in the module definition can be used to define dependent modules.
+The [] parameter in the module definition can be used to define dependent modules.
 
-Without the \[\] parameter, you are not _creating_ a new module, but _retrieving_ an existing one.
+Without the [] parameter, you are not _creating_ a new module, but _retrieving_ an existing one.
 
 ### myCtrl.js
 
@@ -372,7 +372,7 @@ This is because calls to `angular.module` can only be compiled after the library
 </div>
 
 <script>  
-var app = angular.module("myApp", \[\]);  
+var app = angular.module("myApp", []);  
 app.controller("myCtrl", function($scope) {  
   $scope.firstName = "John";  
   $scope.lastName = "Doe";  

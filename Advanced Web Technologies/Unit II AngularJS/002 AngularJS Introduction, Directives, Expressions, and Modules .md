@@ -163,7 +163,7 @@ Full Name: {{firstName + " " + lastName}}
 </div>
 
 <script>  
-var app = angular.module('**myApp**', \[\]);  
+var app = angular.module('**myApp**', []);  
 app.controller('**myCtrl**', function($scope) {  
   $scope.firstName= "John";  
   $scope.lastName= "Doe";  
@@ -176,7 +176,7 @@ AngularJS modules define applications:
 
 ### AngularJS Module
 ```js
-var app = angular.module('myApp', \[\]);
+var app = angular.module('myApp', []);
 
 AngularJS controllers control applications:
 
