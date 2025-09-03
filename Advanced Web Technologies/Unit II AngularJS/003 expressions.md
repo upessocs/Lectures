@@ -29,16 +29,16 @@ Example {{ 5 + 5 }} or {{ firstName + " " + lastName }}
 ### Example
 ```html
 <!DOCTYPE html>  
-<html\>  
-<script src\="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>  
-<body\>
+<html>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<body>
 
-<div ng-app\=""\>  
-  <p\>My first expression: {{ 5 + 5 }}</p\>  
-</div\>
+<div ng-app="">  
+  <p>My first expression: {{ 5 + 5 }}</p>  
+</div>
 
-</body\>  
-</html\>
+</body>  
+</html>
 ```
 
 
@@ -47,16 +47,16 @@ If you remove the `ng-app` directive, HTML will display the expression as it is,
 ### Example
 ```html
 <!DOCTYPE html>  
-<html\>  
-<script src\="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>  
-<body\>
+<html>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<body>
 
-<div\>  
-  <p\>My first expression: {{ 5 + 5 }}</p\>  
-</div\>
+<div>  
+  <p>My first expression: {{ 5 + 5 }}</p>  
+</div>
 
-</body\>  
-</html\>
+</body>  
+</html>
 ```
 
 
@@ -68,11 +68,11 @@ Change the color of the input box below, by changing its value:
 
 ### Example
 ```html
-<div ng-app\="" ng-init\="myCol='lightblue'"\>
+<div ng-app="" ng-init="myCol='lightblue'">
 
-<input style\="background-color:{{myCol}}" ng-model\="myCol"\>
+<input style="background-color:{{myCol}}" ng-model="myCol">
 
-</div\>
+</div>
 ```
 
 
@@ -86,11 +86,11 @@ AngularJS numbers are like JavaScript numbers:
 
 ### Example
 ```html
-<div ng-app\="" ng-init\="quantity=1;cost=5"\>
+<div ng-app="" ng-init="quantity=1;cost=5">
 
-<p\>Total in dollar: {{ quantity \* cost }}</p\>
+<p>Total in dollar: {{ quantity \* cost }}</p>
 
-</div\>
+</div>
 ```
 
 
@@ -98,11 +98,11 @@ Same example using `ng-bind`:
 
 ### Example
 ```html
-<div ng-app\="" ng-init\="quantity=1;cost=5"\>
+<div ng-app="" ng-init="quantity=1;cost=5">
 
-<p\>Total in dollar: <span ng-bind\="quantity \* cost"\></span\></p\>
+<p>Total in dollar: <span ng-bind="quantity \* cost"></span></p>
 
-</div\>
+</div>
 ```
 
 
@@ -117,11 +117,11 @@ AngularJS strings are like JavaScript strings:
 
 ### Example
 ```html
-<div ng-app\="" ng-init\="firstName='John';lastName='Doe'"\>
+<div ng-app="" ng-init="firstName='John';lastName='Doe'">
 
-<p\>The name is {{ firstName + " " + lastName }}</p\>
+<p>The name is {{ firstName + " " + lastName }}</p>
 
-</div\>
+</div>
 ```
 
 
@@ -129,11 +129,11 @@ Same example using `ng-bind`:
 
 ### Example
 ```html
-<div ng-app\="" ng-init\="firstName='John';lastName='Doe'"\>
+<div ng-app="" ng-init="firstName='John';lastName='Doe'">
 
-<p\>The name is <span ng-bind\="firstName + ' ' + lastName"\></span\></p\>
+<p>The name is <span ng-bind="firstName + ' ' + lastName"></span></p>
 
-</div\>
+</div>
 ```
 
 
@@ -146,11 +146,11 @@ AngularJS objects are like JavaScript objects:
 
 ### Example
 ```html
-<div ng-app\="" ng-init\="person={firstName:'John',lastName:'Doe'}"\>
+<div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">
 
-<p\>The name is {{ person.lastName }}</p\>
+<p>The name is {{ person.lastName }}</p>
 
-</div\>
+</div>
 ```
 
 
@@ -158,11 +158,11 @@ Same example using `ng-bind`:
 
 ### Example
 ```html
-<div ng-app\="" ng-init\="person={firstName:'John',lastName:'Doe'}"\>
+<div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">
 
-<p\>The name is <span ng-bind\="person.lastName"\></span\></p\>
+<p>The name is <span ng-bind="person.lastName"></span></p>
 
-</div\>
+</div>
 ```
 
 
@@ -175,11 +175,11 @@ AngularJS arrays are like JavaScript arrays:
 
 ### Example
 ```html
-<div ng-app\="" ng-init\="points=\[1,15,19,2,40\]"\>
+<div ng-app="" ng-init="points=\[1,15,19,2,40\]">
 
-<p\>The third result is {{ points\[2\] }}</p\>
+<p>The third result is {{ points\[2\] }}</p>
 
-</div\>
+</div>
 ```
 
 
@@ -187,11 +187,11 @@ Same example using `ng-bind`:
 
 ### Example
 ```html
-<div ng-app\="" ng-init\="points=\[1,15,19,2,40\]"\>
+<div ng-app="" ng-init="points=\[1,15,19,2,40\]">
 
-<p\>The third result is <span ng-bind\="points\[2\]"\></span\></p\>
+<p>The third result is <span ng-bind="points\[2\]"></span></p>
 
-</div\>
+</div>
 ```
 
 
@@ -232,9 +232,9 @@ Creating a Module
 
 A module is created by using the AngularJS function `angular.module`
 ```html
-<div ng-app\="myApp"\>...</div\>
+<div ng-app="myApp">...</div>
 
-<script\>var app = angular.module("myApp", \[\]); </script\>
+<script>var app = angular.module("myApp", \[\]); </script>
 ```
 The "myApp" parameter refers to an HTML element in which the application will run.
 
@@ -249,20 +249,20 @@ Add a controller to your application, and refer to the controller with the `ng-c
 
 ### Example
 ```html
-<div ng-app\="**myApp**" ng-controller\=**"myCtrl"**\>  
+<div ng-app="**myApp**" ng-controller=**"myCtrl"**>  
 {{ firstName + " " + lastName }}  
-</div\>
+</div>
 
-<script\>
+<script>
 
-var app \= angular.module(**"myApp"**, \[\]);
+var app = angular.module(**"myApp"**, \[\]);
 
 app.controller(**"myCtrl"**, function($scope) {  
-  $scope.firstName \= "John";  
-  $scope.lastName \= "Doe";  
+  $scope.firstName = "John";  
+  $scope.lastName = "Doe";  
 });
 
-</script\>
+</script>
 ```
 
 
@@ -282,9 +282,9 @@ In addition you can use the module to add your own directives to your applicatio
 
 ### Example
 ```html
-<div ng-app\="myApp" w3-test-directive\></div\>
+<div ng-app="myApp" w3-test-directive></div>
 
-<script\>  
+<script>  
 var app = angular.module("myApp", \[\]);
 
 app.directive("w3TestDirective", function() {  
@@ -293,7 +293,7 @@ app.directive("w3TestDirective", function() {
   };  
 });
 
-</script\>
+</script>
 ```
 
 
@@ -311,19 +311,19 @@ In this example, "myApp.js" contains an application module definition, while "my
 ### Example
 ```html
 <!DOCTYPE html>  
-<html\>  
-<script src\="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>  
-<body\>
+<html>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<body>
 
-<div ng-app\="**myApp**" ng-controller\="**myCtrl**"\>  
+<div ng-app="**myApp**" ng-controller="**myCtrl**">  
 {{ firstName + " " + lastName }}  
-</div\>
+</div>
 
-<script src\="**myApp.js**"\></script\>  
-<script src\="**myCtrl.js**"\></script\>
+<script src="**myApp.js**"></script>  
+<script src="**myCtrl.js**"></script>
 
-</body\>  
-</html\>
+</body>  
+</html>
 ```
 
 
@@ -363,24 +363,24 @@ This is because calls to `angular.module` can only be compiled after the library
 ### Example
 ```html
 <!DOCTYPE html>  
-<html\>  
-<body\>  
-<script src\="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>
+<html>  
+<body>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-<div ng-app\="myApp" ng-controller\="myCtrl"\>  
+<div ng-app="myApp" ng-controller="myCtrl">  
 {{ firstName + " " + lastName }}  
-</div\>
+</div>
 
-<script\>  
+<script>  
 var app = angular.module("myApp", \[\]);  
 app.controller("myCtrl", function($scope) {  
-  $scope.firstName \= "John";  
-  $scope.lastName \= "Doe";  
+  $scope.firstName = "John";  
+  $scope.lastName = "Doe";  
 });  
-</script\>
+</script>
 
-</body\>  
-</html\>
+</body>  
+</html>
 ```
 
 
