@@ -15,7 +15,7 @@ AngularJS is a JavaScript framework written in JavaScript.
 
 AngularJS is distributed as a JavaScript file, and can be added to a web page with a script tag:
 
-<script src\="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>
 
 ---
 
@@ -35,12 +35,12 @@ The **ng-bind** directive binds application data to the HTML view.
 ```html
 <!DOCTYPE html>  
 <html\>  
-<script src\="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>  
 <body\>
 
-<div ng-app\=""\>  
-  <p\>Name: <input type\="text" ng-model\="name"\></p\>  
-  <p ng-bind\="name"\></p\>  
+<div ng-app=""\>  
+  <p\>Name: <input type="text" ng-model="name"\></p\>  
+  <p ng-bind="name"\></p\>  
 </div\>
 
 </body\>  
@@ -70,9 +70,9 @@ The **ng-init** directive initializes AngularJS application variables.
 
 ### AngularJS Example
 ```html
-<div ng-app\="" ng-init\="firstName='John'"\>
+<div ng-app="" ng-init="firstName='John'"\>
 
-<p\>The name is <span ng-bind\="firstName"\></span\></p\>
+<p\>The name is <span ng-bind="firstName"\></span\></p\>
 
 </div\>
 ```
@@ -82,9 +82,9 @@ Alternatively with valid HTML:
 
 ### AngularJS Example
 ```html
-<div data-ng-app\="" data-ng-init\="firstName='John'"\>
+<div data-ng-app="" data-ng-init="firstName='John'"\>
 
-<p\>The name is <span data-ng-bind\="firstName"\></span\></p\>
+<p\>The name is <span data-ng-bind="firstName"\></span\></p\>
 
 </div\>
 ```
@@ -107,10 +107,10 @@ AngularJS will "output" data exactly where the expression is written:
 ```html
 <!DOCTYPE html>  
 <html\>  
-<script src\="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>  
 <body\>
 
-<div ng-app\=""\>  
+<div ng-app=""\>  
   <p\>My first expression: {{ 5 + 5 }}</p\>  
 </div\>
 
@@ -126,11 +126,11 @@ AngularJS expressions bind AngularJS data to HTML the same way as the **ng-bind*
 ```html
 <!DOCTYPE html>  
 <html\>  
-<script src\="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"\></script\>  
 <body\>
 
-<div ng-app\=""\>  
-  <p\>Name: <input type\="text" ng-model\="name"\></p\>  
+<div ng-app=""\>  
+  <p\>Name: <input type="text" ng-model="name"\></p\>  
   <p\>{{name}}</p\>  
 </div\>
 
@@ -153,10 +153,10 @@ The **ng-app** directive defines the application, the **ng-controller** directiv
 
 ### AngularJS Example
 ```html
-<div ng-app\="**myApp**" ng-controller\="**myCtrl**"\>
+<div ng-app="**myApp**" ng-controller="**myCtrl**"\>
 
-First Name: <input type\="text" ng-model\="firstName"\><br\>  
-Last Name: <input type\="text" ng-model\="lastName"\><br\>  
+First Name: <input type="text" ng-model="firstName"\><br\>  
+Last Name: <input type="text" ng-model="lastName"\><br\>  
 <br\>  
 Full Name: {{firstName + " " + lastName}}
 
