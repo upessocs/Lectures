@@ -1,3 +1,4 @@
 ./
 ./001 Introduction to AngularJS.md
 ./002 AngularJS Introduction, Directives, Expressions, and Modules .md
+./003 expressions.md
