@@ -1,4 +1,12 @@
 ./
+./ngrepete
 ./001 Introduction to AngularJS.md
 ./002 AngularJS Introduction, Directives, Expressions, and Modules .md
-./003 expressions.md
+./003 AngularJS  Expressions and file structure.md
+./angular Res (1).md
+./angular Res (2).md
+./angular Res (3).md
+./angular Res (4).md
+./angular Res (5).md
+./angular Res (6).md
+./angular Res (7).md
