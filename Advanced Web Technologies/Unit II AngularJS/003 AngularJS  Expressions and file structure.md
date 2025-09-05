@@ -1,12 +1,4 @@
 
-AngularJS Expressions
----------------------
-
----
-
-AngularJS binds data to HTML using **Expressions**.
-
----
 # AngularJS Expressions
 
 ---
@@ -86,7 +78,7 @@ AngularJS numbers are like JavaScript numbers:
 ```html
 <div ng-app="" ng-init="quantity=1;cost=5">
 
-<p>Total in dollar: {{ quantity \* cost }}</p>
+<p>Total in dollar: {{ quantity * cost }}</p>
 
 </div>
 ```
@@ -98,7 +90,7 @@ Same example using `ng-bind`:
 ```html
 <div ng-app="" ng-init="quantity=1;cost=5">
 
-<p>Total in dollar: <span ng-bind="quantity \* cost"></span></p>
+<p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
 
 </div>
 ```
@@ -206,98 +198,9 @@ AngularJS expressions do not support conditionals, loops, and exceptions, while 
 
 AngularJS expressions support filters, while JavaScript expressions do not.
 
-
----
-# AngularJS Modules
-
-AngularJS Modules
------------------
-
 ---
 
-An AngularJS module defines an application.
-
-The module is a container for the different parts of an application.
-
-The module is a container for the application controllers.
-
-Controllers always belong to a module.
-
----
-
-Creating a Module
------------------
-
-A module is created by using the AngularJS function `angular.module`
-```html
-<div ng-app="myApp">...</div>
-
-<script>var app = angular.module("myApp", []); </script>
-```
-The "myApp" parameter refers to an HTML element in which the application will run.
-
-Now you can add controllers, directives, filters, and more, to your AngularJS application.
-
----
-
-Adding a Controller
--------------------
-
-Add a controller to your application, and refer to the controller with the `ng-controller` directive:
-
-### Example
-```html
-<div ng-app="**myApp**" ng-controller=**"myCtrl"**>  
-{{ firstName + " " + lastName }}  
-</div>
-
-<script>
-
-var app = angular.module(**"myApp"**, []);
-
-app.controller(**"myCtrl"**, function($scope) {  
-  $scope.firstName = "John";  
-  $scope.lastName = "Doe";  
-});
-
-</script>
-```
-
-
-
-
-
----
-
-Adding a Directive
-------------------
-
-AngularJS has a set of built-in directives which you can use to add functionality to your application.
-
-For a full reference, visit our [AngularJS directive reference](https://www.w3schools.com/angular/angular_ref_directives.asp).
-
-In addition you can use the module to add your own directives to your applications:
-
-### Example
-```html
-<div ng-app="myApp" w3-test-directive></div>
-
-<script>  
-var app = angular.module("myApp", []);
-
-app.directive("w3TestDirective", function() {  
-  return {  
-    template : "I was made in a directive constructor!"  
-  };  
-});
-
-</script>
-```
-
-
-You will learn more about directives later in this tutorial.
-
----
+# AngularJS Project Organization and file structure
 
 Modules and Controllers in Files
 --------------------------------
@@ -310,31 +213,30 @@ In this example, "myApp.js" contains an application module definition, while "my
 ```html
 <!DOCTYPE html>  
 <html>  
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
-<body>
-
-<div ng-app="**myApp**" ng-controller="**myCtrl**">  
-{{ firstName + " " + lastName }}  
-</div>
-
-<script src="**myApp.js**"></script>  
-<script src="**myCtrl.js**"></script>
-
-</body>  
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">  
+      {{ firstName + " " + lastName }}  
+    </div>
+    <script src="myApp.js"></script>  
+    <script src="myCtrl.js"></script>
+  </body>  
 </html>
 ```
 
 
 ### myApp.js
 ```js
-var app = angular.module(**"myApp"**, []);
+var app = angular.module("myApp", []);
+```
+//The [] parameter in the module definition can be used to define dependent modules.
+//Without the [] parameter, you are not _creating_ a new module, but _retrieving_ an existing one.
 
-The [] parameter in the module definition can be used to define dependent modules.
-
-Without the [] parameter, you are not _creating_ a new module, but _retrieving_ an existing one.
 
 ### myCtrl.js
-
+```js
 app.controller(**"myCtrl"**, function($scope) {  
   $scope.firstName = "John";  
   $scope.lastName= "Doe";  
@@ -345,41 +247,12 @@ app.controller(**"myCtrl"**, function($scope) {
 Functions can Pollute the Global Namespace
 ------------------------------------------
 
-Global functions should be avoided in JavaScript. They can easily be overwritten or destroyed by other scripts.
+> Global functions should be avoided in JavaScript. They can easily be overwritten or destroyed by other scripts.
 
-AngularJS modules reduces this problem, by keeping all functions local to the module.
+> AngularJS modules reduces this problem, by keeping all functions local to the module.
 
----
 
-When to Load the Library
-------------------------
-
-While it is common in HTML applications to place scripts at the end of the `<body>` element, it is recommended that you load the AngularJS library either in the `<head>` or at the start of the `<body>`.
-
-This is because calls to `angular.module` can only be compiled after the library has been loaded.
-
-### Example
-```html
-<!DOCTYPE html>  
-<html>  
-<body>  
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-
-<div ng-app="myApp" ng-controller="myCtrl">  
-{{ firstName + " " + lastName }}  
-</div>
-
-<script>  
-var app = angular.module("myApp", []);  
-app.controller("myCtrl", function($scope) {  
-  $scope.firstName = "John";  
-  $scope.lastName = "Doe";  
-});  
-</script>
-
-</body>  
-</html>
-```
+<a style="padding:1em;border-radius:.2em;color:white;background-color:orange;font-weight:900;" href="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" download="angular.min.js"> Download Angular for offline testing </a> 
 
 
   
