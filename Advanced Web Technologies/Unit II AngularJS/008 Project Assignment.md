@@ -13,6 +13,7 @@ Build an app that allows a user to:
 5.  Filter tasks (All, Active, Completed).
 
 **Step-by-Step Guide:**
+
 1.  **Setup:** Create the HTML file, include Angular, and create the module `taskManagerApp`.
 2.  **Controller & Model:** Create a `TaskController` with a `$scope.tasks` array and a `$scope.newTask` object.
 3.  **View & `ng-repeat`:** Use `ng-repeat` to display the list of tasks. Each task should have a description and a "completed" state. Use `ng-class` to strikethrough completed tasks.

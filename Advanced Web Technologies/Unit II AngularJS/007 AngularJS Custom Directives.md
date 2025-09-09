@@ -50,4 +50,10 @@
 - **Reading Errors:** AngularJS error messages are often very descriptive. Read them carefully in the console. They usually point to the exact file and line number where the problem occurred (e.g., an undefined variable or a missing dependency).
 
 
-<a style="padding:1em;border-radius:.2em;color:white;background-color:orange;font-weight:900;" href="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" download="angular.min.js"> Download Angular for offline testing </a> 
+<a style="padding:.5em 1em;margin:2em;border-radius:.2em;color:white;background-color:orange;font-weight:900;" href="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" download="angular.min.js"> Download Angular for offline testing </a> 
+
+<style>
+    section:nth-child(last){
+        margin-bottom:3em;
+    }
+</style>

@@ -132,8 +132,8 @@ Directives are markers on a DOM element (e.g., an attribute, element name, comme
 
 
 ---
-
-# Understanding ng-show/ng-hide, ng-if, and ng-class Directives
+#   
+# Understanding ng-show/ng-hide, ng-if, and ng-class Directives (Pending)
 
 
 ```html

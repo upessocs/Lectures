@@ -7,4 +7,7 @@
 ./Experiment 3 Linux File Manipulation and System Manipulation I.md
 ./Experiment 4 BASH or SHELL scripting.md
 ./Experiment 5 BASH or SHELL scripting cont..  .md
+./Experiment 6 Shell Loops.md
+./Experiment 7 Shell Programming cont ...md
+./Experiment 7 Shell Programming, Process and schedule.md
 ./001 Courseplan Linux Lab.pdf

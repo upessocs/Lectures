@@ -41,7 +41,8 @@ script -a lab_session_1.md
 1.  **Perform all the lab exercises** as you normally would.
 
 2.  When you have completed **all** tasks, type `exit` to stop the recording.
-3.  
+   
+
 ```bash
 exit
 ```
@@ -134,4 +135,123 @@ ls -l
 [Link Text](https://example.com)
 ```
 
-> You are now ready to begin Experiment 1. 
+
+---
+# Cleaning output as it contains non ascii control characters and escape sequence,
+
+You're dealing with the control characters and escape sequences that `script` adds. Here are several ways to clean up the output for markdown:
+
+## 1. Using `sed` to remove control characters
+
+```bash
+# Basic cleanup - remove most control characters
+sed 's/\x1b\[[0-9;]*[a-zA-Z]//g; s/\x0d//g; s/\x1b\]0;//g' file.txt > clean_output.txt
+
+# More comprehensive version
+sed -e 's/\x1b\[[0-9;]*m//g' -e 's/\x1b\[[0-9;]*[a-zA-Z]//g' -e 's/\x0d//g' file.txt > clean_output.txt
+```
+
+## 2. Using `awk` for more control
+
+```bash
+# Remove ANSI escape sequences and carriage returns
+awk '{gsub(/\033\[[0-9;]*m/,""); gsub(/\033\[[0-9;]*[a-zA-Z]/,""); gsub(/\r/,""); print}' file.txt > clean_output.txt
+```
+
+## 3. Using `grep` to extract specific content
+
+```bash
+# Extract only lines that look like commands or output
+grep -E '^(# Command:|# Output:|# Exit status:|$|[^#])' file.txt > clean_output.txt
+
+# Or remove all script-generated timestamps and control chars
+grep -v '^Script started\|^Script done' file.txt | sed 's/\x1b\[[0-9;]*m//g' > clean_output.txt
+```
+
+## 4. Complete cleanup script
+
+Create a script called `clean_script_output.sh`:
+
+```bash
+#!/bin/bash
+
+input_file="$1"
+output_file="${input_file%.*}_clean.txt"
+
+# Remove ANSI escape sequences, carriage returns, and script metadata
+sed -e 's/\x1b\[[0-9;]*m//g' \
+    -e 's/\x1b\[[0-9;]*[a-zA-Z]//g' \
+    -e 's/\x0d//g' \
+    -e '/^Script started\|^Script done/d' \
+    -e 's/^# Command: //' \
+    -e 's/^# Output: //' \
+    -e 's/^# Exit status: //' \
+    "$input_file" > "$output_file"
+
+echo "Cleaned output saved to: $output_file"
+```
+
+Usage:
+```bash
+chmod +x clean_script_output.sh
+./clean_script_output.sh file.txt
+```
+
+## 5. Alternative: Use `script` with better options
+
+```bash
+# Use script with timing but without control characters
+script -q -t 2>timing.txt -a file.txt
+
+# Or use unbuffer for cleaner output
+unbuffer your-command | tee file.txt
+```
+
+## 6. For markdown formatting
+
+After cleaning, you can further process for markdown:
+
+```bash
+# Add bash code blocks around commands
+awk '
+BEGIN {print "```bash"}
+/^\$ / {print substr($0, 3); next}
+/^[^$]/ {if (!output_started) {print "```\nOutput:"; output_started=1} print}
+END {if (output_started) print "```"}
+' clean_output.txt > markdown_ready.txt
+```
+
+## Example Usage:
+
+```bash
+# Record session
+script -a mysession.txt
+
+# Run some commands
+$ ls -la
+$ echo "Hello World"
+$ exit
+
+# Clean the output
+./clean_script_output.sh mysession.txt
+
+# The cleaned file will be ready for markdown:
+# ```bash
+# ls -la
+# ```
+# 
+# Output:
+# total 24
+# drwxr-xr-x  2 user user 4096 Dec 1 10:00 .
+# drwxr-xr-x 10 user user 4096 Dec 1 10:00 ..
+# -rw-r--r--  1 user user   12 Dec 1 10:00 file.txt
+# 
+# ```bash
+# echo "Hello World"
+# ```
+# 
+# Output:
+# Hello World
+```
+
+The `sed` approach is usually the most effective for removing ANSI escape sequences and control characters that `script` adds to the output.
