@@ -1,0 +1,9 @@
+list or array with todo items
+
+user can add task >> save to local storage
+
+display updated list of tasks
+
+delete task
+
+modify task
