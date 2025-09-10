@@ -4,7 +4,8 @@ Dear Subject Coordinators,
 
 Please ensure the following guidelines are followed when preparing and uploading your Course Plans for the current semester:
 
-**Instructions to Follow Before Uploading:**
+#### Instructions to Follow Before Uploading:
+
 1.  The file must be in **PDF format**.
 2.  The filename **must begin** with: `YourName_CLUSTER_Course_SemX_CourseCode_CourseName_CoursePlan` (e.g., `JohnDoe_CS_BTech_SemVIII_CSE401_ArtificialIntelligence_CoursePlan.pdf`).
 3.  **Course Outcomes (COs)** must be written using **action verbs aligned with Bloom's Taxonomy** (see summary and guide below).
@@ -15,7 +16,7 @@ Please ensure the following guidelines are followed when preparing and uploading
 
 ---
 
-### **Guidance on Key Points:**
+#### Guidance on Key Points:
 
 *   **Bloom's Taxonomy for COs:** Please use actionable verbs that describe measurable outcomes (e.g., "Design a system...", "Evaluate different algorithms...", "Compare methods..."). Avoid vague verbs like "understand" or "know."
     *   **Quick Guide:** [https://cft.vanderbilt.edu/guides-sub-pages/blooms-taxonomy/](https://cft.vanderbilt.edu/guides-sub-pages/blooms-taxonomy/)
@@ -28,6 +29,7 @@ Please ensure the following guidelines are followed when preparing and uploading
 ### **Summary of Bloom's Taxonomy for Writing COs**
 
 Bloom's Taxonomy is a framework for classifying learning objectives by complexity and specificity. Use **action verbs** from the higher levels (Analyze, Evaluate, Create) to demonstrate deeper learning.
+
 
 | Level & Cognitive Skill | Definition | Example Action Verbs for COs |
 | :--- | :--- | :--- |

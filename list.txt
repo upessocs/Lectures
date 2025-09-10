@@ -2,6 +2,8 @@
 ./.DE
 ./.git
 ./.github
+./.IQAC
+./.res
 ./Advanced Web Technologies
 ./Computer Architecture and Organisation
 ./DevOps CCVT
