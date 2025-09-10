@@ -423,6 +423,7 @@ Directives are markers on a DOM element (e.g., an attribute, element name, comme
     ```
 - **`ng-click`:** This is another crucial directive used to call a function on the `$scope` when an element is clicked.
 
+---
 
 
 # Understanding `ng-click` Directive in AngularJS
@@ -669,4 +670,4 @@ Execute multiple expressions separated by semicolons.
 
 
 
-<a style="padding:1em;border-radius:.2em;color:white;background-color:orange;font-weight:900;" href="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" download="angular.min.js"> Download Angular for offline testing </a> 
+<a style="margin:2em;padding:1em;border-radius:.2em;color:white;background-color:orange;font-weight:900;" href="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" download="angular.min.js"> Download Angular for offline testing </a> 
