@@ -32,7 +32,7 @@ Bloom's Taxonomy is a framework for classifying learning objectives by complexit
 
 
 | Level & Cognitive Skill | Definition | Example Action Verbs for COs |
-| :--- | :--- | :--- |
+|:------|:------|:-------|
 | **6. Create** (Highest) | Produce new or original work | design, assemble, construct, formulate, write, propose |
 | **5. Evaluate** | Justify a stand or decision | appraise, argue, defend, judge, select, support, critique |
 | **4. Analyze** | Draw connections among ideas | differentiate, organize, relate, compare, contrast, distinguish |
