@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tutorialApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Forms and Filters Tutorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            color: #444;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            color: #555;
+            margin-top: 30px;
+        }
+        
+        .form-container {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+        }
+        
+        .ng-invalid.ng-dirty {
+            border-color: #e74c3c !important;
+        }
+        
+        .ng-valid.ng-dirty {
+            border-color: #27ae60 !important;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s ease;
+            margin-right: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .validation-summary {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .filter-demo {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #3498db;
+        }
+        
+        .filter-result {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', monospace;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AngularJS Forms and Filters Tutorial</h1>
+        
+        <!-- FORMS SECTION -->
+        <h2>1. AngularJS Forms and ng-form Directive</h2>
+        
+        <div ng-controller="FormController">
+            <h3>1.1 Basic Form with Validation</h3>
+            <div class="form-container">
+                <form name="userForm" novalidate>
+                    <div class="form-group">
+                        <label>Name (Required, min 2 characters):</label>
+                        <input type="text" 
+                               name="userName" 
+                               ng-model="user.name" 
+                               required 
+                               ng-minlength="2"
+                               placeholder="Enter your name">
+                        <span class="error" ng-show="userForm.userName.$dirty && userForm.userName.$invalid">
+                            <span ng-show="userForm.userName.$error.required">Name is required.</span>
+                            <span ng-show="userForm.userName.$error.minlength">Name must be at least 2 characters.</span>
+                        </span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email (Required, valid email):</label>
+                        <input type="email" 
+                               name="userEmail" 
+                               ng-model="user.email" 
+                               required
+                               placeholder="Enter your email">
+                        <span class="error" ng-show="userForm.userEmail.$dirty && userForm.userEmail.$invalid">
+                            <span ng-show="userForm.userEmail.$error.required">Email is required.</span>
+                            <span ng-show="userForm.userEmail.$error.email">Please enter a valid email.</span>
+                        </span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Age (Required, 18-100):</label>
+                        <input type="number" 
+                               name="userAge" 
+                               ng-model="user.age" 
+                               required 
+                               min="18" 
+                               max="100"
+                               placeholder="Enter your age">
+                        <span class="error" ng-show="userForm.userAge.$dirty && userForm.userAge.$invalid">
+                            <span ng-show="userForm.userAge.$error.required">Age is required.</span>
+                            <span ng-show="userForm.userAge.$error.min">Age must be at least 18.</span>
+                            <span ng-show="userForm.userAge.$error.max">Age must be less than 100.</span>
+                        </span>
+                    </div>
+                    
+                    <button type="button" 
+                            class="btn" 
+                            ng-click="submitForm()" 
+                            ng-disabled="userForm.$invalid">
+                        Submit Form
+                    </button>
+                    
+                    <button type="button" class="btn" ng-click="resetForm()">Reset</button>
+                </form>
+                
+                <div class="validation-summary" ng-show="userForm.$dirty">
+                    <h4>Form Status:</h4>
+                    <p><strong>Form Valid:</strong> {{ userForm.$valid }}</p>
+                    <p><strong>Form Invalid:</strong> {{ userForm.$invalid }}</p>
+                    <p><strong>Form Dirty:</strong> {{ userForm.$dirty }}</p>
+                    <p><strong>Form Pristine:</strong> {{ userForm.$pristine }}</p>
+                </div>
+            </div>
+            
+            <h3>1.2 Nested Forms with ng-form</h3>
+            <div class="form-container">
+                <form name="mainForm" novalidate>
+                    <h4>Personal Information</h4>
+                    <ng-form name="personalForm">
+                        <div class="form-group">
+                            <label>First Name:</label>
+                            <input type="text" 
+                                   name="firstName" 
+                                   ng-model="profile.firstName" 
+                                   required
+                                   placeholder="First Name">
+                            <span class="error" ng-show="personalForm.firstName.$dirty && personalForm.firstName.$invalid">
+                                First name is required.
+                            </span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Last Name:</label>
+                            <input type="text" 
+                                   name="lastName" 
+                                   ng-model="profile.lastName" 
+                                   required
+                                   placeholder="Last Name">
+                            <span class="error" ng-show="personalForm.lastName.$dirty && personalForm.lastName.$invalid">
+                                Last name is required.
+                            </span>
+                        </div>
+                    </ng-form>
+                    
+                    <h4>Contact Information</h4>
+                    <ng-form name="contactForm">
+                        <div class="form-group">
+                            <label>Phone:</label>
+                            <input type="tel" 
+                                   name="phone" 
+                                   ng-model="profile.phone" 
+                                   ng-pattern="/^[0-9-+\s()]*$/"
+                                   placeholder="Phone number">
+                            <span class="error" ng-show="contactForm.phone.$dirty && contactForm.phone.$invalid">
+                                Please enter a valid phone number.
+                            </span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Website:</label>
+                            <input type="url" 
+                                   name="website" 
+                                   ng-model="profile.website" 
+                                   placeholder="http://example.com">
+                            <span class="error" ng-show="contactForm.website.$dirty && contactForm.website.$invalid">
+                                Please enter a valid URL.
+                            </span>
+                        </div>
+                    </ng-form>
+                    
+                    <button type="button" 
+                            class="btn" 
+                            ng-click="submitProfile()" 
+                            ng-disabled="mainForm.$invalid">
+                        Submit Profile
+                    </button>
+                    
+                    <div class="validation-summary">
+                        <h4>Nested Form Status:</h4>
+                        <p><strong>Main Form Valid:</strong> {{ mainForm.$valid }}</p>
+                        <p><strong>Personal Section Valid:</strong> {{ personalForm.$valid }}</p>
+                        <p><strong>Contact Section Valid:</strong> {{ contactForm.$valid }}</p>
+                    </div>
+                </form>
+            </div>
+            
+            <h3>1.3 Custom Validation</h3>
+            <div class="form-container">
+                <form name="customForm" novalidate>
+                    <div class="form-group">
+                        <label>Username (must be unique):</label>
+                        <input type="text" 
+                               name="username" 
+                               ng-model="newUser.username" 
+                               required 
+                               custom-validator
+                               placeholder="Enter username">
+                        <span class="error" ng-show="customForm.username.$dirty && customForm.username.$error.required">
+                            Username is required.
+                        </span>
+                        <span class="error" ng-show="customForm.username.$dirty && customForm.username.$error.notUnique">
+                            Username already exists. Try: admin, user, or guest.
+                        </span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" 
+                               name="password" 
+                               ng-model="newUser.password" 
+                               required 
+                               strong-password
+                               placeholder="Enter strong password">
+                        <span class="error" ng-show="customForm.password.$dirty && customForm.password.$error.required">
+                            Password is required.
+                        </span>
+                        <span class="error" ng-show="customForm.password.$dirty && customForm.password.$error.weakPassword">
+                            Password must be at least 8 characters with uppercase, lowercase, and number.
+                        </span>
+                    </div>
+                    
+                    <button type="button" 
+                            class="btn" 
+                            ng-click="createUser()" 
+                            ng-disabled="customForm.$invalid">
+                        Create User
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- FILTERS SECTION -->
+        <h2>2. AngularJS Filters</h2>
+        
+        <div ng-controller="FilterController">
+            <h3>2.1 Built-in Filters</h3>
+            
+            <div class="filter-demo">
+                <h4>Currency Filter</h4>
+                <p>Price: <input type="number" ng-model="price" placeholder="Enter price"></p>
+                <div class="filter-result">
+                    <strong>Default Currency:</strong> {{ price | currency }}<br>
+                    <strong>Euro:</strong> {{ price | currency:'€' }}<br>
+                    <strong>Yen:</strong> {{ price | currency:'¥':0 }}
+                </div>
+            </div>
+            
+            <div class="filter-demo">
+                <h4>Date Filter</h4>
+                <div class="filter-result">
+                    <strong>Current Date:</strong> {{ currentDate | date }}<br>
+                    <strong>Short Date:</strong> {{ currentDate | date:'shortDate' }}<br>
+                    <strong>Custom Format:</strong> {{ currentDate | date:'EEEE, MMMM dd, yyyy' }}<br>
+                    <strong>Time Only:</strong> {{ currentDate | date:'HH:mm:ss' }}
+                </div>
+            </div>
+            
+            <div class="filter-demo">
+                <h4>String Filters</h4>
+                <p>Text: <input type="text" ng-model="sampleText" placeholder="Enter text"></p>
+                <div class="filter-result">
+                    <strong>Original:</strong> {{ sampleText }}<br>
+                    <strong>Uppercase:</strong> {{ sampleText | uppercase }}<br>
+                    <strong>Lowercase:</strong> {{ sampleText | lowercase }}<br>
+                    <strong>Limited (10 chars):</strong> {{ sampleText | limitTo:10 }}
+                </div>
+            </div>
+            
+            <div class="filter-demo">
+                <h4>Number Filter</h4>
+                <p>Number: <input type="number" ng-model="largeNumber" placeholder="Enter large number"></p>
+                <div class="filter-result">
+                    <strong>Original:</strong> {{ largeNumber }}<br>
+                    <strong>2 Decimal Places:</strong> {{ largeNumber | number:2 }}<br>
+                    <strong>No Decimals:</strong> {{ largeNumber | number:0 }}
+                </div>
+            </div>
+            
+            <h3>2.2 Filter with Arrays</h3>
+            <div class="filter-demo">
+                <h4>Employee List with Filters</h4>
+                <p>Search: <input type="text" ng-model="searchText" placeholder="Search employees"></p>
+                <p>Department: 
+                    <select ng-model="selectedDept">
+                        <option value="">All Departments</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Sales">Sales</option>
+                        <option value="HR">HR</option>
+                    </select>
+                </p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Salary</th>
+                            <th>Join Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="employee in employees | filter:searchText | filter:{department: selectedDept} | orderBy:'name'">
+                            <td>{{ employee.name }}</td>
+                            <td>{{ employee.department }}</td>
+                            <td>{{ employee.salary | currency }}</td>
+                            <td>{{ employee.joinDate | date:'shortDate' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p><strong>Total Employees Shown:</strong> {{ (employees | filter:searchText | filter:{department: selectedDept}).length }}</p>
+            </div>
+            
+            <h3>2.3 Custom Filters</h3>
+            <div class="filter-demo">
+                <h4>Custom Filters in Action</h4>
+                <p>Text: <input type="text" ng-model="customText" placeholder="Enter text to reverse"></p>
+                <div class="filter-result">
+                    <strong>Original:</strong> {{ customText }}<br>
+                    <strong>Reversed:</strong> {{ customText | reverse }}<br>
+                    <strong>Capitalized:</strong> {{ customText | capitalize }}<br>
+                    <strong>Word Count:</strong> {{ customText | wordCount }} words
+                </div>
+                
+                <h4>Age Category Filter</h4>
+                <p>Age: <input type="number" ng-model="testAge" placeholder="Enter age"></p>
+                <div class="filter-result">
+                    <strong>Age Category:</strong> {{ testAge | ageCategory }}
+                </div>
+                
+                <h4>Array Custom Filters</h4>
+                <div class="filter-result">
+                    <strong>All Numbers:</strong> {{ numbers }}<br>
+                    <strong>Even Numbers:</strong> {{ numbers | evenNumbers }}<br>
+                    <strong>Numbers > 5:</strong> {{ numbers | greaterThan:5 }}
+                </div>
+            </div>
+            
+            <h3>2.4 Chaining Filters</h3>
+            <div class="filter-demo">
+                <h4>Filter Chaining Example</h4>
+                <p>Long text with multiple filters applied:</p>
+                <div class="filter-result">
+                    <strong>Original:</strong> {{ longText }}<br>
+                    <strong>Chained Filters:</strong> {{ longText | limitTo:50 | uppercase | reverse }}
+                    <br><small>(Limited to 50 chars → Uppercase → Reversed)</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Main App Module
+        angular.module('tutorialApp', [])
+        
+        // Form Controller
+        .controller('FormController', function($scope) {
+            $scope.user = {};
+            $scope.profile = {};
+            $scope.newUser = {};
+            
+            $scope.submitForm = function() {
+                if ($scope.userForm.$valid) {
+                    alert('Form submitted successfully!\nName: ' + $scope.user.name + '\nEmail: ' + $scope.user.email + '\nAge: ' + $scope.user.age);
+                }
+            };
+            
+            $scope.resetForm = function() {
+                $scope.user = {};
+                $scope.userForm.$setPristine();
+                $scope.userForm.$setUntouched();
+            };
+            
+            $scope.submitProfile = function() {
+                if ($scope.mainForm.$valid) {
+                    alert('Profile submitted successfully!');
+                }
+            };
+            
+            $scope.createUser = function() {
+                if ($scope.customForm.$valid) {
+                    alert('User created successfully!');
+                }
+            };
+        })
+        
+        // Filter Controller
+        .controller('FilterController', function($scope) {
+            $scope.price = 99.99;
+            $scope.currentDate = new Date();
+            $scope.sampleText = 'Hello AngularJS Filters!';
+            $scope.largeNumber = 1234567.89;
+            $scope.customText = 'Custom Filter Demo';
+            $scope.testAge = 25;
+            $scope.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            $scope.longText = 'This is a very long text that will be used to demonstrate filter chaining in AngularJS.';
+            
+            $scope.employees = [
+                {name: 'John Doe', department: 'Engineering', salary: 75000, joinDate: new Date('2020-01-15')},
+                {name: 'Jane Smith', department: 'Marketing', salary: 65000, joinDate: new Date('2019-03-22')},
+                {name: 'Mike Johnson', department: 'Sales', salary: 55000, joinDate: new Date('2021-07-10')},
+                {name: 'Sarah Wilson', department: 'HR', salary: 60000, joinDate: new Date('2018-11-05')},
+                {name: 'Tom Brown', department: 'Engineering', salary: 80000, joinDate: new Date('2020-09-14')},
+                {name: 'Lisa Davis', department: 'Marketing', salary: 70000, joinDate: new Date('2019-12-03')}
+            ];
+            
+            $scope.searchText = '';
+            $scope.selectedDept = '';
+        })
+        
+        // Custom Validation Directives
+        .directive('customValidator', function() {
+            return {
+                require: 'ngModel',
+                link: function(scope, element, attrs, ctrl) {
+                    var existingUsers = ['admin', 'user', 'guest'];
+                    
+                    ctrl.$validators.notUnique = function(modelValue, viewValue) {
+                        if (ctrl.$isEmpty(modelValue)) {
+                            return true; // consider empty models to be valid
+                        }
+                        return existingUsers.indexOf(viewValue.toLowerCase()) === -1;
+                    };
+                }
+            };
+        })
+        
+        .directive('strongPassword', function() {
+            return {
+                require: 'ngModel',
+                link: function(scope, element, attrs, ctrl) {
+                    ctrl.$validators.weakPassword = function(modelValue, viewValue) {
+                        if (ctrl.$isEmpty(modelValue)) {
+                            return true;
+                        }
+                        var strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+                        return strongRegex.test(viewValue);
+                    };
+                }
+            };
+        })
+        
+        // Custom Filters
+        .filter('reverse', function() {
+            return function(input) {
+                return input ? input.split('').reverse().join('') : '';
+            };
+        })
+        
+        .filter('capitalize', function() {
+            return function(input) {
+                return input ? input.charAt(0).toUpperCase() + input.slice(1).toLowerCase() : '';
+            };
+        })
+        
+        .filter('wordCount', function() {
+            return function(input) {
+                return input ? input.split(/\s+/).length : 0;
+            };
+        })
+        
+        .filter('ageCategory', function() {
+            return function(age) {
+                if (!age) return 'Unknown';
+                if (age < 13) return 'Child';
+                if (age < 20) return 'Teenager';
+                if (age < 65) return 'Adult';
+                return 'Senior';
+            };
+        })
+        
+        .filter('evenNumbers', function() {
+            return function(numbers) {
+                return numbers.filter(function(num) {
+                    return num % 2 === 0;
+                });
+            };
+        })
+        
+        .filter('greaterThan', function() {
+            return function(numbers, threshold) {
+                return numbers.filter(function(num) {
+                    return num > threshold;
+                });
+            };
+        });
+    </script>
+</body>
+</html>
