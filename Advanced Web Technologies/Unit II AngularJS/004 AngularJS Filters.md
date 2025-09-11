@@ -16,7 +16,7 @@ AngularJS (1.x) is a JavaScript framework that extends HTML with new attributes 
 * `ng-form` is used to **group input controls** and handle validation.
 * It behaves like the normal HTML `<form>` but works seamlessly with AngularJS’s **validation states** (`$dirty`, `$pristine`, `$valid`, `$invalid`).
 | **State**       | **Meaning**                                 | **When True?**                                                                 | **Example Use Case**                                    |
-| --------------- | ------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------- |
+|:----|:----|:----|:----|
 | **`$pristine`** | Input has **not been touched/changed** yet. | Initially true, becomes false once the user changes the field.                 | Show a "hint" only before user types something.         |
 | **`$dirty`**    | Input has been **modified by the user**.    | Becomes true when user changes the value in the field.                         | Show warnings/errors only **after** user starts typing. |
 | **`$valid`**    | Input value passes **all validations**.     | True if all validation rules (e.g., `required`, `ng-minlength`) are satisfied. | Enable the "Submit" button only when form is valid.     |
@@ -27,7 +27,7 @@ AngularJS (1.x) is a JavaScript framework that extends HTML with new attributes 
 ### 2.2 Common Directives for Forms
 
 | Directive      | Purpose                                                   |
-| -------------- | --------------------------------------------------------- |
+|:----|:----|
 | `ng-model`     | Binds input field to a scope variable.                    |
 | `required`     | Marks a field as required.                                |
 | `ng-minlength` | Validates minimum length.                                 |
@@ -121,15 +121,15 @@ AngularJS (1.x) is a JavaScript framework that extends HTML with new attributes 
 ### 3.2 Common Built-in Filters
 
 | Filter                    | Usage                        | Example                    |                               |
-| ------------------------- | ---------------------------- | -------------------------- | ----------------------------- |
-| `currency`                | Formats a number as currency | \`{{ 2500                  | currency:"₹" }}\` → ₹2,500.00 |
-| `date`                    | Formats a date               | \`{{ today                 | date:"dd/MM/yyyy" }}\`        |
-| `filter`                  | Filters arrays               | \`ng-repeat="item in items | filter\:searchText"\`         |
-| `json`                    | Displays JSON                | \`{{ obj                   | json }}\`                     |
-| `limitTo`                 | Limits number of items       | \`{{ text                  | limitTo:10 }}\`               |
-| `lowercase` / `uppercase` | Converts text case           | \`{{ "Hello"               | uppercase }}\`                |
-| `number`                  | Formats number with decimals | \`{{ 12345.678             | number:2 }}\` → 12,345.68     |
-| `orderBy`                 | Orders an array              | \`ng-repeat="item in items | orderBy:'name'"\`             |
+|:----|:----|:----|:----|
+| `currency`                | Formats a number as currency | `{{ 2500                  pipe currency:"₹" }}` → ₹2,500.00 |
+| `date`                    | Formats a date               | `{{ today                 pipe date:"dd/MM/yyyy" }}`        |
+| `filter`                  | Filters arrays               | `ng-repeat="item in items pipe filter\:searchText"`         |
+| `json`                    | Displays JSON                | `{{ obj                   pipe json }}`                     |
+| `limitTo`                 | Limits number of items       | `{{ text                  pipe limitTo:10 }}`               |
+| `lowercase` / `uppercase` | Converts text case           | `{{ "Hello"               pipe uppercase }}`                |
+| `number`                  | Formats number with decimals | `{{ 12345.678             pipe number:2 }}` → 12,345.68     |
+| `orderBy`                 | Orders an array              | `ng-repeat="item in items pipe orderBy:'name'"`             |
 
 ---
 
