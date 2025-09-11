@@ -7,4 +7,4 @@
 ./Experiment 3 AngularJS I.md
 ./Experiment 4 AngularJS II Reading.md
 ./Experiment 4 AngularJS II perform.md
-./Experiment 5 & 6 NodeJS.md
+./Experiment 5 and 6 NodeJS.md

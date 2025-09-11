@@ -34,8 +34,7 @@
    ```bash
    npm install express
    ```
-
-## Experiment 5 & 6: NodeJS Basic Exercises
+---
 
 ### 1. Hello World Server
 
@@ -56,7 +55,7 @@ app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 ```
-
+---
 ### 2. String Replacement with Regex
 
 #### Explanation
@@ -74,7 +73,7 @@ function replaceAsWithB(inputString) {
 const result = replaceAsWithB("aaapple banaana caaar");
 console.log(result); // Output: "bpple banbna cbar"
 ```
-
+---
 ### 3. HTTP Calculator
 
 #### Explanation
@@ -108,7 +107,7 @@ app.get('/calculate', (req, res) => {
   res.json({ result });
 });
 ```
-
+---
 ### 4. Array Iteration
 
 #### Explanation
@@ -138,7 +137,7 @@ function iterateArray(arr) {
   }
 }
 ```
-
+---
 ## Final Working Code
 
 ### File 1: server.js
