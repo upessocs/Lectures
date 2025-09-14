@@ -17,7 +17,7 @@ async function reload() {
     append(marksmain, gen(span, "", "Select subject/batch  ", ""))
     append(marksmain, gen(select, "subject", "", ""))
     subject.type = "radio"
-    var subjectlist = "python,soft computing,major project 1".split(",")
+    var subjectlist = "WaitingForServer".split(",")
     subjectlist.forEach((s) => {
         append(subject, gen(option, s, s))
     })
@@ -156,7 +156,7 @@ async function getandshowmarks() {
         append(marksmain, gen(button, "reloadbtn", "Reload", "", { "onclick": "reload()" }))
     }
 
-    return data
+    return dummydata
 }
 
 var marksscss = `
