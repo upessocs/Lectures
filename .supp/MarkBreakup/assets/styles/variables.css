@@ -1,0 +1,46 @@
+/* Fonts and Variables */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comic+Neue:ital,wght@0,700;1,400&family=Cutive+Mono&family=Poppins&family=Dancing+Script&family=Exo&family=Roboto:wght@100&display=swap");
+:root {
+  --hue: 235;
+  --sat: 70%;
+  --light: 12%;
+  --hueAscent: 180;
+  --satAscent: 100%;
+  --lightAscent: 55%;
+  --lightFactor: 1;
+  --alpha: 1;
+  --textColor: white;
+  --fontScale: 1;
+  --fontFamily: "Poppins";
+  --fontFallback: "Courier", "Courier New", "Lucida Console", Inconsolata, terminal, consolas, arial;
+  --textColor: white;
+  --colorScheme: normal;
+  --colorBody:hsla(var(--h, 239), var(--s), var(--l), var(--a));
+  --dollarcolor: var(--textColor, "#EFF");
+  --dollarfontFamily: var(--fontFamily,"Exo","Verdana");
+  --dollarfonth1: var(--fontFamily,
+  "Bebas Neue",
+  "Arial");
+  --dollarfonth2: var(--fontFamily,
+  "Verdana",
+  "Arial");
+  --dollarfonth3: var(--fontFamily,"Comic Neue","Arial");
+  --dollarfonth4: var(--fontFamily,
+  "Bebas Neue",
+  "Verdana",
+  "Arial");
+  --dollarfonth5: var(--fontFamily,"Dancing Script","Verdana","Arial");
+  --dollarfonth6: var(--fontFamily,"Dancing Script","Verdana","Arial");
+  --dollarfontCode: "Cutive Mono","Arial";
+  --dollarfontHand: "Dancing Script","Exo";
+  --dollaraccentColor: hsl(var(--hueAscent), var(--satAscent), var(--lightAscent));
+  --dollarcolorButtonText: hsl(197, 80%, 22%);
+  --dollarlinkcolor: #ddd;
+  --dollarcolorBody: var(--colorBody);
+}
+
+body {
+  background: var(--colorBody);
+  text-shadow: var(--textShadow);
+  font-family: var(--fontFamily), var(--fontFallback);
+}/*# sourceMappingURL=variables.css.map */

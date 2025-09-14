@@ -1,0 +1,70 @@
+/* Fonts and Variables */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comic+Neue:ital,wght@0,700;1,400&family=Cutive+Mono&family=Poppins&family=Dancing+Script&family=Exo&family=Roboto:wght@100&display=swap');
+
+// --dollarcolorBG:linear-gradient(-30deg, hsl(200, 80%, 20%) 70%, hsl(340, 83%, 55%) 200%) no-repeat scroll 0 !default;
+
+:root {
+
+    --hue: 235;
+    --sat: 70%;
+    --light: 12%;
+
+
+    // --hueTwo: 240;
+
+    --hueAscent: 180;
+    --satAscent: 100%;
+    --lightAscent: 55%;
+
+    --lightFactor: 1;
+
+    --alpha: 1;
+    // --lightfactor: 1;
+    --textColor: white;
+    // --colorBody: linear-gradient(-30deg, hsla(var(--hue, 239), var(--sat, 40%), calc(var(--light, 42%) * var(--lightFactor, 1)), var(--alpha, 1)) 70%, hsla(var(--hue, 340), var(--sat, 83%), calc(var(--light, 55%) * var(--lightFactor, 1)), var(--alpha, 1)) 200%) no-repeat scroll 0 !default;
+    --fontScale: 1;
+    --fontFamily: 'Poppins';
+    --fontFallback: "Courier", "Courier New", "Lucida Console", Inconsolata, terminal, consolas, arial;
+
+    --textColor: white;
+
+    --colorScheme: normal;
+    --colorBody:hsla(var(--h, 239), var(--s), var(--l), var(--a));
+
+// --dollarcolorBG:linear-gradient(-30deg, hsla(var(--hue, 239), var(--sat, 40%), calc(var(--light, 42%) * var(--lightFactor, 1)), var(--alpha, 1)) 70%, hsla(var(--hue, 340), var(--sat, 83%), calc(var(--light, 55%) * var(--lightFactor, 1)), var(--alpha, 1)) 200%) no-repeat scroll 0 !default;
+--dollarcolor : var(--textColor, "#EFF");
+--dollarfontFamily : var(--fontFamily,"Exo","Verdana");
+// --dollarfontHeading:'Bebas Neue','Comic Neue','Inter',"Play",'Verdana';
+--dollarfonth1: var(--fontFamily,
+'Bebas Neue',
+'Arial');
+--dollarfonth2: var(--fontFamily,
+'Verdana',
+'Arial');
+--dollarfonth3: var(--fontFamily,'Comic Neue','Arial');
+--dollarfonth4: var(--fontFamily,
+'Bebas Neue',
+'Verdana',
+'Arial');
+--dollarfonth5: var(--fontFamily,'Dancing Script','Verdana','Arial');
+--dollarfonth6: var(--fontFamily,'Dancing Script','Verdana','Arial');
+--dollarfontCode: 'Cutive Mono','Arial';
+--dollarfontHand: 'Dancing Script','Exo';
+--dollaraccentColor: hsl(var(--hueAscent), var(--satAscent), var(--lightAscent));
+// --dollarcolorButton:linear-gradient(0deg, hsl(182, 100%, 52%) 10%, hsl(182, 100%, 73%) 80%, hsl(182, 100%, 52%) 100%) no-repeat scroll 0 !default;
+// --dollarcolorButton: linear-gradient(0deg, hsl(var(--hueAscent), var(--satAscent), var(--lightAscent)) 10%, hsl(var(--hueAscent), var(--lightAscent), 60%) 80%, hsl(var(--hueAscent), var(--lightAscent), 32%) 100%) no-repeat scroll 0 !default;
+--dollarcolorButtonText: hsl(197, 80%, 22%);
+--dollarlinkcolor: #ddd;
+// --dollarcolorBody:hsl(237, 79%, 9%);
+// --dollarcolorBody:linear-gradient(0deg, hsl(182, 100%, 42%) 10%, hsl(182, 100%, 60%) 80%, hsl(182, 100%, 32%) 100%) no-repeat scroll 0 !default;
+--dollarcolorBody: var(--colorBody);
+//linear-gradient(-30deg, hsla(var(--hue, 239), calc(var(--sat) / var(--lightFactor)), calc(var(--light) * var(--lightFactor)), var(--alpha)) 70%, hsla(var(--hue), calc(var(--sat) / var(--lightFactor)), calc(var(--light) * var(--lightFactor)), var(--alpha, 1)) 200%) no-repeat scroll 0;
+
+}
+
+
+body {
+    background: var(--colorBody);
+    text-shadow: var(--textShadow);
+    font-family: var(--fontFamily),var(--fontFallback);
+}

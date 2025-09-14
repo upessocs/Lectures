@@ -1,0 +1,259 @@
+/* Reset style */
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  transition: all 100ms ease-in-out;
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-family: var(--fontFamily, "Open-sans"), var(--fontFallback, Arial);
+  color-scheme: var(--colorScheme, normal);
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  --fontSize: calc(1rem * var(--fontScale, 1));
+  font-size: var(--fontSize, 1rem);
+  color: var(--textColor, white);
+}
+
+#app {
+  --h: var(--hue, 210);
+  --s: calc(var(--sat, 69%) / var(--lightFactor));
+  --l: calc(var(--light, 15%) * var(--lightFactor));
+  --hTwo: calc(var(--h) - 30);
+  --a: var(--alpha, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: clamp(1em, 2vw, 1.2em);
+  background: linear-gradient(--145deg, hsla(var(--h, 239), var(--s), var(--l), var(--a)) -10%, hsla(var(--hTwo), calc(var(--sat) / var(--lightFactor)), calc(var(--light) * var(--lightFactor)), var(--a)) 100%) no-repeat scroll 0;
+  background-color: hsla(var(--h, 239), var(--s), var(--l), var(--a));
+  font-family: var(--fontFamily);
+}
+#app #appmain {
+  position: relative;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+}
+
+.container {
+  padding-inline: clamp(1em, 10vw, 15%);
+}
+
+section,
+.section {
+  min-height: 80vh;
+  overflow-x: auto;
+}
+
+.section {
+  padding-top: 10em;
+  padding-bottom: 10em;
+}
+.section-small {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.section {
+  padding-block: clamp(4em, 15vh, 15em);
+  --a: .1;
+  background-color: hsla(var(--h), var(--sec-sat), var(--sec-light), var(--a));
+}
+.section:nth-child(even) {
+  --sec-sat: calc(var(--s) * 1.2);
+  --sec-light: calc(var(--l) * .8);
+}
+.section:nth-child(odd) {
+  --sec-sat: calc(var(--s) * .8);
+  --sec-light: calc(var(--l) * 1.2);
+}
+
+a {
+  color: var(--linkcolor, aqua);
+}
+
+button,
+.button {
+  --h: var(--hueAscent, 180);
+  --s: var(--satAscent, 80%);
+  --l: var(--lightAscent, 60%);
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  border: 0.2em solid hsl(var(--h), var(--s), var(--l));
+  padding: 0.3em 0.5em;
+  background: hsl(var(--h), var(--s), var(--l));
+  color: hsl(calc(180 + var(--h)), calc(100% - var(--s)), calc(100% - var(--l)));
+  text-align: center;
+  text-shadow: none;
+  margin: 2em;
+  margin-left: 0;
+  text-transform: capitalize;
+  border-radius: 0.01em;
+  text-shadow: 0.5px 0.5px 1px black;
+}
+button:hover,
+.button:hover {
+  outline: 0.1em solid hsl(var(--h), var(--s), var(--l));
+  box-shadow: 0px 0px 0.5em hsl(var(--h), var(--s), var(--l));
+}
+
+.button-blank {
+  --h: var(--hueAscent, 180);
+  --s: var(--satAscent, 80%);
+  --l: var(--lightAscent, 60%);
+  --a: .1;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  border: 0.2em solid hsl(var(--h), var(--s), var(--l));
+  padding: 0.3em 0.5em;
+  background: hsla(var(--h), var(--s), var(--l), var(--a, 0.01));
+  color: hsl(var(--h), var(--s), var(--l));
+  text-align: center;
+  text-shadow: none;
+  margin: 2em;
+  margin-left: 0;
+  text-transform: capitalize;
+  border-radius: 0.01em;
+}
+.button-blank:hover {
+  outline: 0.1em solid hsl(var(--h), var(--s), var(--l));
+  box-shadow: 0px 0px 0.5em hsl(var(--h), var(--s), var(--l));
+}
+
+code,
+pre {
+  padding: 1em 2em;
+  margin: 1em;
+  max-width: 70em;
+  font-family: "Courier", "Courier New", "Lucida Console", arial;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+h1 {
+  font-family: var(--dollarfonth1);
+  margin-bottom: 1em;
+  font-size: clamp(1.2em, 5vw, 4em);
+  font-weight: 400;
+}
+
+h2 {
+  margin-bottom: 1em;
+  font-size: clamp(1.1em, 4vw, 2em);
+}
+
+h3 {
+  margin-bottom: 1em;
+  font-family: var(--dollarfonth3);
+}
+
+h4 {
+  margin-bottom: 1em;
+  font-family: var(--dollarfonth4);
+}
+
+h5 {
+  margin-bottom: 1em;
+  font-family: var(--dollarfonth5);
+}
+
+h6 {
+  margin-bottom: 1em;
+  font-family: var(--dollarfonth6);
+}
+
+p {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+table {
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px #999;
+  padding: 20px;
+  width: 100%;
+}
+table thead {
+  padding: 2px;
+}
+table tbody tr {
+  padding: 2px;
+}
+table tbody tr:nth-child(odd) {
+  background: rgba(1, 1, 1, 0.5);
+}
+table tbody tr:nth-child(even) {
+  background: rgba(236, 236, 236, 0.2);
+}
+table tbody tr td {
+  width: 70%;
+}
+table tbody tr td:nth-child(1) {
+  width: 150px;
+}
+
+input,
+.input {
+  margin: 2px;
+  width: 100%;
+  background: #BBC;
+}
+
+video {
+  width: 100%;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px white;
+  margin-bottom: 10%;
+}
+
+ol {
+  list-style: none;
+  counter-reset: item;
+}
+ol li {
+  counter-increment: item;
+  margin-bottom: 5px;
+}
+ol li:before {
+  font-size: small;
+  margin-right: 10px;
+  content: counter(item);
+  background: var(--dollaraccentColor);
+  border-radius: 100%;
+  color: #222222;
+  padding: 0.1em;
+  margin: 0.5wdem;
+  width: 1.2em;
+  text-align: center;
+  display: inline-block;
+}
+
+.m1 {
+  margin: 1em;
+  margin-left: 2em;
+}
+
+.p1 {
+  padding-bottom: 0.5em;
+}
+svg {
+  width: 100px;
+  height: 100px;
+}/*# sourceMappingURL=defaults.css.map */

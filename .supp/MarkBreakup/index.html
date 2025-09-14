@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="title" property="og:title" content="GeneratorJs">
+    <meta name="image" property="og:image" content="/assets/img/logo.png">
+    <meta name="description" property="og:description"
+        content="A three function Javascript library for modular website frontend desing. Few functions to generate frontend design without juggeling between HTML CSS and JS. Reduce repetetive typing in HTML.">
+    <meta name="url" property="og:url" content="https://generatorjs.mgeek.in/">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+
+        }
+
+        :root {
+            --preloderHue: 20;
+            --loaded: 1;
+        }
+
+        .preloader {
+            display: grid;
+            place-items: center;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            height: 100vh;
+            width: 100vw;
+            background: black;
+            color: white;
+            z-index: 100;
+            transition: opacity 2s ease;
+            /* z-index: calc(1000 * calc(100 - var(--loaded))); */
+            /* opacity: calc(1 - calc(100=var(--loaded))); */
+
+        }
+
+
+        .ring {
+            /* display: grid; */
+            position: absolute;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 255, 255, .3);
+
+        }
+
+        .ring::before {
+            display: grid;
+            place-items: center;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            color: #737373;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            content: "Generating...";
+        }
+
+        .ring:after {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            content: "";
+            border-radius: 50%;
+            transform: rotate(calc(360deg * var(--loaded) / 10));
+            box-shadow: 1px 5px 2px hsl(calc(20 + var(--loaded)), 100%, 45%);
+            animation: ring 2s ease-in-out infinite;
+        }
+
+        .preloader-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid hsl(calc(var(--preloderHue) + var(--loaded)), 100%, 25%);
+            width: calc(1% * var(--loaded));
+        }
+
+        @keyframes ring {
+            0% {
+                --loaded: 24;
+                transform: rotate(0deg);
+                box-shadow: 1px 5px 2px hsl(var(--loaded), 100%, 45%);
+            }
+
+
+            100% {
+                --loaded: 240;
+                transform: rotate(360deg);
+                box-shadow: 1px 5px 2px hsl(var(--loaded), 100%, 45%);
+            }
+
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="./assets/styles/sitestyle.css"> -->
+
+    <!-- <style link="./assets/styles/sitestyle.css" rel="sitestyle"></style> -->
+</head>
+
+<body>
+    <div id="preloader" class="preloader center">
+        <div id="ring" class="ring"></div>
+        <span class="preloader-progress"></span>
+    </div>
+    <div id="app">
+    </div>
+
+    <!-- <script src="https://generatorjs.github.io/generatorjs.cdn/generator.js"></script> -->
+    <!-- <script src="https://generatorjs.github.io/generatorjs.cdn/generatorWebHelper.js"></script> -->
+    <script src="./generatorjs.cdn/generator.js"></script>
+    <script src="./generatorjs.cdn/generatorWebHelper.js"></script>
+    <script defer>
+        window.DEBUG = 1;
+        window.$ = GeneratorJs()
+        $.init()//append,gen,load,cssvar,getfile,log
+        load(["./defaults.js"])
+        if (window.DEBUG == 1) {
+            sessionStorage.clear()
+            localStorage.clear()
+            document.getElementById("preloader").style.zIndex = -1000;
+        }
+
+
+        //your app logic
+        append(app, "", "over") /* reset app */
+        append(app, gen(header, "appheader", 'header', 'header'));
+        append(app, gen(main, "appmain", 'main', 'appmain'));
+        append(app, gen(footer, "appfooter", "", ''));
+
+        //more app logic
+        load(["./index.js", "./assets/styles/sitestyle.scss"])
+        setTimeout(() => {
+            GeneratorWebHelper().init()
+        }, 3000)
+        // $$.loadCustomizer()
+    </script>
+
+</body>
+
+</html>

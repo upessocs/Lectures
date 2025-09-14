@@ -1,0 +1,8 @@
+./
+./.dist
+./MarkBreakup
+./Readme.md
+./Backlog_Clearance_Notice.pdf
+./Notice_Registration_of_Supplementary_Examination_Odd_&_Even_Sem.pdf
+./Registration_Manual_Supplemenatry_Registration_Process_on_Orange.pdf
+./Regisatration extention til 15th sept.docx

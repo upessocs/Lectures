@@ -1,0 +1,420 @@
+/* Fonts and Variables */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comic+Neue:ital,wght@0,700;1,400&family=Cutive+Mono&family=Poppins&family=Dancing+Script&family=Exo&family=Roboto:wght@100&display=swap");
+:root {
+  --hue: 235;
+  --sat: 70%;
+  --light: 12%;
+  --hueAscent: 180;
+  --satAscent: 100%;
+  --lightAscent: 55%;
+  --lightFactor: 1;
+  --alpha: 1;
+  --textColor: white;
+  --fontScale: 1;
+  --fontFamily: Poppins;
+  --fontFallback: "Courier", "Courier New", "Lucida Console", Inconsolata, terminal, consolas, arial;
+  --textColor: white;
+  --colorScheme: normal;
+}
+
+body {
+  background: var(--colorBody);
+  text-shadow: var(--textShadow);
+}
+
+/* Reset style */
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  list-style: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-family: var(--fontFamily), var(--fontFallback, Arial);
+  color-scheme: var(--colorScheme, normal);
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  --fontSize: calc(1rem * var(--fontScale, 1));
+  font-size: var(--fontSize, 1rem);
+  color: var(--textColor, white);
+}
+
+#app {
+  --h: var(--hue, 210);
+  --s: calc(var(--sat, 69%) / var(--lightFactor));
+  --l: calc(var(--light, 15%) * var(--lightFactor));
+  --hTwo: calc(var(--h) - 30);
+  --a: var(--alpha, 1);
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: clamp(1em, 2vw, 1.2em);
+  background: linear-gradient(145deg, hsla(var(--h, 239), var(--s), var(--l), var(--a)) -10%, hsla(var(--hTwo), calc(var(--sat) / var(--lightFactor)), calc(var(--light) * var(--lightFactor)), var(--a)) 100%) no-repeat scroll 0;
+}
+
+#app #appmain {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container {
+  padding-inline: clamp(1em, 10vw, 15%);
+}
+
+section,
+.section {
+  min-height: 80vh;
+  overflow-x: auto;
+}
+
+.section {
+  padding-top: 10em;
+  padding-bottom: 10em;
+}
+
+.section-small {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.section {
+  padding-block: clamp(4em, 15vh, 15em);
+  --a: .1;
+  background-color: hsla(var(--h), var(--sec-sat), var(--sec-light), var(--a));
+}
+
+.section:nth-child(even) {
+  --sec-sat: calc(var(--s) * 1.2);
+  --sec-light: calc(var(--l) * .8);
+}
+
+.section:nth-child(odd) {
+  --sec-sat: calc(var(--s) * .8);
+  --sec-light: calc(var(--l) * 1.2);
+}
+
+a {
+  color: var(--linkcolor, aqua);
+}
+
+button,
+.button {
+  --h: var(--hueAscent, 180);
+  --s: var(--satAscent, 80%);
+  --l: var(--lightAscent, 60%);
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  border: 0.2em solid hsl(var(--h), var(--s), var(--l));
+  padding: .3em .5em;
+  background: hsl(var(--h), var(--s), var(--l));
+  color: hsl(calc(180 + var(--h)), calc(100% - var(--s)), calc(100% - var(--l)));
+  text-align: center;
+  text-shadow: none;
+  margin: 2em;
+  margin-left: 0;
+  text-transform: capitalize;
+  border-radius: .01em;
+  text-shadow: .5px .5px 1px black;
+}
+
+button:hover,
+.button:hover {
+  outline: 0.1em solid hsl(var(--h), var(--s), var(--l));
+  -webkit-box-shadow: 0px 0px 0.5em hsl(var(--h), var(--s), var(--l));
+          box-shadow: 0px 0px 0.5em hsl(var(--h), var(--s), var(--l));
+}
+
+.button-blank {
+  --h: var(--hueAscent, 180);
+  --s: var(--satAscent, 80%);
+  --l: var(--lightAscent, 60%);
+  --a: .1;
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  border: 0.2em solid hsl(var(--h), var(--s), var(--l));
+  padding: .3em .5em;
+  background: hsla(var(--h), var(--s), var(--l), var(--a, 0.01));
+  color: hsl(var(--h), var(--s), var(--l));
+  text-align: center;
+  text-shadow: none;
+  margin: 2em;
+  margin-left: 0;
+  text-transform: capitalize;
+  border-radius: .01em;
+}
+
+.button-blank:hover {
+  outline: 0.1em solid hsl(var(--h), var(--s), var(--l));
+  -webkit-box-shadow: 0px 0px 0.5em hsl(var(--h), var(--s), var(--l));
+          box-shadow: 0px 0px 0.5em hsl(var(--h), var(--s), var(--l));
+}
+
+code,
+pre {
+  padding: 1em 2em;
+  margin: 1em;
+  max-width: 70em;
+  font-family: "Courier", "Courier New", "Lucida Console", arial;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+h1 {
+  font-family: var(--fontFamily), "Bebas Neue", "Arial";
+  margin-bottom: 1em;
+  font-size: clamp(1.2em, 5vw, 4em);
+  font-weight: 400;
+}
+
+h2 {
+  margin-bottom: 1em;
+  font-size: clamp(1.1em, 4vw, 2em);
+}
+
+h3 {
+  margin-bottom: 1em;
+  font-family: var(--fontFamily), "Comic Neue", "Arial";
+}
+
+h4 {
+  margin-bottom: 1em;
+  font-family: var(--fontFamily), "Bebas Neue", "Verdana", "Arial";
+}
+
+h5 {
+  margin-bottom: 1em;
+  font-family: var(--fontFamily), "Dancing Script", "Verdana", "Arial";
+}
+
+h6 {
+  margin-bottom: 1em;
+  font-family: var(--fontFamily), "Dancing Script", "Verdana", "Arial";
+}
+
+p {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+table {
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 3px #999;
+          box-shadow: 1px 1px 3px #999;
+  padding: 20px;
+  width: 100%;
+}
+
+table thead {
+  padding: 2px;
+}
+
+table tbody tr {
+  padding: 2px;
+}
+
+table tbody tr:nth-child(odd) {
+  background: rgba(1, 1, 1, 0.5);
+}
+
+table tbody tr:nth-child(even) {
+  background: rgba(236, 236, 236, 0.2);
+}
+
+table tbody tr td {
+  width: 70%;
+}
+
+table tbody tr td:nth-child(1) {
+  width: 150px;
+}
+
+input,
+.input {
+  margin: 2px;
+  width: 100%;
+  background: #BBC;
+}
+
+video {
+  width: 100%;
+  margin: 10px;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 2px white;
+          box-shadow: 2px 2px 2px white;
+  margin-bottom: 10%;
+}
+
+ol {
+  list-style: none;
+  counter-reset: item;
+}
+
+ol li {
+  counter-increment: item;
+  margin-bottom: 5px;
+}
+
+ol li:before {
+  font-size: small;
+  margin-right: 10px;
+  content: counter(item);
+  background: hsl(var(--hueAscent), var(--satAscent), var(--lightAscent));
+  border-radius: 100%;
+  color: #222222;
+  padding: .1em;
+  margin: .5wdem;
+  width: 1.2em;
+  text-align: center;
+  display: inline-block;
+}
+
+.m1 {
+  margin: 1em;
+  margin-left: 2em;
+}
+
+.p1 {
+  padding-bottom: .5em;
+}
+
+svg {
+  width: 100px;
+  height: 100px;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#fileOpen {
+  background: radial-gradient(rgba(255, 255, 255, 0.493) 0%, rgba(53, 173, 243, 0.493) 200%);
+  padding: 50px;
+  min-width: 400px;
+  border-radius: 20px;
+  margin: 50px;
+  color: white;
+  font-size: 2rem;
+  text-align: left;
+}
+
+.ytContainer {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+
+.ytVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 70%;
+}
+
+.cursor {
+  margin-left: .1em;
+}
+
+.cursor:after {
+  width: .1em;
+  height: 1.6em;
+  display: inline;
+  background-color: #fff;
+  padding: .08em;
+  text-shadow: none;
+  font-weight: 100;
+  content: '';
+  -webkit-transform: translateY(-0.3em);
+          transform: translateY(-0.3em);
+  -webkit-animation: cusrorblink 500ms infinite;
+          animation: cusrorblink 500ms infinite;
+}
+
+@-webkit-keyframes cusrorblink {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+@keyframes cusrorblink {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+#hero {
+  z-index: 1;
+}
+
+#hero h1 {
+  font-size: 3em;
+  font-weight: bolder;
+  font-family: var(--fontFamily), "Bebas Neue", "Arial";
+}
+
+#hero p {
+  padding: 1em;
+  font-size: 1.2em;
+  line-height: 1.8em;
+  font-weight: 500;
+}
+
+.small {
+  font-size: small;
+}
+
+.full {
+  position: relative;
+  width: 100vw;
+  margin-left: -50vw;
+  left: 50%;
+}
+/*# sourceMappingURL=sitestyle.css.map */

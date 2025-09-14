@@ -1,0 +1,111 @@
+//MAIN sitestyle.scss
+@import "./variables";
+@import "./defaults";
+// @import "./header";
+// @import "./footer";
+
+
+
+
+
+
+.row {
+    display: flex;
+}
+
+#fileOpen {
+    background: radial-gradient(hsla(0, 0%, 100%, 0.493) 0%, hsla(202, 89%, 58%, 0.493) 200%);
+    padding: 50px;
+    min-width: 400px;
+    border-radius: 20px;
+    margin: 50px;
+    color: white;
+    font-size: 2rem;
+    text-align: left;
+
+}
+
+.ytContainer {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+}
+
+.ytVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 70%;
+}
+
+
+
+.cursor {
+    margin-left: .1em;
+
+    &:after {
+        width: .1em;
+        height: 1.6em;
+        display: inline;
+        background-color: #fff;
+        padding: .08em;
+        text-shadow: none;
+        font-weight: 100;
+        content: '';
+        transform: translateY(-.3em);
+        animation: cusrorblink 500ms infinite;
+    }
+}
+
+
+
+@keyframes cusrorblink {
+    0% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    90% {
+        opacity: 1;
+
+    }
+}
+
+
+#hero {
+    z-index: 1;
+
+    h1 {
+        font-size: 3em;
+        font-weight: bolder;
+        font-family: var(--dollarfonth1);
+    }
+
+    p {
+        padding: 1em;
+        font-size: 1.2em;
+        line-height: 1.8em;
+        font-weight: 500;
+    }
+}
+
+
+
+.small {
+    font-size: small;
+}
+
+
+
+.full {
+    position: relative;
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+}
