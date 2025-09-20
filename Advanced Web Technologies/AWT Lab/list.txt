@@ -1,5 +1,4 @@
 ./
-./.dist
 ./Examples
 ./000 Syllabus AWT Lab.md
 ./Experiment 1 jQuery Implementation.md
@@ -8,3 +7,5 @@
 ./Experiment 4 AngularJS II Reading.md
 ./Experiment 4 AngularJS II perform.md
 ./Experiment 5 and 6 NodeJS.md
+./Experiment 7 State Management.md
+./Experiment 8 working with mongodb.md

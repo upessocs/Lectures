@@ -1,0 +1,185 @@
+
+# Experiment 8
+## Working with Data (MongoDB + Node.js)
+
+---
+
+### Part 1: Connect Node.js with MongoDB
+
+#### Requirements:
+
+* `express`
+* `mongoose`
+
+#### Install Dependencies:
+
+```bash
+npm install express mongoose
+```
+
+#### Code: `db-connect.js`
+
+```js
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/school', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.log('Connection failed:', err));
+```
+
+#### Explanation:
+
+* Connects to `school` database on MongoDB running locally.
+
+---
+
+### Part 2: Store Student Details
+
+#### Code: `student-model.js`
+
+```js
+const mongoose = require('mongoose');
+
+const studentSchema = new mongoose.Schema({
+    name: String,
+    age: Number,
+    grade: String
+});
+
+module.exports = mongoose.model('Student', studentSchema);
+```
+
+#### Code: `add-student.js`
+
+```js
+const express = require('express');
+const mongoose = require('mongoose');
+const Student = require('./student-model');
+
+const app = express();
+app.use(express.json());
+
+mongoose.connect('mongodb://localhost:27017/school');
+
+app.post('/students', async (req, res) => {
+    const student = new Student(req.body);
+    await student.save();
+    res.send('Student added');
+});
+
+app.listen(3000);
+```
+
+---
+
+### Part 3: Search Students
+
+#### Code: `search-student.js`
+
+```js
+app.get('/search', async (req, res) => {
+    const { name } = req.query;
+    const result = await Student.find({ name: new RegExp(name, 'i') });
+    res.json(result);
+});
+```
+
+#### Explanation:
+
+* Searches students by name using case-insensitive matching.
+
+---
+
+### Part 4: Shopping Center App (CRUD + Reports)
+
+#### Code: `item-model.js`
+
+```js
+const mongoose = require('mongoose');
+
+const itemSchema = new mongoose.Schema({
+    name: String,
+    price: Number,
+    stock: Number,
+    sold: Number
+});
+
+module.exports = mongoose.model('Item', itemSchema);
+```
+
+#### Code: `shopping-app.js`
+
+```js
+const express = require('express');
+const mongoose = require('mongoose');
+const Item = require('./item-model');
+
+const app = express();
+app.use(express.json());
+
+mongoose.connect('mongodb://localhost:27017/shopping');
+
+// Add Item
+app.post('/items', async (req, res) => {
+    const item = new Item(req.body);
+    await item.save();
+    res.send('Item added');
+});
+
+// Delete Item
+app.delete('/items/:id', async (req, res) => {
+    await Item.findByIdAndDelete(req.params.id);
+    res.send('Item deleted');
+});
+
+// Update Item
+app.put('/items/:id', async (req, res) => {
+    await Item.findByIdAndUpdate(req.params.id, req.body);
+    res.send('Item updated');
+});
+
+// Stock Report
+app.get('/stock-report', async (req, res) => {
+    const items = await Item.find();
+    res.json(items);
+});
+
+// Record a Sale
+app.post('/sale/:id', async (req, res) => {
+    const item = await Item.findById(req.params.id);
+    if (item && item.stock > 0) {
+        item.stock -= 1;
+        item.sold += 1;
+        await item.save();
+        res.send('Sale recorded');
+    } else {
+        res.send('Out of stock');
+    }
+});
+
+app.listen(3000, () => {
+    console.log('Shopping app running on port 3000');
+});
+```
+
+---
+
+## Final File Structure (Do Not Execute/Test)
+
+```
+lab/
+││
+├── Experiment-8/
+│   ├── db-connect.js
+│   ├── student-model.js
+│   ├── add-student.js
+│   ├── search-student.js
+│   ├── item-model.js
+│   └── shopping-app.js
+│
+├── package.json
+└── README.md
+```
