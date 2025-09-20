@@ -1,6 +1,4 @@
 ./
-./.demo
-./.dist
 ./Optional
 ./Experiment 1 Install WSL, virtualbox, create virtual machine with linux os like ubuntu, linuxmint, or debian.md
 ./Experiment 2 Linux file systems permissions and essential commands.md
@@ -8,6 +6,6 @@
 ./Experiment 4 BASH or SHELL scripting.md
 ./Experiment 5 BASH or SHELL scripting cont..  .md
 ./Experiment 6 Shell Loops.md
-./Experiment 7 Shell Programming cont ...md
-./Experiment 8 Shell Programming, Process and schedule.md
+./Experiment 7 Shell Programming, Process and schedule.md
+./Experiment 8 Shell Programming cont ...md
 ./001 Courseplan Linux Lab.pdf

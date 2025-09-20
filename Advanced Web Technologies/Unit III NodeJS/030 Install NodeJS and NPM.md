@@ -102,7 +102,7 @@ If it's still not working, do a clean reinstall:
 1. Go to **Add or Remove Programs** and uninstall **Node.js**.
 2. Download the latest **LTS** version from the official site:
    [https://nodejs.org/](https://nodejs.org/)
-3. **Important**: During installation, make sure the **“Add to PATH”** option is checked.
+3. **Important**: During installation, make sure the **"Add to PATH"** option is checked.
 4. After installing, restart your terminal and run:
 
 ```bash
