@@ -8,4 +8,5 @@
 ./Experiment 6 Shell Loops.md
 ./Experiment 7 Shell Programming, Process and schedule.md
 ./Experiment 8 Shell Programming cont ...md
+./Experiment 9 Shell Programming cont .. System Performance Monitoring.md
 ./001 Courseplan Linux Lab.pdf
