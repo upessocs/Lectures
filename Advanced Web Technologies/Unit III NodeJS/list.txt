@@ -1,4 +1,6 @@
 ./
-./030 Install NodeJS and NPM.md
 ./031 Introduction to NodeJS.md
+./032 Nodejs Continue.md
+./033 Require and Import.md
 ./037 Common node packages Optional Read.md
+./MISC1 Troubleshoot NodeJS and NPM installation.md
