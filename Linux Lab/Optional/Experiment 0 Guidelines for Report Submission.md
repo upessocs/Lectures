@@ -137,7 +137,8 @@ ls -l
 
 
 ---
-# Cleaning output as it contains non ascii control characters and escape sequence,
+# Cleaning output 
+as it contains non ascii control characters and escape sequence,
 
 You're dealing with the control characters and escape sequences that `script` adds. Here are several ways to clean up the output for markdown:
 
@@ -231,27 +232,52 @@ script -a mysession.txt
 $ ls -la
 $ echo "Hello World"
 $ exit
+```
+
 
 # Clean the output
-./clean_script_output.sh mysession.txt
+`./clean_script_output.sh mysession.txt`
 
-# The cleaned file will be ready for markdown:
+The cleaned file will be ready for markdown:
+
 # ```bash
 # ls -la
 # ```
-# 
+```output
 # Output:
 # total 24
 # drwxr-xr-x  2 user user 4096 Dec 1 10:00 .
 # drwxr-xr-x 10 user user 4096 Dec 1 10:00 ..
 # -rw-r--r--  1 user user   12 Dec 1 10:00 file.txt
-# 
-# ```bash
-# echo "Hello World"
-# ```
-# 
+```
+
+
+```bash
+echo "Hello World"
 # Output:
 # Hello World
 ```
 
 The `sed` approach is usually the most effective for removing ANSI escape sequences and control characters that `script` adds to the output.
+
+
+---
+
+# converting markdown to docx using pandoc
+
+```bash
+# install pandoc
+
+sudo apt install pandoc -y
+
+pandoc -v
+
+# to convert a markdownfile.md to exp1.docx
+# extension are important
+
+pandoc markdownfile.md -o exp1.docx
+
+# you can pass stantalone option, see pandoc --help for more detail
+
+
+```
