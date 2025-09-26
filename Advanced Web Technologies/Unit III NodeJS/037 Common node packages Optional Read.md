@@ -263,4 +263,65 @@ const chunked = _.chunk(array, 2); // [[1, 2], [3, 4]]
 const deepCopy = _.cloneDeep(object);
 ```
 
+
+---
+### 1. **`os` Module**
+
+The **`os`** module provides information about the operating system on which the Node.js process is running.
+It is a **built-in (core) module**, so no installation is needed.
+
+**Common Uses**
+
+* Get system information (CPU, memory, platform, etc.)
+* Useful for cross-platform scripts or diagnostics.
+
+**Example**
+
+```js
+// Import os module
+const os = require('os');
+
+console.log('Operating System:', os.type());         // e.g. 'Linux', 'Windows_NT'
+console.log('OS Platform:', os.platform());          // e.g. 'win32', 'darwin'
+console.log('Total Memory:', os.totalmem());         // in bytes
+console.log('Free Memory:', os.freemem());           // in bytes
+console.log('Home Directory:', os.homedir());        // e.g. '/home/user'
+```
+
+---
+
+### 2. **`path` Module**
+
+The **`path`** module provides utilities for working with file and directory paths.
+It ensures the correct separators (`/` vs `\`) are used across operating systems.
+
+**Common Uses**
+
+* Join or resolve file paths.
+* Extract parts of a file path (directory, filename, extension).
+
+**Example**
+
+```js
+// Import path module
+const path = require('path');
+
+const filePath = '/home/user/project/index.js';
+
+console.log('Directory name:', path.dirname(filePath));  // '/home/user/project'
+console.log('Base name:', path.basename(filePath));      // 'index.js'
+console.log('Extension:', path.extname(filePath));       // '.js'
+console.log('Joined Path:', path.join('/home', 'user', 'docs', 'file.txt'));
+// '/home/user/docs/file.txt'
+```
+
+
+
+### Key Takeaways
+
+* **`os`**: gives system-level info (memory, platform, CPUs).
+* **`path`**: simplifies and standardizes file path operations.
+* Both are **core Node.js modules**—you just `require()` them without extra installation.
+
+
 These packages cover most common needs for file operations, templating, and general utility functions in Node.js applications.

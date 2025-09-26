@@ -1,4 +1,5 @@
-# Nodemon and BrowserSync together with concurrently
+# Nodemon and BrowserSync together with concurrently 
+(Optional)
 
 Below is a **minimal complete example** that runs:
 
@@ -114,7 +115,8 @@ In `package.json` add:
 ```json
 "scripts": {
   "dev:server": "nodemon --watch server.js --exec \"node server.js\"",
-  "dev:bs": "browser-sync start --config bs-config.js",
+  "dev:bs-conf": "browser-sync start --config bs-config.js --ws --logLevel debug",
+  "dev:bs": "browser-sync start -p localhost:3000 --port 4000 --files 'public/**/*.*' --ws --logLevel debug",
   "dev": "concurrently \"npm run dev:server\" \"npm run dev:bs\""
 }
 ```
