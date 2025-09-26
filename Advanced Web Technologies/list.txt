@@ -1,12 +1,12 @@
 ./
 ./.demo
-./.dist
 ./AWT Lab
 ./Unit I jQuery
 ./Unit II AngularJS
 ./Unit III NodeJS
 ./000 Syllabus AWT.md
 ./001 Git and GitHub Installation and Basics.md
+./Question Bank I.md
 ./001 Syllabus CSEG2071 Advanced Web Technologies BCA.pdf
 ./000 Course Plan AWT Advanced Web Technologies  BCA CSEG2071 Prateek.docx
 ./Prateek_Raj_Gautam_CSO_Advanced Web Technologies  BCA CSEG2071 CoursePlan.docx
