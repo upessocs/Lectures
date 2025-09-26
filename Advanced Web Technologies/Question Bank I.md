@@ -26,49 +26,49 @@ Question Bank – jQuery and AngularJS
 Section A – 5 Marks Questions (20 × 5 = 100 marks)
 
 1. Define jQuery. Why is it called “write less, do more”? **Hint:  Include its lightweight nature, simplified DOM manipulation, cross-browser compatibility.**
-2. Write the syntax to include jQuery in a webpage. **Hint:  <script> tag with CDN/local reference.**
-3. Differentiate between id and class selectors in jQuery. **Hint:  Syntax: $("#id") vs $(".class"), usage examples.**
+2. Write the syntax to include jQuery in a webpage. **Hint:  `<script>` tag with CDN/local reference.**
+3. Differentiate between id and class selectors in jQuery. **Hint:  Syntax: `$("#id") vs $(".class")`, usage examples.**
 4. What is the role of the ready() function in jQuery? **Hint:  Ensures DOM is fully loaded before execution.**
-5. Write a jQuery snippet to hide a paragraph on button click. **Hint:  $("button").click(function(){ $("p").hide(); });**
+5. Write a jQuery snippet to hide a paragraph on button click. **Hint:  `$("button").click(function(){ $("p").hide(); });`**
 6. Define AngularJS. **Hint:  MVC framework, two-way data binding, client-side scripting.**
 7. What is ng-model in AngularJS? **Hint:  Binds input, textarea, select to model data.**
 8. Differentiate between ng-show and ng-hide. **Hint:  Both control visibility based on Boolean expression.**
-9. Write a short note on AngularJS expressions. **Hint:  {{ }} binding, evaluated against scope, no control flow.**
+9. Write a short note on AngularJS expressions. **Hint: ` {{ }}` binding, evaluated against scope, no control flow.**
 10. What is $scope in AngularJS? **Hint:  Object linking controller with view, stores data and methods.**
 11. Mention any two advantages of jQuery over JavaScript. **Hint:  Cross-browser, concise code, animations, AJAX support.**
-12. Write syntax for chaining multiple filters in AngularJS. **Hint:  {{ data | filter1 | filter2 }}**
-13. List any three jQuery event methods. **Hint:  click(), hover(), keydown().**
+12. Write syntax for chaining multiple filters in AngularJS. **Hint:  `{{ data | filter1 | filter2 }}`**
+13. List any three jQuery event methods. **Hint:  `click(), hover(), keydown()`.**
 14. What is ng-repeat? **Hint:  Directive for iterating collections.**
 15. Differentiate between AngularJS directive and expression. **Hint:  Directives extend HTML; expressions bind data.**
-16. What is the difference between text() and html() in jQuery? **Hint:  text() for plain text, html() for HTML content.**
+16. What is the difference between text() and html() in jQuery? **Hint:  `text()` for plain text, `html()` for HTML content.**
 17. Explain AngularJS filters briefly. **Hint:  Format data – currency, uppercase, filter.**
-18. Write the syntax to create a custom directive in AngularJS. **Hint:  app.directive("myDirective", function(){ return { ... } });**
+18. Write the syntax to create a custom directive in AngularJS. **Hint:  `app.directive("myDirective", function(){ return { ... } });`**
 19. Define AJAX in jQuery. **Hint:  Asynchronous requests without reloading page.**
-20. Mention any two AngularJS form validation states. **Hint:  $dirty, $pristine, $valid, $invalid.**
+20. Mention any two AngularJS form validation states. **Hint:  `$dirty`, `$pristine`, `$valid`, `$invalid`.**
 ---
 
 Section B – 15 Marks Questions (20 × 15 = 300 marks)
 
 (Medium-length, explanations with examples, differences, code snippets)
 
-1. Explain jQuery DOM traversal methods with examples. **Hint:  parent(), children(), find(), siblings().**
+1. Explain jQuery DOM traversal methods with examples. **Hint:  `parent(), children(), find(), siblings()`.**
 2. Discuss jQuery effects: fadeIn(), fadeOut(), slideUp(), slideDown() with syntax. **Hint:  Show short code snippets.**
 3. Compare JavaScript, jQuery, and AngularJS. **Hint:  Plain JS vs library vs framework, complexity, learning curve.**
 4. Explain AngularJS two-way data binding with an example. **Hint:  Model ↔ View synchronization, use ng-model.**
-5. Write a jQuery program to toggle visibility of a paragraph on button click. **Hint:  toggle() usage with example.**
-6. Explain AngularJS directives with any 3 examples. **Hint:  ng-model, ng-repeat, ng-bind.**
+5. Write a jQuery program to toggle visibility of a paragraph on button click. **Hint:  `toggle()` usage with example.**
+6. Explain AngularJS directives with any 3 examples. **Hint:  `ng-model, ng-repeat, ng-bind`.**
 7. Differentiate between AngularJS controller and service. **Hint:  Controller → binds scope; Service → reusable logic.**
-8. Explain jQuery AJAX methods with a simple example. **Hint:  $.ajax(), $.get(), $.post().**
-9. What are AngularJS modules? Write steps to create and use a module. **Hint:  angular.module("app", []), controller attachment.**
-10. Explain AngularJS form validation with example. **Hint:  ng-model, validation attributes, error messages.**
-11. Explain event delegation in jQuery. Why is it needed? **Hint:  Attaching events to parent using .on() for dynamic elements.**
+8. Explain jQuery AJAX methods with a simple example. **Hint:  `$.ajax(), $.get(), $.post()`.**
+9. What are AngularJS modules? Write steps to create and use a module. **Hint:  `angular.module("app", [])`, controller attachment.**
+10. Explain AngularJS form validation with example. **Hint:  `ng-model`, validation attributes, error messages.**
+11. Explain event delegation in jQuery. Why is it needed? **Hint:  Attaching events to parent using `.on()` for dynamic elements.**
 12. Differentiate between ng-bind and expressions ({{ }}). **Hint:  Flash of unstyled content problem, cleaner binding.**
 13. Write a short note on AngularJS scope hierarchy. **Hint:  Root scope, child scope, inheritance.**
 14. Explain the role of $http service in AngularJS with example. **Hint:  AJAX-like service for REST APIs.**
 15. Write jQuery code to validate a simple login form. **Hint:  Username not empty, password length check.**
-16. Explain AngularJS filters with an example of custom filter. **Hint:  app.filter("myFilter", function(){ return function(input){...}; });**
-17. Write a jQuery script to change CSS properties dynamically. **Hint:  .css() method usage.**
-18. Discuss the MVC architecture of AngularJS. **Hint:  Model, View, Controller roles, $scope as bridge.**
+16. Explain AngularJS filters with an example of custom filter. **Hint:  `app.filter("myFilter", function(){ return function(input){...}; });`**
+17. Write a jQuery script to change CSS properties dynamically. **Hint:  `.css()` method usage.**
+18. Discuss the MVC architecture of AngularJS. **Hint:  Model, View, Controller roles, `$scope` as bridge.**
 19. Explain AngularJS $watch with an example. **Hint:  Watches scope variable changes and executes function.**
 20. Explain the difference between AngularJS 1.x and jQuery in terms of data binding and DOM manipulation. **Hint:  AngularJS = declarative, data-driven; jQuery = imperative, DOM-focused.**
 ---
@@ -77,13 +77,13 @@ Section C – 20 Marks Questions (10 × 20 = 200 marks)
 
 (Long-answer, in-depth explanations, programs, and diagrams)
 
-1. Design a small jQuery-based image gallery with next/prev buttons. **Hint:  Use hide(), show(), click(), array of image paths.**
+1. Design a small jQuery-based image gallery with next/prev buttons. **Hint:  Use `hide(), show(), click()`, array of image paths.**
 2. Write and explain an AngularJS application for a student result management system using ng-repeat and filters. **Hint:  Display list of students with marks, apply orderBy/filter.**
 3. Explain in detail the working of AngularJS form validation with a code example. **Hint:  Form states, error highlighting, $dirty, $valid.**
 4. Develop a jQuery form validation script for registration form (name, email, password, confirm password). **Hint:  Regex for email, password match, required fields.**
 5. Explain AngularJS dependency injection with an example. **Hint:  Services injected into controllers, modularity.**
 6. Compare AngularJS Directives and Components with examples. **Hint:  Custom reusable UI, lifecycle differences.**
-7. Create a jQuery + AJAX example to fetch and display data from a JSON file. **Hint:  $.getJSON() or $.ajax(), DOM manipulation.**
+7. Create a jQuery + AJAX example to fetch and display data from a JSON file. **Hint:  `$.getJSON()` or `$.ajax()`, DOM manipulation.**
 8. Discuss the digest cycle in AngularJS with a diagram. **Hint:  How AngularJS checks model-view synchronization.**
 9. Build a small AngularJS single-page application (SPA) with routing. **Hint:  Use ngRoute, multiple views, controllers.**
 10. Explain differences between jQuery and AngularJS in terms of architecture, use cases, and data binding. Provide examples. **Hint:  jQuery = DOM-centric, AngularJS = MVC & data binding.**
@@ -95,14 +95,14 @@ Unit I – jQuery
 
 1. Define jQuery and list any three advantages over plain JavaScript.
 2. Write the steps to link a jQuery file using a CDN.
-3. Differentiate between the jQuery $(document).ready() and window.onload event.
+3. Differentiate between the jQuery `$(document).ready()` and window.onload event.
 4. Give two examples of jQuery selectors with syntax and usage.
 5. Explain the purpose of jQuery filters with one example.
-6. Show a short code snippet to change the CSS background color of all <p> tags using jQuery.
+6. Show a short code snippet to change the CSS background color of all `<p>` tags using jQuery.
 7. Describe how to handle a button click event in jQuery.
 8. Write jQuery code to create a simple fade-in animation.
 9. What is event delegation in jQuery and why is it useful?
-10. Mention any two differences between .css() and .addClass() in jQuery.
+10. Mention any two differences between `.css()` and `.addClass()` in jQuery.
 
 Unit II – AngularJS
 
