@@ -366,3 +366,10 @@ Now:
 | Run both commands together    | **Concurrently** or **Gulp** |
 
 This combination gives you **instant backend reloads** and **live frontend updates**, making full-stack development much faster.
+
+
+---
+
+# References
+
+- [BrowserSync commands](https://browsersync.io/docs/command-line)

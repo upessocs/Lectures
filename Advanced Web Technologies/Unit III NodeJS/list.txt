@@ -3,5 +3,6 @@
 ./032 Node.js Continue.md
 ./033 Node.js Event-Driven Architecture and EventEmitter.md
 ./034 Require vs Import, nodemon, and browsersync.md
+./035 Browsersync for frontend, and nodemon for backend with concurrently.md
 ./037 Common node packages Optional Read.md
 ./MISC1 Troubleshoot NodeJS and NPM installation.md
