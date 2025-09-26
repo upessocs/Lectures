@@ -116,12 +116,33 @@ In `package.json` add:
 "scripts": {
   "dev:server": "nodemon --watch server.js --exec \"node server.js\"",
   "dev:bs-conf": "browser-sync start --config bs-config.js --ws --logLevel debug",
-  "dev:bs": "browser-sync start -p localhost:3000 --port 4000 --files 'public/**/*.*' --ws --logLevel debug",
+  "dev:bs": "browser-sync start -p localhost:3000 --port 4000 --files 'public/**/*.*, **/*' --no-inject-changes --ws",
   "dev": "concurrently \"npm run dev:server\" \"npm run dev:bs\""
 }
 ```
 
-This starts **nodemon** on port `3000` and **BrowserSync** on port `3001` in proxy mode.
+This starts **nodemon** on port `3000` and **BrowserSync** on port `3001` in proxy mode , or port specified.
+> When using browsersync in proxy mode is is not detecting file changes, so we need to specify files and with `--no-inject-changes`
+`--files 'public/**/*.*, **/*' --no-inject-changes --ws`
+
+## Explanation:
+
+**`--files 'public/**/*.*, **/*'`**
+- Explicitly tells BrowserSync which files to watch for changes
+- `public/**/*.*` = All files in public folder and subfolders  
+- `**/*` = All files in project directory (fallback)
+
+**`--no-inject-changes`**
+- Forces full page reload instead of injecting CSS/JS changes
+- More reliable with proxy mode since file injection can fail
+
+**`--ws`**
+- Ensures WebSocket connection is enabled for live reloading
+
+## Why This Fixes Proxy Mode Issues:
+In proxy mode, BrowserSync sits between your browser and backend server. It doesn't control the file serving directly, so it needs explicit instructions on what to watch. Without `--files`, it has no idea when your files change.
+
+The `--no-inject-changes` is often necessary because CSS/JS injection can break when proxying through another server.
 
 ---
 
