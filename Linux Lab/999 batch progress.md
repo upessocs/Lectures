@@ -9,8 +9,8 @@
 |5|date|date|
 |6|date|date|
 |7|20 Sept|date|
-|8|date|23 Sept|
-|1|date|date |
+|8|27 Sept|23 Sept|
+|GIthub and Lab report/viva|27 Sept|26 Sept |
 |1|date|date|
 |1|date|date|
 |1|date|date|
