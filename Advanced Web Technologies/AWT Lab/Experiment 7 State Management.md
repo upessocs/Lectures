@@ -315,3 +315,112 @@ app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`)
 
 
 This is the basic workflow of using **cookies and sessions** in **Node.js** for user management.
+
+---
+
+Lab Assignment
+
+---
+
+## 1. Exercise: Simple User Login System
+
+### Goal
+
+Create a small web app where:
+
+* A user can **register** with a username and password.
+* After logging in, the app **remembers the user** using sessions.
+* The user can **logout**, which ends the session.
+
+### Requirements
+
+* **Register Page**: Accept username & password.
+* **Login Page**: Authenticate user.
+* **Dashboard Page**: Accessible only if the user is logged in.
+* **Logout Button**: Ends session and redirects to login.
+
+### Hints
+
+* Use **express-session** for session management.
+* Store user details temporarily in an **in-memory array** or simple **JSON file**.
+  (No database required for a first version.)
+* When user logs in successfully:
+
+  ```js
+  req.session.user = { username: enteredUsername };
+  ```
+* Protect dashboard route:
+
+  ```js
+  function authMiddleware(req, res, next) {
+    if (req.session.user) next();
+    else res.redirect('/login');
+  }
+  ```
+* On logout:
+
+  ```js
+  req.session.destroy(() => res.redirect('/login'));
+  ```
+
+**Optional Challenge:**
+Hash passwords before storing them using `bcrypt`.
+
+---
+
+## 2. Exercise: To-Do List Manager (Session-Based)
+
+### Goal
+
+Create a basic **to-do list web app**:
+
+* User can **add**, **view**, and **delete** to-do items.
+* The list is saved **per session**, so different users (or different browsers) have separate lists.
+* When the session expires or the browser is closed, the list disappears.
+
+### Hints
+
+* When a user visits for the first time:
+
+  ```js
+  if (!req.session.todos) {
+    req.session.todos = [];
+  }
+  ```
+* To add a to-do:
+
+  ```js
+  req.session.todos.push(req.body.todoItem);
+  ```
+* To delete, filter the array:
+
+  ```js
+  req.session.todos = req.session.todos.filter((item, index) => index !== id);
+  ```
+* Create simple HTML forms for adding and listing items.
+
+**Optional Challenge:**
+Add a cookie to store a preferred theme (e.g., dark/light mode) and apply it to the UI.
+
+---
+
+### Tools & Packages to Use
+
+* `express`
+* `express-session`
+* `cookie-parser`
+* `body-parser` or `express.urlencoded()` for handling form data.
+
+---
+
+### Learning Outcomes
+
+* How to set and destroy sessions.
+* How to protect routes so only logged-in users can access certain pages.
+* How to store small per-user data in session variables.
+* Basic cookie usage for preferences.
+
+---
+
+> **Tip:** Start with the login system first—it teaches the core of session management.
+> Then try the to-do list to practice storing user-specific data inside sessions.
