@@ -177,12 +177,12 @@ app.listen(3000, () => {
 * `/delete-cookie`: Removes the cookie
 
 ---
-## Final File Structure (Do Not Execute/Test)
+## Final File Structure 
 
 ```
-lab-manual/
+Experiment 7/
 │
-├── Experiment-7/
+├── Source/
 │   ├── session-example.js
 │   └── cookie-example.js
 ││
