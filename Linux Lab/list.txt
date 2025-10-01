@@ -2,17 +2,19 @@
 ./Optional
 ./.demo
 ./.demogit
-./999 batch progress.md
-./Experiment 10 Shell Programming Cont.. Modular and Reusable Code.md
-./Experiment 11 Shell Programming Cont.. Interacting with user and database.md
-./Experiment 1 Install WSL, virtualbox, create virtual machine with linux os like ubuntu, linuxmint, or debian.md
-./Experiment 2 Linux file systems permissions and essential commands.md
-./Experiment 3 Linux File Manipulation and System Manipulation I.md
-./Experiment 4 BASH or SHELL scripting.md
-./Experiment 5 BASH or SHELL scripting cont..  .md
-./Experiment 6 Shell Loops.md
-./Experiment 7 Shell Programming, Process and schedule.md
-./Experiment 8 Shell Programming cont ...md
-./Experiment 9 Shell Programming cont .. System Performance Monitoring.md
+./01 Experiment 1 Install WSL, virtualbox, create virtual machine with linux os like ubuntu, linuxmint, or debian.md
+./02 Experiment 2 Linux file systems permissions and essential commands.md
+./03 Experiment 3 Linux File Manipulation and System Manipulation I.md
+./04 Experiment 4 BASH or SHELL scripting.md
+./05 Experiment 5 BASH or SHELL scripting cont..  .md
+./06 Experiment 6 Shell Loops.md
+./07 Experiment 7 Shell Programming, Process and schedule.md
+./08 Experiment 8 Shell Programming cont ...md
+./09 Experiment 9 Shell Programming cont .. System Performance Monitoring.md
+./10 Experiment 10 Shell Programming Cont.. Modular and Reusable Code.md
+./11 Experiment 11 Shell Programming Cont.. Interacting with user and database.md
+./12 Experiment 12 Building a Rule-Based Expert System.md
+./18 Optional Read Adding ASCII Special Characters in Code.md
+./19 batch progress.md
 ./MidTerm Project Assignment.md
 ./001 Courseplan Linux Lab.pdf
