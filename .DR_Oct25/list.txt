@@ -1,0 +1,5 @@
+./
+./Assignment 30 Makrs Submit before 25 Oct 2025
+./.endsem
+./Readme.md
+./List student-subject.xlsx
