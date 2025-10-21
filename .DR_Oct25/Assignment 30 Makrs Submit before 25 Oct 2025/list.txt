@@ -1,8 +1,8 @@
 ./
 ./000 Common Instructions .md
-./Cloud Deployment Models	CSVT3025.md
+./Cloud Deployment Models CSVT3025.md
 ./Databases CSEG1037.md
 ./Databases CSEG2058.md
-./Frontend Devlopment	CSFS2003P.md
-./IT Business C & D  Recovery planning	CSSF3009.md
-./Service Oriented Architecture	CSEG3049P.md
+./Frontend Devlopment CSFS2003P.md
+./IT Business C n D  Recovery planning CSSF3009.md
+./Service Oriented Architecture CSEG3049P.md

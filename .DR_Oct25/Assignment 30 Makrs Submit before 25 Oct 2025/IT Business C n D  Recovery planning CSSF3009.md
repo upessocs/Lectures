@@ -1,7 +1,8 @@
 
 # IT Business C & D  Recovery planning	CSSF3009
 
-Nlshant Singh	500093052	500093052@stu.upes.ac.in
+##### Students
+1. Nlshant Singh	500093052	500093052@stu.upes.ac.in
 
 
 ### Q1: 10 marks

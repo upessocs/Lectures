@@ -1,10 +1,9 @@
-
-
 # Frontend Devlopment	CSFS2003P
  
-Akshit Singh	500120639	Akshit.120639@stu.upes.ac.in
-Lakshya Karamchandani	500121282	Lakshya.121282@stu.upes.ac.in
-Abhinn Tyagi	500121872	Abhinn.121872@stu.upes.ac.in
+##### Students
+1. Akshit Singh	500120639	Akshit.120639@stu.upes.ac.in
+1. Lakshya Karamchandani	500121282	Lakshya.121282@stu.upes.ac.in
+1. Abhinn Tyagi	500121872	Abhinn.121872@stu.upes.ac.in
 
 
 

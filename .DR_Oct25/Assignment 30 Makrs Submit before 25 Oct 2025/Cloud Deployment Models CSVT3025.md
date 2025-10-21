@@ -1,10 +1,10 @@
 
 # Cloud Deployment Models	CSVT3025
 
-
-Varun .	500105285	Varun.105285@stu.upes.ac.in
-Aakash Dagar	500107152	Aakash.107152@stu.upes.ac.in
-Atul Kumar Jayant	500105560	Atul.105560@stu.upes.ac.in
+##### Students
+1. Varun .	500105285	Varun.105285@stu.upes.ac.in
+1. Aakash Dagar	500107152	Aakash.107152@stu.upes.ac.in
+1. Atul Kumar Jayant	500105560	Atul.105560@stu.upes.ac.in
 
 
 

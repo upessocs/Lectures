@@ -1,11 +1,11 @@
 
 # Databases CSEG1037
 
-
-Rijul Mahajan	500125217	Rijul.125217@stu.upes.ac.in
-Yash Yadav	500126266	Yash.126266@stu.upes.ac.in
-Bhanuj Jain	500117711	Bhanuj.117711@stu.upes.ac.in
-Shivani Pal	500118497	Shivani.118497@stu.upes.ac.in
+##### Students
+1. Rijul Mahajan	500125217	Rijul.125217@stu.upes.ac.in
+1. Yash Yadav	500126266	Yash.126266@stu.upes.ac.in
+1. Bhanuj Jain	500117711	Bhanuj.117711@stu.upes.ac.in
+1. Shivani Pal	500118497	Shivani.118497@stu.upes.ac.in
 
 
 ### Q1: 10 marks

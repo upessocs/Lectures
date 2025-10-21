@@ -1,8 +1,9 @@
 
 # Databases CSEG2058
 
-Yasharth Bahuguna	500122892	Yasharth.122892@stu.upes.ac.in
-Saumya	500125847	Saumya.125847@stu.upes.ac.in
+##### Students
+1. Yasharth Bahuguna	500122892	Yasharth.122892@stu.upes.ac.in
+1. Saumya	500125847	Saumya.125847@stu.upes.ac.in
 
 
 ### Q1: 10 marks

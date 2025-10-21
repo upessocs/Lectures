@@ -1,7 +1,8 @@
 
 #  Service Oriented Architecture	CSEG3049P
 
-Aryan Jhuria	500110659	Aryan.110659@stu.upes.ac.in
+##### Students
+1. Aryan Jhuria	500110659	Aryan.110659@stu.upes.ac.in
 
 
 
