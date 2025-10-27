@@ -9,3 +9,6 @@ do
     echo "Searching for $filetype files..."
     find ./*.$filetype -maxdepth 1 -name "*" >>list.txt
 done
+
+echo -e "\n"
+cat list.txt
