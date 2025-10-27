@@ -8,13 +8,13 @@ We kindly request you to complete the form within two days of the conclusion of 
 
 **Form URL:** [https://forms.office.com/r/CwpQ0AqVbW](https://forms.office.com/r/CwpQ0AqVbW)
 
-For your convenience, the standard templates and formats required for the event report are available for download below:
+For your convenience, the standard templates and formats required for the event report are available for [download](https://upessocs.github.io/#dir=/Lectures/.IQAC/Event%20Reporting/Formats/&file=list.txt) below:
 
-*   **[IQAC Long Event Format.docx](./Formats/IQAC%20LONG%20Event%20Format.docx)**
-*   **[UPES_IQAC_EVENT BROCHURE FORMAT.docx](./Formats/UPES_IQAC_EVENT_BROCHURE%20FORMAT.docx)**
-*   **[UPES_IQAC_EVENT FACULTY ATTENDANCE FORMAT.docx](./Formats/UPES_IQAC_EVENT%20FACULTY%20ATTENDANCE%20FORMAT.docx)**
-*   **[UPES_IQAC_EVENT STUDENT ATTENDANCE FORMAT.docx](./Formats/UPES_IQAC_EVENT%20STUDENT%20ATTENDANCE%20FORMAT.docx)**
-*   **[UPES_IQAC_EVENT_ Participants' Feedback Format.docx](./Formats/UPES_IQAC_EVENT_%20Participants'%20Feedback%20Format.docx)**
+*   **[IQAC Long Event Format.docx](https://upessocs.github.io/#dir=/Lectures/.IQAC/Event%20Reporting/Formats/&file=list.txt)**
+*   **[UPES_IQAC_EVENT BROCHURE FORMAT.docx](https://upessocs.github.io/#dir=/Lectures/.IQAC/Event%20Reporting/Formats/&file=list.txt)**
+*   **[UPES_IQAC_EVENT FACULTY ATTENDANCE FORMAT.docx](https://upessocs.github.io/#dir=/Lectures/.IQAC/Event%20Reporting/Formats/&file=list.txt)**
+*   **[UPES_IQAC_EVENT STUDENT ATTENDANCE FORMAT.docx](https://upessocs.github.io/#dir=/Lectures/.IQAC/Event%20Reporting/Formats/&file=list.txt)**
+*   **[UPES_IQAC_EVENT_ Participants' Feedback Format.docx](https://upessocs.github.io/#dir=/Lectures/.IQAC/Event%20Reporting/Formats/&file=list.txt)**
 
 Thank you for your cooperation.
 
