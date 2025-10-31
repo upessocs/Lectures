@@ -1,18 +1,18 @@
 ## MongoDB Tools Explained
 
-### 1. **MongoDB Atlas** ☁️
+### 1. **MongoDB Atlas** 
 - **What it is**: Cloud-based MongoDB service (Database as a Service)
 - **Purpose**: Managed MongoDB in the cloud - no installation needed
 - **Use case**: Production applications, when you don't want to manage servers
 - **Analogy**: Like Gmail for email vs running your own mail server
 
-### 2. **MongoDB Compass** 🧭
+### 2. **MongoDB Compass** 
 - **What it is**: GUI (Graphical User Interface) for MongoDB
 - **Purpose**: Visual database management - click buttons instead of typing commands
 - **Use case**: Database administration, data exploration, query building
 - **Looks like**: A desktop application with menus, buttons, and visualizations
 
-### 3. **mongosh** 🐚 (MongoDB Shell)
+### 3. **mongosh** (MongoDB Shell)
 - **What it is**: Command-line interface for MongoDB
 - **Purpose**: Interactive JavaScript interface to run commands and queries
 - **Use case**: Development, administration, scripting
@@ -24,7 +24,7 @@
 - **Use case**: Automation, scripting, deployment management
 - **Commands**: `mongodump`, `mongorestore`, `mongoimport`, etc.
 
-### 5. **mongod** 🗄️
+### 5. **mongod**
 - **What it is**: MongoDB database server process
 - **Purpose**: The actual database engine that stores and manages data
 - **Use case**: Always running in background when MongoDB is active
