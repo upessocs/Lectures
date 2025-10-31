@@ -87,7 +87,7 @@ Instead of rows and tables (like SQL), MongoDB stores data in:
 
 ---
 
-# installation on ububtu
+# Installation on Ubuntu linux
 
 https://www.mongodb.com/docs/v8.0/tutorial/install-mongodb-on-ubuntu/
 
