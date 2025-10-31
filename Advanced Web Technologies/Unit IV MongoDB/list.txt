@@ -1,3 +1,6 @@
 ./
+./.dist
 ./041 Session, Cookie, and State Management.md
 ./042 MongoDB.md
+./043 MongoSH commands.md
+./044 Common Terms and tools related to Mongo.md
