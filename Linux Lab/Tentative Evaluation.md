@@ -8,11 +8,9 @@ Quiz 2
 Viva
 
 10
-
 Mid Sem Project
 
 20
-
 Quiz 2
 
 20 
