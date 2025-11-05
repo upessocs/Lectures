@@ -59,6 +59,20 @@ Instead of rows and tables (like SQL), MongoDB stores data in:
 
 ## **4. Installation, Setting up MongoDB**
 
+
+<iframe
+  width="70%"
+  height="60%"
+  src="https://www.youtube-nocookie.com/embed/Jwu_t7fpWTY "
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen>
+</iframe>
+
+[Video MongoDB Tutorial: Install, Configure, and Connect Server, Shell & Atlas](https://youtu.be/Jwu_t7fpWTY )
+
+
 ### **Local Installation**
 
 1. Download MongoDB from [https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)
@@ -67,11 +81,15 @@ Instead of rows and tables (like SQL), MongoDB stores data in:
    ```bash
    mongod
    ```
-3. Open Mongo shell:
+
+3. Download Mongo Shell from [https://www.mongodb.com/try/download/shell](https://www.mongodb.com/try/download/shell)
+4. Open Mongo shell:
 
    ```bash
    mongosh
    ```
+
+
 
 ### **Cloud Setup (MongoDB Atlas)**
 
