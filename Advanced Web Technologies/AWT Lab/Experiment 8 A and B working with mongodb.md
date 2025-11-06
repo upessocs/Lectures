@@ -1,7 +1,23 @@
-## Experiment 8 
+# Experiment 8 
 
 - one using **MongoDB Atlas (Version 8A)** 
 - one using **local MongoDB installation (Version 8B)**.
+### Installation, Setting up MongoDB**
+
+
+<iframe
+  width="70%"
+  height="60%"
+  src="https://www.youtube-nocookie.com/embed/Jwu_t7fpWTY "
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen>
+</iframe>
+
+
+[Video MongoDB Tutorial: Install, Configure, and Connect Server, Shell & Atlas](https://youtu.be/Jwu_t7fpWTY )
+
 
 
 ---
