@@ -4,12 +4,12 @@ A beginner-friendly guide to learn MongoDB, Mongoose, and Express basics through
 
 
 ## Table of Contents
-1. [Prerequisites](#prerequisites)
-2. [Project Setup](#project-setup)
-3. [Understanding the Components](#understanding-the-components)
-4. [Complete Code](#complete-code)
-5. [Testing the Application](#testing-the-application)
-6. [Key Mongoose Concepts](#key-mongoose-concepts)
+1. [Prerequisites](prerequisites)
+2. [Project Setup](project-setup)
+3. [Understanding the Components](understanding-the-components)
+4. [Complete Code](complete-code)
+5. [Testing the Application](testing-the-application)
+6. [Key Mongoose Concepts](key-mongoose-concepts)
 
 ---
 
