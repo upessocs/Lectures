@@ -1,7 +1,7 @@
 ./
 ./.dist
-./AWT-ToDo-App
 ./Examples
+./ToDo-App
 ./000 Syllabus AWT Lab.md
 ./999 batch progress.md
 ./Experiment 1 jQuery Implementation.md
