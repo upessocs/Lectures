@@ -1,7 +1,7 @@
 ./
-./AngularJS
-./jQuery
-./React
-./VanillaJS
-./Vue
+./1 VanillaJS
+./2 jQuery
+./3 AngularJS
+./4 React
+./5 Vue
 ./README.md

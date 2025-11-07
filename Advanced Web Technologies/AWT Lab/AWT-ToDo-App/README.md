@@ -32,26 +32,22 @@ You can open any folder’s `index.html` directly in a browser. Internet connect
 
 Every version uses the same minimal structure:
 
-1. **Input Field**
-   Where the user types a new task.
+1. **Input Field** Where the user types a new task.
 
-2. **Add Button**
-   Triggers addition of the task.
+2. **Add Button** Triggers addition of the task.
 
-3. **List Container (`<ul>`)**
-   Displays all tasks.
+3. **List Container (`<ul>`)** Displays all tasks.
 
 4. **List Items (`<li>`)** containing:
-
    * Task text
    * "Done" button to toggle completion
    * "Delete" button to remove from list
    * Optional strike-through styling when completed
 
 5. **localStorage**
-   Saves tasks between reloads.
-   Each framework uses its own storage key:
-   `tasks-vanilla`, `tasks-jquery`, `tasks-angular`, `tasks-react`, `tasks-vue`.
+   * Saves tasks between reloads.
+   * Each framework uses its own storage key:
+   * `tasks-vanilla`, `tasks-jquery`, `tasks-angular`, `tasks-react`, `tasks-vue`.
 
 ---
 
@@ -172,25 +168,25 @@ Vue is more concise compared to AngularJS and React for simple apps.
 ## 5. File Structure
 
 ```
-AWT-ToDo-App/
+ToDo-App/
   README.md
-  VanillaJS/
+  1 VanillaJS/
     index.html
     style.css
     script.js
-  jQuery/
+  2 jQuery/
     index.html
     style.css
     script.js
-  AngularJS/
+  3 AngularJS/
     index.html
     style.css
     script.js
-  React/
+  4 React/
     index.html
     style.css
     script.js
-  Vue/
+  5 Vue/
     index.html
     style.css
     script.js
