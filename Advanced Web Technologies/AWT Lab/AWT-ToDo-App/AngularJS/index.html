@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+  <meta charset="utf-8">
+  <title>To-Do (AngularJS)</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+</head>
+<body ng-controller="TodoCtrl">
+  <h2>To-Do List (AngularJS)</h2>
+  <div class="controls">
+    <input type="text" ng-model="newTask" placeholder="Enter task">
+    <button ng-click="addTask()">Add</button>
+  </div>
+  <ul>
+    <li ng-repeat="t in tasks track by $index">
+      <span class="task" ng-class="{completed: t.done}">{{t.text}}</span>
+      <button ng-click="toggle($index)">Done</button>
+      <button ng-click="remove($index)">Delete</button>
+    </li>
+  </ul>
+  <div class="helper">Data-bound UI, persisted to localStorage.</div>
+  <script src="script.js"></script>
+</body>
+</html>

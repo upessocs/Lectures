@@ -1,0 +1,11 @@
+
+body { font-family: Arial, sans-serif; max-width: 520px; margin: 24px auto; padding: 0 12px; }
+h2 { margin: 8px 0 12px; }
+.controls { display: flex; gap: 8px; margin-bottom: 12px; }
+input[type="text"] { flex: 1; padding: 6px 8px; }
+button { padding: 6px 10px; }
+ul { list-style: none; padding: 0; margin: 0; }
+li { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+span.task { flex: 1; }
+.completed { text-decoration: line-through; color: gray; }
+.helper { font-size: 12px; color: #666; margin-top: 8px; }

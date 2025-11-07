@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>To-Do (Vue 3)</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <h2>To-Do List (Vue 3)</h2>
+  <div id="app">
+    <div class="controls">
+      <input type="text" v-model="text" @keydown.enter="addTask" placeholder="Enter task">
+      <button @click="addTask">Add</button>
+    </div>
+    <ul>
+      <li v-for="(t, i) in tasks" :key="i">
+        <span class="task" :class="{completed: t.done}">{{ t.text }}</span>
+        <button @click="toggle(i)">Done</button>
+        <button @click="remove(i)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  <div class="helper">Vue reactive state + watch for localStorage.</div>
+  <script src="script.js"></script>
+</body>
+</html>
