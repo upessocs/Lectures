@@ -1,7 +1,9 @@
 ./
+./.dist
 ./1 VanillaJS
 ./2 jQuery
 ./3 AngularJS
 ./4 React
 ./5 Vue
-./README.md
+./ToDo Step 1.md
+./ToDo Step 2.md
