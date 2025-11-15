@@ -1,3 +1,13 @@
 ./
+./.demo
 ./.dist
 ./050 SVG and HTML canvas.md
+./051 D3JS Introduction and Examples.md
+./052 D3JS Methods and Summary MCQ.md
+./053 Database I.md
+./054 Database II .md
+./050 SVG and HTML canvas.md
+./051 D3JS Introduction and Examples.md
+./052 D3JS Methods and Summary MCQ.md
+./053 Database I.md
+./054 Database II .md
