@@ -7,7 +7,7 @@ This means:
 * After drawing, the browser “forgets” the shapes—you cannot edit them later unless you redraw everything.
 * Good for **dynamic graphics**, games, real-time animations, and large datasets.
 
-### * Canvas Example (Draw a Circle)
+### Canvas Example (Draw a Circle)
 
 ```html
 <canvas id="myCanvas" width="300" height="200" style="border:1px solid #000"></canvas>
@@ -74,7 +74,7 @@ This example:
 2. Converts it to Canvas.
 3. Exports it as a PNG download.
 
-### * Complete Working Example (HTML)
+### Complete Working Example (HTML)
 
 ```html
 <!DOCTYPE html>
