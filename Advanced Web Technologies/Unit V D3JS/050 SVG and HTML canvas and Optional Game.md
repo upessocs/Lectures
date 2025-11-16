@@ -263,50 +263,40 @@ Example:
 
 This example changes the background color based on a slider controlling the **hue** value.
 
-```html
-
-```
 
 <h3>HSL Color Controller</h3>
-
+<div>
 <label>Hue (0–360)</label>
-<input type="range" id="hue" min="0" max="360" value="180"><br><br>
+<input type="range" id="shue" min="0" max="360" value="180"  onclick="updateColor()"><br>
 
 <label>Saturation (0–100%)</label>
-<input type="range" id="sat" min="0" max="100" value="70"><br><br>
+<input type="range" id="ssat" min="0" max="100" value="70" onclick="updateColor()" ><br>
 
 <label>Lightness (0–100%)</label>
-<input type="range" id="light" min="0" max="100" value="50"><br><br>
+<input type="range" id="slight" min="0" max="100" value="50" onclick="updateColor()"><br>
 
-<p id="valueText">hsl(180, 70%, 50%)</p>
+</div>
+
 
 <div id="box" style="
-  width:250px; 
-  height:120px; 
+  width:80%; 
+  height:300px; 
   border:1px solid #000; 
-  background:hsl(180, 70%, 50%);">
+  background-color:hsl(var(--shue,240), var(--ssat,40%), var(--light, 50%));">
+  <p id="svalueText"></p>
 </div>
 
 <script>
-const hue = document.getElementById("hue");
-const sat = document.getElementById("sat");
-const light = document.getElementById("light");
-const box = document.getElementById("box");
-const text = document.getElementById("valueText");
-
 function updateColor() {
-  const h = hue.value;
-  const s = sat.value;
-  const l = light.value;
+  cssVar("--shue",grab("#shue[0]").value);
+  cssVar("--ssat",grab("#ssat[0]").value);
+  cssVar("--slight",grab("#slight[0]").value);
 
-  const color = `hsl(${h}, ${s}%, ${l}%)`;
-  box.style.background = color;
-  text.textContent = color;
+
+  const color = "hsl(" + h + ", "+ s + ", " + l +"%)";
+  t.innerText(color)
+  console.log("updateColor");
 }
-
-hue.oninput = updateColor;
-sat.oninput = updateColor;
-light.oninput = updateColor;
 </script>
 
 ---
@@ -473,6 +463,7 @@ SVG makes objects easy to click, detect, and animate.
 ## Game Logic Diagram (SVG)
 
 <svg width="420" height="180" style="border:1px solid #000">
+ <rect x="10" y="10" width="420" height="180" fill="#f9f9f9" stroke="black"/>
   <!-- Player -->
   <circle cx="60" cy="90" r="15" fill="steelblue"/>
   <text x="40" y="120">Player</text>
@@ -489,6 +480,8 @@ SVG makes objects easy to click, detect, and animate.
 
 ```html
 <svg width="420" height="180" style="border:1px solid #000">
+  
+ <rect x="10" y="10" width="420" height="180" fill="#f9f9f9" stroke="black"/>
   <!-- Player -->
   <circle cx="60" cy="90" r="15" fill="steelblue"/>
   <text x="40" y="120">Player</text>
