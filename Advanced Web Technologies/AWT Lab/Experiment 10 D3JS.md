@@ -91,7 +91,7 @@ app.listen(port, () => {
 ```
 "scripts": {
   "server": "nodemon server.js",
-  "sync": "browser-sync start --proxy 'localhost:3000' --files 'public/*.html, public/*.js, public/*.css'",
+  "sync": "browser-sync start -p 'localhost:3000' --PORT 4000 --files 'public/*.html, public/*.js, public/*.css, public/*.*' --no-inject-changes --ws",
   "dev": "concurrently \"npm run server\" \"npm run sync\""
 }
 ```
