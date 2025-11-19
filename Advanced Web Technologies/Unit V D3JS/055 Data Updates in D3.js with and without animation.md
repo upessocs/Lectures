@@ -345,10 +345,13 @@ Create an SVG that displays at least three shapes.
 ### Hints
 
 * Use `.append("circle")`, `.append("ellipse")`, `.append("rect")`
+
 * For ellipse, use:
 	`attr("rx", ...)`, `attr("ry", ...)`
+
 * Try binding a small data array, for example:
 	`[ {x:50, y:50, r:30}, ... ]`
+
 * Apply fill using `.attr("fill", "steelblue")`
 
 ---
@@ -360,17 +363,21 @@ Create a simple pie chart showing four categories of any numeric values.
 ### Requirements
 
 * Use `d3.pie()` and `d3.arc()`
+
 * Each slice should display a unique color
 * Add a label near each slice
 
 ### Hints
 
 * Start with data like `[30, 10, 20, 40]`
+
 * Use:
 	`const pie = d3.pie()(data);`
 	`const arc = d3.arc().innerRadius(0).outerRadius(100);`
+
 * Bind pie data using:
 	`svg.selectAll("path").data(pie).enter().append("path")`
+
 * Translate the entire chart using:
 	`.attr("transform", "translate(150,150)")`
 
@@ -390,8 +397,10 @@ Modify any previous chart so each element gets a color generated using **HSL**.
 
 * Use string format:
 	`"hsl(" + hue + ", 70%, 50%)"`
+
 * For bars or circles, try:
 	`const hue = i * 40;`
+
 * Try mapping value to lightness
 	`const light = 20 + d * 1.5;`
 
@@ -411,11 +420,14 @@ Create a line chart using D3's path generator.
 
 * Example dataset:
     `[{x:0,y:20}, {x:10,y:40}, ...]`
+
 * Scales:
     `xScale = d3.scaleLinear().domain([...]).range([...])`
     `yScale = d3.scaleLinear().domain([...]).range([...])`
+
 * Line generator:
     `const line = d3.line().x(d=>xScale(d.x)).y(d=>yScale(d.y));`
+
 * Append path:
     `svg.append("path").attr("d", line(data))`
 
