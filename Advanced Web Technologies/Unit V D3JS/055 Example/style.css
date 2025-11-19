@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tutorial-section {
+    background: #f8f9fa;
+    padding: 20px;
+    margin: 30px 0;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+}
+
+.chart-container {
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 18px;
+    background: #007bff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.reset-btn {
+    background: #d9534f;
+}
+
+.reset-btn:hover {
+    background: #c9302c;
+}
+
+.bar {
+    fill: #4285f4;
+    &:hover {
+        fill: #3367d6;
+    }
+}
+
+.code-block {
+    background: #222;
+    color: #ddd;
+    padding: 15px;
+    font-size: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+}

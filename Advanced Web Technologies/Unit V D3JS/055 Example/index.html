@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3.js Chart Updates Tutorial</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./d3.min.js"></script>
+</head>
+<body>
+
+<h1>D3.js Chart Updates Tutorial</h1>
+
+
+<div class="tutorial-section">
+    <h2>Data Size Control</h2>
+
+    <label>
+        <input type="checkbox" id="autoSizeToggle">
+        Change number of elements before each update
+    </label>
+
+    <div style="margin-top:10px;">
+        <label>Elements: </label>
+        <input type="range" id="sizeSlider" min="1" max="20" value="4" oninput="sizeValue.textContent=this.value">
+        <span id="sizeValue">4</span>
+    </div>
+</div>
+
+
+
+<div class="tutorial-section">
+    <h2>Part 1: Update Without Animation</h2>
+    <p>Direct updates. Changes apply instantly with no transitions.</p>
+
+    <div class="chart-container"><div id="chart1"></div></div>
+    <button onclick="updateWithoutAnimation()">Update Without Animation</button>
+
+    <pre class="code-block">
+    const bars = svg1.selectAll("rect").data(data);
+
+    bars.enter()
+        .append("rect")
+        .attr("class", "bar")
+        .attr("x", (d, i) => xScale1(i))
+        .attr("y", d => yScale1(d))
+        .attr("width", xScale1.bandwidth())
+        .attr("height", d => height - yScale1(d));
+
+    bars
+        .attr("x", (d, i) => xScale1(i))
+        .attr("y", d => yScale1(d))
+        .attr("width", xScale1.bandwidth())
+        .attr("height", d => height - yScale1(d));
+    </pre>
+</div>
+
+<div class="tutorial-section">
+    <h2>Part 2: Update With Animation</h2>
+    <p>Smooth transitions between old and new values.</p>
+
+    <div class="chart-container"><div id="chart2"></div></div>
+    <button onclick="updateWithAnimation()">Update With Animation</button>
+
+    <pre class="code-block">
+    const bars = svg2.selectAll("rect").data(data);
+
+    const enterBars = bars.enter()
+        .append("rect")
+        .attr("class", "bar")
+        .attr("x", (d, i) => xScale2(i))
+        .attr("y", height)
+        .attr("width", xScale2.bandwidth())
+        .attr("height", 0)
+        .attr("fill", "orange")
+        .attr("stroke", "black");
+
+    enterBars.merge(bars)
+        .transition()
+        .duration(1000)
+        .attr("x", (d, i) => xScale2(i))
+        .attr("y", d => yScale2(d))
+        .attr("width", xScale2.bandwidth())
+        .attr("height", d => height - yScale2(d));
+
+    bars.exit()
+        .transition()
+        .duration(1000)
+        .attr("y", height)
+        .attr("height", 0)
+        .remove();
+    </pre>
+</div>
+
+<div style="text-align:center;margin:20px;">
+    <button class="reset-btn" onclick="resetBothCharts()">Reset Both Charts</button>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
