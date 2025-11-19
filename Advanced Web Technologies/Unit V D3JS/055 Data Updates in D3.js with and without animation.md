@@ -8,10 +8,6 @@ This tutorial explains the two stages of handling dynamic data in D3.js:
 2. Updating charts **with animations**
 
 
-* Part 1: Update Without Animation
-* Part 2: Update With Animation
-
-
 ---
 
 ## index.html
@@ -328,17 +324,10 @@ button:hover {
 }
 ```
 
----
-
-Below is a clean assignment you can directly give to students.
-No icons, no greetings.
 
 ---
 
 # D3.js Assignment 3
-
-Create a small interactive data-visualization project using **four different D3 techniques**.
-Each task includes **hints**, but does not reveal the final solution.
 
 ---
 
@@ -357,9 +346,9 @@ Create an SVG that displays at least three shapes.
 
 * Use `.append("circle")`, `.append("ellipse")`, `.append("rect")`
 * For ellipse, use:
-  `attr("rx", ...)`, `attr("ry", ...)`
+	`attr("rx", ...)`, `attr("ry", ...)`
 * Try binding a small data array, for example:
-  `[ {x:50, y:50, r:30}, ... ]`
+	`[ {x:50, y:50, r:30}, ... ]`
 * Apply fill using `.attr("fill", "steelblue")`
 
 ---
@@ -378,12 +367,12 @@ Create a simple pie chart showing four categories of any numeric values.
 
 * Start with data like `[30, 10, 20, 40]`
 * Use:
-  `const pie = d3.pie()(data);`
-  `const arc = d3.arc().innerRadius(0).outerRadius(100);`
+	`const pie = d3.pie()(data);`
+	`const arc = d3.arc().innerRadius(0).outerRadius(100);`
 * Bind pie data using:
-  `svg.selectAll("path").data(pie).enter().append("path")`
+	`svg.selectAll("path").data(pie).enter().append("path")`
 * Translate the entire chart using:
-  `.attr("transform", "translate(150,150)")`
+	`.attr("transform", "translate(150,150)")`
 
 ---
 
@@ -400,11 +389,11 @@ Modify any previous chart so each element gets a color generated using **HSL**.
 ### Hints
 
 * Use string format:
-  `"hsl(" + hue + ", 70%, 50%)"`
+	`"hsl(" + hue + ", 70%, 50%)"`
 * For bars or circles, try:
-  `const hue = i * 40;`
+	`const hue = i * 40;`
 * Try mapping value to lightness
-  `const light = 20 + d * 1.5;`
+	`const light = 20 + d * 1.5;`
 
 ---
 
@@ -421,14 +410,14 @@ Create a line chart using D3's path generator.
 ### Hints
 
 * Example dataset:
-  `[{x:0,y:20}, {x:10,y:40}, ...]`
+    `[{x:0,y:20}, {x:10,y:40}, ...]`
 * Scales:
-  `xScale = d3.scaleLinear().domain([...]).range([...])`
-  `yScale = d3.scaleLinear().domain([...]).range([...])`
+    `xScale = d3.scaleLinear().domain([...]).range([...])`
+    `yScale = d3.scaleLinear().domain([...]).range([...])`
 * Line generator:
-  `const line = d3.line().x(d=>xScale(d.x)).y(d=>yScale(d.y));`
+    `const line = d3.line().x(d=>xScale(d.x)).y(d=>yScale(d.y));`
 * Append path:
-  `svg.append("path").attr("d", line(data))`
+    `svg.append("path").attr("d", line(data))`
 
 ---
 
@@ -440,6 +429,6 @@ Create a single SVG that combines **any two visualizations** (example: pie chart
 
 * Use `g` groups with independent transforms for each visualization
 * Prevent overlap by shifting one chart using
-  `.attr("transform", "translate(300,0)")`
+	`.attr("transform", "translate(300,0)")`
 
 
