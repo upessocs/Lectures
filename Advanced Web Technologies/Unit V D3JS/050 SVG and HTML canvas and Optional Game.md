@@ -297,6 +297,8 @@ function updateColor() {
   t.innerText(color)
   console.log("updateColor");
 }
+
+updateColor()
 </script>
 
 ---
