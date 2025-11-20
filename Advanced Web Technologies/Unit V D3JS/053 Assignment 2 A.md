@@ -1,4 +1,4 @@
-# Assignment 2: Advanced Database Concepts with Web Technologies 10 Marks
+# Assignment 2A: Advanced Database Concepts with Web Technologies 10 Marks
 
 ## Explain the following concepts and relate each to modern web technologies such as **jQuery, AngularJS, Node.js, MongoDB, and D3.js**.
 

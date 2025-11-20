@@ -10,6 +10,7 @@
 <body>
 
 <h1>D3.js Chart Updates Tutorial</h1>
+<h2>d3:Data-Driven Document</h2>
 
 
 <div class="tutorial-section">
@@ -33,7 +34,7 @@
     <h2>Part 1: Update Without Animation</h2>
     <p>Direct updates. Changes apply instantly with no transitions.</p>
 
-    <div class="chart-container"><div id="chart1"></div></div>
+    <div class="chart-container"><div id="chart1"></div><ul id="data1"></ul></div>
     <button onclick="updateWithoutAnimation()">Update Without Animation</button>
 
     <pre class="code-block">
@@ -59,7 +60,7 @@
     <h2>Part 2: Update With Animation</h2>
     <p>Smooth transitions between old and new values.</p>
 
-    <div class="chart-container"><div id="chart2"></div></div>
+    <div class="chart-container"><div id="chart2"><ul id="data2"></ul></div></div>
     <button onclick="updateWithAnimation()">Update With Animation</button>
 
     <pre class="code-block">

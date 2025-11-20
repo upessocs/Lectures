@@ -9,6 +9,8 @@ const svg1 = d3.select("#chart1")
     .attr("width", width)
     .attr("height", height);
 
+const list1 = d3.select("#data1");
+
 let data1 = [40, 80, 55, 20];
 
 function generateSizedArray() {
@@ -23,7 +25,10 @@ const yScale1 = d3.scaleLinear().range([height, 0]);
 function renderWithoutAnimation(data) {
     xScale1.domain(data.map((d, i) => i));
     yScale1.domain([0, d3.max(data)]);
-
+    
+    const xAxis = d3.axisBottom(xScale1);
+    const yAxis = d3.axisLeft(yScale1).ticks(5);
+    
     const bars = svg1.selectAll("rect").data(data);
 
     bars.enter()
@@ -40,7 +45,25 @@ function renderWithoutAnimation(data) {
         .attr("width", xScale1.bandwidth())
         .attr("height", d => height - yScale1(d));
 
-    bars.exit().remove();
+    bars.exit().remove()
+    
+
+    // UPDATE list1
+    const li = d3.select("#data1")
+    .selectAll("li")
+    .data(data);
+
+    // UPDATE
+    li.text(d => d);
+
+    // ENTER
+    li.enter()
+    .append("li")
+    .text(d => d);
+
+    // EXIT
+    li.exit().remove();
+
 }
 
 function updateWithoutAnimation() {
@@ -62,6 +85,8 @@ const svg2 = d3.select("#chart2")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
+
+const list2 = d3.select("#data2");
 
 let data2 = [40, 80, 55, 20];
 
