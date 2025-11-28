@@ -1,10 +1,13 @@
 ./
+./.demo
 ./.dist
 ./054 Assignment 2 A Hints
 ./055 Example
+./056 Example 2
 ./050 SVG and HTML canvas and Optional Game.md
 ./051 D3JS Introduction and Examples.md
 ./052 D3JS Methods and Summary MCQ.md
 ./053 Assignment 2 A.md
 ./054 Assignment 2 B.md
 ./055 Data Updates in D3.js with and without animation.md
+./056 D3 Task1.md
