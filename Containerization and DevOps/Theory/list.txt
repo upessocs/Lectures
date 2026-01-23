@@ -1,3 +1,5 @@
 ./
 ./010 Timeline VM vs Containers.md
-./Docker basic commands.md
+./011 Docker basic commands.md
+./012 How to preserve changes made inside containers.md
+./013 Dockerfile – Hands-On Tutorial.md
