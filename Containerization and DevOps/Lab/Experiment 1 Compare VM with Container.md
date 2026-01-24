@@ -274,3 +274,302 @@ Virtual Machines are suitable for full OS isolation and legacy workloads, wherea
 1. VirtualBox Documentation
 2. Vagrant Documentation
 3. Docker Official Documentation
+
+
+
+---
+
+
+# Troubleshooting Guide for Mac Users
+
+## Vagrant on macOS (M1 / M2 / M3 – Apple Silicon)
+
+---
+
+## 1. Symptom → Root Cause → Fix (Quick Diagnosis)
+
+### Problem 1: VirtualBox VM does not start / kernel panic
+
+**Cause**
+
+* VirtualBox has limited ARM support
+* Most Vagrant boxes are amd64
+
+**Fix**
+
+* Do **not** use VirtualBox
+* Use **QEMU (ARM native)** instead
+
+---
+
+### Problem 2: `vagrant up` hangs at “SSH unavailable”
+
+**Cause**
+
+* Wrong architecture box (amd64 on ARM)
+* Provider mismatch
+
+**Fix**
+
+* Use **arm64/aarch64 box**
+* Explicitly configure QEMU provider
+
+---
+
+### Problem 3: “Provider not found: qemu”
+
+**Cause**
+
+* QEMU provider plugin not installed
+
+**Fix**
+
+* Install `vagrant-qemu` plugin
+
+---
+
+## 2. Correct Setup for macOS (Apple Silicon)
+
+### Requirements
+
+* macOS 12+
+* Apple Silicon (M1/M2/M3)
+* Internet connection
+* Admin (sudo) access
+
+---
+
+## 3. Step 1 – Install Homebrew (if not installed)
+
+Check:
+
+```bash
+brew --version
+```
+
+If missing:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+After install (important on Apple Silicon):
+
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+source ~/.zprofile
+```
+
+Verify:
+
+```bash
+brew doctor
+```
+
+---
+
+## 4. Step 2 – Install QEMU
+
+```bash
+brew install qemu
+```
+
+Verify:
+
+```bash
+qemu-system-aarch64 --version
+```
+
+Expected:
+
+* Version info printed
+* No command-not-found error
+
+---
+
+## 5. Step 3 – Install Vagrant (ARM version)
+
+### Recommended (Homebrew)
+
+```bash
+brew install --cask vagrant
+```
+
+Verify:
+
+```bash
+vagrant --version
+```
+
+Expected:
+
+```
+Vagrant 2.x.x
+```
+
+---
+
+## 6. Step 4 – Install QEMU Provider for Vagrant
+
+```bash
+vagrant plugin install vagrant-qemu
+```
+
+Verify:
+
+```bash
+vagrant plugin list
+```
+
+You must see:
+
+```
+vagrant-qemu
+```
+
+---
+
+## 7. Step 5 – Use an ARM-Compatible Box
+
+### IMPORTANT RULE
+
+> **The box must support `arm64` or `aarch64`**
+
+Good examples:
+
+```bash
+ubuntu/jammy64
+ubuntu/focal64   # only if ARM variant exists
+```
+
+Check box info:
+
+```bash
+vagrant box add ubuntu/jammy64
+```
+
+If it downloads successfully → box supports ARM.
+
+---
+
+## 8. Step 6 – Sample `Vagrantfile` (QEMU)
+
+```ruby
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/jammy64"
+
+  config.vm.provider "qemu" do |q|
+    q.arch = "aarch64"
+    q.machine = "virt"
+    q.cpu = "cortex-a72"
+    q.memory = 2048
+    q.cpus = 2
+  end
+end
+```
+
+---
+
+## 9. Step 7 – Start the VM
+
+```bash
+vagrant up --provider=qemu
+```
+
+First boot may take time.
+
+Login:
+
+```bash
+vagrant ssh
+```
+
+---
+
+## 10. Common Errors and Fixes
+
+### Error: `No usable default provider`
+
+**Fix**
+
+```bash
+vagrant up --provider=qemu
+```
+
+---
+
+### Error: `qemu-system-aarch64 not found`
+
+**Cause**
+
+* QEMU not installed or PATH issue
+
+**Fix**
+
+```bash
+brew reinstall qemu
+```
+
+---
+
+### Error: VM boots but SSH fails
+
+**Cause**
+
+* Box architecture mismatch
+
+**Fix**
+
+* Remove box:
+
+```bash
+vagrant box remove ubuntu/jammy64
+```
+
+* Re-add correct box
+
+---
+
+### Error: Extremely slow VM
+
+**Cause**
+
+* Running amd64 emulation
+
+**Fix**
+
+* Ensure:
+
+```bash
+uname -m
+```
+
+Inside VM should return:
+
+```
+aarch64
+```
+
+---
+
+## 11. What NOT to Do (Important for Students)
+
+Do NOT use:
+
+* VirtualBox on M1/M2/M3
+* Old `.box` files from Windows labs
+* amd64-only boxes
+
+Do NOT expect:
+
+* Same provider across all OS
+
+---
+
+## 12. Instructor Recommendation (Best Practice)
+
+For mixed classrooms:
+
+* **Windows / Linux** → VirtualBox + Vagrant
+* **macOS ARM** → QEMU + Vagrant
+* **Same learning outcome** → Prefer Docker where possible
