@@ -319,3 +319,222 @@ If it cannot be rebuilt automatically, it does not scale.
 
 
 
+
+---
+
+## **CMD** and **ENTRYPOINT** in Docker, with examples and when to use which.
+
+
+---
+
+## 1. Purpose at a glance
+
+| Aspect                            | CMD                                   | ENTRYPOINT                         |
+| --------------------------------- | ------------------------------------- | ---------------------------------- |
+| Main role                         | Provide **default arguments/command** | Define the **main executable**     |
+| Can be overridden at `docker run` | Yes, completely                       | Not easily (unless `--entrypoint`) |
+| Typical use                       | Default behavior that user may change | Fixed command that always runs     |
+| Flexibility                       | High                                  | Controlled / strict                |
+
+---
+
+## 2. CMD
+
+### What it does
+
+* Specifies the **default command or arguments** for a container.
+* If the user passes a command during `docker run`, **CMD is replaced**.
+
+### Example
+
+```dockerfile
+FROM ubuntu
+CMD ["echo", "Hello World"]
+```
+
+#### Run without override
+
+```bash
+docker run myimage
+```
+
+Output:
+
+```
+Hello World
+```
+
+#### Run with override
+
+```bash
+docker run myimage echo "Hi"
+```
+
+Output:
+
+```
+Hi
+```
+
+**Key point:** CMD is **easy to override**.
+
+---
+
+## 3. ENTRYPOINT
+
+### What it does
+
+* Defines the **main process** that will always run.
+* Arguments passed in `docker run` are **appended** to ENTRYPOINT (not replaced).
+
+### Example
+
+```dockerfile
+FROM ubuntu
+ENTRYPOINT ["echo"]
+```
+
+#### Run
+
+```bash
+docker run myimage Hello
+```
+
+Output:
+
+```
+Hello
+```
+
+**Key point:** ENTRYPOINT is **not replaced**, it is **extended**.
+
+---
+
+## 4. ENTRYPOINT + CMD together (most important pattern)
+
+This is the **recommended best practice**.
+
+### Example
+
+```dockerfile
+FROM ubuntu
+ENTRYPOINT ["echo"]
+CMD ["Hello World"]
+```
+
+#### Run without arguments
+
+```bash
+docker run myimage
+```
+
+Output:
+
+```
+Hello World
+```
+
+#### Run with arguments
+
+```bash
+docker run myimage Hi Prateek
+```
+
+Output:
+
+```
+Hi Prateek
+```
+
+### How it works internally
+
+```
+ENTRYPOINT + CMD → final command
+```
+
+If user provides arguments:
+
+```
+ENTRYPOINT + docker run args
+```
+
+---
+
+## 5. Overriding behavior summary
+
+| Scenario                             | CMD      | ENTRYPOINT |
+| ------------------------------------ | -------- | ---------- |
+| `docker run image`                   | Used     | Used       |
+| `docker run image ls`                | Replaced | Appended   |
+| `docker run --entrypoint bash image` | Ignored  | Replaced   |
+
+---
+
+## 6. Exec form vs Shell form (important)
+
+### Exec form (recommended)
+
+```dockerfile
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+* Proper signal handling
+* PID 1 works correctly
+
+### Shell form (not recommended)
+
+```dockerfile
+CMD nginx -g "daemon off;"
+```
+
+* Runs inside `/bin/sh`
+* Signal handling issues
+
+Same applies to ENTRYPOINT.
+
+---
+
+## 7. When to use what
+
+### Use CMD when
+
+* You want a **default command**
+* Users should be able to easily override behavior
+* Example: development tools, test images
+
+### Use ENTRYPOINT when
+
+* The container is meant to behave like a **binary**
+* You want controlled execution
+* Example: CLI tools, agents, runners
+
+### Use both when
+
+* You want a **fixed executable** + **configurable defaults**
+* Example: web servers, databases
+
+---
+
+## 8. Real-world examples
+
+### Nginx
+
+```dockerfile
+ENTRYPOINT ["nginx"]
+CMD ["-g", "daemon off;"]
+```
+
+### CLI-style container
+
+```dockerfile
+ENTRYPOINT ["kubectl"]
+CMD ["version"]
+```
+
+---
+
+## One-line mental model
+
+* **CMD** → *default arguments*
+* **ENTRYPOINT** → *main executable*
+
