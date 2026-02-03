@@ -538,3 +538,69 @@ CMD ["version"]
 * **CMD** → *default arguments*
 * **ENTRYPOINT** → *main executable*
 
+
+---
+## Class code correction
+
+
+
+```dockerfile
+ENTRYPOINT ["echo", "Prateek"]
+CMD ["java", "Hello"]
+```
+
+Docker combines them like this at runtime:
+
+```bash
+echo Prateek java Hello
+```
+
+---
+
+## Correct mental model (very important)
+
+* **ENTRYPOINT** → *the executable*
+* **CMD** → *default arguments to that executable*
+
+> You **cannot** use `ENTRYPOINT` to run one command and `CMD` to run another.
+
+> Docker **does not execute commands sequentially**.
+
+
+## **shell wrapper**:
+
+```dockerfile
+ENTRYPOINT ["sh", "-c", "echo Prateek && java Hello"]
+```
+
+This works because `sh -c` executes a command string.
+
+---
+
+## Best Practice Recommendation
+
+For Java containers:
+
+```dockerfile
+ENTRYPOINT ["java", "Hello"]
+```
+
+or
+
+```dockerfile
+CMD ["java", "Hello"]
+```
+
+No shell, no echo, one main process.
+
+---
+
+## Quick rule to remember
+
+```
+ENTRYPOINT = WHAT runs
+CMD        = WITH WHAT arguments
+```
+
+
+
