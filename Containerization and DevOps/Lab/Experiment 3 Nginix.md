@@ -279,3 +279,330 @@ By the end of this lab, students should clearly understand:
 * Base image impact on size and security
 * Why official images exist
 * Real-world NGINX usage in container platforms
+
+
+---
+# Optional read
+---
+# NGINX Web Server: How to Use It and Why It’s Powerful (Optional read)
+
+## 1. What NGINX is (quick context)
+
+NGINX is a:
+
+* High-performance **web server**
+* **Reverse proxy**
+* **Load balancer**
+* **API gateway**
+
+It is event-driven and asynchronous, which makes it far more efficient than traditional thread-based servers like Apache under high load.
+
+---
+
+## 2. Hosting Static Files (Most Common Use)
+
+### Step 1: Install NGINX
+
+**Ubuntu / Debian**
+
+```bash
+sudo apt update
+sudo apt install nginx
+```
+
+**RHEL / CentOS**
+
+```bash
+sudo dnf install nginx
+```
+
+Start and enable:
+
+```bash
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+---
+
+### Step 2: Default Web Root
+
+By default, NGINX serves files from:
+
+```text
+/var/www/html
+```
+
+Put a file there:
+
+```bash
+sudo nano /var/www/html/index.html
+```
+
+Example:
+
+```html
+<h1>Hello from NGINX</h1>
+```
+
+Access in browser:
+
+```
+http://<server-ip>
+```
+
+---
+
+## 3. Understanding NGINX Configuration (Core Concept)
+
+Main config:
+
+```text
+/etc/nginx/nginx.conf
+```
+
+Site configs:
+
+```text
+/etc/nginx/sites-available/
+```
+
+Enabled sites:
+
+```text
+/etc/nginx/sites-enabled/
+```
+
+NGINX uses **server blocks** (similar to Apache virtual hosts).
+
+---
+
+## 4. Hosting a Custom Website (Server Block)
+
+### Step 1: Create website directory
+
+```bash
+sudo mkdir -p /var/www/myapp
+sudo chown -R www-data:www-data /var/www/myapp
+```
+
+Add files:
+
+```bash
+nano /var/www/myapp/index.html
+```
+
+---
+
+### Step 2: Create NGINX config
+
+```bash
+sudo nano /etc/nginx/sites-available/myapp
+```
+
+```nginx
+server {
+    listen 80;
+    server_name myapp.local;
+
+    root /var/www/myapp;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+Enable it:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+---
+
+## 5. Serving Static Assets Efficiently
+
+NGINX is excellent for static files (CSS, JS, images).
+
+```nginx
+location /assets/ {
+    root /var/www/myapp;
+    expires 30d;
+    access_log off;
+}
+```
+
+Benefits:
+
+* Browser caching
+* Reduced bandwidth
+* Faster page load
+
+---
+
+## 6. Using NGINX as a Reverse Proxy (Very Important)
+
+### Use case:
+
+Frontend → NGINX → Backend app (Node, Java, Python, Go)
+
+Example: Proxy to backend on port 3000
+
+```nginx
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+Why this matters:
+
+* Hide backend ports
+* Central SSL handling
+* Better security
+* Easy scaling
+
+---
+
+## 7. Load Balancing with NGINX
+
+### Example: Multiple backend servers
+
+```nginx
+upstream backend_pool {
+    server 10.0.0.1:8080;
+    server 10.0.0.2:8080;
+}
+
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://backend_pool;
+    }
+}
+```
+
+Algorithms:
+
+* Round-robin (default)
+* Least connections
+* IP hash
+
+---
+
+## 8. HTTPS / SSL Termination
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name example.com;
+
+    ssl_certificate /etc/ssl/cert.pem;
+    ssl_certificate_key /etc/ssl/key.pem;
+
+    location / {
+        root /var/www/html;
+    }
+}
+```
+
+Why SSL at NGINX:
+
+* Backend stays HTTP
+* Centralized cert management
+* Faster TLS handling
+
+---
+
+## 9. NGINX for APIs (API Gateway style)
+
+Common API features:
+
+* Rate limiting
+* Auth forwarding
+* Header injection
+
+### Rate limiting example
+
+```nginx
+limit_req_zone $binary_remote_addr zone=api:10m rate=10r/s;
+
+location /api/ {
+    limit_req zone=api burst=20;
+    proxy_pass http://api_backend;
+}
+```
+
+---
+
+## 10. NGINX with Docker (Modern Use Case)
+
+```bash
+docker run -d \
+  -p 80:80 \
+  -v $(pwd)/html:/usr/share/nginx/html \
+  nginx
+```
+
+Why this is popular:
+
+* Immutable config
+* Easy rollback
+* Perfect for CI/CD
+
+---
+
+## 11. Other Important Use Cases
+
+| Use Case                 | Why NGINX         |
+| ------------------------ | ----------------- |
+| Static websites          | Extremely fast    |
+| Reverse proxy            | Simple, secure    |
+| Load balancer            | Lightweight       |
+| Kubernetes Ingress       | Industry standard |
+| CDN edge server          | High concurrency  |
+| Media streaming          | Low memory usage  |
+| GitHub Pages alternative | Full control      |
+
+---
+
+## 12. NGINX vs Apache (Quick Comparison)
+
+| Feature       | NGINX        | Apache         |
+| ------------- | ------------ | -------------- |
+| Architecture  | Event-driven | Process/thread |
+| Static files  | Faster       | Slower         |
+| Reverse proxy | Excellent    | Average        |
+| .htaccess     | -            | yes           |
+| Memory usage  | Low          | Higher         |
+
+---
+
+## 13. When NOT to use NGINX alone
+
+* Dynamic PHP without PHP-FPM
+* Heavy per-directory config needs
+* Shared hosting environments
+
+---
+
+## 14. Learning Path (Recommended)
+
+1. Static file hosting
+2. Server blocks
+3. Reverse proxy
+4. SSL termination
+5. Load balancing
+6. Docker + NGINX
+7. Kubernetes Ingress
+

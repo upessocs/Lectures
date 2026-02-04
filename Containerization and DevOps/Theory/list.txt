@@ -7,6 +7,6 @@
 ./011 Docker basic commands.md
 ./012 How to preserve changes made inside containers.md
 ./013 Dockerfile – Hands-On Tutorial.md
-./014 Docker API exposing to external world.md
 ./014 Docker API.md
+./015 Docker API exposing to external world.md
 ./018 CLassTest.md
