@@ -119,6 +119,7 @@ curl http://localhost:5000
 ```
 
 **What Happened:**
+
 1. We created a container manually
 2. Installed dependencies inside
 3. Created application files
@@ -140,6 +141,7 @@ flask-docker-project/
 #### **Step 2: Create Dockerfile**
 
 **`Dockerfile` (Create this file):**
+
 ```dockerfile
 # STEP 1: Choose base image
 FROM python:3.9-slim
@@ -350,6 +352,7 @@ node-docker-project/
 #### **Step 2: Create Dockerfile**
 
 **`Dockerfile`:**
+
 ```dockerfile
 # STEP 1: Choose base image
 FROM node:18-alpine
