@@ -336,3 +336,106 @@ Remove container → Data lost.
 * Cache
 * Sensitive runtime data
 
+
+
+---
+
+# 1. Bind Mount Using `--mount` (Recommended Modern Syntax)
+
+### General Format
+
+```bash
+docker run \
+  --mount type=bind,source=<host-path>,target=<container-path> \
+  image_name
+```
+
+### Example
+
+```bash
+docker run -d \
+  --name nginx-bind \
+  --mount type=bind,source=/home/prateek/html,target=/usr/share/nginx/html \
+  nginx
+```
+
+### Important Notes
+
+* `type=bind` → Specifies bind mount
+* `source=` → Full path on host machine
+* `target=` → Path inside container
+* Host path must exist (otherwise container fails)
+
+---
+
+# 2. Bind Mount Using `-v` (Short Syntax)
+
+### General Format
+
+```bash
+docker run -v <host-path>:<container-path> image_name
+```
+
+### Example
+
+```bash
+docker run -d \
+  --name nginx-bind \
+  -v /home/prateek/html:/usr/share/nginx/html \
+  nginx
+```
+
+---
+
+# 3. Read-Only Bind Mount
+
+## Using `--mount`
+
+```bash
+docker run \
+  --mount type=bind,source=/home/prateek/html,target=/usr/share/nginx/html,readonly \
+  nginx
+```
+
+## Using `-v`
+
+```bash
+docker run \
+  -v /home/prateek/html:/usr/share/nginx/html:ro \
+  nginx
+```
+
+---
+
+# 4. Bind Mount in Docker Compose (For Reference)
+
+```yaml
+services:
+  web:
+    image: nginx
+    volumes:
+      - /home/prateek/html:/usr/share/nginx/html
+```
+
+---
+
+# 5. Key Differences in Syntax
+
+| Feature       | `--mount` | `-v`                  |
+| ------------- | --------- | --------------------- |
+| Readability   | High      | Compact               |
+| Explicit type | Yes       | No                    |
+| Recommended   | Yes       | Older but widely used |
+
+---
+
+# Important Rules
+
+1. Always use **absolute path** in bind mount.
+2. If host directory does not exist:
+
+   * `-v` may create it automatically
+   * `--mount` will fail
+3. Bind mount ties container to specific host path (less portable).
+
+

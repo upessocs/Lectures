@@ -346,3 +346,9 @@ docker inspect [container] | grep -A 20 Mounts
 5. **Use `:ro` flag** for read-only mounts when possible
 6. **Backup volumes regularly** with `docker run --rm -v` pattern
 7. **Avoid bind mounts in production** unless necessary for host-specific files
+
+
+
+---
+
+
