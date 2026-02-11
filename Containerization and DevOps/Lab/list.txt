@@ -4,6 +4,8 @@
 ./Docker Data Management Explained volume, bind, tempfs.md
 ./Experiment 0 Install WSL.md
 ./Experiment 1 Compare VM with Container.md
-./Experiment 2  Docker Installation, configuration, Running Images.md
-./Experiment 3 Nginix.md
+./Experiment 2 Docker Installation, configuration, Running Images.md
+./Experiment 3 Docker Deploy NGINX Using Different Base Images and Comparing Image Layers.md
 ./Experiment 4 Docker Essentials Dockerfile dockerignore tagging and publishing.md
+./Experiment 5 Docker Volumes, Environment Variables, Monitoring & Networks.md
+./Experiment 6 Docker Compose vs Docker Run.md
