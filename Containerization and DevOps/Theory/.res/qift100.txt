@@ -1,0 +1,718 @@
+
+// == Unit I: Theory (45 Questions) ==
+// Questions 1-45 focus on concepts, virtualization, DevOps, and architecture.
+
+$CATEGORY: Docker Certification/Unit I: Introduction
+
+// Virtualization and DevOps Concepts
+::Q1:: What is the primary characteristic of Operating System Virtualization (Containerization)? {
+~The hypervisor runs multiple guest OSes on virtual hardware.
+~A single physical server is partitioned into multiple logical servers.
+=The OS kernel allows multiple isolated user-space instances.
+~Applications are packaged with their own OS kernel.
+}
+
+::Q2:: Which type of virtualization is Docker primarily associated with? {
+~Hardware-assisted virtualization
+~Full virtualization
+~Para-virtualization
+=Operating system level virtualization
+}
+
+::Q3:: According to DevOps principles, which practice is most directly enhanced by containerization? {
+~Waterfall project management
+~Manual change approval boards
+=Continuous Integration and Continuous Delivery (CI/CD)
+~Long-term, isolated feature branches
+}
+
+::Q4:: What is a key benefit of using containers in a DevOps workflow? {
+~Eliminates the need for version control.
+~Guarantees applications will never crash.
+=Ensures consistency across development, testing, and production environments.
+~Replaces the need for configuration management tools entirely.
+}
+
+::Q5:: In the context of Docker and Virtualization, what does a container share with the host system? {
+~Its own user space
+~A complete guest Operating System
+=The host OS kernel
+~Virtualized hardware components
+}
+
+::Q6:: Which of the following is a well-known vendor for container technologies other than Docker? {
+~VMware vSphere
+=containerd (via CNCF)
+~Microsoft Hyper-V
+~Citrix XenServer
+}
+
+::Q7:: How does Docker primarily differ from a traditional Virtual Machine (VM)? {
+~Docker can only run Linux applications.
+~VMs are faster to start than Docker containers.
+=Docker containers share the host OS kernel, while VMs include a full guest OS.
+~Docker provides stronger isolation guarantees than VMs.
+}
+
+::Q8:: Which of the following is NOT a core principle of the DevOps philosophy? {
+~Collaboration between development and operations teams.
+~Automation of infrastructure and workflows.
+~Measuring and monitoring application performance.
+=Centralized, manual release management every six months.
+}
+
+::Q9:: What is the role of a hypervisor in server virtualization? {
+~To isolate user-space instances on a single kernel.
+~To package and distribute applications.
+=To abstract and present the physical hardware to multiple virtual machines.
+~To provide a REST API for container management.
+}
+
+::Q10:: Which component of Docker is a proprietary, commercial product? {
+~Docker Hub
+~containerd
+~runc
+=Docker Enterprise Edition (now part of Mirantis)
+}
+
+// Docker Introduction
+::Q11:: Which statement accurately describes Docker? {
+~Docker is a programming language for writing distributed applications.
+=Docker is a platform for developing, shipping, and running applications in containers.
+~Docker is a specific type of Linux kernel feature.
+~Docker is a configuration management tool like Ansible or Puppet.
+}
+
+::Q12:: What is Docker Community Edition (Docker CE) best described as? {
+~A paid, commercially supported version of Docker.
+~A deprecated version of Docker that is no longer available.
+=A free, open-source version of the Docker platform for developers and small teams.
+~A cloud-based service for managing Docker containers.
+}
+
+::Q13:: What is the primary function of Docker Compose? {
+~To build Docker images from a Dockerfile.
+=To define and run multi-container Docker applications.
+~To orchestrate containers across a swarm cluster.
+~To scan Docker images for security vulnerabilities.
+}
+
+::Q14:: In Docker architecture, what is the role of the Docker Daemon (dockerd)? {
+~A command-line interface for interacting with Docker.
+=A background service that manages Docker objects (images, containers, networks, volumes).
+~A public registry for storing Docker images.
+~A lightweight runtime for executing containers.
+}
+
+::Q15:: What is the purpose of the Docker API? {
+~A visual interface for managing Docker Desktop.
+~A command-line tool for building images.
+=A programmatic interface for clients to communicate with the Docker daemon.
+~A specification for creating Dockerfiles.
+}
+
+::Q16:: What is Docker Hub? {
+~A tool for creating Docker networks.
+=A cloud-based registry service for finding and sharing container images.
+~The core daemon process responsible for running containers.
+~A Docker Desktop feature for managing local images.
+}
+
+::Q17:: Which of the following is NOT a Docker object? {
+~Images
+~Containers
+~Networks
+=The Docker Daemon
+}
+
+::Q18:: What is the purpose of the BuildKit feature in Docker? {
+~To manage Docker Swarm clusters.
+~To provide networking capabilities for containers.
+=To improve the performance, security, and manageability of image builds.
+~To persist data generated by containers.
+}
+
+::Q19:: What is the primary function of the `runc` tool in the Docker ecosystem? {
+~Building container images.
+~Orchestrating containers across multiple hosts.
+=A lightweight, OCI-compliant runtime for spawning and running containers.
+~Providing a REST API for container management.
+}
+
+::Q20:: How do Docker containers and DevOps tools typically interact? {
+~Containers replace the need for tools like Jenkins or GitLab CI.
+~Containers are only used in the production phase of the pipeline.
+=Docker containers are often used as build environments and deployment artifacts within CI/CD pipelines.
+~DevOps tools cannot interact with Docker containers.
+}
+
+// Software Designing Architectural Approaches
+::Q21:: In a monolithic architecture, how is the application built and deployed? {
+~As a collection of small, independent services.
+~As a set of serverless functions.
+=As a single, unified code base and deployment unit.
+~As a series of micro frontends.
+}
+
+::Q22:: What is a defining characteristic of a Service-Oriented Architecture (SOA)? {
+~It mandates the use of a single database for all services.
+=It involves breaking down the application into reusable, coarse-grained services, often communicating via an ESB.
+~It is the same as serverless computing.
+~It requires every service to have its own user interface.
+}
+
+::Q23:: Which architectural style best aligns with the philosophy of "do one thing and do it well"? {
+~Monolithic Architecture
+~Service-Oriented Architecture (SOA)
+=Microservices Architecture
+~Layered Architecture
+}
+
+::Q24:: In a microservices architecture, how do services typically communicate with each other? {
+~By sharing the same memory space.
+~Through a central database.
+=Using lightweight protocols like HTTP/REST or messaging queues.
+~By writing to a shared file system on the host.
+}
+
+::Q25:: What is a primary benefit of using microservices? {
+~Simpler initial development for small applications.
+~Easier end-to-end testing compared to monoliths.
+=Independent scalability, deployment, and development of services.
+~Reduced network latency between services.
+}
+
+::Q26:: How does Docker facilitate the implementation of a microservices architecture? {
+~By forcing all services to be written in the same programming language.
+=By providing a consistent, isolated, and lightweight runtime environment for each independent service.
+~By automatically managing the inter-service communication.
+~By combining all services into a single deployable unit.
+}
+
+::Q27:: What is a key challenge of the monolithic architectural approach that microservices aim to solve? {
+~High performance under low load.
+~Ease of debugging simple applications.
+=Tight coupling and the need to rebuild and redeploy the entire application for any change.
+~Simplified transaction management across modules.
+}
+
+::Q28:: What does "serverless architecture" abstract away from the developer? {
+~The need to write application code.
+=The management of the underlying servers and infrastructure.
+~The use of third-party APIs.
+~The concept of functions.
+}
+
+::Q29:: In the context of Docker and microservices, what is a common pattern for managing configuration? {
+~Hardcoding configuration in the Dockerfile.
+~Storing configuration in the image layers.
+=Using environment variables or configuration volumes passed to the container at runtime.
+~Re-building the image for every environment change.
+}
+
+::Q30:: Comparing different architectural approaches, which one typically has the longest build and deployment time for a small change? {
+~Microservices
+~Serverless functions
+=Monolithic
+~Service-Oriented (with a well-defined ESB)
+}
+
+::Q31:: What is the main difference between SOA and Microservices? {
+~SOA is newer than microservices.
+~Microservices are always smaller than SOA services.
+=Microservices often use simpler, lightweight communication protocols and are more decentralized than SOA's often enterprise-bus-based communication.
+~SOA requires containers, while microservices do not.
+}
+
+::Q32:: How can Docker and microservices be used "apart"? {
+~Docker can only be used with microservices.
+~Microservices cannot be deployed without Docker.
+=You can have a microservices architecture where services are deployed directly on VMs, without using Docker.
+~Docker cannot be used with monolithic applications.
+}
+
+::Q33:: Which of the following is a disadvantage of the monolithic architecture? {
+~It is difficult to scale the whole application.
+=A single bug in any module can potentially bring down the entire application.
+~It enforces the use of multiple programming languages.
+~It requires complex infrastructure to deploy.
+}
+
+::34:: What is a key advantage of a Service-Oriented Architecture (SOA)? {
+~Eliminates all coupling between services.
+=Allows for reuse of existing enterprise services across different applications.
+~Is perfectly suited for small, greenfield projects.
+~Guarantees faster performance than monoliths.
+}
+
+::Q35:: In the context of server-based vs. serverless, where does a long-running Docker container typically fit? {
+~Strictly serverless.
+~Strictly server-based.
+=Primarily server-based, as it runs on a persistent host, but can be part of a serverless workflow (e.g., running a task).
+~Neither; it is a separate category.
+}
+
+::Q36:: What is a common use case for a serverless architecture that would be harder to implement with long-running containers? {
+~Hosting a web application with a constant user load.
+=Executing a piece of code in response to an event (e.g., a file upload) that happens a few times a day.
+~Running a database server.
+~Running a message queue like RabbitMQ.
+}
+
+::Q37:: Which architectural style would most likely use an Enterprise Service Bus (ESB)? {
+~Microservices
+=Service-Oriented Architecture (SOA)
+~Monolithic
+~Layered
+}
+
+::Q38:: How does containerization improve the scalability of microservices? {
+~By making the code itself run faster.
+~By eliminating the need for load balancers.
+=By allowing individual services to be scaled up or down quickly by adding or removing container instances.
+~By merging all services into one process for better resource use.
+}
+
+::Q39:: Which statement best describes the relationship between Docker and microservices? {
+~Docker invented the microservices architecture.
+=Docker is a tool that greatly simplifies the deployment and management of microservices, but is not required to implement them.
+~Microservices can only be deployed using Docker.
+~Docker and microservices are competing technologies.
+}
+
+::Q40:: What is a "fat jar" or "uber jar" in the context of monolithic deployments? {
+~A type of serverless function package.
+~A configuration file for a microservice.
+=A single deployable artifact containing the application and all its dependencies, typical of monolithic Java applications.
+~A Docker image layer.
+}
+
+::Q41:: Which of the following is a primary driver for adopting a microservices architecture? {
+~The application is very simple and small.
+~The development team is new to the project.
+=The need for different parts of the application to scale independently based on load.
+~The desire to use only one database.
+}
+
+::Q42:: In which architecture would a change to a shared library potentially require rebuilding and redeploying all applications? {
+~Well-designed microservices
+~Serverless
+=Monolithic
+~SOA with strong versioning on the ESB
+}
+
+::Q43:: What is the role of an API Gateway in a microservices architecture? {
+~To build the Docker images for the services.
+=To act as a single entry point for clients, routing requests to the appropriate microservices.
+~To store the data for all microservices.
+~To manage the containers on a single host.
+}
+
+::Q44:: Why is Docker well-suited for continuous deployment? {
+~It automatically rolls back failed deployments.
+=It creates immutable infrastructure artifacts (images) that can be tested and deployed consistently through the pipeline.
+~It does not support versioning.
+~It requires manual installation on each server.
+}
+
+::Q45:: What is the main focus of a serverless architecture from a developer's perspective? {
+~Managing the operating system and patches for the server.
+~Scaling the underlying virtual machines.
+=Writing and deploying code in the form of functions, without worrying about the server.
+~Configuring the network load balancer.
+}
+
+
+// == Unit II: Docker Fundamentals (55 Questions) ==
+// Questions 46-100 focus on commands, data management, and networking.
+
+$CATEGORY: Docker Certification/Unit II: Fundamentals
+
+// Basic Commands and Concepts (30 Questions)
+::Q46:: After installing Docker, which command correctly displays the installed version information? {
+=docker version
+~docker info version
+~docker --version (This works but is not the full `docker version` command)
+~docker status
+}
+
+::Q47:: A user runs `docker run nginx` but does not have the image locally. What will happen? {
+~The command will fail with an error "image not found".
+~An empty container will be created.
+~Docker will automatically pull the 'nginx' image from the configured registry and then run it.
+~The command will attempt to run a container from the local image named 'nginx:latest', failing if it doesn't exist.
+}
+
+::Q48:: Which command is used to download an image from a registry without running it? {
+~docker run image_name
+~docker create image_name
+=docker pull image_name
+~docker fetch image_name
+}
+
+::Q49:: What is the purpose of the `docker ps` command? {
+~To show the processes running inside a specific container.
+=To list the currently running containers.
+~To list all images on the system.
+~To check the health of the Docker daemon.
+}
+
+::Q50:: To see all containers on a system, including those that have stopped, which command should you use? {
+~docker ps -a
+~docker ps
+~docker container ls
+~docker ps --all (Both A and D are correct, but for MCQ, one is chosen)
+=docker ps -a
+}
+
+::Q51:: A developer wants to run a command in a new container that executes `echo "Hello World"` and then exits. Which command is appropriate? {
+~docker exec ubuntu echo "Hello World"
+~docker start ubuntu echo "Hello World"
+=docker run ubuntu echo "Hello World"
+~docker attach ubuntu echo "Hello World"
+}
+
+::Q52:: Which command correctly stops a running container named 'my_web_app'? {
+~docker kill my_web_app
+~docker stop my_web_app
+~docker rm my_web_app
+~docker pause my_web_app
+}
+
+::Q53:: What is the difference between `docker stop` and `docker kill`? {
+~`docker kill` sends a SIGTERM, while `stop` sends a SIGKILL.
+~`docker stop` is used for pausing, and `kill` for stopping.
+=`docker stop` sends a SIGTERM for graceful shutdown, while `docker kill` sends a SIGKILL for immediate termination.
+~There is no functional difference; they are aliases.
+}
+
+::Q54:: A container named 'test_db' has exited. Which command would permanently remove it from the system? {
+~docker stop test_db
+~docker rmi test_db
+=docker rm test_db
+~docker container prune test_db
+}
+
+::Q55:: Which command is used to view the logs generated by a container with ID 'abc123'? {
+~docker events abc123
+~docker stats abc123
+~docker history abc123
+=docker logs abc123
+}
+
+::Q56:: What does the `docker tag` command do? {
+~It adds a label to a running container for identification.
+~It creates a version control tag in a Git repository.
+=It creates an alias for an image, pointing to a specific image ID.
+~It marks an image for garbage collection.
+}
+
+::Q57:: You have built an image with ID `f707...`. You want to give it the name `myapp:backend`. Which command is correct? {
+~docker name f707... myapp:backend
+~docker image alias f707... myapp:backend
+=docker tag f707... myapp:backend
+~docker push f707... myapp:backend
+}
+
+::Q58:: A developer creates a Dockerfile. What is the command to build an image from this file in the current directory and tag it as 'my-app:v1'? {
+~docker build -t my-app:v1 .
+~docker create -t my-app:v1 .
+~docker commit -t my-app:v1 .
+~docker image build my-app:v1 .
+}
+
+::Q59:: Which instruction in a Dockerfile sets the working directory for subsequent instructions? {
+~RUN
+~CMD
+~ENV
+=WORKDIR
+}
+
+::Q60:: What is a Docker image layer? {
+~A complete, runnable instance of an image.
+=A snapshot of a container's state.
+=A change set or intermediate image created by a single instruction in a Dockerfile.
+~The base operating system of the container.
+}
+
+::Q61:: Which Dockerfile instruction is used to specify the base image for a new image? {
+~BASE
+~START
+=FROM
+~IMAGE
+}
+
+::Q62:: What is the purpose of the `EXPOSE` instruction in a Dockerfile? {
+~To publish a port to the host machine.
+=To document which ports the application inside the container will listen on.
+~To create a network for the container.
+~To map a host port to a container port.
+}
+
+::Q63:: Which command is used to upload a local image to a registry like Docker Hub? {
+~docker pull
+=docker push
+~docker upload
+~docker commit
+}
+
+::Q64:: To execute an interactive bash shell inside a running container named 'web', which command would you use? {
+~docker run -it web bash
+~docker start -i web bash
+=docker exec -it web bash
+~docker attach web bash
+}
+
+::Q65:: What is a key benefit of using Docker image tags? {
+~They are required for all images.
+=They allow you to version and manage different releases or variants of an image.
+~They are automatically generated based on the build time.
+~They must be unique across the entire Docker Hub.
+}
+
+::Q66:: Which command is used to remove unused Docker objects (images, containers, volumes, networks) that are not tagged or associated with a container? {
+~docker system clean
+~docker system prune
+~docker object prune
+~docker rmi $(docker images -a -q)
+}
+
+::Q67:: What is a Dockerfile best practice regarding the order of instructions? {
+~Place frequently changed instructions first to optimize caching.
+=Place less frequently changed instructions (like `FROM` and `RUN apt-get`) first to leverage the build cache.
+~The order does not matter for caching.
+~Place all `RUN` instructions at the end.
+}
+
+::Q68:: Which Dockerfile instruction copies files from the build context into the image? {
+~ADD
+~COPY
+~Both COPY and ADD
+~IMPORT
+}
+
+::Q69:: What is the main difference between the `COPY` and `ADD` instructions in a Dockerfile? {
+~`COPY` can copy from URLs, while `ADD` cannot.
+~`ADD` is preferred for simple file copying.
+~`COPY` can automatically extract tar archives.
+=Best practice is to use `COPY` for copying local files, and `ADD` only for specific cases like auto-extracting local tar files or fetching remote URLs.
+}
+
+::Q70:: What is the purpose of the `CMD` instruction in a Dockerfile? {
+~To run a command during the image build process.
+~To set an environment variable.
+=To provide defaults for an executing container.
+~To specify the maintainer of the image.
+}
+
+::Q71:: How does `CMD` differ from `ENTRYPOINT`? {
+~`CMD` is mandatory, while `ENTRYPOINT` is optional.
+~`ENTRYPOINT` can be overridden by command-line arguments, while `CMD` cannot.
+~`CMD` sets the command and parameters that cannot be changed.
+=`CMD` provides default arguments for the `ENTRYPOINT` or a default command that can be overridden, while `ENTRYPOINT` configures a container to run as an executable.
+}
+
+::Q72:: You want to create a new Docker image from a modified container named 'container1'. Which command would you use? {
+~docker build -t new_image container1
+~docker save container1 > new_image.tar
+=docker commit container1 new_image
+~docker export container1 | docker import - new_image
+}
+
+::Q73:: What is the significance of a " dangling" image? {
+~An image that is in use by a running container.
+~The latest tag of an image.
+=An image that has no name or tag (`<none>:<none>`).
+~An image that failed to build.
+}
+
+::Q74:: Which command provides real-time statistics for running containers, such as CPU, memory, and network I/O? {
+~docker top
+~docker inspect
+=docker stats
+~docker logs --stats
+}
+
+::Q75:: What is the purpose of the `.dockerignore` file? {
+~To prevent Docker from being installed in certain directories.
+~To ignore errors during the build process.
+=To specify files and directories that should be excluded from the build context.
+~To list dependencies for the application.
+}
+
+// Data Management (15 Questions)
+::Q76:: Which Docker data management approach is best for storing sensitive data like API keys that should not be persisted on the host? {
+~Volumes
+~Bind mounts
+=tmpfs mounts
+~A dedicated data-only container
+}
+
+::Q77:: A Docker volume is created and mounted into a container. If the container is deleted, what happens to the volume? {
+~The volume is automatically deleted with the container.
+~The volume becomes corrupted.
+=The volume persists on the host and can be mounted to another container.
+~The volume is moved to a backup location.
+}
+
+::Q78:: Which of the following is a key advantage of Docker Volumes over Bind Mounts? {
+~Volumes are slower than bind mounts.
+~Volumes cannot be shared among multiple containers.
+=Volumes are completely managed by Docker and stored in a part of the host filesystem managed by Docker.
+~Volumes can only be used on Linux hosts.
+}
+
+::Q79:: A developer needs to mount a specific source directory from the host (`/home/user/project`) into a container at `/app`. Which `-v` syntax is correct? {
+~-v /app:/home/user/project
+~-v /home/user/project:/app
+~-v source=/home/user/project,target=/app
+~-v volume_name:/app
+}
+
+::Q80:: What is the main characteristic of a `tmpfs` mount in Docker? {
+~It persists data on the host even after the container stops.
+~It is stored in the Docker management area.
+=It is stored in the host's memory only and is deleted when the container stops.
+~It allows mounting of network-attached storage.
+}
+
+::Q81:: Which command is used to list all volumes on a Docker host? {
+~docker volume ls
+~docker volume list
+~docker ls --volumes
+~docker list volumes
+}
+
+::Q82:: To create a new Docker volume named 'db-data', which command is correct? {
+~docker volume create db-data
+~docker create volume db-data
+~docker volume new db-data
+~docker volume add db-data
+}
+
+::Q83:: How would you mount an existing volume named 'app-config' into a container using the `--mount` flag? {
+~--mount source=app-config,destination=/config
+~--mount type=volume,source=app-config,target=/config
+~--mount volume=app-config,target=/config
+~--mount type=bind,source=app-config,target=/config
+}
+
+::Q84:: In which scenario would a Bind Mount be most useful? {
+~For database files that need high performance and management by Docker.
+=For development environments where you need to see changes to source code immediately without rebuilding the image.
+~For storing secrets that should never be written to disk.
+~For sharing data between multiple containers in a swarm.
+}
+
+::Q85:: A user wants to inspect detailed information about a volume named 'data-vol'. Which command should they use? {
+~docker volume info data-vol
+~docker volume ls data-vol
+=docker volume inspect data-vol
+~docker inspect data-vol
+}
+
+::Q86:: What happens when you use `--mount type=bind,source=/path/on/host,target=/path/in/container` if `/path/on/host` does not exist on the host? {
+~Docker automatically creates an empty directory on the host.
+~The mount will fail with an error.
+~Docker creates a volume with that name instead.
+~The directory is created inside the container's filesystem.
+}
+
+::Q87:: Which type of mount is directly editable from both the host and the container, making it a potential security risk if not carefully controlled? {
+~Volumes
+=Bind mounts
+~tmpfs mounts
+~All mount types are equally editable.
+}
+
+::Q88:: How can you remove a volume that is no longer needed by any container? {
+~docker volume delete my-vol
+~docker volume rm my-vol
+~Both `docker volume rm my-vol` and `docker volume delete my-vol` work.
+~docker rm my-vol
+}
+
+::Q89:: What is a common use case for a `tmpfs` mount? {
+~Persisting log files for long-term storage.
+~Sharing application code between a host and container during development.
+=Storing temporary files or sensitive information that should not survive a container restart.
+~Running a database that requires persistent storage.
+}
+
+::Q90:: If you want to ensure that data written by a database in a container persists even after the container is removed and recreated, what should you use? {
+~tmpfs mount
+~Bind mount or Volume
+~A new image layer
+~Docker checkpoint
+}
+
+// Networking (10 Questions)
+::Q91:: Which Docker network driver provides the most isolation, creating a private network internal to the host? {
+~host
+=bridge
+~overlay
+~macvlan
+}
+
+::Q92:: When you install Docker, a default network named 'bridge' is created. How do containers connected to this default bridge network communicate with each other? {
+~They cannot communicate with each other.
+~They communicate by using IP addresses assigned to them by Docker.
+~They can reach each other using their container names by default.
+~They must be linked using `--link`.
+}
+
+::Q93:: Which network driver is suitable for use across multiple Docker hosts in a Swarm cluster? {
+~bridge
+~host
+=overlay
+~ipvlan
+}
+
+::Q94:: If you run a container with `--net=host`, what is the consequence? {
+~The container gets its own network stack with an IP from the host's bridge.
+~The container is not connected to any network.
+=The container uses the host's network stack directly, sharing its IP address and ports.
+~The container is connected to a network that spans multiple hosts.
+}
+
+::Q95:: To publish a container's port 80 to a random port on the host, which `-p` flag would you use? {
+~-p 80:80
+~-p 80
+~-p random:80
+~--publish-all
+}
+
+::Q96:: Which command is used to create a new user-defined bridge network named 'my-network'? {
+~docker network create my-network
+~docker network new my-network
+~docker create network my-network
+~docker network add my-network
+}
+
+::Q97:: A container named 'web' is running. How do you connect it to an existing user-defined bridge network named 'backend-net'? {
+~docker run --net=backend-net web
+~docker network connect backend-net web
+~docker connect web to backend-net
+~docker update web --network backend-net
+}
+
+::Q98:: What is a key benefit of using a user-defined bridge network over the default `bridge` network? {
+~It provides better performance.
+=Containers on a user-defined bridge can automatically resolve each other's container names to IP addresses.
+~It is only available in Docker Enterprise Edition.
+~It allows containers to be connected to multiple networks simultaneously by default.
+}
+
+::Q99:: Which command would you use to remove a container named 'app' from a network named 'frontend-net'? {
+~docker network rm frontend-net app
+~docker disconnect app from frontend-net
+=docker network disconnect frontend-net app
+~docker network remove frontend-net --container app
+}
+
+::Q100:: The `macvlan` network driver is best used in scenarios where: {
+~You need simple, isolated networks on a single host.
+=You have legacy applications that expect to be directly connected to the physical network with their own MAC and IP addresses.
+~You need to connect services across a cluster of hosts.
+~You want the container to share the host's network namespace.
+}

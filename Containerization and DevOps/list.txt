@@ -1,4 +1,7 @@
 ./
 ./Lab
 ./Theory
+./000 syllabus.md
 ./0001 Syllabus Containerization and DevOps CSDV3018P_4.pdf
+./0002 Course Plan Containerization and DevOps CSDV3018P Format_Theory+Lab_Dec 2025.pdf
+./0003 Course Plan Containerization and DevOps Lab CSDV3118P Format_Theory+Lab_Dec 2025.pdf
