@@ -66,14 +66,12 @@ Docker supports multiple network drivers:
 * Containers get private IP (172.x.x.x)
 * NAT used for external communication
 
----
 
 ## Types
 
 1. Default bridge (`docker0`)
 2. User-defined bridge (recommended)
 
----
 
 ## Requirements
 
@@ -93,7 +91,6 @@ docker network ls
 docker network inspect bridge
 ```
 
----
 
 ### Task 2: Create Custom Bridge
 
@@ -102,7 +99,6 @@ docker network create my_bridge
 docker network inspect my_bridge
 ```
 
----
 
 ### Task 3: Run Containers in Same Network
 
@@ -148,7 +144,6 @@ Container shares:
 * Host network stack
 * No separate namespace
 
----
 
 ## Behavior
 
@@ -157,7 +152,6 @@ It binds directly to host port 80.
 
 No port publishing required.
 
----
 
 ## Requirements
 
@@ -206,7 +200,6 @@ You’ll see nginx directly on host.
 * Uses VXLAN tunneling
 * Containers across different hosts can communicate
 
----
 
 ## Requirements
 
@@ -219,7 +212,6 @@ You’ll see nginx directly on host.
   * 4789 (overlay network)
 
 ---
-
 ## Setup Hands-on (Swarm)
 
 ### Task 1: Initialize Swarm
@@ -228,7 +220,6 @@ You’ll see nginx directly on host.
 docker swarm init
 ```
 
----
 
 ### Task 2: Create Overlay Network
 
@@ -236,7 +227,6 @@ docker swarm init
 docker network create -d overlay my_overlay
 ```
 
----
 
 ### Task 3: Deploy Service
 
@@ -269,7 +259,6 @@ docker service create --name web --network my_overlay nginx
   * IP from physical network
 * Appears as physical device in LAN
 
----
 
 ## Use Case
 
@@ -280,7 +269,6 @@ docker service create --name web --network my_overlay nginx
   * Network appliances
   * Monitoring tools
 
----
 
 ## Requirements
 
@@ -330,14 +318,12 @@ Similar to macvlan but:
 * Multiple IPs per MAC
 * Lower broadcast overhead
 
----
 
 ## Modes
 
 * L2 mode
 * L3 mode
 
----
 
 ## Use Case
 
@@ -374,7 +360,6 @@ docker network create -d ipvlan \
 
 Used mainly in bridge mode.
 
----
 
 ## Syntax
 
@@ -441,7 +426,6 @@ NetworkSettings
 docker run -dit --hostname myhost ubuntu
 ```
 
----
 
 ## Test
 
@@ -458,7 +442,6 @@ Available in:
 * User-defined bridge
 * Overlay networks
 
----
 
 ## Works like:
 
@@ -507,7 +490,6 @@ Frontend → Backend → DB
 All on bridge network
 Expose only frontend.
 
----
 
 ### Example 2: Production Cluster
 
@@ -516,7 +498,6 @@ Overlay network
 Load balanced
 Encrypted overlay
 
----
 
 ### Example 3: Monitoring Appliance
 
@@ -539,7 +520,6 @@ Network scanning enabled
 3. Test DNS resolution
 4. Publish only nginx
 
----
 
 ### Lab 2: Host Mode Benchmark
 
@@ -547,7 +527,6 @@ Network scanning enabled
 2. Run nginx in host
 3. Compare latency using curl or ab
 
----
 
 ### Lab 3: Multi-host Simulation
 
