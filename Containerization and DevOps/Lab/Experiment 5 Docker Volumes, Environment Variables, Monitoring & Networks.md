@@ -21,7 +21,7 @@ docker exec test-container cat /data/message.txt
 ```
 
 #### **Solution: Docker Volumes**
-
+---
 ### **Lab 2: Volume Types**
 
 #### **1. Anonymous Volumes**
@@ -68,7 +68,7 @@ echo "From Host" > ~/myapp-data/host-file.txt
 docker exec web3 cat /app/data/host-file.txt
 # Shows: From Host
 ```
-
+---
 ### **Lab 3: Practical Volume Examples**
 
 #### **Example 1: Database with Persistent Storage**
@@ -117,7 +117,7 @@ docker run -d \
 # Test
 curl http://localhost:8080
 ```
-
+---
 ### **Lab 4: Volume Management Commands**
 ```bash
 # List all volumes
@@ -407,7 +407,7 @@ docker network ls
 # def456         host      host      local
 # ghi789         none      null      local
 ```
-
+---
 ### **Lab 2: Network Types Explained**
 
 #### **1. Bridge Network (Default)**
@@ -455,7 +455,7 @@ docker exec isolated-app ifconfig
 # For Docker Swarm - multi-host networking
 docker network create --driver overlay my-overlay
 ```
-
+---
 ### **Lab 3: Network Management Commands**
 ```bash
 # Create network
@@ -474,7 +474,7 @@ docker network rm network-name
 # Prune unused networks
 docker network prune
 ```
-
+---
 ### **Lab 4: Multi-Container Application Example**
 
 #### **Web App + Database Communication**
@@ -501,7 +501,7 @@ docker run -d \
 
 # Web app can connect to database using "postgres-db" hostname
 ```
-
+---
 ### **Lab 5: Network Inspection & Debugging**
 ```bash
 # Inspect network
