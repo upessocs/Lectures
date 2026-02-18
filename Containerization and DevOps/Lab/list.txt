@@ -7,5 +7,8 @@
 ./Experiment 3 Docker Deploy NGINX Using Different Base Images and Comparing Image Layers.md
 ./Experiment 3 Nginix.md
 ./Experiment 4 Docker Essentials Dockerfile dockerignore tagging and publishing.md
-./Experiment 5 Docker Volumes, Environment Variables, Monitoring & Networks.md
+./Experiment 5_I Docker Volumes, Environment Variables, Monitoring & Networks.md
+./Experiment 5_II Docker Volumes, Environment Variables, Monitoring & Networks.md
+./Experiment 5_III Docker Volumes, Environment Variables, Monitoring & Networks.md
+./Experiment 5_IV Docker Volumes, Environment Variables, Monitoring & Networks.md
 ./Experiment 6 Docker Compose vs Docker Run.md
