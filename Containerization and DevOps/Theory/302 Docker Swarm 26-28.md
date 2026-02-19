@@ -56,7 +56,6 @@ Docker Swarm solves all of this.
 
 A **cluster of Docker hosts** working together.
 
----
 
 ## 3.2 Nodes
 
@@ -67,7 +66,6 @@ Types:
 * **Manager Node** → Controls cluster
 * **Worker Node** → Runs containers
 
----
 
 ## 3.3 Service
 
@@ -79,7 +77,6 @@ Example:
 
 Swarm ensures desired state is maintained.
 
----
 
 ## 3.4 Task
 
@@ -87,7 +84,6 @@ A single running container inside a service.
 
 If service replicas = 3 → 3 tasks created.
 
----
 
 ## 3.5 Load Balancing
 
@@ -102,7 +98,6 @@ You can test on:
 * Single machine (localhost)
 * Or multiple VMs (recommended for real lab)
 
----
 
 # PART A — Create a Swarm
 
@@ -110,7 +105,6 @@ You can test on:
 
 Initialize cluster manager.
 
----
 
 ### Step 1: Initialize Swarm
 
@@ -129,7 +123,6 @@ Output:
 * Current node becomes manager
 * Displays join token for workers
 
----
 
 ### Step 2: Verify Node
 
@@ -159,7 +152,7 @@ Production setup:
 * 1 Manager
 * 2 Worker nodes
 
----
+
 
 ## On Worker Machine
 
@@ -175,7 +168,6 @@ docker swarm join --token <TOKEN> <MANAGER-IP>:2377
 * `--token` → Authentication token (security)
 * `<MANAGER-IP>:2377` → Manager IP and swarm port
 
----
 
 Verify on Manager:
 
@@ -193,7 +185,6 @@ Now multiple nodes should appear.
 
 Deploy web server with 3 replicas.
 
----
 
 ### Step 1: Create Service
 
@@ -219,7 +210,6 @@ docker service create \
   * 80 → Container port
 * `nginx` → Image name
 
----
 
 ### Step 2: Check Services
 
@@ -229,7 +219,7 @@ docker service ls
 
 * `ls` → List all services
 
----
+
 
 ### Step 3: Inspect Tasks
 
@@ -248,7 +238,7 @@ docker service ps webapp
 
 Check configuration & runtime details.
 
----
+
 
 ```bash
 docker service inspect webapp
@@ -275,7 +265,6 @@ docker service inspect --pretty webapp
 
 Traffic increased during sale → need 6 replicas.
 
----
 
 ```bash
 docker service scale webapp=6
@@ -292,9 +281,8 @@ Verify:
 docker service ls
 ```
 
----
 
-Swarm automatically:
+> Swarm automatically:
 
 * Creates new containers
 * Distributes them across nodes
@@ -307,7 +295,6 @@ Swarm automatically:
 
 Application no longer required.
 
----
 
 ```bash
 docker service rm webapp
@@ -326,7 +313,6 @@ docker service rm webapp
 
 Deploy new version without downtime.
 
----
 
 ### Step 1: Create Service
 
@@ -337,7 +323,6 @@ docker service create \
   nginx:1.25
 ```
 
----
 
 ### Step 2: Update Image
 
@@ -349,7 +334,6 @@ docker service update \
   app
 ```
 
----
 
 ### Explanation
 
@@ -372,7 +356,6 @@ This ensures:
 
 Node maintenance required (hardware update).
 
----
 
 ### Step 1: Drain Node
 
@@ -380,7 +363,6 @@ Node maintenance required (hardware update).
 docker node update --availability drain <NODE-ID>
 ```
 
----
 
 ### Explanation
 
@@ -393,7 +375,6 @@ Effect:
 * Running containers moved to other nodes
 * No new tasks scheduled here
 
----
 
 ### Step 2: Activate Again
 
@@ -415,7 +396,6 @@ Example:
 * Only 1 node running container
 * Access from ANY node IP works
 
----
 
 ## Test Routing Mesh
 
@@ -437,7 +417,6 @@ http://<any-node-ip>:8080
 
 Swarm automatically forwards request.
 
----
 
 ## How It Works
 
@@ -503,7 +482,7 @@ After completing these labs, you understand:
 > **`docker run` runs a container**
 > **Docker Swarm runs a service (cluster-managed containers)**
 
----
+
 
 # 1. Why Compare Them?
 
@@ -528,7 +507,6 @@ Understanding this difference is critical for:
 * High availability systems
 * Scaling applications properly
 
----
 
 # 2. Conceptual Difference
 
@@ -544,7 +522,6 @@ Understanding this difference is critical for:
 | Production-ready    | Limited          | Yes                           |
 
 ---
-
 # 3. What `docker run` Actually Does
 
 When you execute:
@@ -601,7 +578,7 @@ docker run -d -p 8080:80 --name web nginx
 * `--name web` → Assign container name
 * `nginx` → Image
 
----
+
 
 ## Equivalent in Swarm
 
@@ -654,7 +631,7 @@ These DO NOT exist in `docker run`:
 
 # 8. Detailed Flag Comparison by Category
 
----
+
 
 # A. Port Publishing
 
@@ -667,7 +644,6 @@ docker run -p 8080:80 nginx
 * Direct port binding on host
 * Only works on that host
 
----
 
 ## Swarm
 
@@ -679,7 +655,6 @@ docker service create -p 8080:80 nginx
 * Accessible from ANY node
 * Built-in load balancing
 
----
 
 # B. Scaling
 
@@ -695,7 +670,6 @@ docker run -d nginx
 
 No grouping. No load balancing.
 
----
 
 ## Swarm
 
@@ -715,7 +689,6 @@ Automatic:
 * Load balancing
 * Health monitoring
 
----
 
 # C. Restart Policy
 
@@ -732,7 +705,6 @@ Options:
 * always
 * unless-stopped
 
----
 
 ## Swarm
 
@@ -749,7 +721,6 @@ More control:
 * Max attempts
 * Window
 
----
 
 # D. Resource Limits
 
@@ -761,7 +732,6 @@ docker run --cpus="1.5" --memory="512m" nginx
 
 Limits container only on that host.
 
----
 
 ## Swarm
 
@@ -776,7 +746,6 @@ Cluster-aware scheduling:
 
 * Places task only where resources available
 
----
 
 # E. Networking
 
@@ -792,7 +761,6 @@ Uses:
 * host
 * custom bridge
 
----
 
 ## Swarm
 
@@ -810,7 +778,6 @@ Requires:
 docker network create --driver overlay myoverlay
 ```
 
----
 
 # F. Volumes
 
@@ -822,7 +789,6 @@ docker run -v myvol:/data nginx
 
 Works locally.
 
----
 
 ## Swarm
 
@@ -838,7 +804,6 @@ Better syntax:
 * Source
 * Target
 
----
 
 # G. Placement Constraints (Swarm Only)
 
@@ -854,7 +819,6 @@ Meaning:
 
 Not available in `docker run`.
 
----
 
 # H. Rolling Updates (Swarm Only)
 
@@ -868,7 +832,6 @@ docker service update \
 
 Not possible with `docker run`.
 
----
 
 # I. Global Mode (Swarm Only)
 
