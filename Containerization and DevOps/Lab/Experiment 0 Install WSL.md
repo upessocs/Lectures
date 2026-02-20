@@ -4,6 +4,13 @@
 
 WSL (Windows Subsystem for Linux) allows you to run a Linux distribution on Windows without needing a virtual machine or dual boot. Below are the steps to install and configure it properly.
 
+
+
+[![Watch the Video](https://img.youtube.com/vi/KZCNLvRnHc0/0.jpg)](https://youtu.be/KZCNLvRnHc0)
+
+<iframe width="80%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/KZCNLvRnHc0" title="WSL installation" frameborder="0" allowfullscreen></iframe>
+
+
 ---
 
 ## **Step 1: Install WSL and Ubuntu Distribution**

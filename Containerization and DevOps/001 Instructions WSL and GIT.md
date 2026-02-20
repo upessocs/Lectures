@@ -167,22 +167,13 @@ Hosted URL: https://username.github.io/repository-name/
 
 [![Watch the Video](https://img.youtube.com/vi/KZCNLvRnHc0/0.jpg)](https://youtu.be/KZCNLvRnHc0)
 
-<iframe width="100%" aspectratio="16:9"
-src="https://www.youtube.com/embed/KZCNLvRnHc0"
-title="YouTube video"
-frameborder="0"
-allowfullscreen>
-</iframe>
+<iframe width="80%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/KZCNLvRnHc0" title="WSL installation" frameborder="0" allowfullscreen></iframe>
+
 
 #### For Git, Github, and github-pages
 
 
 [![Watch the Video](https://img.youtube.com/vi/uGnkvpD44Pg/0.jpg)](https://youtu.be/uGnkvpD44Pg)
 
-<iframe width="100%" aspectratio="16:9"
-src="https://www.youtube.com/embed/uGnkvpD44Pg"
-title="YouTube video"
-frameborder="0"
-allowfullscreen>
-</iframe>
+<iframe width="80%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/uGnkvpD44Pg" title="Git, Github, and github-pages" frameborder="0" allowfullscreen></iframe>
 

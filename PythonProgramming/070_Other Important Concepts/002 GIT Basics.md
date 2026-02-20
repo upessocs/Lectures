@@ -1,15 +1,9 @@
 # Git and GitHub
 
-
-
 [![Watch the Video](https://img.youtube.com/vi/uGnkvpD44Pg/0.jpg)](https://youtu.be/uGnkvpD44Pg)
 
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/uGnkvpD44Pg"
-title="YouTube video"
-frameborder="0"
-allowfullscreen>
-</iframe>
+<iframe width="80%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/uGnkvpD44Pg" title="Git, Github, and github-pages" frameborder="0" allowfullscreen></iframe>
+
 
 ---
 

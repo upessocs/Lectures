@@ -2,14 +2,11 @@
 ## An alternative way to work with python
 
 
+
 [![Watch the Video](https://img.youtube.com/vi/KZCNLvRnHc0/0.jpg)](https://youtu.be/KZCNLvRnHc0)
 
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/KZCNLvRnHc0"
-title="YouTube video"
-frameborder="0"
-allowfullscreen>
-</iframe>
+<iframe width="80%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/KZCNLvRnHc0" title="WSL installation" frameborder="0" allowfullscreen></iframe>
+
 
 
 
