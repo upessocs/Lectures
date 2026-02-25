@@ -175,10 +175,14 @@ entrypoint: /bin/bash
 
 **Using Docker Run (Tedious way):**
 ```bash
-# 1. Create network
+# 1. Create Volumes
+docker volume create wp_content
+docker volume create mysql_data
+
+# 2. Create network
 docker network create wordpress-network
 
-# 2. Run MySQL
+# 3. Run MySQL
 docker run \
   --name mysql \
   --network wordpress-network \
@@ -190,7 +194,7 @@ docker run \
   -d \
   mysql:5.7
 
-# 3. Run WordPress
+# 4. Run WordPress
 docker run \
   --name wordpress \
   --network wordpress-network \
