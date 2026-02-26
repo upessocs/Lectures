@@ -48,9 +48,8 @@ Design, containerize, and deploy a web application using:
 
 ### Backend (Choose ONE)
 
-* Node.js + Express
-  OR
-* FastAPI
+* `Node.js + Express`
+* `FastAPI`
 
 ### Networking
 
@@ -70,7 +69,7 @@ PostgreSQL Container (static IP + named volume)
 Constraints:
 
 * Backend and Database must have separate Dockerfiles
-* docker-compose.yml must orchestrate entire stack
+* `docker-compose.yml` must orchestrate entire stack
 * Database data must persist using named volume
 * Static IP must be assigned using macvlan/ipvlan
 * Containers must be reachable from LAN
@@ -105,9 +104,9 @@ Database container:
 * Must not use default postgres image directly without custom Dockerfile
 * Must configure:
 
-  * POSTGRES_DB
-  * POSTGRES_USER
-  * POSTGRES_PASSWORD
+  * `POSTGRES_DB`
+  * `POSTGRES_USER`
+  * `POSTGRES_PASSWORD`
 
 ---
 

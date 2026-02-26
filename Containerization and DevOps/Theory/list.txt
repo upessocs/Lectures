@@ -15,6 +15,6 @@
 ./201 Data Management in Docker with volume bind-mount and tempfs 17-20.md
 ./202 Networking in Docker 21 - 22.md
 ./301 Docker Compose vs Docker Run 24.md
-./302 Docker Swarm 26-28.md
-./303 Scaling with Docker Compose 24.md
+./302 Scaling with Docker Compose 24.md
+./303 Docker Swarm 26-28.md
 ./Assignment 1.md

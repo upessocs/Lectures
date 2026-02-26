@@ -1,0 +1,4 @@
+./
+./CSDV4109P CICD Pipeline and Security Lab Syllabus.md
+./CSFS3107P Microservices and Spring-Boot Lab Syllabusx.md
+./Readme.md

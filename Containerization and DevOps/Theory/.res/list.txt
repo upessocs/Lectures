@@ -1,0 +1,3 @@
+./
+./304 kubernetis with k3d k3s and kubectl.md
+./Nginx as a reverse proxy.md
