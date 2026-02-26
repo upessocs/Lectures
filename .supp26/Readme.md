@@ -65,10 +65,10 @@ If submitting via GitHub, share the repository link before the viva.
 
 
 
-### 5. Important Instructions
+#### Important Instructions
 
 * Bring a hard copy of the lab report (recommended).
 * Ensure your code is working and builds successfully.
 
-> *Be prepare to demonstrate experiments with explaination*
+> *Be prepare to demonstrate experiments with explanations*
 
