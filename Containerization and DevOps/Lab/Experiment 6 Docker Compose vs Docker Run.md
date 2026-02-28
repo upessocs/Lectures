@@ -1,403 +1,553 @@
-# Docker Compose vs Docker Run: A Direct Comparison
+# Experiment 6
 
-## Understanding the Relationship
+## Title: Comparison of Docker Run and Docker Compose
 
-**Docker Compose** is essentially a YAML-based wrapper around multiple `docker run` commands. It translates your compose file into individual Docker commands behind the scenes. Let's see how each `docker run` flag maps to Docker Compose.
+---
 
-## Direct Comparison: docker run vs docker-compose.yml
+# PART A – THEORY
 
-### Example: Running Nginx with Docker Run
+## 1. Objective
+
+To understand the relationship between `docker run` and Docker Compose, and to compare their configuration syntax and use cases.
+
+---
+
+## 2. Background Theory
+
+### 2.1 Docker Run (Imperative Approach)
+
+The `docker run` command is used to create and start a container from an image. It requires explicit flags for:
+
+* Port mapping (`-p`)
+* Volume mounting (`-v`)
+* Environment variables (`-e`)
+* Network configuration (`--network`)
+* Restart policies (`--restart`)
+* Resource limits (`--memory`, `--cpus`)
+* Container name (`--name`)
+
+This approach is **imperative**, meaning you specify step-by-step instructions.
+
+Example:
 
 ```bash
-# Single docker run command with various options
-docker run \
+docker run -d \
   --name my-nginx \
   -p 8080:80 \
   -v ./html:/usr/share/nginx/html \
   -e NGINX_HOST=localhost \
   --restart unless-stopped \
-  -d \
   nginx:alpine
 ```
 
-### Same Setup with Docker Compose:
+---
+
+### 2.2 Docker Compose (Declarative Approach)
+
+Docker Compose uses a YAML file (`docker-compose.yml`) to define services, networks, and volumes in a structured format.
+
+Instead of multiple `docker run` commands, a single command is used:
+
+```bash
+docker compose up -d
+```
+
+Compose is **declarative**, meaning you define the desired state of the application.
+
+Equivalent Compose file:
 
 ```yaml
-# docker-compose.yml - This does the SAME thing as above command
 version: '3.8'
+
 services:
   nginx:
-    image: nginx:alpine          # Image name (same as in docker run)
-    container_name: my-nginx     # --name my-nginx
+    image: nginx:alpine
+    container_name: my-nginx
     ports:
-      - "8080:80"               # -p 8080:80
+      - "8080:80"
     volumes:
-      - ./html:/usr/share/nginx/html  # -v ./html:/usr/share/nginx/html
+      - ./html:/usr/share/nginx/html
     environment:
-      - NGINX_HOST=localhost    # -e NGINX_HOST=localhost
-    restart: unless-stopped     # --restart unless-stopped
-    # Note: -d flag in docker run = detached mode
-    # In docker-compose, use: docker-compose up -d
+      NGINX_HOST: localhost
+    restart: unless-stopped
 ```
 
-## Mapping Common Docker Run Flags to Compose
+---
 
-### 1. **Port Mapping**
+## 3. Mapping: Docker Run vs Docker Compose
+
+| Docker Run Flag     | Docker Compose Equivalent        |
+| ------------------- | -------------------------------- |
+| `-p 8080:80`        | `ports:`                         |
+| `-v host:container` | `volumes:`                       |
+| `-e KEY=value`      | `environment:`                   |
+| `--name`            | `container_name:`                |
+| `--network`         | `networks:`                      |
+| `--restart`         | `restart:`                       |
+| `--memory`          | `deploy.resources.limits.memory` |
+| `--cpus`            | `deploy.resources.limits.cpus`   |
+| `-d`                | `docker compose up -d`           |
+
+---
+
+## 4. Advantages of Docker Compose
+
+1. Simplifies multi-container applications
+2. Provides reproducibility
+3. Version controllable configuration
+4. Unified lifecycle management
+5. Supports service scaling
+
+Example:
+
 ```bash
-# Docker Run
-docker run -p 8080:80 -p 3000:3000 nginx
+docker compose up --scale web=3
 ```
+
+---
+
+# PART B – PRACTICAL TASK
+
+## Task 1: Single Container Comparison
+
+### Step 1: Run Nginx Using Docker Run
+
+Execute:
+
+```bash
+docker run -d \
+  --name lab-nginx \
+  -p 8081:80 \
+  -v $(pwd)/html:/usr/share/nginx/html \
+  nginx:alpine
+```
+
+Verify:
+
+```bash
+docker ps
+```
+
+Access:
+
+```
+http://localhost:8081
+```
+
+Stop and remove container:
+
+```bash
+docker stop lab-nginx
+docker rm lab-nginx
+```
+
+---
+
+### Step 2: Run Same Setup Using Docker Compose
+
+Create `docker-compose.yml`:
+
 ```yaml
-# Docker Compose
-ports:
-  - "8080:80"
-  - "3000:3000"
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: lab-nginx
+    ports:
+      - "8081:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
 ```
 
-### 2. **Volume Mounting**
+Run:
+
 ```bash
-# Docker Run
-docker run -v ./data:/app/data -v myvolume:/app/config nginx
-```
-```yaml
-# Docker Compose
-volumes:
-  - ./data:/app/data           # Bind mount (host path)
-  - myvolume:/app/config       # Named volume
-  
-# Also define named volumes at the bottom:
-volumes:
-  myvolume:                    # This creates the named volume
+docker compose up -d
 ```
 
-### 3. **Environment Variables**
+Verify:
+
 ```bash
-# Docker Run
-docker run -e DB_HOST=localhost -e DB_PORT=5432 app
-```
-```yaml
-# Docker Compose
-environment:
-  - DB_HOST=localhost
-  - DB_PORT=5432
-
-# OR using dictionary format
-environment:
-  DB_HOST: localhost
-  DB_PORT: 5432
+docker compose ps
 ```
 
-### 4. **Network Configuration**
+Stop:
+
 ```bash
-# Docker Run
-docker run --network mynetwork --network-alias app1 myapp
-```
-```yaml
-# Docker Compose
-networks:
-  - mynetwork
-  
-# With network alias
-networks:
-  mynetwork:
-    aliases:
-      - app1
-
-# Define custom network at bottom
-networks:
-  mynetwork:
-    driver: bridge
+docker compose down
 ```
 
-### 5. **Container Name**
+---
+
+## Task 2: Multi-Container Application
+
+### Objective:
+
+Deploy WordPress with MySQL using:
+
+1. Docker Run (manual way)
+2. Docker Compose (structured way)
+
+---
+
+### A. Using Docker Run
+
+1. Create network:
+
 ```bash
-# Docker Run
-docker run --name my-container nginx
-```
-```yaml
-# Docker Compose
-container_name: my-container
+docker network create wp-net
 ```
 
-### 6. **Restart Policy**
+2. Run MySQL:
+
 ```bash
-# Docker Run
-docker run --restart unless-stopped nginx
-```
-```yaml
-# Docker Compose
-restart: unless-stopped
-```
-
-### 7. **Working Directory**
-```bash
-# Docker Run
-docker run -w /app nginx
-```
-```yaml
-# Docker Compose
-working_dir: /app
-```
-
-### 8. **User/Group**
-```bash
-# Docker Run
-docker run --user 1000:1000 nginx
-```
-```yaml
-# Docker Compose
-user: "1000:1000"
-```
-
-### 9. **Command Override**
-```bash
-# Docker Run
-docker run nginx echo "Hello"
-```
-```yaml
-# Docker Compose
-command: echo "Hello"
-```
-
-### 10. **Entrypoint Override**
-```bash
-# Docker Run
-docker run --entrypoint /bin/bash nginx
-```
-```yaml
-# Docker Compose
-entrypoint: /bin/bash
-```
-
-## Multi-Container Example Comparison
-
-### Scenario: WordPress with MySQL
-
-**Using Docker Run (Tedious way):**
-```bash
-# 1. Create network
-docker network create wordpress-network
-
-# 2. Run MySQL
-docker run \
+docker run -d \
   --name mysql \
-  --network wordpress-network \
+  --network wp-net \
   -e MYSQL_ROOT_PASSWORD=secret \
   -e MYSQL_DATABASE=wordpress \
-  -e MYSQL_USER=wpuser \
-  -e MYSQL_PASSWORD=wppass \
-  -v mysql_data:/var/lib/mysql \
-  -d \
   mysql:5.7
+```
 
-# 3. Run WordPress
-docker run \
+3. Run WordPress:
+
+```bash
+docker run -d \
   --name wordpress \
-  --network wordpress-network \
-  -p 8080:80 \
+  --network wp-net \
+  -p 8082:80 \
   -e WORDPRESS_DB_HOST=mysql \
-  -e WORDPRESS_DB_USER=wpuser \
-  -e WORDPRESS_DB_PASSWORD=wppass \
-  -e WORDPRESS_DB_NAME=wordpress \
-  -v wp_content:/var/www/html/wp-content \
-  -d \
+  -e WORDPRESS_DB_PASSWORD=secret \
   wordpress:latest
 ```
 
-**Using Docker Compose (Simple way):**
+Test:
+
+```
+http://localhost:8082
+```
+
+---
+
+### B. Using Docker Compose
+
+Create `docker-compose.yml`:
+
 ```yaml
-# docker-compose.yml
 version: '3.8'
 
 services:
   mysql:
     image: mysql:5.7
-    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: wordpress
-      MYSQL_USER: wpuser
-      MYSQL_PASSWORD: wppass
     volumes:
       - mysql_data:/var/lib/mysql
-    networks:
-      - wordpress-network
 
   wordpress:
     image: wordpress:latest
-    container_name: wordpress
     ports:
-      - "8080:80"
+      - "8082:80"
     environment:
       WORDPRESS_DB_HOST: mysql
-      WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: wppass
-      WORDPRESS_DB_NAME: wordpress
-    volumes:
-      - wp_content:/var/www/html/wp-content
+      WORDPRESS_DB_PASSWORD: secret
     depends_on:
       - mysql
-    networks:
-      - wordpress-network
 
 volumes:
   mysql_data:
-  wp_content:
-
-networks:
-  wordpress-network:
 ```
 
-**Run it with one command:**
+Run:
+
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
-## What Docker Compose Adds Beyond Docker Run
+Stop:
 
-### 1. **Dependencies & Startup Order**
-```yaml
-# App waits for database to be ready
-depends_on:
-  - database
-  - redis
-```
-
-### 2. **Build Configuration**
-```yaml
-# Build from Dockerfile instead of using pre-built image
-build:
-  context: .
-  dockerfile: Dockerfile.dev
-  args:
-    - NODE_ENV=development
-```
-
-### 3. **Service Scaling**
 ```bash
-# Run multiple instances
-docker-compose up --scale web=3 --scale worker=2
+docker compose down -v
 ```
 
-### 4. **Unified Configuration**
-- Single source of truth
-- Version controllable
-- Shareable across teams
+---
 
-## Real Conversion Example
 
-Let's convert a complex Docker run command to Docker Compose:
 
-**Original Docker Run Command:**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# PART C – CONVERSION & BUILD-BASED TASKS
+
+## Task 3: Convert Docker Run to Docker Compose
+
+### Problem 1: Basic Web Application
+
+### Given Docker Run Command:
+
 ```bash
 docker run -d \
-  --name myapp \
-  --hostname app-server \
-  -p 8080:80 \
-  -p 8443:443 \
-  -v /opt/app/config:/etc/app \
-  -v app-data:/var/lib/app \
+  --name webapp \
+  -p 5000:5000 \
   -e APP_ENV=production \
-  -e DB_URL=postgres://user:pass@db:5432/app \
-  --network app-network \
-  --restart always \
-  --memory="512m" \
-  --cpus="1.0" \
-  myimage:latest \
-  --log-level debug
+  -e DEBUG=false \
+  --restart unless-stopped \
+  node:18-alpine
 ```
 
-**Equivalent Docker Compose:**
+---
+
+### Student Task:
+
+1. Write an equivalent `docker-compose.yml`
+2. Ensure:
+
+   * Same container name
+   * Same port mapping
+   * Same environment variables
+   * Same restart policy
+3. Run using:
+
+   ```bash
+   docker compose up -d
+   ```
+4. Verify using:
+
+   ```bash
+   docker compose ps
+   ```
+
+---
+
+## Problem 2: Volume + Network Configuration
+
+### Given Docker Run Commands:
+
+```bash
+docker network create app-net
+```
+
+```bash
+docker run -d \
+  --name postgres-db \
+  --network app-net \
+  -e POSTGRES_USER=admin \
+  -e POSTGRES_PASSWORD=secret \
+  -v pgdata:/var/lib/postgresql/data \
+  postgres:15
+```
+
+```bash
+docker run -d \
+  --name backend \
+  --network app-net \
+  -p 8000:8000 \
+  -e DB_HOST=postgres-db \
+  -e DB_USER=admin \
+  -e DB_PASS=secret \
+  python:3.11-slim
+```
+
+---
+
+### Student Task:
+
+1. Create a single `docker-compose.yml` file that:
+
+   * Defines both services
+   * Creates named volume `pgdata`
+   * Creates custom network `app-net`
+   * Uses `depends_on`
+2. Bring up services using one command.
+3. Stop and remove everything properly.
+
+---
+
+## Task 4: Resource Limits Conversion
+
+### Given Docker Run Command:
+
+```bash
+docker run -d \
+  --name limited-app \
+  -p 9000:9000 \
+  --memory="256m" \
+  --cpus="0.5" \
+  --restart always \
+  nginx:alpine
+```
+
+---
+
+### Student Task:
+
+1. Convert this to Docker Compose.
+2. Add resource limits using:
+
+   ```yaml
+   deploy:
+     resources:
+       limits:
+   ```
+3. Explain:
+
+   * When `deploy` works
+   * Difference between normal Compose mode and Swarm mode
+
+---
+
+# PART D – USING DOCKERFILE INSTEAD OF STANDARD IMAGE
+
+Now increase difficulty.
+
+Instead of using prebuilt images like:
+
+```yaml
+image: node:18-alpine
+```
+
+Students must:
+
+* Create their own Dockerfile
+* Build image using Compose
+* Run container from that build
+
+---
+
+## Task 5: Replace Standard Image with Dockerfile (Node App)
+
+### Scenario
+
+You are given:
+
+```bash
+docker run -d -p 3000:3000 node:18-alpine
+```
+
+Now instead of directly using `node:18-alpine`, you must:
+
+1. Create a simple Node.js app
+2. Write a Dockerfile
+3. Use Docker Compose `build:` option
+
+---
+
+### Step 1: Create `app.js`
+
+```javascript
+const http = require('http');
+
+http.createServer((req, res) => {
+  res.end("Docker Compose Build Lab");
+}).listen(3000);
+```
+
+---
+
+### Step 2: Create `Dockerfile`
+
+```dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY app.js .
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
+```
+
+---
+
+### Step 3: Create `docker-compose.yml`
+
 ```yaml
 version: '3.8'
 
 services:
-  myapp:
-    image: myimage:latest
-    container_name: myapp
-    hostname: app-server
+  nodeapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: custom-node-app
     ports:
-      - "8080:80"
-      - "8443:443"
-    volumes:
-      - /opt/app/config:/etc/app
-      - app-data:/var/lib/app
-    environment:
-      APP_ENV: production
-      DB_URL: postgres://user:pass@db:5432/app
-    networks:
-      - app-network
-    restart: always
-    command: --log-level debug
-    
-    # Resource limits (added in Compose file format 3+)
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 512M
-
-volumes:
-  app-data:
-
-networks:
-  app-network:
+      - "3000:3000"
 ```
 
-## Key Advantages of Docker Compose
+---
 
-### 1. **Simplicity for Multi-Container Apps**
-```bash
-# Instead of 5+ docker run commands...
-# Just one command:
-docker-compose up -d
-```
+### Student Task:
 
-### 2. **Reproducibility**
-- Same configuration everywhere
-- No forgotten flags
-- Consistent environments
+1. Build and run using:
 
-### 3. **Declarative Configuration**
-- Define WHAT you want, not HOW to run it
-- Self-documenting
-- Easy to modify
+   ```bash
+   docker compose up --build -d
+   ```
+2. Verify in browser:
 
-### 4. **Lifecycle Management**
-```bash
-# Easy to manage entire application
-docker-compose up    # Start
-docker-compose down  # Stop & clean
-docker-compose logs  # View logs
-docker-compose ps    # Check status
-```
+   ```
+   http://localhost:3000
+   ```
+3. Modify `app.js` message.
+4. Rebuild and observe changes.
+5. Explain difference between:
 
-## Quick Reference Cheatsheet
+   * `image:`
+   * `build:`
 
-| Docker Run Flag | Docker Compose Equivalent |
-|----------------|---------------------------|
-| `-p 80:80` | `ports: ["80:80"]` |
-| `-v ./data:/app` | `volumes: ["./data:/app"]` |
-| `-e KEY=value` | `environment: [KEY=value]` |
-| `--name myapp` | `container_name: myapp` |
-| `--network net` | `networks: [net]` |
-| `--restart always` | `restart: always` |
-| `-d` | `docker-compose up -d` |
-| `--link container` | `depends_on: [container]` |
-| `-w /app` | `working_dir: /app` |
-| `--user 1000` | `user: "1000"` |
+---
 
-## Conclusion
+# Advanced Build Challenge
 
-**Docker Compose** is essentially a YAML-based abstraction layer over multiple `docker run` commands. It:
+## Task 6: Multi-Stage Dockerfile with Compose
 
-1. **Translates directly**: Every Compose option has a corresponding `docker run` flag
-2. **Simplifies complex setups**: Instead of remembering multiple commands, you define everything in one file
-3. **Manages relationships**: Handles dependencies between containers automatically
-4. **Provides consistency**: Ensures the same configuration is used every time
+### Requirement:
 
-Think of it this way:
-- `docker run` = Imperative approach ("Do these steps")
-- `docker-compose` = Declarative approach ("Here's what I want")
+Create a simple Python FastAPI or Node production-ready app using:
 
-> This makes Docker Compose especially valuable for development environments and multi-service applications where you need to coordinate several containers working together.
+* Multi-stage Dockerfile
+* Smaller final image
+* Use Compose to build it
+
+---
+
+### Must:
+
+1. Write multi-stage Dockerfile
+2. Use `build:` in Compose
+3. Add environment variables
+4. Add volume mount for development mode
+5. Compare image size:
+
+   ```bash
+   docker images
+   ```
+
+
+
+
+
+
+
+
+
+
+
+
