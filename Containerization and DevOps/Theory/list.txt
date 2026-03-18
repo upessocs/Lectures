@@ -16,6 +16,7 @@
 ./301 Docker Compose vs Docker Run 24.md
 ./302 Scaling with Docker Compose 24.md
 ./303 Docker Swarm 26-28.md
-./304 Kubernetes.md
-./305 Kubernetis with k3d k3s and kubectl.md
+./304 Introduction to Kubernetes.md
+./305 Kubernetes and how to install.md
+./306 Kubernetis with k3d k3s and kubectl.md
 ./Assignment 1.md
