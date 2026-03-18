@@ -195,7 +195,7 @@ kubectl
 
 k3d
 
-Lens (Kubernetes GUI)
+Lens (Kubernetes GUI Optional)
 ```
 
 ---
@@ -813,3 +813,10 @@ kubectl → uses kubeconfig
 kubeconfig → stores clusters + users + contexts
 context → decides which cluster is active
 ```
+
+
+---
+
+# Further Resource
+
+- [Lens for kubernetes GUI and Observability](https://medium.com/k8slens/lens-kubernetes-ide-overview-how-to-simplify-kubernetes-management-e19a9aea7dae)
