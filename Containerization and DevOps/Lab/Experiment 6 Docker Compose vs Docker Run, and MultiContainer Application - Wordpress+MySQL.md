@@ -1,8 +1,6 @@
 # Experiment 6 A
-
 ## Title: Comparison of Docker Run and Docker Compose
 
----
 
 # PART A – THEORY
 
@@ -543,9 +541,8 @@ Create a simple Python FastAPI or Node production-ready app using:
 
 ---
 
-## **Experiment 6 B: Multi-Container Application using Docker Compose (WordPress + Database)**
-
----
+# **Experiment 6 B 
+## Multi-Container Application using Docker Compose (WordPress + Database)**
 
 ### **1. Objective**
 
@@ -560,7 +557,6 @@ Also:
 * Learn how to scale services
 * Compare with **Docker Swarm** for production deployment
 
----
 
 ### **2. Prerequisites**
 
@@ -568,7 +564,6 @@ Also:
 * Docker Compose (comes with modern Docker)
 * Basic understanding of containers
 
----
 
 ### **3. Architecture Overview**
 
@@ -586,10 +581,7 @@ User (Browser)
 * Data is persisted using volumes
 
 ---
-
-### **4. Step-by-Step Procedure**
-
----
+## Steps
 
 ### **Step 1: Create Project Directory**
 
@@ -670,7 +662,6 @@ Defines containers:
   http://localhost:8080
   ```
 
----
 
 ### **Step 3: Start Application**
 
@@ -685,7 +676,7 @@ What happens:
 * Containers are started
 * DNS-based service discovery enabled
 
----
+
 
 ### **Step 4: Verify Containers**
 
@@ -698,7 +689,6 @@ Expected:
 * wordpress_app
 * wordpress_db
 
----
 
 ### **Step 5: Access WordPress**
 
@@ -711,7 +701,6 @@ http://localhost:8080
 * Complete WordPress setup
 * Enter site title, admin user, password
 
----
 
 ### **Step 6: Check Volumes**
 
@@ -722,7 +711,6 @@ docker volume ls
 * `db_data` → database persistence
 * `wp_data` → WordPress files
 
----
 
 ### **Step 7: Stop Application**
 
@@ -737,7 +725,6 @@ docker-compose down
 
 ## **5. Scaling in Docker Compose**
 
----
 
 ### **Method 1: Scale WordPress Containers**
 
@@ -754,7 +741,6 @@ Result:
 * All try to use same port (8080)
 * No load balancing
 
----
 
 ### **Solution: Use Reverse Proxy (Nginx)**
 
@@ -769,7 +755,6 @@ nginx:
 
 Then configure load balancing manually.
 
----
 
 ### **Limitations of Compose Scaling**
 
@@ -782,7 +767,7 @@ Then configure load balancing manually.
 
 ## **6. Running Same Setup with Docker Swarm**
 
----
+
 
 ### **Step 1: Initialize Swarm**
 
@@ -790,7 +775,7 @@ Then configure load balancing manually.
 docker swarm init
 ```
 
----
+
 
 ### **Step 2: Deploy Stack**
 
@@ -798,7 +783,6 @@ docker swarm init
 docker stack deploy -c docker-compose.yml wpstack
 ```
 
----
 
 ### **Step 3: Scale Service**
 
@@ -806,7 +790,6 @@ docker stack deploy -c docker-compose.yml wpstack
 docker service scale wpstack_wordpress=3
 ```
 
----
 
 ### **What Changes in Swarm?**
 
@@ -819,7 +802,6 @@ docker service scale wpstack_wordpress=3
 | Rolling updates | No             | Yes                |
 | Networking      | Basic          | Overlay network    |
 
----
 
 ## **7. Benefits of Docker Swarm**
 
@@ -829,7 +811,6 @@ docker service scale wpstack_wordpress=3
 * Rolling updates without downtime
 * Service abstraction (not individual containers)
 
----
 
 ## **8. Challenges / Limitations of Swarm**
 
@@ -838,7 +819,6 @@ docker service scale wpstack_wordpress=3
 * Less flexible scheduling
 * Fewer enterprise features
 
----
 
 ## **9. Key Learning Outcomes**
 
