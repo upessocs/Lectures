@@ -541,7 +541,7 @@ Create a simple Python FastAPI or Node production-ready app using:
 
 ---
 
-# **Experiment 6 B 
+# Experiment 6 B 
 ## Multi-Container Application using Docker Compose (WordPress + Database)**
 
 ### **1. Objective**
