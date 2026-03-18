@@ -29,10 +29,10 @@ Kubernetes (K8s) is an open-source container orchestration platform that automat
 - **Declarative Management** – Define desired state; Kubernetes maintains it
 
 ### **2.3 What Kubernetes Is NOT**
-- ❌ Not a container runtime (uses Docker, containerd, CRI-O)
-- ❌ Not a PaaS (though it can serve as its foundation)
-- ❌ Not limited to microservices (can run any containerized workload)
-- ❌ Not a single-machine tool (designed for clusters)
+- Not a container runtime (uses Docker, containerd, CRI-O)
+- Not a PaaS (though it can serve as its foundation)
+- Not limited to microservices (can run any containerized workload)
+- Not a single-machine tool (designed for clusters)
 
 ---
 
