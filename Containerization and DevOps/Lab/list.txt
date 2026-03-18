@@ -9,3 +9,4 @@
 ./Experiment 4 Docker Essentials Dockerfile dockerignore tagging and publishing.md
 ./Experiment 5 Docker Volumes, Environment Variables, Monitoring, Networks Final.md
 ./Experiment 6 Docker Compose vs Docker Run, and MultiContainer Application - Wordpress+MySQL.md
+./Experiment 7 CICD using Jenkins, GitHub and Docker Hub.md
