@@ -481,6 +481,11 @@ kubectl get services
 
 Shows how applications are exposed.
 
+
+### To access using kubectl port-forwarding
+```
+kubectl port-forward service/web 8080:80
+```
 ---
 
 # Task 10: Delete Resources
