@@ -18,6 +18,6 @@
 ./303 Docker Swarm + Docker stack deploy Updated.md
 ./303 Docker Swarm 26-28.md
 ./304 Introduction to Kubernetes.md
-./305 Kubernetes and how to install.md
-./306 Kubernetis with k3d k3s and kubectl.md
+./305 Kubernetes and local install with k3d and kubectl.md
+./306 Kubernetis deployment with YAML kubectl apply.md
 ./Assignment 1.md
