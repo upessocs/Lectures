@@ -2,23 +2,8 @@
 ./.attendance and proxies
 ./.demob3b4
 ./.res
-./101 Timeline VM vs Containers.md
-./102 Docker basic commands 11.md
-./103 How to preserve changes made inside containers 12,13.md
-./104 Dockerfile – Hands-On Tutorial 14.md
-./105a Docker API 9.md
-./105b Docker API exposing to external world 9.md
-./106 Class Task.md
-./107 Multistage Dockerfiles Best Practices size, speed and security 15.md
-./110 Attach to stopped containers.md
-./201 Data Management in Docker with volume bind-mount and tempfs 17-20.md
-./202 Networking in Docker 21 - 22.md
-./301 Docker Compose vs Docker Run 24.md
-./302 Scaling with Docker Compose 24.md
-./303 Docker Swarm + Docker stack deploy Updated.md
-./303 Docker Swarm 26-28.md
-./304 Introduction to Kubernetes.md
-./305 Kubernetes and local install with k3d and kubectl.md
-./306 Apache webserver deploy using kubernetis.md
-./307 Kubernetis deployment with YAML kubectl apply.md
-./Assignment 1.md
+./001 Unit 1
+./002 Unit 2
+./003 Unit 3
+./020 Misc
+./011 Assignment 1.md
