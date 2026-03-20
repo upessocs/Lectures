@@ -19,5 +19,6 @@
 ./303 Docker Swarm 26-28.md
 ./304 Introduction to Kubernetes.md
 ./305 Kubernetes and local install with k3d and kubectl.md
-./306 Kubernetis deployment with YAML kubectl apply.md
+./306 Apache webserver deploy using kubernetis.md
+./307 Kubernetis deployment with YAML kubectl apply.md
 ./Assignment 1.md
