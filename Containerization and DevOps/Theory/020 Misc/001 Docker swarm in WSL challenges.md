@@ -119,7 +119,7 @@ That means:
 So even after correct init:
 
 ```text
-Worker → 10.96.85.32 → ❌ stuck at Windows
+Worker → 10.96.85.32 → stuck at Windows
 ```
 
 
