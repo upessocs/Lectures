@@ -1,0 +1,24 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    user: "${UID}:${GID}"
+    ports:
+      - "10101:3000"
+
+
+
+    volumes:
+      - ./uploads:/app/uploads
+      - ./data.json:/app/data.json
+
+    command:
+      npm run dev
+
+
+# mkdir -p ./uploads
+# touch data.json
+    environment:
+      - NODE_ENV=development

@@ -1,0 +1,28 @@
+{
+  "name": "example-fileupload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^2.2.1",
+    "browser-sync": "^3.0.4",
+    "concurrently": "^9.2.1",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "localtunnel": "^2.0.2",
+    "nodemon": "^3.1.11",
+    "os": "^0.1.2",
+    "path": "^0.12.7"
+  },
+  "dependencies": {
+    "multer": "^2.0.2",
+    "useragent": "^2.3.0"
+  }
+}

@@ -1,6 +1,5 @@
-https://spacelift.io/blog/ansible-tutorial
 
-> What is Ansible? How does it work? See the Ansible tutorial for beginners with playbook and commands explained with examples.
+
 
 # Ansible Tutorial for Beginners: Playbook & Examples
 Ansible is software that enables cross-platform automation and orchestration at scale and has become the standard choice among enterprise automation solutions. 
@@ -38,7 +37,6 @@ Typically, the only thing a user needs is a terminal to execute Ansible commands
 
 To sum up, Ansible is simple yet powerful, agentless, community-powered, predictable, and secure.
 
-Read more: [Ansible Use Cases – Management & Automation Examples](https://spacelift.io/blog/ansible-use-cases)
 
 
 ---
@@ -124,4 +122,10 @@ apt update
 apt install ansible
 ```
 
-By following these steps, you'll gain hands-on experience with Ansible in a local environment, and you can expand to more advanced use cases as you grow more comfortable with its features.
+> By following these steps, you'll gain hands-on experience with Ansible in a local environment, and you can expand to more advanced use cases as you grow more comfortable with its features.
+
+
+References:
+
+- [https://spacelift.io/blog/ansible-tutorial](https://spacelift.io/blog/ansible-tutorial)
+

@@ -1,12 +1,16 @@
 ./
 ./.attendance and proxies
-./.demo
-./Experiment 0 Install WSL.md
-./Experiment 1 Compare VM with Container.md
-./Experiment 2 Docker Installation, configuration, Running Images.md
-./Experiment 3 Docker Deploy NGINX Using Different Base Images and Comparing Image Layers.md
-./Experiment 3 Nginix.md
-./Experiment 4 Docker Essentials Dockerfile dockerignore tagging and publishing.md
-./Experiment 5 Docker Volumes, Environment Variables, Monitoring, Networks Final.md
-./Experiment 6 Docker Compose vs Docker Run, and MultiContainer Application - Wordpress+MySQL.md
-./Experiment 7 CICD using Jenkins, GitHub and Docker Hub.md
+./.dist
+./.res
+./Experiment 00 Install WSL.md
+./Experiment 01 Compare VM with Container.md
+./Experiment 02 Docker Installation, configuration, Running Images.md
+./Experiment 03 Docker Deploy NGINX Using Different Base Images and Comparing Image Layers.md
+./Experiment 03 Nginix.md
+./Experiment 04 Docker Essentials Dockerfile dockerignore tagging and publishing.md
+./Experiment 05 Docker Volumes, Environment Variables, Monitoring, Networks Final.md
+./Experiment 06 Docker Compose vs Docker Run, and MultiContainer Application - Wordpress+MySQL.md
+./Experiment 07 CICD using Jenkins, GitHub and Docker Hub.md
+./Experiment 08 Chef draft.md
+./Experiment 09 Ansible.md
+./Experiment 10 SonarQube draft.md

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+  <title>upload lab report</title>
+
+  <style>
+    body{
+      padding:1em;
+      color:white;
+      background-color: hsl(180, 97%, 24%);
+    }
+
+    input{
+      width:80%;
+      padding:1em;
+    }
+    #container{
+      margin: 3em auto;
+      padding:2em
+    }
+  </style>
+</head>
+<html>
+<body>
+<div id="container">
+  <h2>Upload File</h2>
+
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <label>SAPID:</label><br>
+    <input type="text" name="sapid" required><br><br>
+
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Batch:</label><br>
+    <input type="text" name="batch" required placeholder="B1 or B2 .. or B6 or B7"><br><br>
+
+    <label>GITHUB Repo URL:</label><br>
+    <input type="text" name="repo" required placeholder="https://github.com/<username>/<repo>"><br><br>
+
+    <label>Hosted Page:</label><br>
+    <input type="text" name="ghpage" required placeholder="https://<username>.github.io/<repo>"><br><br>
+
+    <label>File:</label><br>
+    <input type="file" name="myfile" required><br><br>
+
+    <button type="submit">Upload</button>
+  </form>
+</div>  
+
+</body>
+</html>
