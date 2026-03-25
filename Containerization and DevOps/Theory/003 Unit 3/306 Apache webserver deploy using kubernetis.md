@@ -9,6 +9,8 @@ Deploy and manage a simple Apache-based web server and:
 * scale it
 * debug it
 
+> Submit it one GitHub Repo and share its URL
+
 ---
 
 # Task: Deploy a Simple Web Application (Apache httpd)
