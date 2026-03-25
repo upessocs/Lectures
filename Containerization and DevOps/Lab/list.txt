@@ -1,7 +1,8 @@
 ./
 ./.attendance and proxies
-./.dist
+./.demo
 ./.res
+./Theroy Articulate AI
 ./Experiment 00 Install WSL.md
 ./Experiment 01 Compare VM with Container.md
 ./Experiment 02 Docker Installation, configuration, Running Images.md
