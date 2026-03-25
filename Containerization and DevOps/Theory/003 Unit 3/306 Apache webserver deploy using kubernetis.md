@@ -9,7 +9,7 @@ Deploy and manage a simple Apache-based web server and:
 * scale it
 * debug it
 
-> Submit it one GitHub Repo and share its URL
+> Submit it on GitHub Repo under Theory or Class folder and share its URL
 
 ---
 
