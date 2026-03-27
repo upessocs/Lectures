@@ -78,6 +78,54 @@ docker logs -f sonarqube
 # Access SonarQube at http://localhost:9000
 # Default credentials: admin/admin
 ```
+### OR use docker-compose up -d with 
+
+`docker-compose.yml`
+```yaml
+version: '3.8'
+
+services:
+  sonar-db:
+    image: postgres:13
+    container_name: sonar-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonarqube
+    volumes:
+      - sonar-db-data:/var/lib/postgresql/data
+    networks:
+      - sonarqube-lab
+
+  sonarqube:
+    image: sonarqube:lts-community
+    container_name: sonarqube
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://sonar-db:5432/sonarqube
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+    volumes:
+      - sonar-data:/opt/sonarqube/data
+      - sonar-extensions:/opt/sonarqube/extensions
+    depends_on:
+      - sonar-db
+    networks:
+      - sonarqube-lab
+
+volumes:
+  sonar-db-data:
+  sonar-data:
+  sonar-extensions:
+
+networks:
+  sonarqube-lab:
+    driver: bridge
+```
+
 
 #### Step 2: Create Sample Application with Code Issues
 
