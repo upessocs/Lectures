@@ -1,7 +1,7 @@
 ./
 ./Lab
 ./Theory
-./000 Syllabus.md
+./000 syllabus.md
 ./001 Instructions WSL and GIT.md
 ./0001 Syllabus Containerization and DevOps CSDV3018P_4.pdf
 ./0002 Course Plan Containerization and DevOps CSDV3018P Format_Theory+Lab_Dec 2025.pdf
