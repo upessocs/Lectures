@@ -1,15 +1,16 @@
 ./
-./Computer Architecture and Organisation
-./.res
-./DevOps CCVT
-./Containerization and DevOps
-./Advanced Web Technologies
-./PythonProgramming
-./.git
-./.supp
-./Linux Lab
-./.IQAC
 ./.DE
-./.github
 ./.DR_Oct25
+./.git
+./.github
+./.IQAC
+./.res
+./.supp
+./.supp26
+./Advanced Web Technologies
+./Computer Architecture and Organisation
+./Containerization and DevOps
+./DevOps CCVT
+./Linux Lab
+./PythonProgramming
 ./SoftComputing
