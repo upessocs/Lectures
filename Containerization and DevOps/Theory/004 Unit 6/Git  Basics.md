@@ -1,13 +1,137 @@
+# **Introduction to Git and Version Control**
 
-# **Git Hands-on Lab (Class Lecture Version)**
+## **What is Version Control?**
 
-## **Pre-Lab Setup (Must Do Before Experiments)**
+Version Control is a system that helps track changes in files over time. It allows multiple users to collaborate, maintain history, and revert to previous versions when needed.
+
+### **Why Version Control is Important**
+
+* Tracks file changes (who, what, when)
+* Enables team collaboration
+* Prevents data loss
+* Supports branching and parallel development
+* Helps in debugging (rollback to previous versions)
+
+
+
+
+
+## **What is Git?**
+
+Git is a **Distributed Version Control System (DVCS)** used to track changes in source code during software development.
+
+* Developed by Linus Torvalds
+* Created in **2005**
+* Designed for **speed, flexibility, and distributed workflows**
+
+
+
+
+
+## **What is SCM (Source Code Management)?**
+
+SCM is a broader concept that refers to tools and practices used to manage changes in source code.
+
+* Git is a **tool**
+* SCM is the **process/discipline**
+
+---
+
+
+
+## **Types of Version Control Systems**
+
+### **1. Centralized Version Control System (CVCS)**
+
+* Single central server stores all versions
+* Developers commit changes to the central repository
+
+Examples:
+
+* Apache Subversion (SVN)
+
+**Limitations:**
+
+* Requires constant network connection
+* Single point of failure
+* Slower operations
+
+
+
+
+
+### **2. Distributed Version Control System (DVCS)**
+
+* Every developer has a full copy of the repository
+* Work can be done offline
+* Faster and more flexible
+
+Examples:
+
+* Git
+* Mercurial
+
+
+---
+
+
+## **Git vs SVN vs Mercurial (Brief Comparison)**
+
+| Feature        | Git                           | SVN                | Mercurial            |
+| -------------- | ----------------------------- | ------------------ | -------------------- |
+| Type           | Distributed (DVCS)            | Centralized (CVCS) | Distributed (DVCS)   |
+| Speed          | Very fast                     | Slower             | Fast                 |
+| Offline Work   | Yes                           | No                 | Yes                  |
+| Branching      | Lightweight, powerful         | Heavy and complex  | Simple and efficient |
+| Learning Curve | Moderate                      | Easy               | Easy                 |
+| Popularity     | Very high (industry standard) | Declining          | Moderate             |
+| Data Storage   | Snapshot-based                | File-based         | Changeset-based      |
+
+
+
+
+
+## **Why Git Became Popular**
+
+* No dependency on central server
+* Efficient branching and merging
+* High performance
+* Strong community support
+* Widely used in DevOps and CI/CD pipelines
+
+
+---
+
+
+## **Key Concept: Snapshot vs Changes**
+
+* **Git** stores snapshots of the entire project
+* **SVN** stores changes (deltas) between versions
+
+
+
+
+
+## **Summary**
+
+* Version Control is essential for modern development
+* Git is the most widely used DVCS
+* SVN and Mercurial are alternatives, but Git dominates due to flexibility and ecosystem
+
+
+
+
+---
+
+
+# **Git Hands-on **
+
+## **Pre-Lab Setup **
 
 ### **Objective**
 
 Configure Git identity and authentication so commits and remote operations work correctly.
 
----
 
 ### **1. Set Git Username and Email**
 
@@ -24,7 +148,9 @@ Verify configuration:
 git config --list
 ```
 
----
+
+
+
 
 ### **2. Generate SSH Key (for GitHub Authentication)**
 
@@ -36,7 +162,9 @@ ssh-keygen -t ed25519 -C "your-email@example.com"
 
 Press **Enter** for default location and optionally set a passphrase.
 
----
+
+
+
 
 ### **3. Start SSH Agent and Add Key**
 
@@ -45,7 +173,9 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
----
+
+
+
 
 ### **4. Copy SSH Public Key**
 
@@ -54,9 +184,11 @@ cat ~/.ssh/id_ed25519.pub
 ```
 
 * Copy the output
-* Go to GitHub → Settings → SSH Keys → Add new key
+* Go to GitHub → Settings → SSH Keys → Add new key [https://github.com/settings/keys](https://github.com/settings/keys)
 
----
+
+
+
 
 ### **5. Test SSH Connection**
 
@@ -70,13 +202,18 @@ Expected message:
 Hi username! You've successfully authenticated...
 ```
 
----
+
+
+
 
 ### **Why This Setup is Important**
 
 * Ensures proper **author identity in commits**
 * Enables **secure GitHub access without passwords**
 * Required for **push/pull operations in real projects**
+
+<iframe width="90%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/uGnkvpD44Pg" title="Git, Github, and github-pages" frameborder="0" allowfullscreen></iframe>
+
 
 ---
 
@@ -107,7 +244,9 @@ git commit -m "Initial commit"
 git status
 ```
 
----
+
+
+
 
 ### **Explanation**
 
@@ -115,14 +254,9 @@ git status
 * `git add` → stages file
 * `git commit` → saves snapshot
 
----
 
----
 
-## **Student Task (Quick Check)**
-[![Watch the Video](https://img.youtube.com/vi/uGnkvpD44Pg/0.jpg)](https://youtu.be/uGnkvpD44Pg)
 
-<iframe width="80%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/uGnkvpD44Pg" title="Git, Github, and github-pages" frameborder="0" allowfullscreen></iframe>
 
 ---
 
@@ -158,6 +292,8 @@ git merge feature-branch
 
 #### **Explanation:**
 Branches allow developers to work on features in isolation. Merging integrates these changes into the main branch.
+
+
 
 ---
 
@@ -204,6 +340,8 @@ git commit
 #### **Explanation:**
 Merge conflicts occur when the same section of a file is modified in different branches. Manual intervention resolves the conflict.
 
+
+
 ---
 
 ### **Experiment 4: Using Git Stash**
@@ -226,6 +364,8 @@ git stash apply
 
 #### **Explanation:**
 The `git stash` command allows developers to save work temporarily and return to a clean state for other tasks.
+
+
 
 ---
 
@@ -251,7 +391,9 @@ git pull origin main
 #### **Explanation:**
 This experiment demonstrates remote collaboration by syncing local and remote repositories.
 
+
 ---
+
 
 ### **Experiment 6: Submodules**
 **Objective**: Include a project as a submodule in another repository.
@@ -274,6 +416,8 @@ git submodule update --init --recursive
 #### **Explanation:**
 Submodules allow projects to include dependencies while maintaining their independent histories.
 
+
+
 ---
 
 ### **Experiment 7: Rebase**
@@ -292,25 +436,14 @@ git rebase main
 #### **Explanation:**
 Rebasing provides a linear commit history, making it easier to follow changes.
 
----
-
-### **Sample Code Repository**
-Create a GitHub repository named `devops-git-lab` and populate it with the following files:
-1. `README.md`: Brief description of experiments.
-2. `feature-code.py`: Example Python scripts.
-3. `.gitignore`: Ignored files like logs or secrets.
-
-> By performing these experiments, students gain hands-on experience with essential Git commands and understand their role in DevOps workflows, including collaboration, CI/CD pipelines, and managing source code effectively.
-
-
-
-> you can also try to host your git repo as `ghpages` of `githubpages`
 
 
 
 
----
-## Lab Exam
+
+
+
+## Practics tasks and hints
 
 ### **1. Git Basics: Add and Commit**
 **Objective**: Understand how to stage changes and commit them.  
@@ -405,13 +538,11 @@ Create a GitHub repository named `devops-git-lab` and populate it with the follo
 3. Undo the commit and discard changes (`git reset --hard HEAD~1`).  
 4. Recover a deleted commit using `git reflog`.
 
-> you can also try to host your git repo as `ghpages` of `githubpages`
-
-
-## Can you answer
 
 
 
-  * “Why Git?” (version control, collaboration)
-  * Setup (User + SSH) → **mandatory step**
-  * Local Git → Branching → Remote → Advanced
+
+
+
+
+
