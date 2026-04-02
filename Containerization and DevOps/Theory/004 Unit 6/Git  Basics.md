@@ -117,129 +117,12 @@ git status
 
 ---
 
-## **Experiment 2: Git Branching**
-
-(keep your existing content, already good)
-
----
-
-## **Experiment 3: Merge Conflicts**
-
-(keep existing)
-
----
-
-## **Experiment 4: Git Stash**
-
-(keep existing)
-
----
-
-## **Experiment 5: Remote Repository (GitHub)**
-
-### **Important Update (Use SSH instead of HTTPS)**
-
-```bash
-git remote add origin git@github.com:username/repo.git
-git push -u origin main
-```
-
----
-
-### **Why SSH instead of HTTPS?**
-
-* No repeated password/token
-* More secure
-* Standard in DevOps workflows
-
----
-
-## **Instructor Notes (for Lecture Delivery)**
-
-* Start class with:
-
-  * “Why Git?” (version control, collaboration)
-* Then:
-
-  * Setup (User + SSH) → **mandatory step**
-* Then:
-
-  * Local Git → Branching → Remote → Advanced
-
 ---
 
 ## **Student Task (Quick Check)**
-
-```bash
-git config --global user.name
-git config --global user.email
-ssh -T git@github.com
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-# Optional Read
-
----
-> Perform these experiments and create a Markdown file with summary of steps and commands with screenshots.
-- [learn markdown](https://www.markdowntutorial.com/)
-
-
-
 [![Watch the Video](https://img.youtube.com/vi/uGnkvpD44Pg/0.jpg)](https://youtu.be/uGnkvpD44Pg)
 
 <iframe width="80%" style="aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/uGnkvpD44Pg" title="Git, Github, and github-pages" frameborder="0" allowfullscreen></iframe>
-
-
-### **Experiment 1: Initializing a Git Repository**
-**Objective**: Learn to create a local Git repository and track changes.
-
-#### **Steps:**
-1. Open your terminal.
-2. Navigate to a directory where you want to initialize the repository:
-```bash
-cd ~/devops-project
-```
-3. Initialize a Git repository:
-```bash
-git init
-```
-4. Create a file named `README.md` and add the following content:
-```markdown
-# DevOps Project
-This is a sample project to understand Git and GitHub.
-```
-5. Track the file:
-```bash
-git add README.md
-```
-6. Commit the file:
-```bash
-git commit -m "Initial commit: Add README.md"
-```
-7. Verify the repository status:
-```bash
-git status
-```
-
-#### **Explanation:**
-This experiment introduces the concept of initializing a repository and tracking file changes. The `git init` command sets up the `.git` directory, enabling version control.
 
 ---
 
@@ -523,3 +406,12 @@ Create a GitHub repository named `devops-git-lab` and populate it with the follo
 4. Recover a deleted commit using `git reflog`.
 
 > you can also try to host your git repo as `ghpages` of `githubpages`
+
+
+## Can you answer
+
+
+
+  * “Why Git?” (version control, collaboration)
+  * Setup (User + SSH) → **mandatory step**
+  * Local Git → Branching → Remote → Advanced
