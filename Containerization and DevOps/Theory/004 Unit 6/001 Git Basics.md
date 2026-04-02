@@ -217,46 +217,173 @@ Hi username! You've successfully authenticated...
 
 ---
 
-## **Experiment 1: Initializing a Git Repository**
+---
+# **Git: Initialize and Connect to GitHub Repository**
 
-### **Objective**
+## **Step 1: Create Empty Repository on GitHub**
 
-Learn to create a local Git repository and track changes.
+Go to: [https://github.com/new](https://github.com/new)
 
-### **Steps**
+* Repository name: `demo001`
+* Visibility: **Private**
+* **Do NOT select**:
+
+  * README
+  * .gitignore
+  * License
+
+Click **Create Repository**
+
+
+
+
+
+## **Step 2: GitHub Shows Setup Instructions**
+
+You will see two main options:
+
+
+
+
+
+# **Case 1: Create a New Repository (Fresh Start)**
+
+## **When to Use**
+
+* No local project exists
+* Starting from scratch
+
+## **Commands**
 
 ```bash
-cd ~/devops-project
+echo "# demo001" >> README.md
 git init
-```
-
-Create file:
-
-```bash
-echo "# DevOps Project" > README.md
-```
-
-Track and commit:
-
-```bash
 git add README.md
-git commit -m "Initial commit"
-git status
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:username/demo001.git
+git push -u origin main
 ```
 
 
 
 
 
-### **Explanation**
+## **What Each Command Does**
 
-* `git init` → creates `.git` folder (version control starts)
-* `git add` → stages file
-* `git commit` → saves snapshot
+* `git init` → initialize local repository
+* `git add` → stage file
+* `git commit` → save snapshot
+* `git branch -M main` → set default branch
+* `git remote add origin` → connect to GitHub
+* `git push` → upload code
 
 
 
 
+
+# **Case 2: Push Existing Repository**
+
+## **When to Use**
+
+* Git already initialized locally
+* Code already exists
+
+## **Commands**
+
+```bash
+git remote add origin git@github.com:username/demo001.git
+git branch -M main
+git push -u origin main
+```
+
+
+
+
+
+# **Managing Remote Repository (Important)**
+
+## **1. Verify Remote**
+
+```bash
+git remote -v
+```
+
+**Output Example:**
+
+```bash
+origin  git@github.com:username/demo001.git (fetch)
+origin  git@github.com:username/demo001.git (push)
+```
+
+
+
+
+
+## **2. Add Remote (if not added)**
+
+```bash
+git remote add origin git@github.com:username/demo001.git
+```
+
+
+
+
+
+## **3. Remove Remote**
+
+```bash
+git remote remove origin
+```
+
+
+
+
+
+## **4. Change Remote URL**
+
+```bash
+git remote set-url origin git@github.com:username/new-repo.git
+```
+
+
+
+
+
+# **Common Errors & Fixes**
+
+### **Error: remote origin already exists**
+
+```bash
+git remote remove origin
+git remote add origin git@github.com:username/demo001.git
+```
+^
+
+
+
+
+### **Error: permission denied (SSH)**
+
+* Check SSH key setup
+
+```bash
+ssh -T git@github.com
+```
+
+
+
+
+
+# **Quick Summary **
+
+* Create empty repo on GitHub (no README)
+* Initialize locally → `git init`
+* Connect → `git remote add origin`
+* Push → `git push`
+* Verify → `git remote -v`
+
+---
 
 ---
 
