@@ -8,16 +8,16 @@
 * Prepare **2–4 questions with answers** related to your topic. *Explain only if there are no questions from the audience*
 * Focus on **conceptual clarity and explanation**, avoid copy-paste definitions.
 * Ensure equal participation of all group members. Add a slide showing contributions of individual members.
-* Submit presentation slides (PPT/PDF) before the deadline. \*\*And be ready to present on call\*\*.
-* Your submission will be submitted to \[https://turnitin.com/](https://turnitin.com/) to be evaluated for similarity and AI generated content detection. A higher match will attract negative marks.
-* Add References and links to source articles on last slides and cross ref where applicable.
+* Submit presentation slides (PPT/PDF) before the deadline. **And be ready to present in next class**.
+* Your submission will be submitted to [https://turnitin.com/](https://turnitin.com/) to be evaluated for similarity and AI generated content detection. A higher match will attract negative marks.
+* Add References and links to source articles on last slides and cross ref where applicable. **Also comment on content/depth/novel insight/etc of each reference article**
 
 
 
 ## Presentation Topics
 
 |S. No.|Topic|Coverage / Subtopics Hint|
-|-|-|-|
+|:----|:----|:----|
 |1|DevOps Overview and Evolution|Definition, history, need, traditional vs DevOps|
 |2|DevOps Working Model|Lifecycle stages, flow from dev to ops|
 |3|Benefits of DevOps|Speed, reliability, scalability, business value|
@@ -62,9 +62,9 @@
 
 
 
-\---
+---
 
-\### Topics Assigned
+### Topics Assigned
 
 
 
@@ -325,6 +325,4 @@
 | vishwajeet  pratap  singh	|	6	|	DevOps Practices  |
 
 | Vishwas  Madaan	|	7	|	DevOps Adoption Models  |
-
-
 

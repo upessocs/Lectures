@@ -1,3 +1,8 @@
+<style>
+  --hue:300;
+
+</style>
+
 # **Introduction to Git and Version Control**
 
 ## **What is Version Control?**
@@ -35,7 +40,7 @@ SCM is a broader concept that refers to tools and practices used to manage chang
 * Git is a **tool**
 * SCM is the **process/discipline**
 
-\---
+---
 
 
 
@@ -73,7 +78,7 @@ Examples:
 
 
 
-\---
+---
 
 
 
@@ -103,7 +108,7 @@ Examples:
 
 
 
-\---
+---
 
 
 
@@ -126,7 +131,7 @@ Examples:
 
 
 
-\---
+---
 
 
 
@@ -175,7 +180,7 @@ Press **Enter** for default location and optionally set a passphrase.
 
 ```bash
 eval "$(ssh-agent -s)"
-ssh-add \~/.ssh/id\_ed25519
+ssh-add ~/.ssh/id_ed25519
 ```
 
 
@@ -185,11 +190,11 @@ ssh-add \~/.ssh/id\_ed25519
 ### **4. Copy SSH Public Key**
 
 ```bash
-cat \~/.ssh/id\_ed25519.pub
+cat ~/.ssh/id_ed25519.pub
 ```
 
 * Copy the output
-* Go to GitHub → Settings → SSH Keys → Add new key \[[https://github.com/settings/keys](https://github.com/settings/keys)]([https://github.com/settings/keys](https://github.com/settings/keys))
+* Go to GitHub → Settings → SSH Keys → Add new key [https://github.com/settings/keys](https://github.com/settings/keys)
 
 
 
@@ -225,13 +230,13 @@ Hi username! You've successfully authenticated...
 
 
 
-\---
+---
 
 # **Git: Initialize and Connect to GitHub Repository**
 
 ## **Step 1: Create Empty Repository on GitHub**
 
-Go to: \[[https://github.com/new](https://github.com/new)]([https://github.com/new](https://github.com/new))
+Go to: [https://github.com/new](https://github.com/new)
 
 * Repository name: `demo001`
 * Visibility: **Private**
@@ -386,7 +391,7 @@ ssh -T git@github.com
 
 
 
-# \*\*Quick Summary \*\*
+# **Quick Summary **
 
 * Create empty repo on GitHub (no README)
 * Initialize locally → `git init`
@@ -394,7 +399,7 @@ ssh -T git@github.com
 * Push → `git push`
 * Verify → `git remote -v`
 
-\---
+---
 
 
 
@@ -447,7 +452,7 @@ Branches allow developers to work on features in isolation. Merging integrates t
 
 
 
-\---
+---
 
 ### **Experiment 3: Resolving Merge Conflicts**
 
@@ -508,11 +513,11 @@ git commit
 
 #### **Explanation:**
 
-Merge conflicts occur when the same section of a file is modified in different branches. Manual intervention resolves the conflict.
+> Merge conflicts occur when the same section of a file is modified in different branches. Manual intervention resolves the conflict.
 
 
 
-\---
+---
 
 ### **Experiment 4: Using Git Stash**
 
@@ -541,11 +546,11 @@ git stash apply
 
 #### **Explanation:**
 
-The `git stash` command allows developers to save work temporarily and return to a clean state for other tasks.
+> The `git stash` command allows developers to save work temporarily and return to a clean state for other tasks.
 
 
 
-\---
+---
 
 ### **Experiment 5: Setting Up a Remote Repository**
 
@@ -575,11 +580,11 @@ git pull origin main
 
 #### **Explanation:**
 
-This experiment demonstrates remote collaboration by syncing local and remote repositories.
+> This experiment demonstrates remote collaboration by syncing local and remote repositories.
 
 
 
-\---
+---
 
 
 
@@ -614,7 +619,7 @@ Submodules allow projects to include dependencies while maintaining their indepe
 
 
 
-\---
+---
 
 ### **Experiment 7: Rebase**
 
