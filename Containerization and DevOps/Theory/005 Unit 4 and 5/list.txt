@@ -1,0 +1,5 @@
+./
+./001 Business Needs for DevOps, Agile, DevOps, CICD.md
+./002 Lean, Deming's, and Kaizen.md
+./003 Kanban and Trello.md
+./010 Follow Content from IBM Xebia expert.md

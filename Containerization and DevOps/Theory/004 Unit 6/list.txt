@@ -1,4 +1,11 @@
 ./
+./002 Git Hands-on
 ./001 Git Basics.md
-./002 Git Summary.md
-./003 CICD Pipeline and Jenkins.md
+./003 Github Actions.md
+./004 Dockerize python fastapi server with github actions and upload to docker registery.md
+./005 Github Actions Test Automation Backend API testing.md
+./006 CICD Pipeline and Jenkins.md
+./007 Ansible Infrastructure as code IaC.md
+./008 Handson with Prometheus and Grafana.md
+./009 Testing, Verification & Validation.md
+./003 Github Actions CheatSheet.pdf

@@ -222,15 +222,6 @@ jobs:
 | Upload artifacts | Saves build outputs |
 | Run on schedule | Uses `cron` to schedule execution |
 
----
-
-### **Next Steps**
-Would you like to:
-1. Add a **Docker-based deployment**?
-2. Run **parallel jobs**?
-3. Store and use **secrets** for secure keys?
-4. Deploy to **AWS/GCP/Azure**?
-
 
 ---
 # Comparision with Jenkins (Optional for now)
@@ -330,7 +321,7 @@ pipeline {
 }
 ```
 
-🔹 This will execute **four parallel jobs** based on the specified labels (`ubuntu` and `windows`).  
+This will execute **four parallel jobs** based on the specified labels (`ubuntu` and `windows`).  
 
 ---
 

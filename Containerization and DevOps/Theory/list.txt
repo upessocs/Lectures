@@ -6,6 +6,7 @@
 ./002 Unit 2
 ./003 Unit 3
 ./004 Unit 6
+./005 Unit 4 and 5
 ./020 Misc
 ./088 Articulate AI
 ./011 Assignment 1.md
