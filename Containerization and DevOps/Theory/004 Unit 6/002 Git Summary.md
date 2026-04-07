@@ -12,7 +12,9 @@ Git is a **distributed version control system** used to:
 Working Directory → Staging Area → Local Repo → Remote Repo
 ```
 
----
+
+
+
 
 # 2. Repository Setup
 
@@ -32,7 +34,9 @@ git clone <repo-url>
 
 **Use case:** Work on an existing project.
 
----
+
+
+
 
 # 3. File Tracking Lifecycle
 
@@ -48,7 +52,9 @@ Shows:
 * Modified files
 * Staged files
 
----
+
+
+
 
 ## Add files (Staging Area)
 
@@ -59,7 +65,9 @@ git add .
 
 **Use case:** Select what changes go into next commit.
 
----
+
+
+
 
 ## Commit changes
 
@@ -69,7 +77,9 @@ git commit -m "message"
 
 **Use case:** Save a snapshot of staged changes.
 
----
+
+
+
 
 # 4. Viewing Changes & History
 
@@ -90,6 +100,8 @@ git diff --staged
 ```
 
 **Use case:** Debug changes, review before commit.
+
+
 
 ---
 
@@ -115,7 +127,9 @@ git remote set-url origin <new-url>
 
 **Use case:** Switch from HTTPS → SSH or change repo location.
 
----
+
+
+
 
 ## Push changes
 
@@ -142,6 +156,8 @@ git fetch
 * `fetch`: safe preview
 * `pull`: directly update
 
+
+
 ---
 
 # 6. Branching (Core Concept)
@@ -165,7 +181,9 @@ git branch
 git branch -a
 ```
 
----
+
+
+
 
 # 7. Switching (Checkout)
 
@@ -198,8 +216,10 @@ git checkout -- file.txt
 * Try old versions
 * Undo file changes
 
----
 
+
+
+---
 # 8. Stashing (Temporary Save)
 
 ## Save changes
@@ -236,6 +256,8 @@ git stash apply stash@{0}
 
 * Switch branch without committing incomplete work
 
+
+
 ---
 
 # 9. Merge (Branch Integration)
@@ -262,7 +284,9 @@ A---B---C-------F (main)
       D---E----
 ```
 
----
+
+
+
 
 ## Merge Conflict
 
@@ -283,7 +307,9 @@ git commit
 
 **Use case:** Combine parallel work safely.
 
----
+
+
+
 
 # 10. Rebase (Linear History)
 
@@ -312,7 +338,9 @@ A---B---C---D'---E'
 * Rewrites commits
 * Cleaner history
 
----
+
+
+
 
 ## Merge vs Rebase
 
@@ -323,8 +351,10 @@ A---B---C---D'---E'
 | Conflicts | Once       | Multiple times  |
 | Use case  | Team work  | Clean history   |
 
----
 
+
+
+---
 # 11. Undo Operations
 
 ## Unstage
@@ -355,6 +385,8 @@ git revert <commit>
 
 * Fix mistakes without breaking history
 
+
+
 ---
 
 # 12. Submodules (Advanced but Important)
@@ -368,7 +400,9 @@ A **Git repository inside another Git repository**
 * Reuse shared code (e.g., common library)
 * Keep external dependency as separate repo
 
----
+
+
+
 
 ## Add submodule
 
@@ -395,12 +429,16 @@ git submodule update
 git submodule update --remote
 ```
 
----
+
+
+
 
 ## Important Notes
 
 * Submodule has its own `.git`
 * Parent repo tracks only **reference (commit)**
+
+
 
 ---
 
@@ -417,7 +455,9 @@ git submodule update --remote
 8. git push origin feature
 ```
 
----
+
+
+
 
 # 14. Real Use Case Flow (Team)
 
@@ -435,8 +475,10 @@ git rebase main
 
 → Avoid messy history
 
----
 
+
+
+---
 # 15. Summary Table (Quick Revision)
 
 ```text
@@ -479,7 +521,9 @@ Submodule       git submodule add               Add external repo
                 git submodule update            Sync submodules
 ```
 
----
+
+
+
 
 # Final Mental Model
 
