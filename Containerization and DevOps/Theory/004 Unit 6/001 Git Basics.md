@@ -199,6 +199,48 @@ cat ~/.ssh/id_ed25519.pub
 
 
 
+There are two places this key can be used for Authintication or Signing
+
+
+```bash
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+git config --global commit.gpgsign true
+```
+## Step 1: Add it as *Authentication Key*
+
+## Step 2: Add it as *Signing Key*
+Similar step need to be repeated
+
+Go to GitHub:
+
+* Settings → **SSH and GPG keys**
+* Click:
+
+> **New SSH signing key**
+
+
+
+* Add key only under **Authentication (SSH keys)**
+* Expect commits to be verified
+
+That **does NOT work**
+
+GitHub treats:
+
+```text
+SSH Key (Auth) ≠ SSH Key (Signing)
+```
+
+Even if it's the **same key**, it must be added in both places.
+
+
+```text
+Authentication key → "Who are you?" (login/push)
+Signing key        → "Did YOU make this commit?" (verification)
+```
+
+
 
 ### **5. Test SSH Connection**
 

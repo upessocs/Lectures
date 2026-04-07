@@ -211,6 +211,63 @@ Now, Git will use SSH for authentication instead of a username and password.
 ### Summary
 - **PAT**: Use this for HTTPS-based Git operations.
 - **SSH Key**: Use this for SSH-based Git operations, often preferred for its security and ease of use.
+
+
+
+### **4. Copy SSH Public Key**
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+* Copy the output
+* Go to GitHub → Settings → SSH Keys → Add new key [https://github.com/settings/keys](https://github.com/settings/keys)
+
+
+
+
+### There are two places this key can be used for Authentication or Signing, changing *Key Type*
+
+
+```bash
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+git config --global commit.gpgsign true
+```
+## Step 1: Add it as *Authentication Key*
+
+## Step 2: Add it as *Signing Key*
+Similar step need to be repeated
+
+Go to GitHub:
+
+* Settings → **SSH and GPG keys**
+* Click:
+
+> **New SSH signing key**
+
+
+
+* Add key Once for under **Authentication (SSH keys)**
+* Add same key Once again for Signing under **Signing Key**
+
+GitHub treats:
+
+```text
+SSH Key (Auth) ≠ SSH Key (Signing)
+```
+
+Even if it's the **same key**, it must be added in both places.
+
+
+```text
+Authentication key → "Who are you?" (login/push)
+Signing key        → "Did YOU make this commit?" (verification)
+```
+
+
+
+
 ---
 > Use git-bash to execute it on windows
 ### 1. `git init`
