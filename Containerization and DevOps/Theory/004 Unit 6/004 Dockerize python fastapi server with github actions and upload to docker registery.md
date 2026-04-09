@@ -100,8 +100,41 @@ When you push code:
 
 ---
 
-## Hands-On: Dockerizing FastAPI + GitHub Actions
+## Part I Hands-On: Dockerize FastAPI + GitHub Actions
 
+> To test this experiment we need a new GitHub repository
+
+Steps
+1. Create a new repository in your GitHub [GitHub.com/new](https://github.com/new)
+	- Optionally add README.md keep it private
+2. Your repo should have following filed from starting `.env` containing `DOCKERTOKEN` and `gitignore` to ignore .env file
+3. Add .gitignore and commit then push changes to repo.
+4. Now continue with handson, the content of .env .gitignore and directory structure if shown below
+
+### `.env`
+
+```env
+DOCKERTOKEN=tokengeneratedfromdockerhub
+```
+
+### `.gitignore`
+
+```ini
+.env
+```
+
+
+```bash
+.
+├── .env
+├── .git
+├── .github/workflows/ActionsYaml.yaml
+├── .gitignore
+├── README.md
+├── Dockerfile
+├── main.py
+└── requirements.txt
+ ```
 ---
 
 ## Step 1: FastAPI Application
@@ -262,7 +295,7 @@ http://localhost
 
 
 
-# Step 2 
+# Part II  
 ## Verification Task: Validate Full CI/CD Flow
 
 This task ensures that:
@@ -289,7 +322,6 @@ def read_root():
     )
 ```
 
----
 
 ## Task 2: Commit and Push Changes
 
@@ -299,7 +331,7 @@ git commit -m "Added SAP ID for CI/CD verification"
 git push
 ```
 
----
+
 
 ## Task 3: Verify GitHub Actions Execution
 
@@ -320,7 +352,6 @@ Build → Success
 Push → Success
 ```
 
----
 
 ## Task 4: Verify Updated Image on Docker Hub
 
@@ -329,7 +360,7 @@ Go to your Docker Hub repository and confirm:
 * Latest tag (e.g., `v0.1`) is updated
 * Timestamp reflects recent push
 
----
+
 
 ## Task 5: Run Updated Docker Image Locally
 
@@ -339,7 +370,6 @@ Pull and run the latest image:
 docker run --rm -p 8080:80 your_docker_username/fastapi-app:v0.1
 ```
 
----
 
 ## Task 6: Validate Output
 
@@ -368,37 +398,18 @@ Expected response:
 | Code change detected             | Yes      |
 | GitHub Actions triggered         | Yes      |
 | Docker image rebuilt             | Yes      |
-| Image pushed to registry         | Yes      |
+| Image pushed to registry with token from secrets         | Yes      |
 | Latest container reflects change | Yes      |
 
 ---
 
 ## Common Issues & Fixes
 
-### Image not updated
-
-* Ensure tag is same (`v0.1`)
-* Or use new tag:
-
-```bash
-docker build -t username/app:v0.2 .
-```
-
-### Old container running
-
-* Use `--rm` flag (already used)
-* Ensure no cached container:
-
-```bash
-docker ps -a
-```
-
 ### GitHub Action failed
 
 * Check logs in Actions tab
 * Verify `DOCKERTOKEN` secret
 
----
 
 ## Final Outcome
 
