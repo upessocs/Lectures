@@ -1,23 +1,113 @@
-# Continious Delivery with Github Actions
+# Task:  Dockerize python fastapi server with github actions and upload to docker registery
 
-## Create Docker image of fastapi api server using github actions
+---
 
-### podman install steps
+# Continuous Delivery with GitHub Actions
 
-install `podman-cli` from [https://podman.io/](https://podman.io/)
+## What is Continuous Delivery (CD)
 
-then execute
-```bash
-podman machine init
-podman machine start
+**Continuous Delivery (CD)** is a DevOps practice where code changes are:
 
-alias docker=podman
+1. **Automatically built**
+2. **Automatically tested**
+3. **Automatically prepared for release**
 
-docker --version
-```# fastapi-dockerize
+The key idea:
 
-### python server
-`main.py`
+> Every change pushed to the repository is always in a deployable state.
+
+### Difference from Continuous Deployment
+
+| Concept               | Meaning                                               |
+| --------------------- | ----------------------------------------------------- |
+| Continuous Delivery   | Code is ready to deploy, but deployment may be manual |
+| Continuous Deployment | Code is automatically deployed to production          |
+
+### Flow of Continuous Delivery
+
+```
+Developer → Git Push → CI Pipeline → Build → Test → Package → Ready to Deploy
+```
+
+In our case:
+
+```
+GitHub → GitHub Actions → Build Docker Image → Push to Docker Hub
+```
+
+---
+
+## How GitHub Actions Works
+
+**GitHub Actions** is a CI/CD tool built into GitHub that allows automation using workflows.
+
+### Core Concepts
+
+#### 1. Workflow
+
+* Defined in `.github/workflows/*.yml`
+* Describes automation steps
+
+#### 2. Event Trigger
+
+* Defines **when workflow runs**
+
+```yaml
+on: push
+```
+
+#### 3. Job
+
+* A set of steps running on a machine
+
+```yaml
+jobs:
+  build:
+```
+
+#### 4. Runner
+
+* Machine where job runs
+
+```yaml
+runs-on: ubuntu-latest
+```
+
+#### 5. Steps
+
+* Individual commands or actions
+
+```yaml
+steps:
+  - uses: actions/checkout@v1
+```
+
+---
+
+### Execution Flow
+
+When you push code:
+
+1. GitHub detects event (`push`)
+2. Workflow file is read
+3. Runner (VM) is created
+4. Steps are executed:
+
+   * Clone repo
+   * Login to Docker
+   * Build image
+   * Push image
+
+---
+
+## Hands-On: Dockerizing FastAPI + GitHub Actions
+
+---
+
+## Step 1: FastAPI Application
+
+### `main.py`
+
 ```python
 from fastapi import FastAPI
 app = FastAPI()
@@ -25,25 +115,31 @@ import uvicorn
 
 @app.get("/")
 def read_root():
-    return dict(name = "Prateek", Location = "Deheradun")
+    return dict(name="Prateek", Location="Dehradun")
 
 @app.get("/{data}")
-def read_root(data):
-    return dict(hi = data, Location = "Deheradun")
+def read_data(data):
+    return dict(hi=data, Location="Dehradun")
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=80, reload=True)
 ```
 
-### python requirements 
-`requirements.txt`
+---
+
+## Step 2: Requirements
+
+### `requirements.txt`
+
 ```txt
 fastapi
 uvicorn
 ```
 
-### Dockerfile for image building/containerization of app
-`Dockerfile`
+---
+
+## Step 3: Dockerfile
+
 ```Dockerfile
 FROM ubuntu
 
@@ -52,99 +148,263 @@ RUN apt install python3 python3-pip pipenv -y
 
 WORKDIR /app
 COPY . /app/
+
 RUN pipenv install -r requirements.txt
 
 EXPOSE 80
 
-
 CMD pipenv run python3 ./main.py
 ```
 
-### Github Actions for docker image creation 
-`.github/workflows/DockerBuild.yml`
-```yml
+---
+
+## Step 4: GitHub Actions Workflow
+
+### `.github/workflows/DockerBuild.yml`
+
+```yaml
 name: Docker image build
 
 on: push
-    
-
 
 jobs:
-    build:
+  build:
+    runs-on: ubuntu-latest
 
-        runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
 
-        steps: 
-            - uses: actions/checkout@v1
-            - name: Build & Push Image
-              run: |
-                echo ${{ secrets.DOCKERTOKEN }} | docker login -u "prateekrajgautam" --password-stdin
-                docker build -t dockerhub_username/dockerhub_image_name:v0.1 .
-                docker push dockerhub_username/dockerhub_image_name:v0.1
+      - name: Login to DockerHub
+        run: |
+          echo ${{ secrets.DOCKERTOKEN }} | docker login -u "your_docker_username" --password-stdin
 
+      - name: Build Docker Image
+        run: |
+          docker build -t your_docker_username/fastapi-app:v0.1 .
+
+      - name: Push Docker Image
+        run: |
+          docker push your_docker_username/fastapi-app:v0.1
 ```
-1. Create docker token from https://app.docker.com/settings/personal-access-tokens/
-2. You need to add DOCKERTOKEN to your `https://github.com/<usernamd/reponame>/settings/variables/actions/new`
-
----
-# docker token
-To generate a token for a **Docker registry**, follow these steps based on your specific registry type:
-
-
-### **1. Docker Hub (Public Registry)**
-Docker Hub uses **Personal Access Tokens (PATs)** instead of passwords for authentication.
-
-#### **Steps:**
-1. **Go to Docker Hub**: [https://hub.docker.com/](https://hub.docker.com/)
-2. **Sign in** with your Docker account.
-3. Click on your **profile** (top-right corner) → **Account Settings**.
-4. Navigate to **Security** → **Access Tokens**.
-5. Click **Generate Token**.
-6. Give it a **name**, set the **permissions**, and click **Generate**.
-7. Copy the **token** (it will not be shown again).
-
-#### **Use the Token for Login:**
-```sh
-docker login -u <your-docker-username> --password-stdin
-```
-Then, enter the **token** when prompted.
 
 ---
 
-### **2. Private Docker Registry (Self-Hosted)**
-If you're using a self-hosted **Docker Registry (Harbor, JFrog, Nexus, etc.)**, the steps depend on the platform.
+## Step 5: Create Docker Token
 
-#### **Generic Token Generation via HTTP API**
-For a private Docker registry, you can get a token using basic authentication:
+1. Go to: [https://hub.docker.com/](https://hub.docker.com/)
+2. Account Settings → Security → Access Tokens
+3. Generate token
+4. Copy it
 
-```sh
-curl -u <username>:<password> https://<your-registry>/v2/token
+---
+
+## Step 6: Add Secret in GitHub
+
+Go to:
+
+```
+https://github.com/<username>/<repo>/settings/secrets/actions
 ```
 
-#### **Harbor Registry**
-1. Log in to **Harbor Web UI**.
-2. Go to **User Profile** → **Robot Accounts** (or API Tokens).
-3. Generate a **new token**.
-4. Use it to log in:
-   ```sh
-   docker login <harbor-registry-url> -u robot$<username> --password <token>
-   ```
+Add:
 
-#### **AWS Elastic Container Registry (ECR)**
-For AWS ECR, generate a token using AWS CLI:
-```sh
-aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <aws-account-id>.dkr.ecr.<region>.amazonaws.com
+```
+Name: DOCKERTOKEN
+Value: <your token>
 ```
 
-#### **Google Container Registry (GCR)**
-Authenticate using:
-```sh
-gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://gcr.io
+---
+
+## Final Flow (What Happens Now)
+
+```
+You push code → GitHub Actions triggers → 
+Docker image builds → Image pushed to Docker Hub
 ```
 
-#### **Azure Container Registry (ACR)**
-Authenticate using Azure CLI:
-```sh
-az acr login --name <registry-name>
+---
+
+## Optional: Test Locally (WSL Docker)
+
+Since you're using WSL with docker:
+
+```bash
+docker build -t fastapi-app .
+docker run -p 80:80 fastapi-app
+```
+
+Open:
+
+```
+http://localhost
+```
+
+---
+
+## Summary
+
+| Step           | Purpose                |
+| -------------- | ---------------------- |
+| FastAPI App    | Backend API            |
+| Dockerfile     | Containerize app       |
+| GitHub Actions | Automate build & push  |
+| Docker Token   | Secure authentication  |
+| Secret         | Safe storage in GitHub |
+
+---
+
+
+
+
+
+
+
+
+
+
+# Step 2 
+## Verification Task: Validate Full CI/CD Flow
+
+This task ensures that:
+
+* GitHub Actions is working correctly
+* Docker image is updated on Docker Hub
+* Latest changes are reflected when running the container
+
+---
+
+## Task 1: Modify Application Response
+
+Update your FastAPI response to include your **SAP ID**.
+
+### Update `main.py`
+
+```python
+@app.get("/")
+def read_root():
+    return dict(
+        name="Your Name",
+        sapid="YOUR_SAP_ID",
+        Location="Dehradun"
+    )
+```
+
+---
+
+## Task 2: Commit and Push Changes
+
+```bash
+git add .
+git commit -m "Added SAP ID for CI/CD verification"
+git push
+```
+
+---
+
+## Task 3: Verify GitHub Actions Execution
+
+1. Go to your repository
+2. Navigate to **Actions tab**
+3. Open latest workflow run
+
+Check:
+
+* Workflow triggered on push
+* Build step executed
+* Docker image pushed successfully
+
+Expected result:
+
+```text
+Build → Success
+Push → Success
+```
+
+---
+
+## Task 4: Verify Updated Image on Docker Hub
+
+Go to your Docker Hub repository and confirm:
+
+* Latest tag (e.g., `v0.1`) is updated
+* Timestamp reflects recent push
+
+---
+
+## Task 5: Run Updated Docker Image Locally
+
+Pull and run the latest image:
+
+```bash
+docker run --rm -p 8080:80 your_docker_username/fastapi-app:v0.1
+```
+
+---
+
+## Task 6: Validate Output
+
+Open browser:
+
+```text
+http://localhost:8080
+```
+
+Expected response:
+
+```json
+{
+  "name": "Your Name",
+  "sapid": "YOUR_SAP_ID",
+  "Location": "Dehradun"
+}
+```
+
+---
+
+## What This Confirms
+
+| Check                            | Verified |
+| -------------------------------- | -------- |
+| Code change detected             | Yes      |
+| GitHub Actions triggered         | Yes      |
+| Docker image rebuilt             | Yes      |
+| Image pushed to registry         | Yes      |
+| Latest container reflects change | Yes      |
+
+---
+
+## Common Issues & Fixes
+
+### Image not updated
+
+* Ensure tag is same (`v0.1`)
+* Or use new tag:
+
+```bash
+docker build -t username/app:v0.2 .
+```
+
+### Old container running
+
+* Use `--rm` flag (already used)
+* Ensure no cached container:
+
+```bash
+docker ps -a
+```
+
+### GitHub Action failed
+
+* Check logs in Actions tab
+* Verify `DOCKERTOKEN` secret
+
+---
+
+## Final Outcome
+
+You have now validated a complete pipeline:
+
+```text
+Code Change → Git Push → GitHub Actions → Docker Build → Docker Push → Local Run → Verified Output
 ```
 
