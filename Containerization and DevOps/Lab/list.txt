@@ -12,6 +12,6 @@
 ./Experiment 05 Docker Volumes, Environment Variables, Monitoring, Networks Final.md
 ./Experiment 06 Docker Compose vs Docker Run, and MultiContainer Application - Wordpress+MySQL.md
 ./Experiment 07 CICD using Jenkins, GitHub and Docker Hub.md
-./Experiment 08 Chef draft.md
+./Experiment 08 Chef.md
 ./Experiment 09 Ansible.md
-./Experiment 10 SonarQube draft.md
+./Experiment 10 SonarQube.md

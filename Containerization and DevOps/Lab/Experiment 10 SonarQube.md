@@ -44,6 +44,198 @@ SonarQube is an open-source platform for continuous inspection of code quality. 
 └─────────────────┘               └──────────────────┘
 ```
 
+
+
+
+---
+
+
+
+
+
+
+
+
+
+> There are two components to use SonarQube (server and agent)
+
+# 1. SonarQube (Server) → “Brain / Dashboard”
+
+### What it is:
+
+SonarQube is a **server application** that:
+
+* Stores analysis results
+* Applies rules (bugs, vulnerabilities, code smells)
+* Shows dashboards (UI on port 9000)
+* Enforces **Quality Gates**
+* Tracks history (technical debt, trends)
+
+### Think of it like:
+
+> A **central analysis platform + database + UI**
+
+From your file:
+
+* It runs as a container
+* Uses PostgreSQL
+* Accessible at `http://localhost:9000` 
+
+---
+
+### What it provides:
+
+* Code quality reports
+* Issue tracking
+* Security vulnerability detection
+* Coverage reports
+* Quality gate decision (pass/fail)
+
+---
+
+# 2. SonarQube Scanner → “Worker / Agent”
+
+### What it is:
+
+Sonar Scanner is a **CLI tool** that:
+
+* Reads your source code
+* Analyzes it locally
+* Sends results to SonarQube server
+
+### Think of it like:
+
+> A **client/agent that does the scanning work**
+
+From your setup:
+
+```bash
+sonar-scanner \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login="your-token"
+```
+
+---
+
+### What it provides:
+
+* Parses your code
+* Detects issues based on rules
+* Uploads analysis report to server
+
+---
+
+# How they work together (important)
+
+```
+[ Your Code ]
+      ↓
+[ Sonar Scanner ]  → does analysis
+      ↓
+[ SonarQube Server ] → stores + shows results
+```
+
+---
+
+# Real-world analogy
+
+| Component        | Analogy              |
+| ---------------- | -------------------- |
+| SonarQube Server | Teacher / Examiner   |
+| Sonar Scanner    | Student writing exam |
+| Code             | Answer sheet         |
+
+* Scanner = writes answers (analysis)
+* Server = checks, grades, shows report
+
+
+# Why both are needed
+
+If you only install:
+
+### Only SonarQube
+
+* No code gets analyzed
+* Empty dashboard
+
+### Only Scanner
+
+* No place to send results
+* Analysis wasted
+
+### Together
+
+* Full pipeline works
+
+---
+
+# Extra clarity (very important for DevOps)
+
+You **don’t always manually install scanner**:
+
+### Different scanner types:
+
+* CLI (`sonar-scanner`)
+* Maven plugin (`mvn sonar:sonar`)
+* Gradle plugin
+* Jenkins integration
+* GitHub Actions
+
+From your file:
+
+```xml
+<plugin>
+  <artifactId>sonar-maven-plugin</artifactId>
+</plugin>
+```
+
+→ This itself acts as a **scanner** 
+
+---
+
+# Key Differences (Quick Table)
+
+| Feature    | SonarQube                 | Sonar Scanner          |
+| ---------- | ------------------------- | ---------------------- |
+| Type       | Server                    | Client/CLI             |
+| Role       | Stores & displays results | Analyzes code          |
+| UI         | Yes (Web dashboard)       | No                     |
+| Runs where | Server/Container          | Developer machine / CI |
+| Required   | Yes                       | Yes                    |
+
+---
+
+# In CI/CD (real DevOps flow)
+
+In Jenkins pipeline:
+
+```groovy
+stage('SonarQube Analysis') {
+    sh 'mvn sonar:sonar'
+}
+```
+
+Here:
+
+* Jenkins runs **scanner**
+* Results go to **SonarQube server**
+
+
+> **SonarQube = analysis platform**
+> **Scanner = tool that sends code analysis to that platform**
+
+
+
+
+
+
+
+
+
+
+
+
+---
 #### Step 1: Setup SonarQube Environment
 
 ```bash
