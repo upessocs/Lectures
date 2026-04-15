@@ -1,4 +1,5 @@
 ./
+./.004 example files
 ./002 Git Hands-on
 ./001 Git Basics.md
 ./003 Github Actions.md
@@ -6,6 +7,8 @@
 ./005 Github Actions Test Automation Backend API testing.md
 ./006 CICD Pipeline and Jenkins.md
 ./007 Ansible Infrastructure as code IaC.md
-./008 Handson with Prometheus and Grafana.md
+./008 Monitoring and Logging - Prometheus, Grafana, and ELK Stack.md
+./009 Handson with Prometheus and Grafana.md
 ./009 Testing, Verification & Validation.md
+./010 Terraform - Infrastructure as Code.md
 ./003 Github Actions CheatSheet.pdf
