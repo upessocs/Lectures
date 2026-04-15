@@ -47,7 +47,6 @@ Many beginners confuse these tools because they overlap slightly. Understanding 
 **Can Ansible replace Terraform?** No, in real-world DevOps. While Ansible can create EC2 instances using modules, it lacks proper state management, doesn't track lifecycle, and becomes unmanageable at scale. Possible is not the same as recommended.
 
 
-```svg id="tfonly1"
 <svg width="950" height="320" xmlns="http://www.w3.org/2000/svg">
 
   <rect width="100%" height="100%" fill="#0f172a"/>
@@ -94,7 +93,7 @@ Many beginners confuse these tools because they overlap slightly. Understanding 
   <text x="570" y="150" fill="#7c3aed" font-size="11">Cloud APIs</text>
 
 </svg>
-```
+
 
 
 
