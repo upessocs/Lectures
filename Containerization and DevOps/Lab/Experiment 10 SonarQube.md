@@ -279,6 +279,7 @@ services:
       POSTGRES_USER: sonar          # DB username
       POSTGRES_PASSWORD: sonar      # DB password
       POSTGRES_DB: sonarqube        # DB name
+      POSTGRES_HOST_AUTH_METHOD: trust  # allow connections without password (for simplicity in this lab) 
     volumes:
       - sonar-db-data:/var/lib/postgresql/data   # persist data across restarts
     networks:
@@ -312,6 +313,7 @@ volumes:
 networks:
   sonarqube-lab:
     driver: bridge
+
 ```
 
 Start both containers:
