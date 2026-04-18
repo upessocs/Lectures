@@ -1,0 +1,45 @@
+<svg width="900" height="420"  xmlns="http://www.w3.org/2000/svg">
+
+  <rect x="0" y="00" width="900" height="420" fill="hsl(30,30%,90%)"/>
+
+  <!-- Developer -->
+  <rect x="30" y="150" width="150" height="80" fill="#e3f2fd" stroke="#000" border-radius="5"/>
+  <text x="45" y="190" font-size="14">Developer</text>
+  <text x="45" y="210" font-size="12">Source Code</text>
+
+  <!-- Scanner -->
+  <rect x="230" y="150" width="180" height="80" fill="#fff3e0" stroke="#000"/>
+  <text x="250" y="190" font-size="14">Sonar Scanner</text>
+  <text x="245" y="210" font-size="12">(CLI / Maven / CI)</text>
+
+  <!-- SonarQube Server -->
+  <rect x="460" y="120" width="200" height="120" fill="#e8f5e9" stroke="#000"/>
+  <text x="490" y="170" font-size="14">SonarQube Server</text>
+  <text x="480" y="190" font-size="12">Analysis Engine</text>
+  <text x="480" y="205" font-size="12">Quality Gates</text>
+  <text x="480" y="220" font-size="12">Web Dashboard</text>
+
+  <!-- Database -->
+  <rect x="720" y="150" width="150" height="80" fill="#fce4ec" stroke="#000"/>
+  <text x="735" y="190" font-size="14">PostgreSQL</text>
+  <text x="745" y="210" font-size="12">Database</text>
+
+  <!-- Arrows -->
+  <line x1="180" y1="190" x2="230" y2="190" stroke="#000" marker-end="url(#arrow)"/>
+  <line x1="410" y1="190" x2="460" y2="190" stroke="#000" marker-end="url(#arrow)"/>
+  <line x1="660" y1="190" x2="720" y2="190" stroke="#000" marker-end="url(#arrow)"/>
+
+  <!-- Labels -->
+  <text x="185" y="175" font-size="11">code</text>
+  <text x="420" y="175" font-size="11">analysis report</text>
+  <text x="665" y="175" font-size="11">store results</text>
+
+  <!-- Arrow Marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5"
+      orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#000" />
+    </marker>
+  </defs>
+
+</svg>

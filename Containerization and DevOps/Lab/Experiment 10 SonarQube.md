@@ -1,330 +1,295 @@
+# Experiment 10: SonarQube — Static Code Analysis
 
-## Experiment 10: SonarQube
 
 ### Theory
 
 **Problem Statement:**
-Code quality issues (bugs, vulnerabilities, code smells) are often discovered late in the development cycle, making them expensive to fix. Manual code reviews are inconsistent and don't scale.
+Code bugs and security issues are often found too late — during testing or even after deployment. Manual code reviews are slow, inconsistent, and don't scale as teams grow.
 
 **What is SonarQube?**
-SonarQube is an open-source platform for continuous inspection of code quality. It performs automatic reviews with static analysis to detect bugs, code smells, and security vulnerabilities.
+SonarQube is an open-source platform that automatically scans your source code for bugs, security vulnerabilities, and maintainability issues — without running the code. This is called **static analysis**.
 
 **How SonarQube Solves the Problem:**
-- **Continuous Inspection**: Scans code with every commit, providing immediate feedback
-- **Quality Gates**: Defines pass/fail criteria for code quality
-- **Technical Debt Quantification**: Measures effort needed to fix issues
-- **Multi-language Support**: Supports 20+ programming languages
-- **Visual Analytics**: Dashboard showing code quality metrics and trends
+- Scans code on every commit, giving immediate feedback
+- Enforces **Quality Gates** — pass/fail checks before code is deployed
+- Tracks **Technical Debt** — how long it would take to fix all issues
+- Supports 20+ programming languages
+- Provides a visual dashboard for trends over time
 
-**Key Concepts:**
-- **Quality Gate**: Set of conditions that code must meet before deployment
-- **Technical Debt**: Estimated time to fix all issues
-- **Code Smells**: Maintainability issues that don't affect functionality
-- **Vulnerabilities**: Security-related issues
-- **Bugs**: Code that might break or behave unexpectedly
-- **Coverage**: Percentage of code covered by tests
-- **Duplications**: Repeated code blocks
+**Key Terms:**
 
-### Hands-on Lab Setup
+| Term | What it means |
+|------|--------------|
+| Quality Gate | A set of rules; code must pass before deployment |
+| Bug | Code that will likely break or behave incorrectly |
+| Vulnerability | A security weakness in the code |
+| Code Smell | Code that works but is poorly written or hard to maintain |
+| Technical Debt | Estimated time to fix all issues |
+| Coverage | Percentage of code tested by unit tests |
+| Duplication | Repeated code blocks (copy-paste) |
 
-#### Lab Architecture
+---
 
-<svg width="900" height="420" xmlns="http://www.w3.org/2000/svg">
+### Lab Architecture
 
-  <!-- Developer -->
-  <rect x="30" y="150" width="150" height="80" fill="#e3f2fd" stroke="#000"/>
-  <text x="45" y="190" font-size="14">Developer</text>
-  <text x="45" y="210" font-size="12">Source Code</text>
+> SonarQube has **two separate components** — a **Server** (the brain) and a **Scanner** (the worker). Both are required.
 
-  <!-- Scanner -->
-  <rect x="230" y="150" width="180" height="80" fill="#fff3e0" stroke="#000"/>
-  <text x="250" y="190" font-size="14">Sonar Scanner</text>
-  <text x="245" y="210" font-size="12">(CLI / Maven / CI)</text>
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Your Machine / CI                    │
+│                                                         │
+│   ┌──────────────┐        ┌──────────────────────────┐  │
+│   │  Your Code   │──────▶ │    Sonar Scanner         │  │
+│   │  (Java, JS,  │ scans  │  (CLI / Maven / Jenkins) │  │
+│   │   Python...) │        └────────────┬─────────────┘  │
+│   └──────────────┘                     │ sends report   │
+│                                        ▼                │
+│                          ┌─────────────────────────┐    │
+│                          │   SonarQube Server      │    │
+│                          │   (runs on port 9000)   │    │
+│                          │   ┌─────────────────┐   │    │
+│                          │   │ Analysis Engine │   │    │
+│                          │   │ Quality Gates   │   │    │
+│                          │   │ Web Dashboard   │   │    │
+│                          │   └────────┬────────┘   │    │
+│                          └───────────┼─────────────┘    │
+│                                      │ stores results   │
+│                          ┌───────────▼─────────────┐    │
+│                          │   PostgreSQL Database   │    │
+│                          └─────────────────────────┘    │
+└─────────────────────────────────────────────────────────┘
+```
+<svg viewBox="0 0 900 520" width="100%" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect x="5" y="5" width="890" height="510" rx="20" ry="20" fill="#eaf3fb" stroke="#b5c7d8" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-size="20" font-family="Arial" fill="#2c3e50">
+    Your Machine / CI
+  </text>
+
+  <!-- Your Code -->
+  <rect x="80" y="100" width="180" height="70" rx="10" fill="#f7d774" stroke="#c9a93c"/>
+  <text x="170" y="130" text-anchor="middle" font-size="14" font-family="Arial">Your Code</text>
+  <text x="170" y="150" text-anchor="middle" font-size="12">(Java, JS, Python...)</text>
+
+  <!-- Sonar Scanner -->
+  <rect x="320" y="95" width="220" height="80" rx="12" fill="#f47c2c" stroke="#c75a15"/>
+  <text x="430" y="125" text-anchor="middle" font-size="14" fill="white">Sonar Scanner</text>
+  <text x="430" y="145" text-anchor="middle" font-size="12" fill="white">(CLI / Jenkins)</text>
+
+  <!-- Arrow Code -> Scanner -->
+  <line x1="260" y1="135" x2="320" y2="135" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="290" y="125" font-size="11">scans</text>
+
+  <!-- Arrow Scanner -> Server -->
+  <line x1="430" y1="175" x2="430" y2="220" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="440" y="200" font-size="11">report</text>
 
   <!-- SonarQube Server -->
-  <rect x="460" y="120" width="200" height="120" fill="#e8f5e9" stroke="#000"/>
-  <text x="490" y="170" font-size="14">SonarQube Server</text>
-  <text x="480" y="190" font-size="12">Analysis Engine</text>
-  <text x="480" y="205" font-size="12">Quality Gates</text>
-  <text x="480" y="220" font-size="12">Web Dashboard</text>
+  <rect x="280" y="220" width="300" height="140" rx="15" fill="#5cb85c" stroke="#3d8b3d"/>
+  <text x="430" y="245" text-anchor="middle" font-size="14" fill="white">
+    SonarQube Server (9000)
+  </text>
+
+  <!-- Inner blocks -->
+  <rect x="310" y="260" width="240" height="25" rx="6" fill="#dff0d8"/>
+  <text x="430" y="277" text-anchor="middle" font-size="12">Analysis Engine</text>
+
+  <rect x="310" y="290" width="240" height="25" rx="6" fill="#dff0d8"/>
+  <text x="430" y="307" text-anchor="middle" font-size="12">Quality Gates</text>
+
+  <rect x="310" y="320" width="240" height="25" rx="6" fill="#dff0d8"/>
+  <text x="430" y="337" text-anchor="middle" font-size="12">Web Dashboard</text>
 
   <!-- Database -->
-  <rect x="720" y="150" width="150" height="80" fill="#fce4ec" stroke="#000"/>
-  <text x="735" y="190" font-size="14">PostgreSQL</text>
-  <text x="745" y="210" font-size="12">Database</text>
+  <rect x="330" y="390" width="200" height="50" rx="10" fill="#7e6bb5" stroke="#5a4a91"/>
+  <text x="430" y="420" text-anchor="middle" font-size="13" fill="white">
+    PostgreSQL DB
+  </text>
 
-  <!-- Arrows -->
-  <line x1="180" y1="190" x2="230" y2="190" stroke="#000" marker-end="url(#arrow)"/>
-  <line x1="410" y1="190" x2="460" y2="190" stroke="#000" marker-end="url(#arrow)"/>
-  <line x1="660" y1="190" x2="720" y2="190" stroke="#000" marker-end="url(#arrow)"/>
+  <!-- Arrow Server -> DB -->
+  <line x1="430" y1="360" x2="430" y2="390" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="440" y="375" font-size="11">stores</text>
 
-  <!-- Labels -->
-  <text x="185" y="175" font-size="11">code</text>
-  <text x="420" y="175" font-size="11">analysis report</text>
-  <text x="665" y="175" font-size="11">store results</text>
+  <!-- User -->
+  <circle cx="720" cy="280" r="40" fill="#d9edf7" stroke="#7aa7c7"/>
+  <text x="720" y="285" text-anchor="middle" font-size="12">User</text>
 
-  <!-- Arrow Marker -->
+  <!-- Arrow Dashboard -> User -->
+  <path d="M580 300 Q650 260 680 280" fill="none" stroke="#34495e" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrow)"/>
+  <text x="630" y="250" font-size="11">view</text>
+
+  <!-- Arrow marker -->
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5"
-      orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#000" />
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#34495e"/>
     </marker>
   </defs>
 
 </svg>
-
-
-
-
 ---
 
+## Part 1: SonarQube Server — "The Brain"
 
+### What it is
 
-
-
-
-
-
-
-> There are two components to use SonarQube (server and agent)
-
-# 1. SonarQube (Server) → “Brain / Dashboard”
-
-### What it is:
-
-SonarQube is a **server application** that:
-
-* Stores analysis results
-* Applies rules (bugs, vulnerabilities, code smells)
-* Shows dashboards (UI on port 9000)
-* Enforces **Quality Gates**
-* Tracks history (technical debt, trends)
+The **SonarQube Server** is a web application that:
+- Stores all analysis results in a database
+- Applies code quality rules (bugs, vulnerabilities, smells)
+- Shows a web dashboard at `http://localhost:9000`
+- Enforces Quality Gates (pass/fail decisions)
+- Tracks history and trends over time
 
 ### Think of it like:
+> A **teacher / examiner** — it receives work, grades it, and shows the report.
 
-> A **central analysis platform + database + UI**
-
-From your file:
-
-* It runs as a container
-* Uses PostgreSQL
-* Accessible at `http://localhost:9000` 
+### What runs inside the server:
+- Analysis Engine (applies the rules)
+- Web UI (dashboard you browse to)
+- PostgreSQL database (stores everything)
 
 ---
 
-### What it provides:
+## Part 2: Sonar Scanner — "The Worker"
 
-* Code quality reports
-* Issue tracking
-* Security vulnerability detection
-* Coverage reports
-* Quality gate decision (pass/fail)
+### What it is
 
----
-
-# 2. SonarQube Scanner → “Worker / Agent”
-
-### What it is:
-
-Sonar Scanner is a **CLI tool** that:
-
-* Reads your source code
-* Analyzes it locally
-* Sends results to SonarQube server
+The **Sonar Scanner** is a command-line tool that:
+- Reads your source code files
+- Detects issues based on the server's rule set
+- Sends an analysis report to the SonarQube Server
 
 ### Think of it like:
+> A **student writing an exam** — it does the work and submits it.
 
-> A **client/agent that does the scanning work**
+### Scanner types (you don't always use the CLI):
 
-From your setup:
+| Scanner Type | When to use |
+|-------------|-------------|
+| `sonar-scanner` (CLI) | Any project, run manually |
+| Maven plugin (`mvn sonar:sonar`) | Java/Maven projects |
+| Gradle plugin | Java/Gradle projects |
+| Jenkins integration | CI/CD pipelines |
+| GitHub Actions | Automated PRs |
 
-```bash
-sonar-scanner \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.login="your-token"
+---
+
+## Why Both Are Required
+
+```
+  Only Server installed        Only Scanner installed
+  ─────────────────────        ──────────────────────
+  Dashboard is empty           Nowhere to send results
+  No code gets analyzed        Analysis is wasted
+
+  Both installed together
+  ───────────────────────
+  Full pipeline works ✓
 ```
 
----
-
-### What it provides:
-
-* Parses your code
-* Detects issues based on rules
-* Uploads analysis report to server
-
----
-
-# How they work together (important)
-
+**Flow summary:**
 ```
 [ Your Code ]
-      ↓
-[ Sonar Scanner ]  → does analysis
-      ↓
-[ SonarQube Server ] → stores + shows results
+      │
+      ▼
+[ Sonar Scanner ]  ◀── reads code, detects issues
+      │
+      │  sends analysis report (HTTP + Token)
+      ▼
+[ SonarQube Server ]  ◀── validates, stores, displays results
+      │
+      ▼
+[ PostgreSQL Database ]  ◀── persists everything
 ```
 
 ---
 
-# Real-world analogy
+## Quick Comparison Table
 
-| Component        | Analogy              |
-| ---------------- | -------------------- |
-| SonarQube Server | Teacher / Examiner   |
-| Sonar Scanner    | Student writing exam |
-| Code             | Answer sheet         |
-
-* Scanner = writes answers (analysis)
-* Server = checks, grades, shows report
-
-
-# Why both are needed
-
-If you only install:
-
-### Only SonarQube
-
-* No code gets analyzed
-* Empty dashboard
-
-### Only Scanner
-
-* No place to send results
-* Analysis wasted
-
-### Together
-
-* Full pipeline works
+| Feature | SonarQube Server | Sonar Scanner |
+|---------|-----------------|--------------|
+| Type | Server application | CLI / plugin |
+| Role | Store & display results | Analyze code |
+| Web UI | Yes (port 9000) | No |
+| Runs on | Server / Docker container | Dev machine / CI |
+| Required | Yes | Yes |
 
 ---
 
-# Extra clarity (very important for DevOps)
+## How the Token Works
 
-You **don’t always manually install scanner**:
+The scanner does **not** use a username/password. It uses a **token** for authentication.
 
-### Different scanner types:
-
-* CLI (`sonar-scanner`)
-* Maven plugin (`mvn sonar:sonar`)
-* Gradle plugin
-* Jenkins integration
-* GitHub Actions
-
-From your file:
-
-```xml
-<plugin>
-  <artifactId>sonar-maven-plugin</artifactId>
-</plugin>
+```
+Step 1 → Start SonarQube Server
+Step 2 → Open Web UI at http://localhost:9000
+Step 3 → Generate Token in UI  ← you copy this
+Step 4 → Run Scanner, passing the token
+Step 5 → Server validates token, stores results
+Step 6 → View Dashboard
 ```
 
-→ This itself acts as a **scanner** 
-
----
-
-# Key Differences (Quick Table)
-
-| Feature    | SonarQube                 | Sonar Scanner          |
-| ---------- | ------------------------- | ---------------------- |
-| Type       | Server                    | Client/CLI             |
-| Role       | Stores & displays results | Analyzes code          |
-| UI         | Yes (Web dashboard)       | No                     |
-| Runs where | Server/Container          | Developer machine / CI |
-| Required   | Yes                       | Yes                    |
-
----
-
-# In CI/CD (real DevOps flow)
-
-In Jenkins pipeline:
-
-```groovy
-stage('SonarQube Analysis') {
-    sh 'mvn sonar:sonar'
-}
+```
+[ Scanner ]
+     │
+     │  HTTP request + Token header
+     ▼
+[ SonarQube Server ]
+     │
+     ├── Token valid?  ──Yes──▶  Accept analysis, store results
+     │
+     └── Token invalid? ──────▶  Reject (scan fails)
 ```
 
-Here:
-
-* Jenkins runs **scanner**
-* Results go to **SonarQube server**
-
-
-> **SonarQube = analysis platform**
-> **Scanner = tool that sends code analysis to that platform**
-
-
-
-
-
-
-
-
-
-
-
+**Token is:**
+- Generated once in the **Server UI**
+- Used by the **Scanner** on every scan
+- Shown only once — copy it immediately
 
 ---
-#### Step 1: Setup SonarQube Environment
 
-```bash
-# Create Docker network
-docker network create sonarqube-lab
 
-# Start PostgreSQL database for SonarQube
-docker run -d \
-  --name sonar-db \
-  --network sonarqube-lab \
-  -e POSTGRES_USER=sonar \
-  -e POSTGRES_PASSWORD=sonar \
-  -e POSTGRES_DB=sonarqube \
-  -v sonar-db-data:/var/lib/postgresql/data \
-  postgres:13
+## Hands-on Lab
 
-# Start SonarQube server
-docker run -d \
-  --name sonarqube \
-  --network sonarqube-lab \
-  -p 9000:9000 \
-  -e SONAR_JDBC_URL=jdbc:postgresql://sonar-db:5432/sonarqube \
-  -e SONAR_JDBC_USERNAME=sonar \
-  -e SONAR_JDBC_PASSWORD=sonar \
-  -v sonar-data:/opt/sonarqube/data \
-  -v sonar-extensions:/opt/sonarqube/extensions \
-  sonarqube:lts-community
+---
 
-# Wait for SonarQube to start (about 2-3 minutes)
-docker logs -f sonarqube
+### Step 1: Start the SonarQube Server
 
-# Access SonarQube at http://localhost:9000
-# Default credentials: admin/admin
-```
-### OR use docker-compose up -d with 
+We will use Docker Compose to start both the SonarQube server and its PostgreSQL database together.
 
-`docker-compose.yml`
+Create a file called `docker-compose.yml`:
+
 ```yaml
+# docker-compose.yml
+# This file starts two containers:
+#   1. sonar-db     → PostgreSQL database (stores SonarQube data)
+#   2. sonarqube    → The SonarQube server (web UI + analysis engine)
+
 version: '3.8'
 
 services:
+
+  # ── Database ──────────────────────────────────────────────
   sonar-db:
     image: postgres:13
     container_name: sonar-db
-    restart: unless-stopped
     environment:
-      POSTGRES_USER: sonar
-      POSTGRES_PASSWORD: sonar
-      POSTGRES_DB: sonarqube
+      POSTGRES_USER: sonar          # DB username
+      POSTGRES_PASSWORD: sonar      # DB password
+      POSTGRES_DB: sonarqube        # DB name
     volumes:
-      - sonar-db-data:/var/lib/postgresql/data
+      - sonar-db-data:/var/lib/postgresql/data   # persist data across restarts
     networks:
       - sonarqube-lab
 
+  # ── SonarQube Server ──────────────────────────────────────
   sonarqube:
     image: sonarqube:lts-community
     container_name: sonarqube
-    restart: unless-stopped
     ports:
-      - "9000:9000"
+      - "9000:9000"                 # access dashboard at http://localhost:9000
     environment:
       SONAR_JDBC_URL: jdbc:postgresql://sonar-db:5432/sonarqube
       SONAR_JDBC_USERNAME: sonar
@@ -333,55 +298,79 @@ services:
       - sonar-data:/opt/sonarqube/data
       - sonar-extensions:/opt/sonarqube/extensions
     depends_on:
-      - sonar-db
+      - sonar-db                    # wait for DB to start first
     networks:
       - sonarqube-lab
 
+# Named volumes (Docker manages storage location)
 volumes:
   sonar-db-data:
   sonar-data:
   sonar-extensions:
 
+# Isolated network so containers can talk to each other by name
 networks:
   sonarqube-lab:
     driver: bridge
 ```
 
-
-#### Step 2: Create Sample Application with Code Issues
+Start both containers:
 
 ```bash
-# Create sample Java application with issues
-mkdir -p sample-java-app/src/main/java/com/example
+docker-compose up -d
 
-# Create Java class with various issues
-cat > sample-java-app/src/main/java/com/example/Calculator.java << 'EOF'
+# Watch the logs until you see "SonarQube is up"
+docker-compose logs -f sonarqube
+```
+
+Once started, open `http://localhost:9000` in your browser.
+Default login: **admin / admin** (you will be asked to change this on first login).
+
+---
+
+### Step 2: Create a Sample Java App with Code Issues
+
+We will create a simple Java class that intentionally contains bugs, vulnerabilities, and code smells — so SonarQube has something to detect.
+
+```bash
+# Create the project folder structure
+mkdir -p sample-java-app/src/main/java/com/example
+cd sample-java-app
+```
+
+Create `src/main/java/com/example/Calculator.java`:
+
+```java
 package com.example;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Calculator {
-    
-    // Bug: Division by zero not handled
+
+    // ── BUG: Division by zero is not handled ──────────────
+    // If someone calls divide(5, 0), this will crash at runtime.
     public int divide(int a, int b) {
-        return a / b;  // Bug: Potential division by zero
+        return a / b;
     }
-    
-    // Code Smell: Unused variable
+
+    // ── CODE SMELL: Unused variable ────────────────────────
+    // The variable 'unused' is declared but never used.
+    // SonarQube flags this as unnecessary clutter.
     public int add(int a, int b) {
         int result = a + b;
-        int unused = 100;  // Code smell: Unused variable
+        int unused = 100;   // ← code smell: delete this line
         return result;
     }
-    
-    // Vulnerability: SQL injection risk
+
+    // ── VULNERABILITY: SQL Injection risk ─────────────────
+    // Building a query by concatenating user input is dangerous.
+    // An attacker could pass: "1 OR 1=1" and get all users.
     public String getUser(String userId) {
-        String query = "SELECT * FROM users WHERE id = " + userId;  // Vulnerability: SQL injection
+        String query = "SELECT * FROM users WHERE id = " + userId;
         return query;
     }
-    
-    // Code Smell: Duplicate code
+
+    // ── CODE SMELL: Duplicated code ────────────────────────
+    // The two methods below do exactly the same thing.
+    // This is copy-paste code and should be a single method.
     public int multiply(int a, int b) {
         int result = 0;
         for (int i = 0; i < b; i++) {
@@ -389,63 +378,64 @@ public class Calculator {
         }
         return result;
     }
-    
-    // Duplicate code (same as multiply method)
+
     public int multiplyAlt(int a, int b) {
         int result = 0;
         for (int i = 0; i < b; i++) {
-            result = result + a;
+            result = result + a;   // ← exact duplicate of multiply()
         }
         return result;
     }
-    
-    // Code Smell: Too many parameters
-    public void processUser(String name, String email, String phone, 
-                           String address, String city, String state, 
-                           String zip, String country) {
-        // Process user data
-        System.out.println("Processing: " + name);
-    }
-    
-    // Bug: Null pointer risk
+
+    // ── BUG: Null pointer risk ─────────────────────────────
+    // If 'name' is null, calling .toUpperCase() will throw
+    // a NullPointerException at runtime.
     public String getName(String name) {
-        return name.toUpperCase();  // Bug: Null pointer if name is null
+        return name.toUpperCase();
     }
-    
-    // Code Smell: Empty catch block
+
+    // ── CODE SMELL: Empty catch block ─────────────────────
+    // The exception is caught but silently ignored.
+    // This hides errors and makes debugging very hard.
     public void riskyOperation() {
         try {
             int x = 10 / 0;
         } catch (Exception e) {
-            // Empty catch block - swallowing exception
+            // ← never leave catch blocks empty
         }
     }
 }
-EOF
+```
 
-# Create pom.xml for Maven build
-cat > sample-java-app/pom.xml << 'EOF'
+Create `pom.xml` (Maven build file):
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
-    
+
+    <!-- Project identity -->
     <groupId>com.example</groupId>
     <artifactId>sample-app</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+
+        <!-- SonarQube connection settings -->
         <sonar.projectKey>sample-java-app</sonar.projectKey>
-        <sonar.organization>my-org</sonar.organization>
         <sonar.host.url>http://localhost:9000</sonar.host.url>
-        <sonar.login>your-sonar-token</sonar.login>
+        <!-- Replace with your actual token (generated in Step 3) -->
+        <sonar.login>YOUR_TOKEN_HERE</sonar.login>
     </properties>
-    
+
     <dependencies>
+        <!-- JUnit for unit tests -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -453,9 +443,10 @@ cat > sample-java-app/pom.xml << 'EOF'
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
+            <!-- This plugin lets us run: mvn sonar:sonar -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
@@ -463,105 +454,176 @@ cat > sample-java-app/pom.xml << 'EOF'
             </plugin>
         </plugins>
     </build>
+
 </project>
-EOF
 ```
 
-#### Step 3: Install SonarQube Scanner
+---
 
-```bash
-# Install SonarQube Scanner (on host machine or in Docker)
-docker run -d \
-  --name sonar-scanner \
-  --network sonarqube-lab \
-  -v $(pwd)/sample-java-app:/usr/src \
-  sonarsource/sonar-scanner-cli:latest \
-  sleep infinity
+### Step 3: Generate a Token (Manual UI Step)
 
-# Or install locally (for Ubuntu/Debian)
-wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
-unzip sonar-scanner-cli-5.0.1.3006-linux.zip
-sudo mv sonar-scanner-5.0.1.3006-linux /opt/sonar-scanner
-export PATH=$PATH:/opt/sonar-scanner/bin
+The Scanner needs a token to authenticate with the server. You generate this in the web UI.
+
+```
+1. Open http://localhost:9000
+2. Log in as admin
+3. Click your user icon (top right) → "My Account"
+4. Click the "Security" tab
+5. Under "Generate Tokens", type a name: scanner-token
+6. Click "Generate"
+7. Copy the token immediately — it is shown only once!
+   It looks like: sqp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-#### Step 4: Configure and Run SonarQube Analysis
+> **Important:** Store the token somewhere safe. You cannot retrieve it again after closing the page.
+
+---
+
+### Step 4: Run the Scanner
+
+There are two ways to run the scanner. Pick the one that matches your setup.
+
+#### Option A — Using the Maven Plugin (recommended for Java)
 
 ```bash
-# Generate SonarQube token
-# Access http://localhost:9000 → Login (admin/admin)
-# Click on user icon → My Account → Security → Generate Token
-# Copy the token (e.g., sqp_xxxxxxxxxxxx)
-
-# Create sonar-project.properties
-cat > sample-java-app/sonar-project.properties << 'EOF'
-sonar.projectKey=sample-java-app
-sonar.projectName=Sample Java Application
-sonar.projectVersion=1.0
-sonar.sources=src
-sonar.java.binaries=target/classes
-sonar.language=java
-sonar.sourceEncoding=UTF-8
-EOF
-
-# Run SonarQube scan (using Docker)
-docker exec -e SONAR_TOKEN="your-sonar-token" \
-  sonar-scanner \
-  sonar-scanner \
-  -Dsonar.host.url=http://sonarqube:9000 \
-  -Dsonar.projectKey=sample-java-app \
-  -Dsonar.projectName="Sample Java App" \
-  -Dsonar.sources=/usr/src/src
-
-# Or using local scanner
+# Make sure you are inside the sample-java-app folder
 cd sample-java-app
-sonar-scanner \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.login="your-sonar-token"
+
+# Run the SonarQube analysis via Maven
+# Replace YOUR_TOKEN with the token copied in Step 3
+mvn sonar:sonar -Dsonar.login=YOUR_TOKEN
 ```
 
-#### Step 5: Integrate with Jenkins (CI/CD)
+Maven will compile the code, then the sonar plugin will send the analysis report to the server.
+
+#### Option B — Using the Sonar Scanner CLI (any language)
+
+First, create a configuration file `sonar-project.properties` in your project root:
+
+```properties
+# sonar-project.properties
+# This file tells the scanner what to analyze and where to send results.
+
+sonar.projectKey=sample-java-app          # must match the key on the server
+sonar.projectName=Sample Java Application # display name in dashboard
+sonar.projectVersion=1.0
+
+sonar.sources=src                         # folder containing source code
+sonar.java.binaries=target/classes        # compiled class files (Java only)
+sonar.sourceEncoding=UTF-8
+```
+
+Then run the scanner using Docker (no local install needed):
 
 ```bash
-# Add SonarQube stage to Jenkinsfile
-cat > sample-webapp/Jenkinsfile << 'EOF'
+# Run the scanner container, mounting your project folder inside it
+docker run --rm \
+  --network sonarqube-lab \
+  -e SONAR_TOKEN="YOUR_TOKEN" \
+  -v "$(pwd):/usr/src" \
+  sonarsource/sonar-scanner-cli \
+  -Dsonar.host.url=http://sonarqube:9000 \
+  -Dsonar.projectBaseDir=/usr/src
+```
+
+> **Note:** We use `http://sonarqube:9000` (container name, not localhost) because the scanner container is on the same Docker network as the server container.
+
+---
+
+### Step 5: View Results in the Dashboard
+
+After the scan finishes, open the dashboard:
+
+```
+http://localhost:9000/dashboard?id=sample-java-app
+```
+
+You should see something like:
+
+```
+┌─────────────────────────────────────────────┐
+│         sample-java-app — Dashboard         │
+├──────────────┬──────────────┬───────────────┤
+│  Bugs        │ Vulnerab.    │  Code Smells  │
+│    5         │    1         │    8          │
+├──────────────┴──────────────┴───────────────┤
+│  Coverage: 0%    Duplications: 2 blocks     │
+│  Technical Debt: ~1h 30min                  │
+│  Quality Gate: ✗ FAILED                     │
+└─────────────────────────────────────────────┘
+```
+
+Click on any number to see the exact line and reason for each issue.
+
+You can also query results via the API:
+
+```bash
+# List all bugs found in the project (returns JSON)
+curl -u admin:YOUR_TOKEN \
+  "http://localhost:9000/api/issues/search?projectKeys=sample-java-app&types=BUG"
+```
+
+---
+
+### Step 6: Integrate with Jenkins (CI/CD)
+
+Once SonarQube is working locally, you can add it to a Jenkins pipeline so every code commit is automatically scanned.
+
+```groovy
+// Jenkinsfile
+// This pipeline checks out code, scans it with SonarQube,
+// waits for the Quality Gate result, then builds and deploys.
+
 pipeline {
     agent any
-    
+
     environment {
         SONAR_HOST_URL = 'http://sonarqube:9000'
+        // 'sonar-token' is a Jenkins credential — store your token there
         SONAR_TOKEN = credentials('sonar-token')
     }
-    
+
     stages {
+
         stage('Checkout') {
             steps {
+                // Pull the latest code from the repository
                 checkout scm
             }
         }
-        
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    sh 'mvn clean verify sonar:sonar'
-                }
-            }
-        }
-        
+
+
+	stage('SonarQube Analysis') {
+    		steps {
+        		// This injects SonarQube server URL + authentication token
+        		withSonarQubeEnv('SonarQube') {
+
+ 		        // mvn = Maven tool (used mainly for Java projects)
+            		// clean = remove old build files
+            		// verify = compile code + run tests
+            		// sonar:sonar = send analysis report to SonarQube server
+            		sh 'mvn clean verify sonar:sonar'
+			}
+    		}
+	}
+
         stage('Quality Gate') {
             steps {
-                timeout(time: 1, unit: 'HOURS') {
+                // Wait for SonarQube to finish processing the report.
+                // If the Quality Gate fails, the pipeline stops here.
+                timeout(time: 5, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
         }
-        
+
         stage('Build') {
             steps {
+                // Only runs if Quality Gate passed
                 sh 'mvn package'
             }
         }
-        
+
         stage('Deploy') {
             steps {
                 sh 'docker build -t sample-app .'
@@ -570,184 +632,58 @@ pipeline {
         }
     }
 }
-EOF
 ```
 
-#### Step 6: Analyze Results
-
-```bash
-# View analysis results
-# Open http://localhost:9000/dashboard?id=sample-java-app
-
-# You'll see:
-# - 8 Bugs
-# - 1 Vulnerability
-# - 12 Code Smells
-# - 2 Duplicated blocks
-# - 0% Test coverage
-# - Technical Debt: ~2 hours
-
-# Generate report using SonarQube API
-curl -u admin:admin \
-  "http://localhost:9000/api/issues/search?projectKeys=sample-java-app&types=BUG"
+**Pipeline flow:**
 ```
-
-
-
+Checkout → Scan → Quality Gate check → Build → Deploy
+                         │
+                   FAIL? Pipeline stops.
+                   Code does not get deployed.
+```
 
 ---
 
-
-
-
-
-
-
----
-
-## Step-by-step Token Generation (manually generate and provide it.)
-
-### 1. Open SonarQube Web UI
-
-* Go to: `http://localhost:9000`
-* Login: `admin / admin`
-
-
-
-### 2. Generate Token (Manual Step)
-
-Inside UI:
+## Token Generation — Step-by-Step Summary
 
 ```
-User Icon → My Account → Security → Generate Token
+┌──────────────────────────────────────────────────────────┐
+│                    Token Flow                            │
+│                                                          │
+│  [SonarQube Web UI]                                      │
+│    Admin → My Account → Security → Generate Token        │
+│    Token: sqp_xxxxxxxx  ◀── copy this                   │
+│                    │                                     │
+│                    │ you paste it into:                  │
+│                    ▼                                     │
+│  [Sonar Scanner]                                         │
+│    -Dsonar.login=sqp_xxxxxxxx                            │
+│    OR                                                    │
+│    export SONAR_TOKEN=sqp_xxxxxxxx                       │
+│                    │                                     │
+│                    │ HTTP request with token             │
+│                    ▼                                     │
+│  [SonarQube Server]                                      │
+│    Validates token → Accepts analysis → Stores results   │
+│                    │                                     │
+│                    ▼                                     │
+│  [Dashboard]                                             │
+│    http://localhost:9000 → view issues                   │
+└──────────────────────────────────────────────────────────┘
 ```
 
-* Give it a name (e.g., `scanner-token`)
-* Copy the token (looks like: `sqp_xxxxxxxxx`)
-
-**Important:**
-
-* Token is shown **only once**
-* Store it securely
-
-
-### 3. Pass Token to Scanner
-
-Scanner does NOT “log in” interactively.
-You pass token in config or CLI.
-
-### Option A — CLI
+**Three ways to pass the token to the scanner:**
 
 ```bash
-sonar-scanner \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.login=YOUR_TOKEN
-```
+# Option A — directly in the command
+sonar-scanner -Dsonar.login=YOUR_TOKEN
 
-
-### Option B — Environment Variable
-
-```bash
+# Option B — environment variable (cleaner, preferred in CI)
 export SONAR_TOKEN=YOUR_TOKEN
+sonar-scanner -Dsonar.host.url=http://localhost:9000
 
-sonar-scanner \
-  -Dsonar.host.url=http://localhost:9000
-```
-
-
-### Option C — Maven (CI/CD)
-
-```bash
-mvn sonar:sonar \
-  -Dsonar.login=YOUR_TOKEN
-```
-
-
-### Option D — Jenkins (Best Practice)
-
-```groovy
-environment {
-    SONAR_TOKEN = credentials('sonar-token')
-}
-```
-
-
-# What Actually Happens Internally
-
-```
-[ Scanner ]
-     |
-     | (HTTP + Token)
-     ↓
-[ SonarQube Server ]
-     |
-     | Validate token
-     ↓
-[ Accept / Reject ]
-```
-
-### Flow:
-
-1. Scanner sends request with token
-2. Server validates token
-3. If valid → accepts analysis
-4. If invalid → scan fails
-
-### Scanner does NOT:
-
-* Fetch token automatically
-* Store credentials permanently (unless you configure it)
-* Authenticate via username/password (deprecated)
-
-### Token is:
-
-* Generated by **server UI**
-* Used by **scanner**
-* Passed via **CLI / CI**
-### Summary of token generation
-
-<svg width="520" height="220" xmlns="http://www.w3.org/2000/svg">
-
-  <!-- Scanner -->
-  <rect x="20" y="80" width="150" height="60" fill="#fff3e0" stroke="#000"/>
-  <text x="35" y="110" font-size="13">Scanner</text>
-  <text x="30" y="125" font-size="11">(CLI / CI)</text>
-
-  <!-- SonarQube Server -->
-  <rect x="200" y="60" width="180" height="100" fill="#e8f5e9" stroke="#000"/>
-  <text x="215" y="100" font-size="13">SonarQube Server</text>
-  <text x="220" y="115" font-size="11">(Web + API)</text>
-  <text x="220" y="130" font-size="11">Auth + Analysis</text>
-
-  <!-- Database -->
-  <rect x="410" y="80" width="90" height="60" fill="#fce4ec" stroke="#000"/>
-  <text x="420" y="110" font-size="12">DB</text>
-
-  <!-- Arrow: Scanner to Server -->
-  <line x1="170" y1="110" x2="200" y2="110" stroke="#000" marker-end="url(#arrow)"/>
-  <text x="135" y="95" font-size="10">HTTP + Token</text>
-
-  <!-- Arrow: Server to DB -->
-  <line x1="380" y1="110" x2="410" y2="110" stroke="#000" marker-end="url(#arrow)"/>
-  <text x="330" y="95" font-size="10">store results</text>
-
-  <!-- Arrow Marker -->
-  <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5"
-      orient="auto">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#000"/>
-    </marker>
-  </defs>
-
-</svg>
-
-```
-Step 1: Start SonarQube Server
-Step 2: Open Web UI
-Step 3: Generate Token  ← (Missing clarity in lab)
-Step 4: Run Scanner with Token
-Step 5: Server validates + stores results
-Step 6: View Dashboard
+# Option C — Maven flag
+mvn sonar:sonar -Dsonar.login=YOUR_TOKEN
 ```
 
 ---
@@ -758,160 +694,220 @@ Step 6: View Dashboard
 
 | Feature | Jenkins | Ansible | Chef | SonarQube |
 |---------|---------|---------|------|-----------|
-| **Primary Purpose** | CI/CD Automation | Configuration Management | Configuration Management | Code Quality Analysis |
-| **Architecture** | Master-Agent | Push-based, Agentless | Pull-based, Client-Server | Client-Server |
-| **Language** | Java, Groovy | Python, YAML | Ruby | Java |
+| **Primary Purpose** | CI/CD Automation | Config Management | Config Management | Code Quality |
+| **Architecture** | Master-Agent | Agentless | Client-Server | Client-Server |
+| **Language** | Java / Groovy | YAML | Ruby | Java |
 | **Learning Curve** | Moderate | Low | High | Low |
 | **Setup Complexity** | Moderate | Simple | Complex | Simple |
-| **Scalability** | High (with agents) | Very High | Very High | Moderate |
-| **Use Case** | Build, Test, Deploy | Infrastructure as Code | Enterprise CM | Static Code Analysis |
-| **State Management** | Imperative | Declarative | Declarative | N/A |
-| **Idempotency** | No (by default) | Yes | Yes | N/A |
-| **Real-time** | Push (triggers) | Push | Pull (periodic) | Push |
+| **Use Case** | Build, Test, Deploy | Infrastructure as Code | Enterprise CM | Static Analysis |
 
-### Commands Summary
+### Key Differences
+
+**Jenkins vs. Configuration Management:**
+Use Jenkins to orchestrate pipelines (build → test → deploy). Use Ansible or Chef to maintain server configuration. In practice, Jenkins calls Ansible/Chef as part of the deployment step.
+
+**Ansible vs. Chef:**
+
+| Aspect | Ansible | Chef |
+|--------|---------|------|
+| Complexity | Simple, YAML | Complex, Ruby |
+| Agent required | No (agentless) | Yes (chef-client) |
+| Best for | Small–medium teams | Large enterprise |
+
+**SonarQube in CI/CD:**
+Scan on every pull request and every nightly build. Use Quality Gates to block deployments when code quality drops below your threshold.
+
+---
+
+### Commands Quick Reference
+
+#### SonarQube
+```bash
+# Start server
+docker-compose up -d
+
+# Run scan with Maven
+mvn sonar:sonar -Dsonar.login=YOUR_TOKEN
+
+# Run scan with CLI
+sonar-scanner -Dsonar.host.url=http://localhost:9000 -Dsonar.login=YOUR_TOKEN
+
+# Query API for bugs
+curl -u admin:YOUR_TOKEN \
+  "http://localhost:9000/api/issues/search?projectKeys=myapp&types=BUG"
+```
 
 #### Jenkins
 ```bash
-# Start Jenkins
-docker run -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home jenkins/jenkins:lts
+# Start Jenkins container
+docker run -d -p 8080:8080 -v jenkins-data:/var/jenkins_home jenkins/jenkins:lts
 
-# Jenkins CLI
-java -jar jenkins-cli.jar -s http://localhost:8080 build sample-pipeline
-
-# Pipeline syntax
+# Example pipeline stage
 pipeline {
     agent any
     stages {
-        stage('Build') { steps { sh 'make' } }
+        stage('Build') { steps { sh 'mvn package' } }
     }
 }
 ```
 
 #### Ansible
 ```bash
-# Ansible commands
 ansible all -i inventory -m ping
 ansible-playbook -i inventory playbook.yml
-ansible-vault encrypt secrets.yml
-ansible-galaxy install geerlingguy.nginx
-
-# Key modules
 ansible webservers -m apt -a "name=nginx state=present"
-ansible webservers -m service -a "name=nginx state=started"
-ansible webservers -m copy -a "src=file dest=/tmp/"
 ```
 
 #### Chef
 ```bash
-# Chef commands
 knife node list
 knife cookbook upload webapp
-knife bootstrap node1 -x user -P pass --run-list 'recipe[webapp]'
 chef-client --local-mode --runlist 'recipe[webapp]'
-
-# Cookbook management
-chef generate cookbook my_cookbook
-chef exec berks install
-chef exec foodcritic my_cookbook
 ```
 
-#### SonarQube
-```bash
-# SonarQube commands
-docker run -d -p 9000:9000 sonarqube:lts-community
-
-# Scanner commands
-sonar-scanner -Dsonar.projectKey=myapp -Dsonar.sources=.
-mvn sonar:sonar
-
-# API calls
-curl -u admin:admin "http://localhost:9000/api/measures/component?component=myapp&metricKeys=bugs,coverage"
-```
-
-### Key Differences and When to Use
-
-#### **Jenkins vs. Configuration Management Tools**
-- **Jenkins**: Use for build pipelines, testing, and deployment orchestration
-- **Ansible/Chef**: Use for maintaining consistent server configurations
-- **Best Practice**: Combine both - Jenkins orchestrates, CM tools configure
-
-#### **Ansible vs. Chef**
-| Aspect | Ansible | Chef |
-|--------|---------|------|
-| **Complexity** | Simpler, YAML-based | Complex, Ruby-based |
-| **Learning** | Easy to start | Steep learning curve |
-| **Performance** | Slower with many nodes | Better with large scale |
-| **Agent** | Agentless | Requires Chef client |
-| **Best For** | Small to medium environments | Large enterprise |
-
-#### **SonarQube in CI/CD**
-- **When to scan**: Every pull request and nightly builds
-- **Quality Gates**: Define thresholds to block deployments
-- **Integration**: Jenkins, GitLab CI, GitHub Actions
-
-### Lab Procedure Summary
-
-1. **Setup Environment**
-   ```bash
-   # Create Docker network
-   docker network create devops-lab
-   
-   # Run all containers
-   docker run -d --name jenkins --network devops-lab -p 8080:8080 jenkins/jenkins
-   docker run -d --name sonarqube --network devops-lab -p 9000:9000 sonarqube
-   docker run -d --name ansible-control --network devops-lab ubuntu sleep infinity
-   ```
-
-2. **Configure Tools**
-   - Jenkins: Install plugins, configure credentials
-   - SonarQube: Generate token, set quality gates
-   - Ansible: Create inventory, write playbooks
-   - Chef: Bootstrap nodes, upload cookbooks
-
-3. **Create Application**
-   - Sample web app with tests
-   - Dockerfile for containerization
-   - Jenkinsfile for pipeline
-
-4. **Implement CI/CD Pipeline**
-   ```groovy
-   pipeline {
-       stages {
-           stage('Build') { ... }
-           stage('Test') { ... }
-           stage('SonarQube') { ... }
-           stage('Deploy') { ... }
-       }
-   }
-   ```
-
-5. **Verify Results**
-   - Check Jenkins build status
-   - View SonarQube dashboard
-   - Verify deployed application
-   - Validate configuration state
+---
 
 ### Best Practices
 
-1. **Security**
-   - Never hardcode credentials - use secrets management
-   - Use SSL/TLS for all communications
-   - Implement least privilege principle
+**Security:**
+- Never hardcode tokens or passwords in source files — use environment variables or a secrets manager
+- Use HTTPS for all SonarQube server communications in production
+- Apply least-privilege: give the scanner token only the permissions it needs
 
-2. **Code Quality**
-   - Set quality gates to prevent technical debt accumulation
-   - Enforce code coverage thresholds (80%+)
-   - Regular SonarQube scans in pipeline
+**Code Quality:**
+- Set Quality Gates to block merges when coverage drops below 80%
+- Scan on every pull request, not just nightly
+- Fix issues as they appear — do not let technical debt accumulate
 
-3. **Infrastructure as Code**
-   - Version all configuration files
-   - Use modular roles/cookbooks/playbooks
-   - Implement testing (Test Kitchen for Chef, Molecule for Ansible)
+**Infrastructure as Code:**
+- Version all config files in Git
+- Use modular Ansible roles and Chef cookbooks
+- Test infrastructure code with Molecule (Ansible) or Test Kitchen (Chef)
 
-4. **CI/CD Optimization**
-   - Use build caching
-   - Parallelize stages where possible
-   - Implement proper error handling
+**CI/CD Optimization:**
+- Cache Maven / npm dependencies between builds
+- Run SonarQube analysis in parallel with unit tests where possible
+- Configure the pipeline to fail fast on Quality Gate failures
 
-This comprehensive lab provides hands-on experience with four essential DevOps tools. The key takeaway is understanding how these tools complement each other in a modern DevOps workflow, with Jenkins orchestrating the pipeline, Ansible/Chef managing infrastructure, and SonarQube ensuring code quality.
+---
+
+> **Summary:**
+> SonarQube = the analysis platform that stores and displays results.
+> Sonar Scanner = the tool that reads your code and sends the report to that platform.
+> Both are required. The Scanner needs a Token to talk to the Server. Quality Gates let you automatically block bad code from being deployed.
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+# Optional read
+## Better alternatives if not using maven in pipeline
+
+### 1. If you're using **Node.js / Express**
+
+Use SonarScanner directly (no Maven):
+
+```groovy
+stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('SonarQube') {
+
+            // Install scanner if not already available
+            sh 'npm install -g sonar-scanner'
+
+            // Run analysis
+            sh '''
+            sonar-scanner \
+              -Dsonar.projectKey=my-node-app \
+              -Dsonar.sources=. \
+              -Dsonar.host.url=$SONAR_HOST_URL \
+              -Dsonar.login=$SONAR_AUTH_TOKEN
+            '''
+        }
+    }
+}
+```
+
+
+### 2. If you're using **Python**
+
+```groovy
+stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('SonarQube') {
+
+            sh 'pip install sonar-scanner-cli'
+
+            sh '''
+            sonar-scanner \
+              -Dsonar.projectKey=my-python-app \
+              -Dsonar.sources=. \
+              -Dsonar.host.url=$SONAR_HOST_URL \
+              -Dsonar.login=$SONAR_AUTH_TOKEN
+            '''
+        }
+    }
+}
+```
+
+
+### 3. If you just want **simplest universal approach**
+
+Create a `sonar-project.properties` file:
+
+```
+sonar.projectKey=my-app
+sonar.sources=.
+sonar.host.url=http://localhost:9000
+sonar.login=YOUR_TOKEN
+```
+
+Then in Jenkins:
+
+```groovy
+stage('SonarQube Analysis') {
+    steps {
+        withSonarQubeEnv('SonarQube') {
+
+            // Just run scanner (no Maven, no language dependency)
+            sh 'sonar-scanner'
+        }
+    }
+}
+```
+
+
+
+## Key Insight (important)
+
+* **Maven = build tool (Java specific)**
+* **SonarScanner = universal tool (works with any language)**
+
+So:
+
+> If you're not doing Java → **don’t use Maven at all**
+
+
+## When should you actually use Maven?
+
+Only if:
+
+* You are writing Java
+* You have `pom.xml` file
+* You need dependency management + build lifecycle
+
