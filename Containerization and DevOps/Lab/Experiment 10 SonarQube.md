@@ -515,7 +515,13 @@ sonar.java.binaries=target/classes        # compiled class files (Java only)
 sonar.sourceEncoding=UTF-8
 ```
 
+
+
+# Run scanner using docker 
 Then run the scanner using Docker (no local install needed):
+
+
+
 
 ```bash
 # Run the scanner container, mounting your project folder inside it
@@ -525,8 +531,31 @@ docker run --rm \
   -v "$(pwd):/usr/src" \
   sonarsource/sonar-scanner-cli \
   -Dsonar.host.url=http://sonarqube:9000 \
-  -Dsonar.projectBaseDir=/usr/src
+  -Dsonar.projectBaseDir=/usr/src \
+  -Dsonar.projectKey=sample-java-app
 ```
+
+> you might need to change network name based on actual network name used by sonar-server
+
+```
+docker network ls
+# or
+docker inspect sonarqube | grep -i network
+
+```
+
+
+| Flag                     | Purpose               |
+| :------------------------ | :--------------------- |
+| `--rm`                   | auto delete container |
+| `--network`              | connect to SonarQube  |
+| `-e SONAR_TOKEN`         | authentication        |
+| `-v`                     | mount source code     |
+| `-Dsonar.host.url`       | server URL            |
+| `-Dsonar.projectBaseDir` | project root          |
+| `-Dsonar.projectKey`     | project identifier to store on server |
+
+
 
 > **Note:** We use `http://sonarqube:9000` (container name, not localhost) because the scanner container is on the same Docker network as the server container.
 
