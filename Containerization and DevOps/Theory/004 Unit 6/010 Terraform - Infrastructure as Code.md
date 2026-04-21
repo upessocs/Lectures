@@ -262,6 +262,17 @@ Terraform does not log in like a human user. It authenticates to cloud providers
    - For production, use least-privilege custom policies
 3. Generate access keys (Access Key ID and Secret Access Key)
 
+
+> Install AWS CLI not done earlier
+
+```bash
+sudo apt update && sudo apt install -y unzip curl && \
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+unzip -q awscliv2.zip && \
+sudo ./aws/install && \
+aws --version
+```
+
 **Step 2: Configure credentials on your local machine**
 
 ```bash
