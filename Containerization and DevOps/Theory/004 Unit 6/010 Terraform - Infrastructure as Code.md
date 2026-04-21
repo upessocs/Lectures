@@ -116,7 +116,6 @@ No configuration inside servers yet
 
 Terraform + Ansible (Real DevOps Flow)
 
-```svg id="tfansible1"
 <svg width="1100" height="360" xmlns="http://www.w3.org/2000/svg">
 
   <rect width="100%" height="100%" fill="#0f172a"/>
@@ -164,7 +163,6 @@ Terraform + Ansible (Real DevOps Flow)
   <text x="720" y="170" fill="#f59e0b" font-size="11">SSH Configure</text>
 
 </svg>
-```
 
 
 # What This Explains (Very Important)
