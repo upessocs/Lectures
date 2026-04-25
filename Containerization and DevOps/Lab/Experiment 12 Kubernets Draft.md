@@ -9,7 +9,7 @@ Learn why Kubernetes is used, its basic concepts, and how to deploy, scale, and 
 ## Why Kubernetes over Docker Swarm?
 
 | Reason | Explanation |
-|--------|-------------|
+|:--------|:-------------|
 | Industry standard | Most companies use Kubernetes |
 | Powerful scheduling | Automatically decides where to run your app |
 | Large ecosystem | Many tools and plugins available |

@@ -158,7 +158,8 @@ services:
     command:
       - '--path.rootfs=/host'
     volumes:
-      - '/:/host:ro,rslave'
+      # - '/:/host:ro,rslave' # only on real linux environment, not on wsl
+      - '/:/host:ro' # for wsl
 
   prometheus:
     image: prom/prometheus:latest

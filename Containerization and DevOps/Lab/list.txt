@@ -1,6 +1,5 @@
 ./
 ./.attendance and proxies
-./.demo
 ./.res
 ./Theroy Articulate AI
 ./Experiment 00 Install WSL.md
