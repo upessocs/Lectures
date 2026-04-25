@@ -1,6 +1,6 @@
 ./
 ./.attendance and proxies
-./.demob3b4
+./.demogit
 ./.res
 ./001 Unit 1
 ./002 Unit 2
