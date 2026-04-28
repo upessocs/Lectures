@@ -15,7 +15,7 @@ This guide helps you convert your **GitHub Pages lab website** (index + experime
 sudo apt update
 sudo apt install pandoc -y
 sudo apt install texlive-xetex texlive-latex-recommended texlive-latex-extra -y
-````
+```
 
 ## macOS
 
@@ -68,7 +68,7 @@ chmod +x makepdf.sh
 
 ---
 
-# 3) Interactive Script (No Editing Needed)
+# 3) Optional: Try Interactive Script (No Editing Needed)
 
 Create a file: `makepdf_interactive.sh`
 
