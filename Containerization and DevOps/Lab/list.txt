@@ -17,4 +17,3 @@
 ./Experiment 11 Container Orchestration with Docker Stack.md
 ./Experiment 12 Kubernets Draft.md
 ./Lab Report PDF generation from GithubPages.md
-./FinalLabDemo.csv
