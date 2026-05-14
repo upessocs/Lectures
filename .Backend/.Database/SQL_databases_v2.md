@@ -1,9 +1,11 @@
-# Beginner Tutorial: Learning SQL with PostgreSQL Using Docker
+# Tutorial 2: Advanced SQL and Backend Topics with PostgreSQL
 
-This tutorial teaches SQL from scratch using PostgreSQL and Docker.
-You will learn:
+This Tutorial starts with the PostgreSQL and Docker Compose, then continues into advanced SQL, FastAPI, authentication, deployment, and ERD topics.
 
-* Installing PostgreSQL in Docker
+
+#### You will learn:
+
+* Running PostgreSQL with Docker Compose
 * Using `psql` (terminal client)
 * Using pgAdmin
 * Creating databases and tables
@@ -12,7 +14,7 @@ You will learn:
 * Normalization
 * Joins
 
-We will build one sample database and continuously use it in all examples.
+> We will build one sample database and continuously use it in all examples.
 
 ---
 
@@ -66,54 +68,47 @@ docker --version
 
 ---
 
-# 4. Run PostgreSQL in Docker
+# 4. Run PostgreSQL with Docker Compose
 
-## Create PostgreSQL Container
+Both tutorials in this folder use the same `docker-compose.yml` file. It starts PostgreSQL and pgAdmin together, so you do not need separate `docker run` commands.
+
+Start everything from this folder:
 
 ```bash
-docker run --name postgres-db \
--e POSTGRES_USER=admin \
--e POSTGRES_PASSWORD=admin123 \
--e POSTGRES_DB=companydb \
--p 5432:5432 \
--d postgres
+docker compose up -d
 ```
 
-Explanation:
+Shared environment:
 
-| Parameter           | Meaning                |
-| ------------------- | ---------------------- |
-| `--name`            | Container name         |
-| `POSTGRES_USER`     | Username               |
-| `POSTGRES_PASSWORD` | Password               |
-| `POSTGRES_DB`       | Default database       |
-| `-p 5432:5432`      | Expose PostgreSQL port |
-| `-d`                | Run in background      |
+| Service | URL / Port | Login |
+| ------- | ---------- | ----- |
+| PostgreSQL | `localhost:5432` | user `admin`, password `admin123`, database `companydb` |
+| pgAdmin | `http://localhost:5050` | email `admin@example.com`, password `admin123` |
 
 ---
 
-# 5. Check Running Container
+# 5. Check Running Services
 
 ```bash
 docker ps
 ```
 
-Stop container:
+Stop containers:
 
 ```bash
-docker stop postgres-db
+docker compose down
 ```
 
 Start again:
 
 ```bash
-docker start postgres-db
+docker compose up -d
 ```
 
-Remove container:
+Remove containers and saved database data:
 
 ```bash
-docker rm -f postgres-db
+docker compose down -v
 ```
 
 ---
@@ -178,20 +173,10 @@ pgAdmin provides graphical interface.
 Official Website:
 [pgAdmin Official Website](https://www.pgadmin.org?utm_source=chatgpt.com)
 
-## Run pgAdmin in Docker
-
-```bash
-docker run --name pgadmin \
--p 8080:80 \
--e PGADMIN_DEFAULT_EMAIL=admin@example.com \
--e PGADMIN_DEFAULT_PASSWORD=admin123 \
--d dpage/pgadmin4
-```
-
 Open browser:
 
 ```text
-http://localhost:8080
+http://localhost:5050
 ```
 
 ---
@@ -202,12 +187,12 @@ Server settings:
 
 | Field    | Value                |
 | -------- | -------------------- |
-| Host     | host.docker.internal |
+| Host     | postgres             |
 | Port     | 5432                 |
 | Username | admin                |
 | Password | admin123             |
 
-Linux users may use container IP instead.
+Because pgAdmin and PostgreSQL run in the same Compose project, pgAdmin should use the service name `postgres` as the host.
 
 ---
 
@@ -1798,20 +1783,19 @@ Install:
 
 * Python
 * Docker
-* PostgreSQL container
+* PostgreSQL container started with Docker Compose
 
 ---
 
-# 4. Run PostgreSQL in Docker
+# 4. Run PostgreSQL with Docker Compose
+
+Use the same `docker-compose.yml` file from this folder:
 
 ```bash id="m2p9d7"
-docker run --name postgres-db \
--e POSTGRES_USER=admin \
--e POSTGRES_PASSWORD=admin123 \
--e POSTGRES_DB=companydb \
--p 5432:5432 \
--d postgres
+docker compose up -d
 ```
+
+This starts the shared PostgreSQL container used throughout the SQL tutorials.
 
 ---
 
@@ -2583,27 +2567,38 @@ Every API request sends token
 
 ---
 
-# 42. Example Docker Compose
+# 42. Docker Compose Used in This Folder
+
+The repository already includes `docker-compose.yml`, so use this command from the tutorial folder:
+
+```bash
+docker compose up -d
+```
+
+It combines PostgreSQL and pgAdmin in one repeatable setup:
 
 ```yaml id="r6m1k8"
-version: '3'
-
 services:
-
-  db:
-    image: postgres
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: companydb
-
-  api:
-    build: .
     ports:
-      - "8000:8000"
+      - "5432:5432"
 
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
     depends_on:
-      - db
+      - postgres
 ```
 
 ---

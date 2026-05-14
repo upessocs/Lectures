@@ -1,53 +1,57 @@
-# SQL Tutorial with PostgreSQL – From Docker Installation to Normalization and Joins
+# Tutorial 1: Core SQL with PostgreSQL
 
-Welcome! This tutorial will take you from zero to comfortable SQL using **PostgreSQL**, highlighting features that are unique (or particularly elegant) in this database. We’ll use Docker for a clean, no‑mess setup, and you’ll learn by solving real‑world tasks on a small e‑commerce database.
+This is the simpler tutorial. It takes you from zero to comfortable SQL using **PostgreSQL**, with a small e-commerce database and use Docker Compose for setup.
 
 ---
 
-## 1. Installing PostgreSQL with Docker
+## 1. Running PostgreSQL with Docker Compose
 
-We’ll run PostgreSQL and pgAdmin (a graphical interface) inside containers. That way you don’t need to install any database software on your machine – only Docker.
+Both tutorials in this folder use the same Docker Compose setup: PostgreSQL for the database and pgAdmin for a graphical interface. That keeps the beginner and advanced paths uniform.
 
-### 1.1 Create a Docker network
-Containers need to communicate. Create a dedicated network:
+From this folder, start everything with:
+
 ```bash
-docker network create pg-network
+docker compose up -d
 ```
 
-### 1.2 Start PostgreSQL
-```bash
-docker run -d \
-  --name postgres-tutorial \
-  --network pg-network \
-  -e POSTGRES_PASSWORD=mysecretpassword \
-  -p 5432:5432 \
-  postgres:latest
-```
-- `POSTGRES_PASSWORD` sets the superuser (`postgres`) password.
-- Port `5432` is exposed so you can connect from your host machine as well.
+This reads `docker-compose.yml` and starts:
 
-### 1.3 Start pgAdmin (optional but helpful)
+| Service | URL / Port | Login |
+| ------- | ---------- | ----- |
+| PostgreSQL | `localhost:5432` | user `admin`, password `admin123`, database `companydb` |
+| pgAdmin | `http://localhost:5050` | email `admin@example.com`, password `admin123` |
+
+To stop the containers:
+
 ```bash
-docker run -d \
-  --name pgadmin4 \
-  --network pg-network \
-  -p 5050:80 \
-  -e PGADMIN_DEFAULT_EMAIL=admin@example.com \
-  -e PGADMIN_DEFAULT_PASSWORD=admin \
-  dpage/pgadmin4
+docker compose down
 ```
-Then open **http://localhost:5050** in your browser, log in with the credentials above, and add a new server:
-- **Host name/address:** `postgres-tutorial` (the container name)
+
+To remove the saved database data as well:
+
+```bash
+docker compose down -v
+```
+
+### 1.1 Connect with pgAdmin
+
+Open **http://localhost:5050**, log in, and add a new server:
+
+- **Host name/address:** `postgres`
 - **Port:** `5432`
-- **Username:** `postgres`
-- **Password:** `mysecretpassword`
+- **Username:** `admin`
+- **Password:** `admin123`
+- **Maintenance database:** `companydb`
 
-### 1.4 psql – the command‑line tool
-You can jump directly into PostgreSQL’s interactive terminal using Docker:
+### 1.2 Connect with psql
+
+You can jump directly into PostgreSQL's interactive terminal using Docker:
+
 ```bash
-docker exec -it postgres-tutorial psql -U postgres
+docker exec -it postgres-db psql -U admin -d companydb
 ```
-You’ll see a prompt like `postgres=#`. Throughout this tutorial, we’ll write SQL in that **psql** session (or inside pgAdmin’s query tool).  
+
+You'll see a prompt like `companydb=#`. Throughout this tutorial, we'll write SQL in that **psql** session (or inside pgAdmin's query tool).
 To exit psql, type `\q`.
 
 ---
