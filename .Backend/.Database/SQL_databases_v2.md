@@ -1,11 +1,11 @@
 # Tutorial 2: Advanced SQL and Backend Topics with PostgreSQL
 
-This Tutorial starts with the PostgreSQL and Docker Compose, then continues into advanced SQL, FastAPI, authentication, deployment, and ERD topics.
+This tutorial starts with PostgreSQL and Docker, then continues into advanced SQL, FastAPI, authentication, deployment, and ERD topics.
 
 
 #### You will learn:
 
-* Running PostgreSQL with Docker Compose
+* Running PostgreSQL with Docker Compose or manual Docker commands
 * Using `psql` (terminal client)
 * Using pgAdmin
 * Creating databases and tables
@@ -68,17 +68,67 @@ docker --version
 
 ---
 
-# 4. Run PostgreSQL with Docker Compose
+# 4. Run PostgreSQL with Docker
 
-Both tutorials in this folder use the same `docker-compose.yml` file. It starts PostgreSQL and pgAdmin together, so you do not need separate `docker run` commands.
+We need two containers:
 
-Start everything from this folder:
+- PostgreSQL: the database server
+- pgAdmin: a browser-based interface for PostgreSQL
+
+There are two common ways to create this setup. **Choose one approach only.** Docker Compose and manual Docker commands do the same task here.
+
+## Approach A: Docker Compose
+
+Docker Compose keeps the full setup in one YAML file. Create a `docker-compose.yml` file:
+
+```yml
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: companydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d companydb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+```
+
+Start all services with 
 
 ```bash
 docker compose up -d
 ```
 
-Shared environment:
+
+This creates the following environment:
 
 | Service | URL / Port | Login |
 | ------- | ---------- | ----- |
@@ -87,7 +137,7 @@ Shared environment:
 
 ---
 
-# 5. Check Running Services
+# 5. Manage Containers
 
 ```bash
 docker ps
@@ -109,6 +159,48 @@ Remove containers and saved database data:
 
 ```bash
 docker compose down -v
+```
+
+## Approach B: Manual Docker Commands
+
+This approach creates the same PostgreSQL and pgAdmin setup using separate Docker commands.
+
+Create a Docker network so both containers can communicate:
+
+```bash
+docker network create pg-network
+```
+
+Start PostgreSQL:
+
+```bash
+docker run -d \
+  --name postgres-db \
+  --network pg-network \
+  -e POSTGRES_USER=admin \
+  -e POSTGRES_PASSWORD=admin123 \
+  -e POSTGRES_DB=companydb \
+  -p 5432:5432 \
+  postgres:16
+```
+
+Start pgAdmin:
+
+```bash
+docker run -d \
+  --name pgadmin \
+  --network pg-network \
+  -e PGADMIN_DEFAULT_EMAIL=admin@example.com \
+  -e PGADMIN_DEFAULT_PASSWORD=admin123 \
+  -p 5050:80 \
+  dpage/pgadmin4:latest
+```
+
+Stop and remove the manual containers:
+
+```bash
+docker rm -f pgadmin postgres-db
+docker network rm pg-network
 ```
 
 ---
@@ -187,12 +279,12 @@ Server settings:
 
 | Field    | Value                |
 | -------- | -------------------- |
-| Host     | postgres             |
+| Host     | `postgres` with Docker Compose, or `postgres-db` with manual Docker commands |
 | Port     | 5432                 |
 | Username | admin                |
 | Password | admin123             |
 
-Because pgAdmin and PostgreSQL run in the same Compose project, pgAdmin should use the service name `postgres` as the host.
+Because pgAdmin and PostgreSQL run inside Docker, pgAdmin should use the Compose service name or Docker container name as the host.
 
 ---
 
@@ -1783,19 +1875,19 @@ Install:
 
 * Python
 * Docker
-* PostgreSQL container started with Docker Compose
+* PostgreSQL container started with Docker Compose or manual Docker commands
 
 ---
 
-# 4. Run PostgreSQL with Docker Compose
+# 4. Run PostgreSQL with Docker
 
-Use the same `docker-compose.yml` file from this folder:
+If you want the shorter setup, use the Compose file shown earlier:
 
 ```bash id="m2p9d7"
 docker compose up -d
 ```
 
-This starts the shared PostgreSQL container used throughout the SQL tutorials.
+Manual Docker commands with `docker network`, `docker run postgres`, and `docker run pgadmin` are an alternative way to create the same environment.
 
 ---
 
@@ -2567,15 +2659,9 @@ Every API request sends token
 
 ---
 
-# 42. Docker Compose Used in This Folder
+# 42. Docker Compose Deployment Example
 
-The repository already includes `docker-compose.yml`, so use this command from the tutorial folder:
-
-```bash
-docker compose up -d
-```
-
-It combines PostgreSQL and pgAdmin in one repeatable setup:
+For deployment, Docker Compose can describe multiple services in one file. Create a `docker-compose.yml` with PostgreSQL and pgAdmin:
 
 ```yaml id="r6m1k8"
 services:
@@ -2599,6 +2685,20 @@ services:
       - "5050:80"
     depends_on:
       - postgres
+```
+
+Start it with:
+
+```bash
+docker compose up -d
+```
+
+The manual Docker alternative does the same job with separate commands:
+
+```bash
+docker network create pg-network
+docker run -d --name postgres-db --network pg-network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin123 -e POSTGRES_DB=companydb -p 5432:5432 postgres:16
+docker run -d --name pgadmin --network pg-network -e PGADMIN_DEFAULT_EMAIL=admin@example.com -e PGADMIN_DEFAULT_PASSWORD=admin123 -p 5050:80 dpage/pgadmin4:latest
 ```
 
 ---

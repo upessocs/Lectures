@@ -1,14 +1,63 @@
 # Tutorial 1: Core SQL with PostgreSQL
 
-This is the simpler tutorial. It takes you from zero to comfortable SQL using **PostgreSQL**, with a small e-commerce database and use Docker Compose for setup.
+This is the simpler tutorial. It takes you from zero to comfortable SQL using **PostgreSQL**, with a small e-commerce database and Docker-based setup.
 
 ---
 
-## 1. Running PostgreSQL with Docker Compose
+## 1. Running PostgreSQL with Docker
 
-Both tutorials in this folder use the same Docker Compose setup: PostgreSQL for the database and pgAdmin for a graphical interface. That keeps the beginner and advanced paths uniform.
+We need two containers:
 
-From this folder, start everything with:
+- PostgreSQL: the database server
+- pgAdmin: a browser-based interface for PostgreSQL
+
+There are two common ways to create this setup. **Choose one approach only.** Docker Compose and manual Docker commands do the same task here.
+
+### Approach A: Docker Compose
+
+Docker Compose keeps the full setup in one YAML file. Create a `docker-compose.yml` file:
+
+```yml
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: companydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d companydb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+```
+
+Start all services with 
 
 ```bash
 docker compose up -d
@@ -33,11 +82,53 @@ To remove the saved database data as well:
 docker compose down -v
 ```
 
+### Approach B: Manual Docker Commands
+
+This approach creates the same PostgreSQL and pgAdmin setup using separate Docker commands.
+
+Create a Docker network so both containers can communicate:
+
+```bash
+docker network create pg-network
+```
+
+Start PostgreSQL:
+
+```bash
+docker run -d \
+  --name postgres-db \
+  --network pg-network \
+  -e POSTGRES_USER=admin \
+  -e POSTGRES_PASSWORD=admin123 \
+  -e POSTGRES_DB=companydb \
+  -p 5432:5432 \
+  postgres:16
+```
+
+Start pgAdmin:
+
+```bash
+docker run -d \
+  --name pgadmin \
+  --network pg-network \
+  -e PGADMIN_DEFAULT_EMAIL=admin@example.com \
+  -e PGADMIN_DEFAULT_PASSWORD=admin123 \
+  -p 5050:80 \
+  dpage/pgadmin4:latest
+```
+
+Stop and remove the manual containers:
+
+```bash
+docker rm -f pgadmin postgres-db
+docker network rm pg-network
+```
+
 ### 1.1 Connect with pgAdmin
 
 Open **http://localhost:5050**, log in, and add a new server:
 
-- **Host name/address:** `postgres`
+- **Host name/address:** `postgres` if you used Docker Compose, or `postgres-db` if you used manual Docker commands
 - **Port:** `5432`
 - **Username:** `admin`
 - **Password:** `admin123`
