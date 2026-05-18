@@ -15,24 +15,31 @@ There are two common ways to create this setup. **Choose one approach only.** Do
 
 ### Approach A: Docker Compose
 
-Docker Compose keeps the full setup in one YAML file. Create a `docker-compose.yml` file:
+Docker Compose keeps the full setup in one YAML file. Create a 
+
+`docker-compose.yml` file
 
 ```yml
 services:
+
   postgres:
     image: postgres:16
     container_name: postgres-db
     restart: unless-stopped
+
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123
-      POSTGRES_DB: companydb
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
     ports:
       - "5432:5432"
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d companydb"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -41,14 +48,18 @@ services:
     image: dpage/pgadmin4:latest
     container_name: pgadmin
     restart: unless-stopped
+
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+
     ports:
-      - "5050:80"
+      - "${PGADMIN_PORT}:80"
+
     depends_on:
       postgres:
         condition: service_healthy
+
     volumes:
       - pgadmin_data:/var/lib/pgadmin
 
@@ -56,6 +67,19 @@ volumes:
   postgres_data:
   pgadmin_data:
 ```
+
+`.env` file
+
+```env
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=admin123
+POSTGRES_DB=companydb
+
+PGADMIN_EMAIL=admin@example.com
+PGADMIN_PASSWORD=admin123
+PGADMIN_PORT=5050
+```
+
 
 Start all services with 
 
