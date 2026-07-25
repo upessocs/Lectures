@@ -10,6 +10,7 @@
 ./.supp
 ./.supp26
 ./Advanced Web Technologies
+./Backend Development
 ./Computer Architecture and Organisation
 ./Containerization and DevOps
 ./DevOps CCVT

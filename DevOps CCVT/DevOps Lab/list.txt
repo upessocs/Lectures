@@ -1,6 +1,4 @@
 ./
-./B1H
-./devopslab 10003
 ./000 WSL Install.md
 ./Ansible Tutorial for Beginners Playbook & Examples.md
 ./Exp 10.md
