@@ -1,5 +1,4 @@
 ./
-./.dist
 ./.ipynb_checkpoints
 ./000_Assignments
 ./00_Syllabus

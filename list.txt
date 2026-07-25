@@ -1,6 +1,7 @@
 ./
 ./.Backend
 ./.DE
+./.dist
 ./.DR_Oct25
 ./.git
 ./.github

@@ -1,9 +1,9 @@
 ./
-./.The differences between Artificial and Biological Neural Networks
-./Reference Material
 ./.ipynb_checkpoints
-./HandWrittenClassNotes
+./.The differences between Artificial and Biological Neural Networks
 ./025 Logic Gates using Perceptron
+./HandWrittenClassNotes
+./Reference Material
 ./000 Syllabus.md
 ./011 UNIT I Introduction.md
 ./051 UNIT V Genetic Algorithm.md
@@ -13,4 +13,5 @@
 ./Perceptron.pdf
 ./024 Unit II ActivationFunctions.ipynb
 ./025 Unit II Distance, Loss and Cost function.ipynb
+./045 Unit IV Fuzzification_Defuzzification.ipynb
 ./Fuzzification_Defuzzification.ipynb

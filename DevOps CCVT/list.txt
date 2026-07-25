@@ -1,4 +1,5 @@
 ./
+./.dist
 ./DevOps Lab
 ./Unit 1
 ./Unit 2
