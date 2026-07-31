@@ -2537,10 +2537,8 @@ In this experiment, you have learned:
 
 2. **CSS Selectors**:
    - Element, Class, ID, Descendant, Child, Sibling, Attribute, Pseudo-class, Pseudo-element
-
 3. **CSS Box Model**:
    - Content → Padding → Border → Margin
-
 4. **CSS Layout**:
    - **Flexbox**: One-dimensional layout for components
    - **Grid**: Two-dimensional layout for page structure
@@ -2551,7 +2549,6 @@ In this experiment, you have learned:
 
 6. **Responsive Design**:
    - Media queries for different screen sizes
-
 ### Backend Development Context
 
 CSS skills are essential for backend developers because:
@@ -2605,94 +2602,65 @@ Create a page with a "dark mode" toggle that changes:
 
 1. **What are the three types of CSS?**
    - Inline, Internal, and External CSS.
-
 2. **What is the difference between `class` and `id`?**
    - Classes can be used multiple times; IDs must be unique per page.
-
 3. **What is the CSS box model?**
    - The box model consists of: Content → Padding → Border → Margin.
-
 4. **What is the difference between `margin` and `padding`?**
    - Margin is space outside the border; padding is space inside the border.
-
 5. **What are pseudo-classes?**
    - Pseudo-classes define special states of elements (e.g., `:hover`, `:active`).
-
 6. **What is the difference between `display: flex` and `display: grid`?**
    - Flexbox is one-dimensional; Grid is two-dimensional.
-
 7. **What is the `!important` declaration used for?**
    - It overrides all other style declarations.
-
 8. **What is CSS specificity?**
    - It determines which styles apply when multiple rules conflict.
-
 9. **What is the difference between `display: inline` and `display: block`?**
    - Inline: elements stay in line; Block: elements take full width.
-
 10. **What is `display: flex` used for?**
     - It creates a flex container for flexible layout.
-
 ### Intermediate Level
 
 11. **Explain the concept of CSS cascade.**
     - The cascade is the process of combining styles from different sources based on priority.
-
 12. **What are pseudo-elements? Give examples.**
     - Pseudo-elements style specific parts of elements (e.g., `::first-line`, `::before`).
-
 13. **What is the difference between `flex-direction: row` and `flex-direction: column`?**
     - Row: items flow horizontally; Column: items flow vertically.
-
 14. **What is `flex-wrap` used for?**
     - It controls whether flex items wrap to the next line.
-
 15. **Explain `grid-template-columns` and `grid-template-rows`.**
     - They define the number and size of columns/rows in a grid.
-
 16. **What is the difference between `justify-content` and `align-items`?**
     - Justify-content: main axis alignment; Align-items: cross axis alignment.
-
 17. **How do you create a responsive layout in CSS?**
     - Using media queries, flexible units (%, rem, vw/vh), and responsive frameworks.
-
 18. **What is `box-sizing: border-box` used for?**
     - It includes padding and border in the element's total width/height.
-
 19. **What are CSS custom properties (CSS variables)?**
     - They allow storing values for reuse throughout the document.
-
 20. **Explain the `position` property values.**
     - Static, relative, absolute, fixed, sticky.
-
 ### Advanced Level
 
 21. **How does CSS specificity calculation work?**
     - Inline styles (1000) > ID (100) > Class (10) > Element (1).
-
 22. **What is the difference between `display: none` and `visibility: hidden`?**
     - None: removes from layout; Hidden: hides but maintains space.
-
 23. **Explain `z-index` and its stacking context.**
     - Z-index controls stacking order; stacking contexts isolate elements.
-
 24. **What is `flex: 1` equivalent to?**
     - `flex: 1 1 0%` (flex-grow: 1, flex-shrink: 1, flex-basis: 0%).
-
 25. **Explain the `@keyframes` rule.**
     - It defines the steps of an animation.
-
 26. **What are `rem` and `em` units?**
     - `rem`: relative to root font size; `em`: relative to parent font size.
-
 27. **How do you implement dark mode in CSS?**
     - Using CSS custom properties and `prefers-color-scheme` media query.
-
 28. **What is the `object-fit` property used for?**
     - It controls how replaced elements (images/videos) fit their containers.
-
 29. **Explain `CSS grid` auto-placement.**
     - Items are placed automatically into grid cells based on order.
-
 30. **What is the `will-change` property used for?**
     - It hints to browsers about upcoming changes for performance optimization.

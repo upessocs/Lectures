@@ -40,7 +40,7 @@ HTML5, introduced in 2014, brought significant improvements:
 | Feature | HTML4 | HTML5 |
 |---------|-------|-------|
 | **Doctype** | `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">` | `<!DOCTYPE html>` |
-| **Semantic Elements** | Limited (`<div>`, `<span>`) | Rich (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`) |
+| **Semantic Elements** | Limited `<div>`, `<span>` | Rich `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>` |
 | **Multimedia** | Required plugins (Flash) | Native `<audio>` and `<video>` support |
 | **Forms** | Basic input types | Advanced input types (email, url, date, range, color, etc.) |
 | **Graphical Content** | Required Flash/SVG plugins | Native `<canvas>` and `<svg>` |
@@ -136,8 +136,6 @@ Semantic elements clearly describe their meaning to both the browser and develop
 
 ### Complete Alphabetical List of HTML Tags
 
-<details>
-<summary><b>Click to expand full alphabetical list</b></summary>
 
 | Tag | Description |
 |-----|-------------|
@@ -263,13 +261,10 @@ Semantic elements clearly describe their meaning to both the browser and develop
 | `<var>` | Variable |
 | `<video>` | Video content |
 | `<wbr>` | Word break opportunity |
-
-</details>
+---
 
 ### Tags Grouped by Functionality
 
-<details>
-<summary><b>Click to expand tags by functionality</b></summary>
 
 #### Document Structure
 | Tag | Description | Example |
@@ -410,7 +405,7 @@ Semantic elements clearly describe their meaning to both the browser and develop
 | `<bdi>` | Bidirectional isolation | `<bdi>...</bdi>` |
 | `<bdo>` | Bidirectional override | `<bdo dir="rtl">...</bdo>` |
 
-</details>
+
 
 ---
 
@@ -1296,7 +1291,7 @@ Here's the complete HTML file combining all parts:
 </head>
 <body>
     <header>
-        <h1>🚀 Backend Development</h1>
+        <h1>Backend Development</h1>
         <p>HTML5 Lab - Semester 5 | B.Tech Full Stack</p>
         <nav>
             <ul>
@@ -1804,110 +1799,75 @@ Create a page with:
 
 1. **What is the difference between HTML4 and HTML5?**
    - HTML5 introduces semantic elements, native multimedia support, new form input types, and APIs like canvas, geolocation, and local storage.
-
 2. **What is the purpose of the `<!DOCTYPE html>` declaration?**
    - It tells the browser to render the page in standards mode, ensuring proper rendering across browsers.
-
 3. **Explain the difference between `<section>` and `<div>`?**
    - `<section>` has semantic meaning and represents a thematic grouping of content, while `<div>` is a generic container with no semantic meaning.
-
 4. **What are semantic elements and why are they important?**
    - Semantic elements clearly describe their meaning to browsers, developers, and screen readers. They improve accessibility and SEO.
-
 5. **What is the difference between `<b>` and `<strong>`?**
    - `<b>` makes text bold visually, while `<strong>` indicates strong importance (semantic), which screen readers may emphasize differently.
-
 6. **What is the purpose of the `alt` attribute in `<img>`?**
    - It provides alternative text for screen readers and when the image cannot load, improving accessibility and SEO.
-
 7. **What is the difference between `<ul>` and `<ol>`?**
    - `<ul>` creates an unordered (bulleted) list, while `<ol>` creates an ordered (numbered) list.
-
 8. **What is the `<meta>` tag used for?**
    - It provides metadata about the HTML document, such as character encoding, viewport settings, and SEO information.
-
 9. **What is the difference between `<article>` and `<section>`?**
    - `<article>` represents self-contained content that could be distributed independently, while `<section>` represents a thematic grouping of content within a document.
-
 10. **What is the `value` attribute in input elements?**
     - It sets the initial value of the input field. For different input types, it serves different purposes (e.g., for checkbox, it defines the value sent on form submission).
-
 ### Intermediate Level
 
 11. **Explain the `<picture>` element and its use case?**
     - The `<picture>` element provides responsive images by allowing multiple sources based on media conditions (screen size, resolution), improving performance and user experience.
-
 12. **What are the new input types introduced in HTML5?**
     - Email, url, tel, number, range, color, date, datetime-local, month, week, time, search, and file.
-
 13. **What is the purpose of the `<datalist>` element?**
     - It provides autocomplete suggestions for input fields, allowing users to type and see a list of pre-defined options.
-
 14. **Explain the difference between `<audio>` and `<video>` elements?**
     - `<audio>` embeds audio content, `<video>` embeds video content. Both support controls, multiple sources, and tracks.
-
 15. **What is the `<dialog>` element used for?**
     - It represents a dialog box or interactive component that can be shown/hidden using JavaScript.
-
 16. **Explain the `for` attribute in `<label>`?**
     - It links the label to a form control using the control's `id`, making the label clickable and improving accessibility.
-
 17. **What is the difference between `<thead>`, `<tbody>`, and `<tfoot>`?**
     - They semantically group table header, body, and footer rows, improving accessibility and allowing for features like sticky headers.
-
 18. **What is the `<fieldset>` element used for?**
     - It groups related form controls, and with `<legend>` provides a caption for the group.
-
 19. **Explain the difference between `GET` and `POST` methods?**
     - GET sends data in the URL (visible, limited size), POST sends data in the request body (more secure, larger size).
-
 20. **What is the purpose of the `<noscript>` tag?**
     - It provides fallback content for browsers that have JavaScript disabled or don't support it.
-
 ### Advanced Level
 
 21. **How does the `<picture>` element work with `srcset`?**
     - `<picture>` uses `<source>` elements with `media` and `srcset` attributes to provide different images based on viewport or screen density.
-
 22. **What are microdata attributes (`itemscope`, `itemprop`, `itemtype`)?**
     - They add structured data to HTML, helping search engines understand content better for rich snippets.
-
 23. **Explain the concept of Progressive Web App (PWA) and its relation to HTML5?**
     - PWAs use HTML5, service workers, and manifest files to create app-like experiences in the browser.
-
 24. **How does the `<template>` element work?**
     - It defines HTML fragments that are not rendered on page load but can be instantiated later using JavaScript.
-
 25. **What is the `contenteditable` attribute?**
     - It makes an element editable by users, allowing in-place content editing.
-
 26. **Explain the `data-*` custom attributes?**
     - They store custom data private to the page or application, accessible via JavaScript.
-
 27. **What is the difference between `localStorage` and `sessionStorage`?**
     - localStorage persists until manually cleared; sessionStorage persists only for the session (tab/window).
-
 28. **How does the `<canvas>` element differ from SVG?**
     - `<canvas>` uses raster-based rendering (pixel-based), while SVG uses vector-based rendering (shape-based, resolution-independent).
-
 29. **What is the purpose of the `rel="noopener"` attribute?**
     - It prevents the new page from having access to the `window.opener` property, improving security.
-
 30. **Explain the accessibility features of HTML5?**
     - Semantic elements, ARIA attributes, `alt` text, `label` association, `role` attributes, `aria-*` attributes.
-
 31. **What is the difference between `<input type="submit">` and `<button type="submit">`?**
     - Both submit forms, but `<button>` can contain HTML content while `<input>` is self-closing.
-
 32. **How do you create a link that opens in a new tab?**
     - Use `<a href="url" target="_blank">` (consider adding `rel="noopener noreferrer"` for security).
-
 33. **What is the purpose of the `defer` and `async` attributes in `<script>`?**
     - Async: script loads asynchronously and executes when ready (best for independent scripts). Defer: script executes after HTML parsing (best for scripts that depend on DOM).
-
 34. **Explain the concept of "reflow" and "repaint" in browser rendering?**
     - Reflow: recalculating element positions and geometry; Repaint: redrawing pixels. Reflow is more expensive, so minimize DOM manipulations.
-
 35. **How do you optimize HTML for SEO?**
     - Use semantic elements, proper heading hierarchy, `meta` description, `alt` text, structured data, and clean URL structure.
-
