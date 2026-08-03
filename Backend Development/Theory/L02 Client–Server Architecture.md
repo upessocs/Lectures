@@ -4,7 +4,7 @@
 # Client–Server Architecture: Understanding the Model and Communication Protocols
 
 **Course Outcome:** CO1 – Understand the client-server model and communication protocols used in backend development.
-
+---
 ## 1. Introduction
 
 Modern web applications are built on the principle of distributed computing, where different components of an application execute on different computers connected through a network. Instead of storing all data and performing all computations on a user's device, applications distribute responsibilities between clients and servers.
@@ -14,7 +14,7 @@ The **client-server architecture** is the most widely adopted computing model fo
 Every interaction with a website or web application, such as opening a webpage, logging into an account, uploading a file, or making an online payment, follows the client-server communication model.
 
 Understanding this architecture is essential because every backend application is designed to receive requests from clients, process those requests, interact with databases or external services, and return appropriate responses.
-
+---
 ## 2. What is a Client?
 
 A **client** is a software application or device that requests services or resources from another computer over a network. Clients initiate communication by sending requests to servers and presenting the received information to users.
@@ -37,7 +37,7 @@ Common examples of clients include:
 * Command-line tools such as `curl`.
 
 Although clients may perform some processing locally, they generally rely on backend servers for authentication, business logic, and persistent data storage.
-
+---
 ## 3. What is a Server?
 
 A **server** is a computer system or software application that provides services, resources, or data to one or more clients over a network. Servers continuously listen for incoming requests, process them according to predefined rules, and return appropriate responses.
@@ -54,7 +54,7 @@ Backend servers perform tasks such as:
 * Logging and monitoring.
 
 Unlike client applications, servers are expected to remain continuously available and capable of handling multiple users simultaneously.
-
+---
 ## 4. Client–Server Architecture
 
 The client-server architecture separates user interaction from application processing.
@@ -73,7 +73,7 @@ This separation provides several advantages, including centralized data manageme
 
 ### Basic Client–Server Architecture
 
-```svg
+
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240">
 <rect width="900" height="240" fill="white"/>
 
@@ -100,8 +100,8 @@ This separation provides several advantages, including centralized data manageme
 <text x="290" y="105" font-size="13">HTTP Request</text>
 <text x="290" y="145" font-size="13">HTTP Response</text>
 </svg>
-```
 
+---
 ## 5. Types of Client–Server Architectures
 
 ### Two-Tier Architecture
@@ -142,7 +142,7 @@ Most enterprise applications use this architecture.
 Large-scale cloud applications further divide the application layer into multiple services such as authentication servers, API gateways, payment services, caching servers, and microservices.
 
 Examples include Amazon, Netflix, and Microsoft Azure.
-
+---
 ## 6. Communication Between Client and Server
 
 Communication begins when the client initiates a request. The server processes the request and returns a response. This communication follows predefined rules known as **communication protocols**.
@@ -156,7 +156,7 @@ A protocol defines:
 * Security mechanisms.
 
 Without standardized protocols, computers developed by different manufacturers would not be able to communicate effectively.
-
+---
 ## 7. Common Communication Protocols
 
 ### HTTP (HyperText Transfer Protocol)
@@ -214,7 +214,7 @@ Backend systems use SMTP for:
 * Password reset emails.
 * Account verification.
 * Notifications.
-
+---
 ## 8. Real-World Example
 
 Consider an online shopping application.
@@ -229,7 +229,7 @@ Consider an online shopping application.
 8. When the customer places an order, another request is sent to the backend, which validates payment, updates inventory, stores the order, and returns an order confirmation.
 
 Although the customer only sees a few screens, the backend performs multiple coordinated operations.
-
+---
 ## 9. Advantages of Client–Server Architecture
 
 * Centralized data management.
@@ -240,7 +240,7 @@ Although the customer only sees a few screens, the backend performs multiple coo
 * Multi-user support.
 * Simplified software updates.
 * Reliable backup and recovery.
-
+---
 ## 10. Limitations
 
 Despite its advantages, the client-server model has certain limitations.
@@ -252,7 +252,7 @@ Despite its advantages, the client-server model has certain limitations.
 * Proper security mechanisms are essential.
 
 Modern cloud computing addresses many of these challenges through redundancy, load balancing, and distributed architectures.
-
+---
 ## 11. Client–Server Architecture in AI-Powered Applications
 
 AI-powered applications also follow the client-server model.
@@ -267,7 +267,7 @@ For example, when a user submits a prompt to ChatGPT:
 6. The browser renders the response.
 
 This demonstrates that even advanced AI systems fundamentally rely on the same client-server communication principles.
-
+---
 ## 12. Summary
 
 The client-server architecture forms the foundation of modern backend development. It separates user interaction from application processing, allowing systems to be scalable, secure, and maintainable. Clients initiate communication by sending requests, while servers process those requests and return responses using standardized communication protocols. Understanding this architecture is essential before studying HTTP, RESTful APIs, sessions, and server-side programming, all of which build upon the client-server communication model.
