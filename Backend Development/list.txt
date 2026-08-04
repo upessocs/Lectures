@@ -1,7 +1,7 @@
 ./
 ./Lab
 ./Theory
-./02 Course Plan Backend Development CSFS3008P Prateek Raj Gautam CSO.pdf
-./Syllabus Backend Development CSFS3008P.pdf
-./02 Course Plan Backend Development CSFS3008P Prateek Raj Gautam CSO.docx
-./Syllabus Backend Development CSFS3008P.docx
+./01 Syllabus Backend Development CSFS3008P.pdf
+./02 Course Plan Backend Development CSFS3008P Prateek Raj Gautam CSO V002.pdf
+./01 Syllabus Backend Development CSFS3008P.docx
+./02 Course Plan Backend Development CSFS3008P Prateek Raj Gautam CSO V002.docx
