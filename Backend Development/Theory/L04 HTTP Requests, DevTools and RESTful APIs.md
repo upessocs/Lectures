@@ -149,6 +149,34 @@ The actual data returned by the server — HTML, JSON, a file, or an error messa
 ]
 ```
 
+#### Complete HTTP Request–Response Example (Plain Text)
+
+Below is a **raw HTTP request** and its **raw HTTP response** as they travel over the network. This is exactly what tools like DevTools, curl, and Postman show you in a more readable format.
+
+**Raw HTTP Request (sent by the client):**
+
+```text
+GET /students HTTP/1.1
+Host: localhost:3000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+Accept: application/json
+Connection: keep-alive
+```
+
+**Raw HTTP Response (returned by the server):**
+
+```text
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 156
+Date: Wed, 19 Aug 2026 10:30:00 GMT
+Connection: keep-alive
+
+[{"id":1,"name":"Aarav","branch":"CSE"},{"id":2,"name":"Diya","branch":"ECE"},{"id":3,"name":"Rohan","branch":"IT"}]
+```
+
+The request starts with the **request line** (`GET /students HTTP/1.1`), followed by **headers** (key-value pairs), and an empty line marking the end of headers. The response follows the same pattern: a **status line** (`HTTP/1.1 200 OK`), **headers**, an empty line, and then the **body** (the JSON data).
+
 ---
 
 ### 4. HTTP Methods Compared
@@ -244,7 +272,173 @@ This prints the full request headers, response headers, and response body — ev
 
 ---
 
-### 8. Before REST: How APIs Worked
+### 8. Sending Requests with JavaScript `fetch()`
+
+The browser provides a built-in JavaScript API called **`fetch()`** for making HTTP requests directly from client-side code. This is how front-end developers communicate with back-end APIs without needing curl or Postman.
+
+#### Basic Syntax
+
+```javascript
+fetch(url, options)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+`fetch()` returns a **Promise** that resolves to a `Response` object. You must call `.json()` (or `.text()`) to extract the body.
+
+#### Example: GET Request — Fetch All Students
+
+```javascript
+// Fetch all students from the API
+fetch("http://localhost:3000/students")
+  .then(response => response.json())
+  .then(students => {
+    console.log("Students:", students);
+    students.forEach(student => {
+      console.log(`${student.name} (${student.branch})`);
+    });
+  })
+  .catch(error => console.error("Error:", error));
+```
+
+**What happens:**
+
+1. `fetch()` sends `GET /students HTTP/1.1` to the server.
+2. The server responds with `200 OK` and a JSON body.
+3. `.json()` parses the body into a JavaScript array.
+4. The array is logged to the console.
+
+#### Example: GET Request — Fetch a Single Student
+
+```javascript
+// Fetch student with ID 1
+fetch("http://localhost:3000/students/1")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Student not found: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(student => {
+    console.log("Found:", student.name, "-", student.branch);
+  })
+  .catch(error => console.error("Error:", error));
+```
+
+**Note:** `response.ok` is `true` when the status code is 200–299. Always check it to handle errors gracefully.
+
+#### Example: POST Request — Create a New Student
+
+```javascript
+// Create a new student using POST
+fetch("http://localhost:3000/students", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name: "Priya",
+    branch: "CSE"
+  })
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Failed to create: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(newStudent => {
+    console.log("Created:", newStudent);
+  })
+  .catch(error => console.error("Error:", error));
+```
+
+**Key points:**
+
+| Part | Purpose |
+|------|---------|
+| `method: "POST"` | Tells the server this is a create request |
+| `headers: { "Content-Type": "application/json" }` | Tells the server the body is JSON |
+| `body: JSON.stringify(...)` | Converts a JavaScript object to a JSON string |
+
+#### Example: POST Request using `async/await`
+
+The `async/await` syntax makes asynchronous code easier to read:
+
+```javascript
+async function createStudent(name, branch) {
+  try {
+    const response = await fetch("http://localhost:3000/students", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, branch })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const newStudent = await response.json();
+    console.log("Created student:", newStudent);
+    return newStudent;
+  } catch (error) {
+    console.error("Failed to create student:", error);
+  }
+}
+
+// Usage
+createStudent("Priya", "CSE");
+```
+
+#### Quick Comparison: GET vs POST with `fetch()`
+
+| Aspect | GET | POST |
+|--------|-----|------|
+| **Purpose** | Read data | Create data |
+| **Has body?** | No | Yes |
+| **`fetch()` call** | `fetch(url)` | `fetch(url, { method: "POST", headers, body })` |
+| **Response** | `200 OK` with data | `201 Created` with new resource |
+| **Idempotent?** | Yes | No |
+
+#### Using `fetch()` in an HTML Page
+
+You can use `fetch()` directly in a `<script>` tag:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student API Client</title>
+</head>
+<body>
+  <h1>Students</h1>
+  <ul id="student-list"></ul>
+
+  <script>
+    async function loadStudents() {
+      const response = await fetch("http://localhost:3000/students");
+      const students = await response.json();
+
+      const list = document.getElementById("student-list");
+      students.forEach(student => {
+        const li = document.createElement("li");
+        li.textContent = `${student.name} — ${student.branch}`;
+        list.appendChild(li);
+      });
+    }
+
+    loadStudents();
+  </script>
+</body>
+</html>
+```
+
+Open this file in a browser and it will fetch students from your running server and display them as a list.
+
+---
+
+### 9. Before REST: How APIs Worked
 
 Before REST became standard in the early 2000s, web services used different approaches. Understanding these helps appreciate why REST succeeded.
 
@@ -270,7 +464,7 @@ Before REST became standard in the early 2000s, web services used different appr
 <text x="450" y="190" text-anchor="middle" font-size="12" fill="#555">Complexity Decreased - Developer Adoption Increased</text>
 </svg>
 
-#### 8.1 SOAP (Simple Object Access Protocol)
+#### 9.1 SOAP (Simple Object Access Protocol)
 
 SOAP was the dominant enterprise protocol from the late 1990s to early 2000s.
 
@@ -302,7 +496,7 @@ SOAP was the dominant enterprise protocol from the late 1990s to early 2000s.
 - Tight coupling between client and server
 - Poor browser support
 
-#### 8.2 XML-RPC
+#### 9.2 XML-RPC
 
 A simpler predecessor to SOAP that also used XML but with less overhead.
 
@@ -325,7 +519,7 @@ A simpler predecessor to SOAP that also used XML but with less overhead.
 </methodCall>
 ```
 
-#### 8.3 The Problem REST Solved
+#### 9.3 The Problem REST Solved
 
 | Aspect | SOAP | XML-RPC | REST |
 |--------|------|---------|------|
@@ -340,7 +534,7 @@ REST solved these problems by using HTTP as-is, supporting JSON, and providing a
 
 ---
 
-### 9. What is REST?
+### 10. What is REST?
 
 **REST (Representational State Transfer)** is an architectural style defined by Roy Fielding in his 2000 doctoral dissertation. It is NOT a protocol or standard — it is a set of design constraints.
 
@@ -364,7 +558,7 @@ REST solved these problems by using HTTP as-is, supporting JSON, and providing a
 <text x="400" y="235" text-anchor="middle" font-size="12">Consistent methods: GET, POST, PUT, DELETE</text>
 </svg>
 
-#### 9.1 Key Concepts
+#### 10.1 Key Concepts
 
 **Resources**
 
@@ -384,7 +578,7 @@ REST solved these problems by using HTTP as-is, supporting JSON, and providing a
 - Every request contains all information needed to process it
 - Authentication tokens (JWT) replace server-side sessions
 
-#### 9.2 Resource Identification
+#### 10.2 Resource Identification
 
 Every resource is identified by a **URI (Uniform Resource Identifier)**:
 
@@ -397,7 +591,7 @@ Every resource is identified by a **URI (Uniform Resource Identifier)**:
 
 ---
 
-### 10. The Six REST Constraints
+### 11. The Six REST Constraints
 
 Roy Fielding defined six constraints that make an API truly RESTful:
 
@@ -426,33 +620,33 @@ Roy Fielding defined six constraints that make an API truly RESTful:
 <text x="400" y="285" text-anchor="middle" font-size="12">First 5 constraints are required; Code on Demand is optional</text>
 </svg>
 
-#### 10.1 Client-Server
+#### 11.1 Client-Server
 
 The client (frontend) and server (backend) are independent. They can evolve separately as long as the interface remains the same.
 
-#### 10.2 Stateless
+#### 11.2 Stateless
 
 Each request must contain all information needed. The server does not store session state. This improves scalability and reliability.
 
-#### 10.3 Cacheable
+#### 11.3 Cacheable
 
 Responses must indicate if they can be cached. This reduces unnecessary server calls and improves performance.
 
-#### 10.4 Uniform Interface
+#### 11.4 Uniform Interface
 
 All resources are accessed through the same consistent interface — HTTP methods (GET, POST, PUT, DELETE) on resource URIs.
 
-#### 10.5 Layered System
+#### 11.5 Layered System
 
 The client cannot tell if it is connected directly to the server or through intermediaries (load balancers, proxies). This allows flexible deployment.
 
-#### 10.6 Code on Demand (Optional)
+#### 11.6 Code on Demand (Optional)
 
 The server can send executable code (JavaScript) to extend client functionality. Most REST APIs do not use this constraint.
 
 ---
 
-### 11. RESTful Resource Naming Conventions
+### 12. RESTful Resource Naming Conventions
 
 Proper naming makes APIs intuitive and self-documenting.
 
@@ -484,7 +678,7 @@ Proper naming makes APIs intuitive and self-documenting.
 
 ---
 
-### 12. HTTP Methods in REST
+### 13. HTTP Methods in REST
 
 Each HTTP method maps to a CRUD operation on resources.
 
@@ -518,7 +712,7 @@ Each HTTP method maps to a CRUD operation on resources.
 
 ---
 
-### 13. Status Codes for REST APIs
+### 14. Status Codes for REST APIs
 
 | Code | Meaning | When to Use |
 |------|---------|-------------|
@@ -535,7 +729,7 @@ Each HTTP method maps to a CRUD operation on resources.
 
 ---
 
-### 14. REST Best Practices
+### 15. REST Best Practices
 
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
 <rect width="800" height="250" fill="white"/>
@@ -564,7 +758,7 @@ Each HTTP method maps to a CRUD operation on resources.
 
 ---
 
-### 15. Introduction to FastAPI
+### 16. Introduction to FastAPI
 
 **FastAPI** is a modern Python web framework for building APIs. It is ideal for learning REST because it is simple, fast, and auto-generates API documentation.
 
@@ -637,7 +831,7 @@ This approach is useful when you want to control server settings from within you
 
 ---
 
-### 16. Installing Tools
+### 17. Installing Tools
 
 #### Verify curl (pre-installed)
 
@@ -691,7 +885,7 @@ pip list | grep fastapi
 
 ---
 
-### 17. Task 1 — Inspect a Request Using Browser DevTools
+### 18. Task 1 — Inspect a Request Using Browser DevTools
 
 #### Step 1: Start the Express server
 
@@ -739,7 +933,7 @@ Click the **Response** or **Preview** tab within the entry. You should see:
 
 ---
 
-### 18. Task 2 — Send Requests Using curl
+### 19. Task 2 — Send Requests Using curl
 
 #### Step 1: Simple GET request
 
@@ -810,7 +1004,7 @@ This shows both the headers and the body in one output.
 
 ---
 
-### 19. Task 3 — Send Requests Using Postman
+### 20. Task 3 — Send Requests Using Postman
 
 #### Step 1: Create a new request
 
@@ -869,7 +1063,7 @@ This explicitly tells the server you expect JSON back.
 
 ---
 
-### 20. Task 4 — Same Request, Three Tools
+### 21. Task 4 — Same Request, Three Tools
 
 #### Request to send:
 
@@ -930,7 +1124,7 @@ All three tools send the same HTTP request and receive the same response. The di
 
 ---
 
-### 21. Task 5 — Flask Server Inspection
+### 22. Task 5 — Flask Server Inspection
 
 #### Step 1: Start the Flask server
 
@@ -960,7 +1154,7 @@ This confirms that HTTP is a **protocol** — the same request works with any se
 
 ---
 
-### 22. Task 6 — Build a RESTful API with FastAPI
+### 23. Task 6 — Build a RESTful API with FastAPI
 
 Now that you understand HTTP requests and how to inspect them, let us build a proper RESTful API.
 

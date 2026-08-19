@@ -3,3 +3,5 @@
 ./L02 Client–Server Architecture.md
 ./L03 Setting Up the Backend Environment.md
 ./L04 HTTP Requests, DevTools and RESTful APIs.md
+./L05 Managing server-side Session, Cookie, and State Management.md
+./L06 Server-Side Rendering and Templating Engines.md
