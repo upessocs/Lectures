@@ -371,11 +371,11 @@ def read_root():
 
 Run with: `uvicorn main:app --reload`
 
-Open `http://localhost:8000/docs` to see auto-generated Swagger UI.
+Open `http://localhost:5000/docs` to see auto-generated Swagger UI.
 
 ![FastAPI Swagger UI](.assets/L05-fastapi-swagger-docs.svg)
 
-Open `http://localhost:8000/redoc` to see auto-generated ReDoc documentation.
+Open `http://localhost:5000/redoc` to see auto-generated ReDoc documentation.
 
 ![FastAPI ReDoc](.assets/L05-fastapi-redoc.svg)
 
@@ -395,7 +395,7 @@ def read_root():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("main:app", host="127.0.0.1", port=5000, reload=True)
 ```
 
 Now run the server with:
@@ -408,7 +408,7 @@ python main.py
 
 - `uvicorn.run()` starts the server programmatically
 - `host="127.0.0.1"` — binds to localhost only
-- `port=8000` — specifies the port number
+- `port=5000` — specifies the port number
 - `reload=True` — auto-restarts on code changes (use `False` in production)
 
 This approach is useful when you want to control server settings from within your code rather than the command line.
@@ -428,7 +428,9 @@ Now that you understand HTTP requests and REST principles, let us build a proper
 Create a file called `main.py`:
 
 ```python
+
 from fastapi import FastAPI, HTTPException, Query
+import uvicorn
 from pydantic import BaseModel
 from typing import Optional, List
 
@@ -496,6 +498,12 @@ def delete_student(student_id: int):
             students.pop(i)
             return
     raise HTTPException(status_code=404, detail="Student not found")
+
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=5000, reload=True)
+
 ```
 
 #### Step 2: Run the server
@@ -506,7 +514,7 @@ uvicorn main:app --reload
 
 #### Step 3: Test with Swagger UI
 
-Open `http://localhost:8000/docs` — you will see interactive API documentation.
+Open `http://localhost:5000/docs` — you will see interactive API documentation.
 
 ![FastAPI Swagger UI - CRUD Endpoints](.assets/L05-fastapi-swagger-docs.svg)
 
@@ -515,19 +523,19 @@ Open `http://localhost:8000/docs` — you will see interactive API documentation
 **List all students:**
 
 ```bash
-curl http://localhost:8000/students
+curl http://localhost:5000/students
 ```
 
 **Get a single student:**
 
 ```bash
-curl http://localhost:8000/students/1
+curl http://localhost:5000/students/1
 ```
 
 **Create a student:**
 
 ```bash
-curl -X POST http://localhost:8000/students \
+curl -X POST http://localhost:5000/students \
   -H "Content-Type: application/json" \
   -d '{"name": "Priya", "branch": "CSE"}'
 ```
@@ -535,13 +543,13 @@ curl -X POST http://localhost:8000/students \
 **Filter by branch:**
 
 ```bash
-curl "http://localhost:8000/students?branch=CSE"
+curl "http://localhost:5000/students?branch=CSE"
 ```
 
 **Delete a student:**
 
 ```bash
-curl -X DELETE http://localhost:8000/students/2
+curl -X DELETE http://localhost:5000/students/2
 ```
 
 #### Step 5: Test with Postman
