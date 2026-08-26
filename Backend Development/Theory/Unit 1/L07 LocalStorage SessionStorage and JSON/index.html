@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage Tutorial — localStorage & sessionStorage</title>
+    <style>
+        :root { --bg: #0f172a; --card: #1e293b; --border: #334155; --accent: #38bdf8; --green: #4ade80; --red: #f87171; --yellow: #fbbf24; --purple: #c084fc; --pink: #f472b6; --text: #e2e8f0; --muted: #94a3b8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .page { max-width: 960px; margin: 0 auto; padding: 30px 20px; }
+
+        /* Navigation */
+        .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 30px; margin-bottom: 40px; position: sticky; top: 10px; z-index: 100; }
+        .toc h3 { color: var(--accent); margin-bottom: 10px; font-size: 0.95em; text-transform: uppercase; letter-spacing: 1px; }
+        .toc a { color: var(--muted); text-decoration: none; display: inline-block; margin: 3px 10px 3px 0; font-size: 0.85em; transition: color 0.2s; }
+        .toc a:hover { color: var(--accent); }
+
+        /* Sections */
+        section { margin-bottom: 50px; }
+        h1 { font-size: 2.2em; color: var(--accent); text-align: center; margin-bottom: 5px; }
+        h2 { font-size: 1.6em; color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 8px; margin-bottom: 20px; }
+        h3 { font-size: 1.15em; color: var(--green); margin: 20px 0 10px; }
+        h4 { font-size: 1em; color: var(--yellow); margin: 15px 0 8px; }
+        .subtitle { text-align: center; color: var(--muted); margin-bottom: 40px; font-size: 1.05em; }
+
+        /* Cards & Boxes */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin: 15px 0; }
+        .note { background: #1a2332; border-left: 4px solid var(--accent); padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 15px 0; font-size: 0.92em; }
+        .warning { border-left-color: var(--yellow); }
+        .danger { border-left-color: var(--red); }
+        .success { border-left-color: var(--green); }
+        .exercise { border-left-color: var(--purple); background: #1a1a2e; }
+        .task-box { background: linear-gradient(135deg, #1e1b4b, #1e293b); border: 2px solid var(--purple); border-radius: 12px; padding: 25px; margin: 20px 0; }
+
+        /* Code */
+        pre { background: #0d1117; border: 1px solid var(--border); border-radius: 8px; padding: 15px; overflow-x: auto; margin: 10px 0; font-size: 0.88em; line-height: 1.5; }
+        code { font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace; }
+        p code, li code { background: #2d3748; padding: 2px 7px; border-radius: 4px; color: var(--green); font-size: 0.9em; }
+        pre code { color: var(--text); }
+
+        /* Buttons */
+        .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+        button { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; transition: all 0.2s; }
+        button:hover { transform: translateY(-1px); filter: brightness(1.15); }
+        .btn-blue { background: #2563eb; color: white; }
+        .btn-green { background: #16a34a; color: white; }
+        .btn-red { background: #dc2626; color: white; }
+        .btn-yellow { background: #ca8a04; color: white; }
+        .btn-purple { background: #9333ea; color: white; }
+        .btn-cyan { background: #0891b2; color: white; }
+
+        /* Inputs */
+        .input-group { margin: 8px 0; }
+        .input-group label { display: block; margin-bottom: 4px; color: var(--muted); font-size: 0.82em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        input[type="text"], textarea { width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: #0f172a; color: var(--text); font-size: 0.9em; font-family: inherit; }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+        textarea { min-height: 60px; resize: vertical; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.88em; }
+        th { color: var(--accent); font-weight: 700; background: #0f172a; }
+        tr:hover td { background: rgba(56,189,248,0.04); }
+
+        /* Output */
+        #output { background: #0d1117; border: 1px solid var(--border); border-radius: 8px; padding: 15px; min-height: 60px; max-height: 250px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 0.82em; white-space: pre-wrap; margin-top: 12px; }
+
+        /* Lists */
+        ol, ul { padding-left: 25px; margin: 10px 0; }
+        li { margin: 5px 0; font-size: 0.93em; }
+
+        /* Comparison */
+        .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 700px) { .compare { grid-template-columns: 1fr; } }
+
+        /* Highlight */
+        .hl { color: var(--yellow); font-weight: 600; }
+
+        /* HR */
+        hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+        /* Checklist */
+        .checklist { list-style: none; padding-left: 0; }
+        .checklist li::before { content: "\2610  "; color: var(--purple); font-size: 1.1em; }
+    </style>
+</head>
+<body>
+<div class="page">
+
+<!-- ============================== HEADER ============================== -->
+<h1>Web Storage API Tutorial</h1>
+<p class="subtitle">A complete hands-on guide to localStorage, sessionStorage, and JSON</p>
+
+<!-- TABLE OF CONTENTS -->
+<nav class="toc">
+    <h3>Contents</h3>
+    <a href="#s1">1. What is Web Storage?</a>
+    <a href="#s2">2. localStorage Basics</a>
+    <a href="#s3">3. sessionStorage Basics</a>
+    <a href="#s4">4. The JSON Problem</a>
+    <a href="#s5">5. JSON.stringify()</a>
+    <a href="#s6">6. JSON.parse()</a>
+    <a href="#s7">7. Hands-On Playground</a>
+    <a href="#s8">8. DevTools Guide</a>
+    <a href="#s9">9. Console Cheat Sheet</a>
+    <a href="#s10">10. Comparison Table</a>
+    <a href="#s11">11. Common Mistakes</a>
+    <a href="#task">12. Final Task — Build a Notes App</a>
+    <a href="#expand">13. Expanding to Backend</a>
+</nav>
+
+<!-- ============================== SECTION 1 ============================== -->
+<section id="s1">
+<h2>1. What is Web Storage?</h2>
+<div class="card">
+    <p>Web Storage is a browser API that lets JavaScript store <strong>key-value pairs</strong> on the client side. There are two types:</p>
+    <div class="compare" style="margin-top:15px;">
+        <div class="note">
+            <h4>localStorage</h4>
+            <ul>
+                <li>Data persists <strong>forever</strong> until you delete it</li>
+                <li>Shared across all tabs (same origin)</li>
+                <li>~5-10 MB storage limit</li>
+            </ul>
+        </div>
+        <div class="note">
+            <h4>sessionStorage</h4>
+            <ul>
+                <li>Data dies when the <strong>tab closes</strong></li>
+                <li>Isolated per tab</li>
+                <li>~5-10 MB storage limit</li>
+            </ul>
+        </div>
+    </div>
+    <div class="note warning" style="margin-top:15px;">
+        <strong>Key Rule:</strong> Both only store <strong>strings</strong>. You must use JSON to store objects.
+    </div>
+</div>
+</section>
+
+<!-- ============================== SECTION 2 ============================== -->
+<section id="s2">
+<h2>2. localStorage — The Basics</h2>
+<div class="card">
+    <h3>The 4 Core Methods</h3>
+    <table>
+        <tr><th>Method</th><th>Purpose</th><th>Returns</th></tr>
+        <tr><td><code>setItem(key, value)</code></td><td>Save a value</td><td><code>undefined</code></td></tr>
+        <tr><td><code>getItem(key)</code></td><td>Read a value</td><td>string or <code>null</code></td></tr>
+        <tr><td><code>removeItem(key)</code></td><td>Delete one entry</td><td><code>undefined</code></td></tr>
+        <tr><td><code>clear()</code></td><td>Delete everything</td><td><code>undefined</code></td></tr>
+    </table>
+    <p style="margin-top:12px;">Plus two more:</p>
+    <table>
+        <tr><td><code>key(index)</code></td><td>Get key name at position</td><td>string</td></tr>
+        <tr><td><code>length</code></td><td>Number of items stored</td><td>number</td></tr>
+    </table>
+
+    <h3>Try It Now</h3>
+    <div class="input-group">
+        <label>Key</label>
+        <input type="text" id="lsKey" placeholder="e.g. username">
+    </div>
+    <div class="input-group">
+        <label>Value</label>
+        <input type="text" id="lsValue" placeholder="e.g. john_doe">
+    </div>
+    <div class="btn-row">
+        <button class="btn-blue" onclick="lsSet()">setItem()</button>
+        <button class="btn-green" onclick="lsGet()">getItem()</button>
+        <button class="btn-red" onclick="lsRemove()">removeItem()</button>
+        <button class="btn-yellow" onclick="lsClear()">clear()</button>
+        <button class="btn-purple" onclick="lsAll()">Show All</button>
+    </div>
+
+    <div class="note exercise">
+        <h4>Exercise 2.1</h4>
+        <ol>
+            <li>Set key = <code>"favColor"</code>, value = <code>"blue"</code></li>
+            <li>Click <strong>getItem()</strong> — what do you see?</li>
+            <li>Open DevTools (F12) → Application → Local Storage → verify it appears</li>
+            <li>Click <strong>clear()</strong> — refresh the page — is it still there? (should be gone)</li>
+        </ol>
+    </div>
+</div>
+</section>
+
+<!-- ============================== SECTION 3 ============================== -->
+<section id="s3">
+<h2>3. sessionStorage — Same API, Different Behavior</h2>
+<div class="card">
+    <p>Identical methods. The only difference: <strong>data disappears when the tab closes</strong>.</p>
+
+    <h3>Try It Now</h3>
+    <div class="input-group">
+        <label>Key</label>
+        <input type="text" id="ssKey" placeholder="e.g. token">
+    </div>
+    <div class="input-group">
+        <label>Value</label>
+        <input type="text" id="ssValue" placeholder="e.g. abc123">
+    </div>
+    <div class="btn-row">
+        <button class="btn-blue" onclick="ssSet()">setItem()</button>
+        <button class="btn-green" onclick="ssGet()">getItem()</button>
+        <button class="btn-red" onclick="ssRemove()">removeItem()</button>
+        <button class="btn-yellow" onclick="ssClear()">clear()</button>
+        <button class="btn-purple" onclick="ssAll()">Show All</button>
+    </div>
+
+    <div class="note exercise">
+        <h4>Exercise 3.1 — The Disappearing Act</h4>
+        <ol>
+            <li>Set key = <code>"tempData"</code>, value = <code>"hello"</code> in sessionStorage above</li>
+            <li>Click <strong>getItem()</strong> — verify it reads <code>"hello"</code></li>
+            <li><strong>Close this tab</strong> (not just navigate away)</li>
+            <li>Open the file again in a new tab</li>
+            <li>Try to get <code>"tempData"</code> — what happens? <span class="hl">(It's null!)</span></li>
+        </ol>
+    </div>
+
+    <div class="note warning">
+        <strong>Do the same exercise with localStorage</strong> — the value will still be there after reopening the tab!
+    </div>
+</div>
+</section>
+
+<!-- ============================== SECTION 4 ============================== -->
+<section id="s4">
+<h2>4. The JSON Problem — Why Can't We Store Objects?</h2>
+<div class="card">
+    <p>Storage only accepts strings. Watch what happens when you try to store an object directly:</p>
+
+    <pre><code>// Run this in console (F12)
+const user = { name: "Alice", age: 25 };
+localStorage.setItem("user", user);
+
+console.log(localStorage.getItem("user"));
+// Output: "[object Object]"  — USELESS!
+//
+// The object was converted to its default string representation.
+// We lost all our data!</code></pre>
+
+    <h4>The fix: Convert to JSON string first</h4>
+    <pre><code>localStorage.setItem("user", JSON.stringify(user));
+
+console.log(localStorage.getItem("user"));
+// Output: '{"name":"Alice","age":25}'  — Full data preserved!</code></pre>
+</div>
+</section>
+
+<!-- ============================== SECTION 5 ============================== -->
+<section id="s5">
+<h2>5. JSON.stringify() — Object to String</h2>
+<div class="card">
+    <h3>What It Does</h3>
+    <p>Takes a JavaScript value (object, array, number, etc.) and converts it to a <strong>JSON string</strong>.</p>
+
+    <pre><code>// Simple object
+JSON.stringify({ name: "Bob", age: 30 })
+// → '{"name":"Bob","age":30}'
+
+// With array
+JSON.stringify({ name: "Bob", skills: ["JS", "Python"] })
+// → '{"name":"Bob","skills":["JS","Python"]}'
+
+// Pretty-printed (with indentation)
+JSON.stringify({ name: "Bob" }, null, 2)
+// → '{
+//      "name": "Bob"
+//    }'
+
+// Just a value
+JSON.stringify("hello")  // → '"hello"'
+JSON.stringify(42)       // → '42'
+JSON.stringify(true)     // → 'true'</code></pre>
+
+    <div class="note exercise">
+        <h4>Exercise 5.1 — Practice in Console</h4>
+        <p>Open DevTools console and run these one by one:</p>
+        <ol>
+            <li><code>typeof JSON.stringify({a: 1})</code> — what type is it?</li>
+            <li><code>JSON.stringify([1, 2, 3])</code> — what does an array become?</li>
+            <li><code>JSON.stringify(null)</code> — what happens?</li>
+            <li><code>JSON.stringify(undefined)</code> — what do you get?</li>
+        </ol>
+    </div>
+</div>
+</section>
+
+<!-- ============================== SECTION 6 ============================== -->
+<section id="s6">
+<h2>6. JSON.parse() — String to Object</h2>
+<div class="card">
+    <h3>What It Does</h3>
+    <p>Takes a JSON string and converts it back to a <strong>JavaScript value</strong>.</p>
+
+    <pre><code>const jsonString = '{"name":"Bob","age":30,"skills":["JS","Python"]}';
+
+const obj = JSON.parse(jsonString);
+console.log(obj.name);    // "Bob"
+console.log(obj.age);     // 30
+console.log(obj.skills);  // ["JS", "Python"]</code></pre>
+
+    <h3>The Full Round-Trip</h3>
+    <pre><code>const user = { name: "Alice", hobbies: ["reading", "coding"] };
+
+// SAVE to storage
+localStorage.setItem("user", JSON.stringify(user));
+
+// READ from storage
+const saved = JSON.parse(localStorage.getItem("user"));
+
+console.log(saved.hobbies[0]);  // "reading"
+console.log(typeof saved);      // "object" — it's back!</code></pre>
+
+    <div class="note danger">
+        <strong>Warning:</strong> If the stored string is not valid JSON, <code>JSON.parse()</code> throws an error!
+        Always wrap it in <code>try...catch</code>.
+    </div>
+
+    <pre><code>try {
+    const data = JSON.parse("not valid json");
+} catch (e) {
+    console.error("Parse failed:", e.message);
+    // "Parse failed: Unexpected token n in JSON at position 0"
+}</code></pre>
+
+    <div class="note exercise">
+        <h4>Exercise 6.1 — The Complete Flow</h4>
+        <ol>
+            <li>Run in console: <code>localStorage.setItem("todo", JSON.stringify({text: "Learn JSON", done: false}))</code></li>
+            <li>Run: <code>const item = JSON.parse(localStorage.getItem("todo"))</code></li>
+            <li>Run: <code>item.done = true</code> — modify the object</li>
+            <li>Run: <code>localStorage.setItem("todo", JSON.stringify(item))</code> — save back</li>
+            <li>Run: <code>JSON.parse(localStorage.getItem("todo"))</code> — verify done is now <code>true</code></li>
+        </ol>
+    </div>
+</div>
+</section>
+
+<!-- ============================== SECTION 7 ============================== -->
+<section id="s7">
+<h2>7. Hands-On Playground — JSON Objects</h2>
+<div class="card">
+    <p>Store and retrieve complex objects. Try entering different JSON values.</p>
+
+    <div class="input-group">
+        <label>Key</label>
+        <input type="text" id="jsonKey" placeholder="e.g. user">
+    </div>
+    <div class="input-group">
+        <label>Value (JSON format)</label>
+        <textarea id="jsonValue" placeholder='{"name":"John","age":25,"hobbies":["reading","coding"]}'></textarea>
+    </div>
+    <div class="btn-row">
+        <button class="btn-blue" onclick="jsonStoreLS()">stringify → localStorage</button>
+        <button class="btn-green" onclick="jsonGetLS()">getItem → parse (localStorage)</button>
+        <button class="btn-yellow" onclick="jsonStoreSS()">stringify → sessionStorage</button>
+        <button class="btn-cyan" onclick="jsonGetSS()">getItem → parse (session)</button>
+    </div>
+
+    <div id="jsonDisplay" style="background:#0d1117;border:1px solid var(--border);border-radius:8px;padding:15px;margin-top:12px;font-family:monospace;font-size:0.85em;min-height:60px;max-height:250px;overflow-y:auto;">Output appears here...</div>
+
+    <div class="note exercise">
+        <h4>Exercise 7.1 — Try These Values</h4>
+        <ol>
+            <li>A simple object: <code>{"name":"Alice","age":22}</code></li>
+            <li>Nested object: <code>{"user":{"name":"Bob","address":{"city":"NYC"}}}</code></li>
+            <li>Array of objects: <code>[{"id":1,"text":"Task 1"},{"id":2,"text":"Task 2"}]</code></li>
+            <li>After storing, use <code>JSON.parse(localStorage.getItem("key"))</code> in console to verify</li>
+        </ol>
+    </div>
+
+    <div class="note exercise">
+        <h4>Exercise 7.2 — Build the Helper Pattern</h4>
+        <p>Write these two helper functions in the console and use them for all future exercises:</p>
+<pre><code>function save(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function load(key) {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : null;
+}
+
+// Now you can do:
+save("settings", { theme: "dark", fontSize: 14 });
+load("settings");  // → { theme: "dark", fontSize: 14 }</code></pre>
+    </div>
+</div>
+</section>
+
+<!-- ============================== SECTION 8 ============================== -->
+<section id="s8">
+<h2>8. How to Use Developer Tools</h2>
+<div class="card">
+    <h3>Step-by-Step (Chrome / Edge)</h3>
+    <ol>
+        <li>Press <code>F12</code> or <code>Ctrl+Shift+I</code> to open DevTools</li>
+        <li>Click the <strong>Application</strong> tab (you may need to click the <code>&gt;&gt;</code> overflow button)</li>
+        <li>In the left sidebar, expand <strong>Storage</strong></li>
+        <li>Click <strong>Local Storage</strong> → click your origin (e.g. <code>file://</code> or <code>localhost</code>)</li>
+        <li>You see a <strong>table</strong> with Key and Value columns — all your stored data</li>
+        <li>Double-click any value to <strong>edit it live</strong></li>
+        <li>Right-click a row → <strong>Delete</strong> to remove it</li>
+        <li>Click the <strong>clear icon</strong> (🚫) to wipe everything</li>
+    </ol>
+    <p style="margin-top:12px;color:var(--muted);font-size:0.9em;">Repeat the same steps for <strong>Session Storage</strong> in the sidebar.</p>
+
+    <h3>Firefox</h3>
+    <p>Press <code>F12</code> → <strong>Storage</strong> tab → same process.</p>
+
+    <h3>Console Tab Verification</h3>
+<pre><code>// Read directly
+localStorage.getItem("favColor")
+
+// See all keys
+console.table(localStorage)
+
+// Count items
+console.log("Items:", localStorage.length)
+
+// Check if key exists
+localStorage.hasOwnProperty("favColor")
+// → true or false</code></pre>
+
+    <div class="note exercise">
+        <h4>Exercise 8.1</h4>
+        <ol>
+            <li>Store 3 items using the localStorage playground above</li>
+            <li>Open DevTools → Application → Local Storage</li>
+            <li>Verify all 3 appear in the table</li>
+            <li>Edit one value directly in the table — does <code>getItem()</code> reflect the change?</li>
+            <li>Delete one via right-click — verify it's gone</li>
+        </ol>
+    </div>
+</div>
+</section>
+
+<!-- ============================== SECTION 9 ============================== -->
+<section id="s9">
+<h2>9. Console Cheat Sheet</h2>
+<div class="card">
+    <pre><code>// ===================== LOCALSTORAGE =====================
+
+// Save
+localStorage.setItem("key", "value");
+
+// Read
+localStorage.getItem("key");       // "value" or null
+
+// Delete one
+localStorage.removeItem("key");
+
+// Delete all
+localStorage.clear();
+
+// Count items
+localStorage.length;
+
+// Get key name by index
+localStorage.key(0);               // name of first key
+
+// Loop through all
+for (let i = 0; i < localStorage.length; i++) {
+    console.log(localStorage.key(i), localStorage.getItem(localStorage.key(i)));
+}
+
+// See everything nicely
+console.table(localStorage);
+
+// ===================== SESSIONSTORAGE =====================
+// Same API, just replace localStorage with sessionStorage
+
+// ===================== JSON =====================
+const obj = { name: "Alice", age: 25 };
+
+// Object → String (for saving)
+const str = JSON.stringify(obj);
+// → '{"name":"Alice","age":25}'
+
+// String → Object (for reading)
+const back = JSON.parse(str);
+// → { name: "Alice", age: 25 }
+
+// Full round-trip with storage
+localStorage.setItem("data", JSON.stringify(obj));
+const loaded = JSON.parse(localStorage.getItem("data"));
+console.log(loaded.name);  // "Alice"</code></pre>
+
+    <div class="note exercise">
+        <h4>Exercise 9.1 — Test Your Knowledge</h4>
+        <p>Answer these <strong>before</strong> running in console:</p>
+        <ol>
+            <li>What does <code>localStorage.getItem("nonexistent")</code> return? → <span class="hl">null</span></li>
+            <li>What does <code>typeof localStorage.getItem("key")</code> always return? → <span class="hl">"string"</span></li>
+            <li>Can you store a number directly? What type will it be when read back? → <span class="hl">Always string</span></li>
+            <li>What's the output: <code>localStorage.setItem("a", "1"); localStorage.setItem("b", "2"); localStorage.length</code>? → <span class="hl">2</span></li>
+        </ol>
+    </div>
+</div>
+</section>
+
+<!-- ============================== SECTION 10 ============================== -->
+<section id="s10">
+<h2>10. Comparison Table</h2>
+<div class="card">
+    <table>
+        <tr><th>Feature</th><th>localStorage</th><th>sessionStorage</th><th>Cookies</th></tr>
+        <tr><td>Persistence</td><td>Forever (until cleared)</td><td>Until tab closes</td><td>Set expiry</td></tr>
+        <tr><td>Shared across tabs</td><td>Yes (same origin)</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Size limit</td><td>~5-10 MB</td><td>~5-10 MB</td><td>~4 KB</td></tr>
+        <tr><td>Stored as</td><td>Strings only</td><td>Strings only</td><td>Strings only</td></tr>
+        <tr><td>Sent to server</td><td>No</td><td>No</td><td>Yes (every request)</td></tr>
+        <tr><td>JavaScript API</td><td><code>setItem, getItem, removeItem, clear, key, length</code></td><td colspan="2">Same</td></tr>
+    </table>
+
+    <div class="note" style="margin-top:15px;">
+        <strong>When to use which?</strong>
+        <ul style="margin-top:8px;">
+            <li><strong>localStorage</strong> — User preferences, cached data, offline support</li>
+            <li><strong>sessionStorage</strong> — Form data protection, single-session tokens</li>
+            <li><strong>Cookies</strong> — Auth tokens that need server-side access</li>
+        </ul>
+    </div>
+</div>
+</section>
+
+<!-- ============================== SECTION 11 ============================== -->
+<section id="s11">
+<h2>11. Common Mistakes</h2>
+<div class="card">
+
+    <div class="note danger">
+        <h4>Mistake 1: Forgetting JSON.stringify</h4>
+<pre><code>// WRONG
+localStorage.setItem("user", {name: "Bob"});
+// → "[object Object]" — lost data!
+
+// RIGHT
+localStorage.setItem("user", JSON.stringify({name: "Bob"}));</code></pre>
+    </div>
+
+    <div class="note danger">
+        <h4>Mistake 2: Forgetting JSON.parse</h4>
+<pre><code>// WRONG
+const user = localStorage.getItem("user");
+console.log(user.name);  // undefined — it's a string!
+
+// RIGHT
+const user = JSON.parse(localStorage.getItem("user"));
+console.log(user.name);  // "Bob"</code></pre>
+    </div>
+
+    <div class="note danger">
+        <h4>Mistake 3: Not handling null / missing keys</h4>
+<pre><code>// This crashes if "user" doesn't exist!
+const user = JSON.parse(localStorage.getItem("user"));
+// → null → JSON.parse(null) = null → user.name → TypeError!
+
+// SAFE approach
+const raw = localStorage.getItem("user");
+const user = raw ? JSON.parse(raw) : null;</code></pre>
+    </div>
+
+    <div class="note danger">
+        <h4>Mistake 4: Assuming data types survive round-trip</h4>
+<pre><code>localStorage.setItem("num", 42);
+typeof localStorage.getItem("num");  // "string" not "number"!</code></pre>
+    </div>
+</div>
+</section>
+
+<hr>
+
+<!-- ============================== FINAL TASK ============================== -->
+<section id="task">
+<h2>12. Final Task — Build a Notes App</h2>
+
+<div class="task-box">
+    <h3 style="color:var(--purple);">Your Mission</h3>
+    <p>Build a fully functional <strong>Notes / Todo app</strong> using <strong>only frontend HTML/CSS/JS</strong> with localStorage for persistence.</p>
+</div>
+
+<h3>Requirements</h3>
+<div class="card">
+    <h4>Must Have</h4>
+    <ul class="checklist">
+        <li>Add a new note with text</li>
+        <li>Display all saved notes on page load</li>
+        <li>Delete individual notes</li>
+        <li>Edit existing notes</li>
+        <li>Data persists after page refresh (localStorage)</li>
+        <li>Each note has: id, text, createdAt, updatedAt</li>
+    </ul>
+
+    <h4>Nice to Have (stretch goals)</h4>
+    <ul class="checklist">
+        <li>Mark notes as complete / incomplete</li>
+        <li>Search/filter notes</li>
+        <li>Note categories or tags</li>
+        <li>Import / Export notes as JSON file</li>
+        <li>Dark/Light mode toggle (saved preference)</li>
+        <li>Drag to reorder notes</li>
+    </ul>
+</div>
+
+<h3>Hints & Starter Pattern</h3>
+<div class="card">
+    <h4>Step 1 — Data Structure</h4>
+    <pre><code>// Each note
+const note = {
+    id: Date.now(),          // unique ID
+    text: "My first note",
+    completed: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: null
+};
+
+// Array of notes (the "database")
+// Saved as: localStorage.setItem("notes", JSON.stringify(notes))</code></pre>
+
+    <h4>Step 2 — Helper Functions</h4>
+    <pre><code>function getNotes() {
+    const raw = localStorage.getItem("notes");
+    return raw ? JSON.parse(raw) : [];
+}
+
+function saveNotes(notes) {
+    localStorage.setItem("notes", JSON.stringify(notes));
+}</code></pre>
+
+    <h4>Step 3 — CRUD Operations</h4>
+    <pre><code>// CREATE
+function addNote(text) {
+    const notes = getNotes();
+    notes.push({
+        id: Date.now(),
+        text: text,
+        completed: false,
+        createdAt: new Date().toISOString(),
+        updatedAt: null
+    });
+    saveNotes(notes);
+    renderNotes();
+}
+
+// READ (already done via getNotes)
+
+// UPDATE
+function updateNote(id, newText) {
+    const notes = getNotes();
+    const note = notes.find(n => n.id === id);
+    if (note) {
+        note.text = newText;
+        note.updatedAt = new Date().toISOString();
+        saveNotes(notes);
+        renderNotes();
+    }
+}
+
+// DELETE
+function deleteNote(id) {
+    const notes = getNotes().filter(n => n.id !== id);
+    saveNotes(notes);
+    renderNotes();
+}</code></pre>
+
+    <h4>Step 4 — Render to DOM</h4>
+    <pre><code>function renderNotes() {
+    const container = document.getElementById("notesList");
+    const notes = getNotes();
+    container.innerHTML = notes.map(note => `
+        &lt;div class="note-card"&gt;
+            &lt;p&gt;${note.text}&lt;/p&gt;
+            &lt;button onclick="deleteNote(${note.id})"&gt;Delete&lt;/button&gt;
+            &lt;button onclick="editNote(${note.id})"&gt;Edit&lt;/button&gt;
+        &lt;/div&gt;
+    `).join("");
+}</code></pre>
+
+    <h4>Step 5 — HTML Skeleton</h4>
+    <pre><code>&lt;input type="text" id="noteInput" placeholder="Type a note..."&gt;
+&lt;button onclick="addNote(document.getElementById('noteInput').value)"&gt;
+    Add Note
+&lt;/button&gt;
+&lt;div id="notesList"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+    // Put all JS here
+    window.onload = renderNotes;
+&lt;/script&gt;</code></pre>
+</div>
+
+<h3>Testing Checklist</h3>
+<div class="card">
+    <ul>
+        <li>Add a note → refresh → still there?</li>
+        <li>Delete a note → refresh → still gone?</li>
+        <li>Edit a note → refresh → updated text preserved?</li>
+        <li>Open in new tab → same notes? (localStorage = shared)</li>
+        <li>Open DevTools → Application → Local Storage → verify "notes" key</li>
+        <li>Try adding empty text → should it be allowed?</li>
+        <li>Check: <code>console.table(JSON.parse(localStorage.getItem("notes")))</code></li>
+    </ul>
+</div>
+</section>
+
+<hr>
+
+<!-- ============================== BACKEND EXPANSION ============================== -->
+<section id="expand">
+<h2>13. Expanding to a Backend</h2>
+
+<div class="card">
+    <h3>Why Move to Backend?</h3>
+    <table>
+        <tr><th>Limitation of Frontend-Only</th><th>Backend Solution</th></tr>
+        <tr><td>Data lost if user clears browser</td><td>Stored in database permanently</td></tr>
+        <tr><td>Not shared between devices</td><td>Centralized server, accessible anywhere</td></tr>
+        <tr><td>No user authentication</td><td>Login system with sessions/tokens</td></tr>
+        <tr><td>No data validation on server</td><td>Server validates & sanitizes all input</td></tr>
+        <tr><td>Anyone can edit localStorage</td><td>Server-side permissions & encryption</td></tr>
+    </table>
+
+    <h3>Architecture Overview</h3>
+    <pre><code>┌──────────────┐       HTTP/REST        ┌──────────────┐       ┌──────────────┐
+│   Frontend   │  ←→  fetch/axios  ←→   │   Backend    │ ←→    │   Database   │
+│  (HTML/JS)   │      JSON request      │  (Node.js,   │       │  (MongoDB,   │
+│              │      JSON response      │   Python,    │       │   MySQL,     │
+│ localStorage │                        │   Java, etc) │       │   PostgreSQL)│
+└──────────────┘                        └──────────────┘       └──────────────┘</code></pre>
+
+    <h3>What Changes in the Code</h3>
+    <h4>Before (Frontend Only)</h4>
+<pre><code>// Direct localStorage access
+function getNotes() {
+    return JSON.parse(localStorage.getItem("notes")) || [];
+}
+
+function saveNotes(notes) {
+    localStorage.setItem("notes", JSON.stringify(notes));
+}</code></pre>
+
+    <h4>After (With Backend API)</h4>
+<pre><code>// Backend API calls
+async function getNotes() {
+    const res = await fetch("/api/notes", {
+        headers: { "Authorization": "Bearer " + token }
+    });
+    return await res.json();
+}
+
+async function addNote(text) {
+    const res = await fetch("/api/notes", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({ text })
+    });
+    return await res.json();
+}
+
+async function deleteNote(id) {
+    await fetch(`/api/notes/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": "Bearer " + token }
+    });
+}</code></pre>
+
+    <h3>Backend Tech Stack Options</h3>
+    <table>
+        <tr><th>Layer</th><th>Options</th><th>Notes</th></tr>
+        <tr><td>Server</td><td>Node.js + Express, Python + Flask/FastAPI, Java + Spring Boot</td><td>Handle HTTP requests</td></tr>
+        <tr><td>Database</td><td>MongoDB, PostgreSQL, MySQL, SQLite</td><td>Persistent data storage</td></tr>
+        <tr><td>Auth</td><td>JWT tokens, session cookies, OAuth</td><td>Verify user identity</td></tr>
+        <tr><td>Validation</td><td>Joi, Zod, express-validator</td><td>Sanitize inputs server-side</td></tr>
+    </table>
+
+    <h3>Storage Strategy Pattern</h3>
+    <p>The best approach: use <strong>localStorage as cache</strong>, backend as source of truth.</p>
+<pre><code>async function getNotes() {
+    // 1. Try cache first (fast, offline)
+    const cached = localStorage.getItem("notes");
+    if (cached) return JSON.parse(cached);
+
+    // 2. Fetch from server
+    const res = await fetch("/api/notes");
+    const notes = await res.json();
+
+    // 3. Cache for next time
+    localStorage.setItem("notes", JSON.stringify(notes));
+    return notes;
+}
+
+async function addNote(text) {
+    // 1. Save to server first
+    const res = await fetch("/api/notes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text })
+    });
+    const note = await res.json();
+
+    // 2. Update local cache
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
+    notes.push(note);
+    localStorage.setItem("notes", JSON.stringify(notes));
+
+    return note;
+}</code></pre>
+
+    <div class="note success" style="margin-top:15px;">
+        <h4>Key Takeaway</h4>
+        <p><strong>localStorage is not a replacement for a database.</strong> It's a tool for:</p>
+        <ul>
+            <li>Caching server responses</li>
+            <li>Storing user preferences</li>
+            <li>Offline functionality</li>
+            <li>Temporary data during sessions</li>
+        </ul>
+        <p style="margin-top:8px;">For real apps, always use a backend with a proper database. Use localStorage as a <strong>complement</strong>, not a replacement.</p>
+    </div>
+</div>
+</section>
+
+<!-- ============================== OUTPUT ============================== -->
+<div class="card" style="margin-top:40px;">
+    <h2 style="border:none;margin-bottom:10px;">Output Console</h2>
+    <div id="output">Ready. Click buttons above or use DevTools console.</div>
+</div>
+
+</div><!-- end .page -->
+
+<!-- ============================== SCRIPTS ============================== -->
+<script>
+function log(msg, color = '#e2e8f0') {
+    const o = document.getElementById('output');
+    const t = new Date().toLocaleTimeString();
+    o.innerHTML += `<span style="color:#64748b">[${t}]</span> <span style="color:${color}">${msg}</span>\n`;
+    o.scrollTop = o.scrollHeight;
+}
+
+// ============ localStorage ============
+function lsSet() {
+    const k = document.getElementById('lsKey').value.trim();
+    const v = document.getElementById('lsValue').value;
+    if (!k) { log('Enter a key!', '#f87171'); return; }
+    localStorage.setItem(k, v);
+    log(`localStorage.setItem("${k}", "${v}")`, '#38bdf8');
+}
+function lsGet() {
+    const k = document.getElementById('lsKey').value.trim();
+    if (!k) { log('Enter a key!', '#f87171'); return; }
+    const v = localStorage.getItem(k);
+    log(`localStorage.getItem("${k}") → ${v === null ? 'null' : '"' + v + '"'}`, v === null ? '#fbbf24' : '#4ade80');
+}
+function lsRemove() {
+    const k = document.getElementById('lsKey').value.trim();
+    if (!k) { log('Enter a key!', '#f87171'); return; }
+    localStorage.removeItem(k);
+    log(`localStorage.removeItem("${k}")`, '#f87171');
+}
+function lsClear() {
+    localStorage.clear();
+    log('localStorage.clear() done', '#f87171');
+}
+function lsAll() {
+    log('--- localStorage (' + localStorage.length + ' items) ---', '#c084fc');
+    for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        log(`  "${k}" → "${localStorage.getItem(k)}"`, '#e2e8f0');
+    }
+    if (localStorage.length === 0) log('  (empty)', '#64748b');
+}
+
+// ============ sessionStorage ============
+function ssSet() {
+    const k = document.getElementById('ssKey').value.trim();
+    const v = document.getElementById('ssValue').value;
+    if (!k) { log('Enter a key!', '#f87171'); return; }
+    sessionStorage.setItem(k, v);
+    log(`sessionStorage.setItem("${k}", "${v}")`, '#38bdf8');
+}
+function ssGet() {
+    const k = document.getElementById('ssKey').value.trim();
+    if (!k) { log('Enter a key!', '#f87171'); return; }
+    const v = sessionStorage.getItem(k);
+    log(`sessionStorage.getItem("${k}") → ${v === null ? 'null' : '"' + v + '"'}`, v === null ? '#fbbf24' : '#4ade80');
+}
+function ssRemove() {
+    const k = document.getElementById('ssKey').value.trim();
+    if (!k) { log('Enter a key!', '#f87171'); return; }
+    sessionStorage.removeItem(k);
+    log(`sessionStorage.removeItem("${k}")`, '#f87171');
+}
+function ssClear() {
+    sessionStorage.clear();
+    log('sessionStorage.clear() done', '#f87171');
+}
+function ssAll() {
+    log('--- sessionStorage (' + sessionStorage.length + ' items) ---', '#c084fc');
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const k = sessionStorage.key(i);
+        log(`  "${k}" → "${sessionStorage.getItem(k)}"`, '#e2e8f0');
+    }
+    if (sessionStorage.length === 0) log('  (empty)', '#64748b');
+}
+
+// ============ JSON ============
+function jsonStoreLS() {
+    const k = document.getElementById('jsonKey').value.trim();
+    const raw = document.getElementById('jsonValue').value.trim();
+    if (!k || !raw) { log('Enter key and JSON value!', '#f87171'); return; }
+    try {
+        const obj = JSON.parse(raw);
+        const str = JSON.stringify(obj);
+        localStorage.setItem(k, str);
+        log(`JSON.stringify → localStorage.setItem("${k}")`, '#38bdf8');
+        log(`  type of stored value: "${typeof str}"`, '#64748b');
+        log(`  value: ${str}`, '#e2e8f0');
+    } catch (e) {
+        log(`JSON.parse error: ${e.message}`, '#f87171');
+    }
+}
+function jsonGetLS() {
+    const k = document.getElementById('jsonKey').value.trim();
+    if (!k) { log('Enter a key!', '#f87171'); return; }
+    const raw = localStorage.getItem(k);
+    if (raw === null) { log(`Key "${k}" not found in localStorage`, '#fbbf24'); return; }
+    log(`Raw string: "${raw}" (type: ${typeof raw})`, '#38bdf8');
+    try {
+        const obj = JSON.parse(raw);
+        log(`Parsed object →`, '#4ade80');
+        document.getElementById('jsonDisplay').innerHTML =
+            `<span style="color:#fbbf24">Raw string:</span> <span style="color:#e2e8f0">${raw}</span>\n\n` +
+            `<span style="color:#4ade80">Parsed object:</span>\n<span style="color:#e2e8f0">${JSON.stringify(obj, null, 2)}</span>`;
+    } catch (e) {
+        log(`JSON.parse failed: ${e.message}`, '#f87171');
+    }
+}
+function jsonStoreSS() {
+    const k = document.getElementById('jsonKey').value.trim();
+    const raw = document.getElementById('jsonValue').value.trim();
+    if (!k || !raw) { log('Enter key and JSON value!', '#f87171'); return; }
+    try {
+        const obj = JSON.parse(raw);
+        sessionStorage.setItem(k, JSON.stringify(obj));
+        log(`JSON.stringify → sessionStorage.setItem("${k}")`, '#c084fc');
+    } catch (e) {
+        log(`JSON.parse error: ${e.message}`, '#f87171');
+    }
+}
+function jsonGetSS() {
+    const k = document.getElementById('jsonKey').value.trim();
+    if (!k) { log('Enter a key!', '#f87171'); return; }
+    const raw = sessionStorage.getItem(k);
+    if (raw === null) { log(`Key "${k}" not found in sessionStorage`, '#fbbf24'); return; }
+    try {
+        const obj = JSON.parse(raw);
+        log(`Session: parse("${k}") → ${JSON.stringify(obj)}`, '#c084fc');
+        document.getElementById('jsonDisplay').innerHTML =
+            `<span style="color:#fbbf24">Raw:</span> <span style="color:#e2e8f0">${raw}</span>\n\n` +
+            `<span style="color:#c084fc">Parsed:</span>\n<span style="color:#e2e8f0">${JSON.stringify(obj, null, 2)}</span>`;
+    } catch (e) {
+        log(`JSON.parse failed: ${e.message}`, '#f87171');
+    }
+}
+</script>
+</body>
+</html>
