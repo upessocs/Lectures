@@ -1,0 +1,13 @@
+./
+./L13 Introduction to Databases.md
+./L14 Database Schema Design.md
+./L15 Data Modeling.md
+./L16 CRUD Operations.md
+./L17 Query Optimization.md
+./L18 Designing RESTful APIs.md
+./L19 Implementing RESTful APIs.md
+./L20 Authentication Mechanisms.md
+./L21 Authorization Mechanisms.md
+./L22 Handling API Requests and Responses.md
+./L23 API Versioning and Documentation.md
+./L24 Assignment-I Discussion and Solution Review.md

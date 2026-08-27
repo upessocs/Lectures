@@ -11,10 +11,28 @@
         .page { max-width: 960px; margin: 0 auto; padding: 30px 20px; }
 
         /* Navigation */
-        .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 30px; margin-bottom: 40px; position: sticky; top: 10px; z-index: 100; }
-        .toc h3 { color: var(--accent); margin-bottom: 10px; font-size: 0.95em; text-transform: uppercase; letter-spacing: 1px; }
-        .toc a { color: var(--muted); text-decoration: none; display: inline-block; margin: 3px 10px 3px 0; font-size: 0.85em; transition: color 0.2s; }
+        .toc { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; margin-bottom: 30px; }
+        .toc-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+        .toc h3 { color: var(--accent); font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+        .toc-toggle { color: var(--muted); font-size: 1.1em; transition: transform 0.2s; }
+        .toc.collapsed .toc-toggle { transform: rotate(-90deg); }
+        .toc-links { display: flex; flex-wrap: wrap; gap: 2px 12px; margin-top: 10px; max-height: 200px; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease; }
+        .toc.collapsed .toc-links { max-height: 0; opacity: 0; margin-top: 0; pointer-events: none; }
+        .toc a { color: var(--muted); text-decoration: none; font-size: 0.78em; padding: 2px 0; transition: color 0.2s; }
         .toc a:hover { color: var(--accent); }
+
+        /* Toast Notification */
+        .toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+        .toast { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 18px; min-width: 260px; max-width: 380px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); animation: toastIn 0.3s ease, toastOut 0.3s ease 2.5s forwards; pointer-events: auto; }
+        .toast-icon { font-size: 1em; margin-right: 8px; }
+        .toast-title { font-weight: 700; font-size: 0.82em; margin-bottom: 4px; }
+        .toast-msg { font-size: 0.78em; color: var(--muted); font-family: 'Cascadia Code', 'Fira Code', monospace; word-break: break-all; }
+        .toast-success { border-left: 4px solid var(--green); }
+        .toast-error { border-left: 4px solid var(--red); }
+        .toast-info { border-left: 4px solid var(--accent); }
+        .toast-warn { border-left: 4px solid var(--yellow); }
+        @keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes toastOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(40px); } }
 
         /* Sections */
         section { margin-bottom: 50px; }
@@ -93,21 +111,26 @@
 <p class="subtitle">A complete hands-on guide to localStorage, sessionStorage, and JSON</p>
 
 <!-- TABLE OF CONTENTS -->
-<nav class="toc">
-    <h3>Contents</h3>
-    <a href="#s1">1. What is Web Storage?</a>
-    <a href="#s2">2. localStorage Basics</a>
-    <a href="#s3">3. sessionStorage Basics</a>
-    <a href="#s4">4. The JSON Problem</a>
-    <a href="#s5">5. JSON.stringify()</a>
-    <a href="#s6">6. JSON.parse()</a>
-    <a href="#s7">7. Hands-On Playground</a>
-    <a href="#s8">8. DevTools Guide</a>
-    <a href="#s9">9. Console Cheat Sheet</a>
-    <a href="#s10">10. Comparison Table</a>
-    <a href="#s11">11. Common Mistakes</a>
-    <a href="#task">12. Final Task — Build a Notes App</a>
-    <a href="#expand">13. Expanding to Backend</a>
+<nav class="toc" id="tocNav">
+    <div class="toc-header" onclick="document.getElementById('tocNav').classList.toggle('collapsed')">
+        <h3>Contents</h3>
+        <span class="toc-toggle">&#9660;</span>
+    </div>
+    <div class="toc-links">
+        <a href="#s1">1. What is Web Storage?</a>
+        <a href="#s2">2. localStorage Basics</a>
+        <a href="#s3">3. sessionStorage Basics</a>
+        <a href="#s4">4. The JSON Problem</a>
+        <a href="#s5">5. JSON.stringify()</a>
+        <a href="#s6">6. JSON.parse()</a>
+        <a href="#s7">7. Hands-On Playground</a>
+        <a href="#s8">8. DevTools Guide</a>
+        <a href="#s9">9. Console Cheat Sheet</a>
+        <a href="#s10">10. Comparison Table</a>
+        <a href="#s11">11. Common Mistakes</a>
+        <a href="#task">12. Final Task</a>
+        <a href="#expand">13. Backend Expansion</a>
+    </div>
 </nav>
 
 <!-- ============================== SECTION 1 ============================== -->
@@ -836,6 +859,9 @@ async function addNote(text) {
 
 </div><!-- end .page -->
 
+<!-- ============================== TOAST CONTAINER ============================== -->
+<div class="toast-container" id="toastContainer"></div>
+
 <!-- ============================== SCRIPTS ============================== -->
 <script>
 function log(msg, color = '#e2e8f0') {
@@ -845,77 +871,127 @@ function log(msg, color = '#e2e8f0') {
     o.scrollTop = o.scrollHeight;
 }
 
+function showToast(title, msg, type = 'info') {
+    const c = document.getElementById('toastContainer');
+    const icons = { success: '\u2705', error: '\u274C', info: '\u2139\uFE0F', warn: '\u26A0\uFE0F' };
+    const el = document.createElement('div');
+    el.className = `toast toast-${type}`;
+    el.innerHTML = `<div class="toast-title"><span class="toast-icon">${icons[type] || icons.info}</span>${title}</div><div class="toast-msg">${msg}</div>`;
+    c.appendChild(el);
+    setTimeout(() => el.remove(), 3000);
+}
+
 // ============ localStorage ============
 function lsSet() {
     const k = document.getElementById('lsKey').value.trim();
     const v = document.getElementById('lsValue').value;
-    if (!k) { log('Enter a key!', '#f87171'); return; }
+    if (!k) { showToast('Error', 'Enter a key!', 'error'); return; }
     localStorage.setItem(k, v);
     log(`localStorage.setItem("${k}", "${v}")`, '#38bdf8');
+    showToast('setItem()', `Key: "${k}"\nValue: "${v}"`, 'success');
 }
 function lsGet() {
     const k = document.getElementById('lsKey').value.trim();
-    if (!k) { log('Enter a key!', '#f87171'); return; }
+    if (!k) { showToast('Error', 'Enter a key!', 'error'); return; }
     const v = localStorage.getItem(k);
     log(`localStorage.getItem("${k}") → ${v === null ? 'null' : '"' + v + '"'}`, v === null ? '#fbbf24' : '#4ade80');
+    if (v === null) {
+        alert(`localStorage.getItem("${k}")\n\nResult: null`);
+        showToast('getItem()', `Key "${k}" not found`, 'warn');
+    } else {
+        alert(`localStorage.getItem("${k}")\n\nResult: "${v}"`);
+        showToast('getItem()', `Key: "${k}"\nValue: "${v}"`, 'success');
+    }
 }
 function lsRemove() {
     const k = document.getElementById('lsKey').value.trim();
-    if (!k) { log('Enter a key!', '#f87171'); return; }
+    if (!k) { showToast('Error', 'Enter a key!', 'error'); return; }
     localStorage.removeItem(k);
     log(`localStorage.removeItem("${k}")`, '#f87171');
+    showToast('removeItem()', `Removed key: "${k}"`, 'info');
 }
 function lsClear() {
     localStorage.clear();
     log('localStorage.clear() done', '#f87171');
+    showToast('clear()', 'All localStorage data cleared', 'info');
 }
 function lsAll() {
     log('--- localStorage (' + localStorage.length + ' items) ---', '#c084fc');
+    let output = '';
     for (let i = 0; i < localStorage.length; i++) {
         const k = localStorage.key(i);
-        log(`  "${k}" → "${localStorage.getItem(k)}"`, '#e2e8f0');
+        const v = localStorage.getItem(k);
+        log(`  "${k}" → "${v}"`, '#e2e8f0');
+        output += `${k} = ${v}\n`;
     }
-    if (localStorage.length === 0) log('  (empty)', '#64748b');
+    if (localStorage.length === 0) {
+        log('  (empty)', '#64748b');
+        alert('localStorage Show All\n\n(empty — no items stored)');
+        showToast('Show All', 'localStorage is empty', 'warn');
+    } else {
+        alert(`localStorage Show All (${localStorage.length} items)\n\n${output}`);
+        showToast('Show All', `Found ${localStorage.length} item(s)`, 'success');
+    }
 }
 
 // ============ sessionStorage ============
 function ssSet() {
     const k = document.getElementById('ssKey').value.trim();
     const v = document.getElementById('ssValue').value;
-    if (!k) { log('Enter a key!', '#f87171'); return; }
+    if (!k) { showToast('Error', 'Enter a key!', 'error'); return; }
     sessionStorage.setItem(k, v);
     log(`sessionStorage.setItem("${k}", "${v}")`, '#38bdf8');
+    showToast('setItem()', `Key: "${k}"\nValue: "${v}"`, 'success');
 }
 function ssGet() {
     const k = document.getElementById('ssKey').value.trim();
-    if (!k) { log('Enter a key!', '#f87171'); return; }
+    if (!k) { showToast('Error', 'Enter a key!', 'error'); return; }
     const v = sessionStorage.getItem(k);
     log(`sessionStorage.getItem("${k}") → ${v === null ? 'null' : '"' + v + '"'}`, v === null ? '#fbbf24' : '#4ade80');
+    if (v === null) {
+        alert(`sessionStorage.getItem("${k}")\n\nResult: null`);
+        showToast('getItem()', `Key "${k}" not found`, 'warn');
+    } else {
+        alert(`sessionStorage.getItem("${k}")\n\nResult: "${v}"`);
+        showToast('getItem()', `Key: "${k}"\nValue: "${v}"`, 'success');
+    }
 }
 function ssRemove() {
     const k = document.getElementById('ssKey').value.trim();
-    if (!k) { log('Enter a key!', '#f87171'); return; }
+    if (!k) { showToast('Error', 'Enter a key!', 'error'); return; }
     sessionStorage.removeItem(k);
     log(`sessionStorage.removeItem("${k}")`, '#f87171');
+    showToast('removeItem()', `Removed key: "${k}"`, 'info');
 }
 function ssClear() {
     sessionStorage.clear();
     log('sessionStorage.clear() done', '#f87171');
+    showToast('clear()', 'All sessionStorage data cleared', 'info');
 }
 function ssAll() {
     log('--- sessionStorage (' + sessionStorage.length + ' items) ---', '#c084fc');
+    let output = '';
     for (let i = 0; i < sessionStorage.length; i++) {
         const k = sessionStorage.key(i);
-        log(`  "${k}" → "${sessionStorage.getItem(k)}"`, '#e2e8f0');
+        const v = sessionStorage.getItem(k);
+        log(`  "${k}" → "${v}"`, '#e2e8f0');
+        output += `${k} = ${v}\n`;
     }
-    if (sessionStorage.length === 0) log('  (empty)', '#64748b');
+    if (sessionStorage.length === 0) {
+        log('  (empty)', '#64748b');
+        alert('sessionStorage Show All\n\n(empty — no items stored)');
+        showToast('Show All', 'sessionStorage is empty', 'warn');
+    } else {
+        alert(`sessionStorage Show All (${sessionStorage.length} items)\n\n${output}`);
+        showToast('Show All', `Found ${sessionStorage.length} item(s)`, 'success');
+    }
 }
 
 // ============ JSON ============
 function jsonStoreLS() {
     const k = document.getElementById('jsonKey').value.trim();
     const raw = document.getElementById('jsonValue').value.trim();
-    if (!k || !raw) { log('Enter key and JSON value!', '#f87171'); return; }
+    if (!k || !raw) { showToast('Error', 'Enter key and JSON value!', 'error'); return; }
     try {
         const obj = JSON.parse(raw);
         const str = JSON.stringify(obj);
@@ -923,15 +999,21 @@ function jsonStoreLS() {
         log(`JSON.stringify → localStorage.setItem("${k}")`, '#38bdf8');
         log(`  type of stored value: "${typeof str}"`, '#64748b');
         log(`  value: ${str}`, '#e2e8f0');
+        showToast('stringify → localStorage', `Key: "${k}"\nStored: ${str}`, 'success');
     } catch (e) {
         log(`JSON.parse error: ${e.message}`, '#f87171');
+        showToast('JSON Error', e.message, 'error');
     }
 }
 function jsonGetLS() {
     const k = document.getElementById('jsonKey').value.trim();
-    if (!k) { log('Enter a key!', '#f87171'); return; }
+    if (!k) { showToast('Error', 'Enter a key!', 'error'); return; }
     const raw = localStorage.getItem(k);
-    if (raw === null) { log(`Key "${k}" not found in localStorage`, '#fbbf24'); return; }
+    if (raw === null) {
+        log(`Key "${k}" not found in localStorage`, '#fbbf24');
+        showToast('getItem → parse', `Key "${k}" not found`, 'warn');
+        return;
+    }
     log(`Raw string: "${raw}" (type: ${typeof raw})`, '#38bdf8');
     try {
         const obj = JSON.parse(raw);
@@ -939,35 +1021,45 @@ function jsonGetLS() {
         document.getElementById('jsonDisplay').innerHTML =
             `<span style="color:#fbbf24">Raw string:</span> <span style="color:#e2e8f0">${raw}</span>\n\n` +
             `<span style="color:#4ade80">Parsed object:</span>\n<span style="color:#e2e8f0">${JSON.stringify(obj, null, 2)}</span>`;
+        showToast('getItem → parse (localStorage)', `Key: "${k}"\nParsed OK`, 'success');
     } catch (e) {
         log(`JSON.parse failed: ${e.message}`, '#f87171');
+        showToast('Parse Error', e.message, 'error');
     }
 }
 function jsonStoreSS() {
     const k = document.getElementById('jsonKey').value.trim();
     const raw = document.getElementById('jsonValue').value.trim();
-    if (!k || !raw) { log('Enter key and JSON value!', '#f87171'); return; }
+    if (!k || !raw) { showToast('Error', 'Enter key and JSON value!', 'error'); return; }
     try {
         const obj = JSON.parse(raw);
         sessionStorage.setItem(k, JSON.stringify(obj));
         log(`JSON.stringify → sessionStorage.setItem("${k}")`, '#c084fc');
+        showToast('stringify → sessionStorage', `Key: "${k}"\nStored: ${JSON.stringify(obj)}`, 'success');
     } catch (e) {
         log(`JSON.parse error: ${e.message}`, '#f87171');
+        showToast('JSON Error', e.message, 'error');
     }
 }
 function jsonGetSS() {
     const k = document.getElementById('jsonKey').value.trim();
-    if (!k) { log('Enter a key!', '#f87171'); return; }
+    if (!k) { showToast('Error', 'Enter a key!', 'error'); return; }
     const raw = sessionStorage.getItem(k);
-    if (raw === null) { log(`Key "${k}" not found in sessionStorage`, '#fbbf24'); return; }
+    if (raw === null) {
+        log(`Key "${k}" not found in sessionStorage`, '#fbbf24');
+        showToast('getItem → parse', `Key "${k}" not found`, 'warn');
+        return;
+    }
     try {
         const obj = JSON.parse(raw);
         log(`Session: parse("${k}") → ${JSON.stringify(obj)}`, '#c084fc');
         document.getElementById('jsonDisplay').innerHTML =
             `<span style="color:#fbbf24">Raw:</span> <span style="color:#e2e8f0">${raw}</span>\n\n` +
             `<span style="color:#c084fc">Parsed:</span>\n<span style="color:#e2e8f0">${JSON.stringify(obj, null, 2)}</span>`;
+        showToast('getItem → parse (session)', `Key: "${k}"\nParsed OK`, 'success');
     } catch (e) {
         log(`JSON.parse failed: ${e.message}`, '#f87171');
+        showToast('Parse Error', e.message, 'error');
     }
 }
 </script>
