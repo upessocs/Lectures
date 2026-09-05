@@ -1,12 +1,14 @@
 # Official Instructions for Students under Special Directed Reading (DR)
+
 **Course:** Advanced Web Technologies
+
 **Session:** September 2026 (Special DR)
 
 ---
 
 **To:** Students enrolled under Special Directed Reading (DR) Mode
 
-This communication serves as the official directive for the Special Directed Reading course in Advanced Web Technologies. You are required to follow these instructions strictly to ensure timely completion and compliance with academic regulations.
+> This communication serves as the official directive for the Special Directed Reading course in Advanced Web Technologies. You are required to follow these instructions strictly to ensure timely completion and compliance with academic regulations.
 
 #### 1. Student Details and Official Communication
 
@@ -51,7 +53,8 @@ You are required to actively participate in all three components to successfully
 
 #### 3. Critical Timelines
 
-Strict adherence to the following schedule is mandatory. **This is essential for 2027 graduates to become eligible for placements and for 2026 graduates to fulfill degree requirements for the October 2026 Convocation.**
+Strict adherence to the following schedule is mandatory. 
+> This is essential for 2027 graduates to become eligible for placements and for 2026 graduates to fulfill degree requirements for the October 2026 Convocation.
 
 | Activity | Timeline |
 | :--- | :--- |
@@ -76,11 +79,16 @@ You are required to utilize the following resources for self-study:
 
 **A. MOOC Course (Asynchronous Content):**
 A comprehensive MOOC on "Web Technologies" is prescribed for self-study. It covers foundational to advanced topics that align with the course syllabus.
-- **Link:** [https://onlinecourses.swayam2.ac.in/e-learning/preview/ntr25_ed123](https://onlinecourses.swayam2.ac.in/e-learning/preview/ntr25_ed123)
+
+#### **Link:** 
+[https://onlinecourses.swayam2.ac.in/e-learning/preview/ntr25_ed123](https://onlinecourses.swayam2.ac.in/e-learning/preview/ntr25_ed123)
 
 **B. Unit-wise Learning Resources (Primary Source):**
 The unit-wise study material, lab exercises, and question banks are the primary resources for this course. You must study and practice from these materials systematically.
-- **Link:** [https://upessocs.github.io/#dir=/Lectures/Advanced%20Web%20Technologies/&file=list.txt](https://upessocs.github.io/#dir=/Lectures/Advanced%20Web%20Technologies/&file=list.txt)
+
+
+#### **Link:** 
+[https://upessocs.github.io/#dir=/Lectures/Advanced%20Web%20Technologies/&file=list.txt](https://upessocs.github.io/#dir=/Lectures/Advanced%20Web%20Technologies/&file=list.txt)
 
 This repository contains the following essential resources:
 - **000 Syllabus AWT.md**: The detailed course syllabus.
@@ -126,5 +134,6 @@ If you are new to Git, you must complete the following tutorial before starting 
 
 **Important Instruction:**
 
-**Do not delay.** The timeline for this Special DR is extremely short. Initiate your self-study from the provided resources, set up your GitHub repository immediately, and begin work on the projects. **Regular attendance in the scheduled teaching and progress reporting sessions is mandatory.** Failure to complete the requirements within the stipulated period will impact your eligibility for placements and degree conferment.
+**Do not delay.** The timeline for this Special DR is extremely short. Initiate your self-study from the provided resources, set up your GitHub repository immediately, and begin work on the projects. 
+**Regular attendance in the scheduled teaching and progress reporting sessions is mandatory.** Failure to complete the requirements within the stipulated period will impact your eligibility for placements and degree conferment.
 
