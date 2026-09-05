@@ -1,19 +1,18 @@
 ./
-./.Backend
-./.DE
-./.dist
-./.DR_Oct25
-./.git
-./.github
-./.IQAC
-./.res
-./.supp
-./.supp26
-./Advanced Web Technologies
-./Backend Development
 ./Computer Architecture and Organisation
-./Containerization and DevOps
+./.res
+./.supp26
 ./DevOps CCVT
-./Linux Lab
+./Containerization and DevOps
+./Backend Development
+./Advanced Web Technologies
 ./PythonProgramming
+./.Backend
+./.git
+./.supp
+./Linux Lab
+./.IQAC
+./.DE
+./.github
+./.DR_Oct25
 ./SoftComputing

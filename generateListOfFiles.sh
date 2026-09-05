@@ -12,3 +12,4 @@ done
 
 echo -e "\n"
 cat list.txt
+
