@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO2 – Implement complete CRUD functionality in database-backed applications.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 16 |
+| Unit | Unit 2: Database Management |
+| Topic | CRUD Operations: Create, Read, Update, Delete in Databases |
+| Course Outcome | CO2 |
+| Bloom's Knowledge Level | Apply |
+| Skills Developed | Raw SQL operations, ORM/ODM CRUD implementation, Query filtering/sorting/pagination |
+| Applications | Backend API development, Database management systems, Data-driven web apps |
+| PBL Activity | Implementing a complete CRUD API for a Course/Student management system |
+| Assessment Method | Coding project & CRUD implementation demonstration |
+
 ---
 
 ## 1. Introduction

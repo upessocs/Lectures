@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO3 – Design well-structured RESTful APIs with proper endpoint planning and resource modeling.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 18 |
+| Unit | Unit 2: Database Management |
+| Topic | Designing RESTful APIs: Endpoint Planning and Resource Modeling |
+| Course Outcome | CO3 |
+| Bloom's Knowledge Level | Create |
+| Skills Developed | Resource-oriented design, Endpoint planning, REST conventions, API documentation/versioning |
+| Applications | Backend service design, Public API development, API ecosystem management |
+| PBL Activity | Designing a complete RESTful API for a Library Management System |
+| Assessment Method | Coding project & API design demonstration |
+
 ---
 
 ## 1. Introduction

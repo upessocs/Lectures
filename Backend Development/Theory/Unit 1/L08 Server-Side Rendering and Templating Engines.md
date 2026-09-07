@@ -1,8 +1,22 @@
-# Lecture 06
+# Lecture 08
 
 # Server-Side Rendering and Templating Engines
 
 **Course Outcome:** CO2 – Understand server-side rendering concepts and build dynamic web pages using templating engines.
+
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 08 |
+| Unit | Unit 1: Foundations of Backend Development |
+| Topic | Server-Side Rendering and Templating Engines |
+| Course Outcome | CO2 |
+| Bloom's Knowledge Level | Create |
+| Skills Developed | Server-side rendering, Templating engine usage, Static file serving, Dynamic content generation, Web layout design |
+| Applications | Content management systems, Dashboards, Blogs, E-commerce websites |
+| PBL Activity | Building a dynamic student dashboard with SSR and static assets |
+| Assessment Method | Coding project & SSR implementation demonstration |
 
 ---
 

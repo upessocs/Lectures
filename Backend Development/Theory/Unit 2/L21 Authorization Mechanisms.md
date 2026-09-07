@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO3 – Implement authorization mechanisms to control user access to resources.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 21 |
+| Unit | Unit 2: Database Management |
+| Topic | Authorization Mechanisms: Role-based Access Control, Permissions |
+| Course Outcome | CO3 |
+| Bloom's Knowledge Level | Apply |
+| Skills Developed | Authorization models (RBAC/ABAC), Permission enforcement, Role management, Ownership checks |
+| Applications | Backend security, Resource access control, User privilege management |
+| PBL Activity | Implementing RBAC for the Student Management API with Admin/Faculty/Student roles |
+| Assessment Method | Coding project & Authorization implementation demonstration |
+
 ---
 
 ## 1. Introduction

@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO2 – Optimize database queries for better performance using indexing and tuning techniques.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 17 |
+| Unit | Unit 2: Database Management |
+| Topic | Query Optimization: Indexing and Performance Tuning |
+| Course Outcome | CO2 |
+| Bloom's Knowledge Level | Apply |
+| Skills Developed | Indexing strategies, Query execution plan analysis (EXPLAIN), Query optimization, Database tuning |
+| Applications | Database performance tuning, API latency reduction, System scalability |
+| PBL Activity | Optimizing database queries for a large dataset using indexing and performance tuning |
+| Assessment Method | Coding project & Query optimization demonstration |
+
 ---
 
 ## 1. Introduction

@@ -4,7 +4,23 @@
 
 **Course Outcome:** CO1 – Understand the role of backend development in modern web applications.
 
-## 1. Introduction
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 01 |
+| Unit | Unit 1: Foundations of Backend Development |
+| Topic | Overview of Backend Development |
+| Course Outcome | CO1 – Understand the role of backend development in modern web applications. |
+| Bloom's Knowledge Level | Understand |
+| Skills Developed | Conceptual understanding, Analytical thinking |
+| Applications | E-commerce, Banking, Healthcare |
+| PBL Activity | Social discussion on web evolution |
+| Assessment Method | MCQ Quiz |
+
+---
+
+## Part A – Theory
 
 The Internet has evolved from a collection of static web pages into a platform that powers banking, e-commerce, social networking, education, healthcare, entertainment, and artificial intelligence applications. Every time a user logs into a website, searches for information, uploads a photograph, makes an online payment, or interacts with an AI chatbot, a significant amount of processing takes place behind the scenes. This hidden processing is collectively known as **backend development**.
 

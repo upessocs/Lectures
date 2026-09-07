@@ -4,6 +4,21 @@
 # Client–Server Architecture: Understanding the Model and Communication Protocols
 
 **Course Outcome:** CO1 – Understand the client-server model and communication protocols used in backend development.
+
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 02 |
+| Unit | Unit 1: Foundations of Backend Development |
+| Topic | Client–Server Architecture |
+| Course Outcome | CO1 – Understand the client-server model and communication protocols used in backend development. |
+| Bloom's Knowledge Level | Understand |
+| Skills Developed | Conceptual understanding, Analytical thinking, System understanding |
+| Applications | E-commerce, Banking, Web applications |
+| PBL Activity | Architecture diagramming |
+| Assessment Method | Assignment |
+
 ---
 ## 1. Introduction
 

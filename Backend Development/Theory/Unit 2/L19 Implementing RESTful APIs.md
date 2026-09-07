@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO3 – Build complete RESTful API endpoints with proper request handling and response formatting.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 19 |
+| Unit | Unit 2: Database Management |
+| Topic | Implementing RESTful APIs: Building API Endpoints |
+| Course Outcome | CO3 |
+| Bloom's Knowledge Level | Apply |
+| Skills Developed | API development, Request validation, FastAPI/Pydantic implementation, Error handling |
+| Applications | Backend service deployment, API endpoints, Web application integration |
+| PBL Activity | Implementing a complete CRUD API for a Student/Course system in FastAPI |
+| Assessment Method | Coding project & API implementation demonstration |
+
 ---
 
 ## 1. Introduction

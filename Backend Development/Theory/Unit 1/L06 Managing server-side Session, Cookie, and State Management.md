@@ -1,4 +1,24 @@
+# Lecture 06
 
+# Managing server-side Session, Cookie, and State Management
+
+**Course Outcome:** CO1 – Understand state management techniques (sessions, cookies) for backend applications.
+
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 06 |
+| Unit | Unit 1: Foundations of Backend Development |
+| Topic | Managing server-side Session, Cookie, and State Management |
+| Course Outcome | CO1 |
+| Bloom's Knowledge Level | Apply |
+| Skills Developed | Backend state management, Session handling, Cookie management, Security practices (httpOnly, secure) |
+| Applications | Authentication systems, User preference management, Shopping carts, Session tracking |
+| PBL Activity | Implementing user login/logout and session management in Express |
+| Assessment Method | Coding exercise & Security analysis demonstration |
+
+---
 
 ## **1. Introduction to Session Control**
 
@@ -374,4 +394,3 @@ app.listen(3000, () => console.log('Server running on port 3000'));
 | **Data Size Limit**  | Large                    | ~4 KB          | Very small         |
 | **Lifespan**         | Until logout/session end | Until expiry   | Until request      |
 | **Use Case**         | Login state, user data   | Preferences    | Search/filter data |
-

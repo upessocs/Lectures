@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO1 – Understand HTTP fundamentals, inspect request–response cycles, and design RESTful APIs.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 04 |
+| Unit | Unit 1: Foundations of Backend Development |
+| Topic | HTTP Requests, DevTools, CURL, Postman, and fetch |
+| Course Outcome | CO1 |
+| Bloom's Knowledge Level | Analyze |
+| Skills Developed | HTTP inspection, API testing, Debugging, API request building, Client-server interaction analysis |
+| Applications | Web application debugging, API development, Integration testing |
+| PBL Activity | Analyzing API request/response cycles using three different tools |
+| Assessment Method | Coding exercise & Network analysis demonstration |
+
 ---
 
 ## Part A – Theory

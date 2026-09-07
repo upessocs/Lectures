@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO2 – Design data models that translate business requirements into database structures.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 15 |
+| Unit | Unit 2: Database Management |
+| Topic | Data Modeling: Designing Models for Applications |
+| Course Outcome | CO2 |
+| Bloom's Knowledge Level | Create |
+| Skills Developed | Conceptual/Logical/Physical modeling, ORM/ODM implementation, Data validation |
+| Applications | Application data structures, Database interaction, Schema mapping |
+| PBL Activity | Modeling an E-Commerce system and implementing SQLAlchemy/Mongoose models |
+| Assessment Method | Coding project & Data model design demonstration |
+
 ---
 
 ## 1. Introduction

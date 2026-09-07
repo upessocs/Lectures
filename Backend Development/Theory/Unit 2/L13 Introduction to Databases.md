@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO1 – Understand the role of databases in backend development and differentiate between relational and NoSQL databases.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 13 |
+| Unit | Unit 2: Database Management |
+| Topic | Introduction to Databases: Relational vs NoSQL Databases |
+| Course Outcome | CO1 |
+| Bloom's Knowledge Level | Understand |
+| Skills Developed | Database basics, SQL vs NoSQL comparison, Database selection, SQL CRUD operations |
+| Applications | Enterprise applications, Data storage systems, Web backends |
+| PBL Activity | Setting up SQL/NoSQL databases and comparing CRUD experiences |
+| Assessment Method | Coding project & Comparative analysis presentation |
+
 ---
 
 ## 1. Introduction

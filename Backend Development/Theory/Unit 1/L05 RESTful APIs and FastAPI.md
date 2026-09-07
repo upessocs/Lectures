@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO1 – Understand and design RESTful APIs.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 05 |
+| Unit | Unit 1: Foundations of Backend Development |
+| Topic | RESTful APIs and FastAPI |
+| Course Outcome | CO1 |
+| Bloom's Knowledge Level | Create |
+| Skills Developed | REST API design, FastAPI development, CRUD implementation, Pydantic modeling, API documentation |
+| Applications | Enterprise API development, Backend microservices, Web service integration |
+| PBL Activity | Building a complete CRUD API with FastAPI |
+| Assessment Method | Coding project & API documentation demonstration |
+
 ---
 
 ### 1. Introduction

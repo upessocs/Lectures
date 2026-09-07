@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO3 – Implement secure authentication mechanisms to protect API endpoints.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 20 |
+| Unit | Unit 2: Database Management |
+| Topic | Authentication Mechanisms: Basic Auth, Token-based Auth, JWT |
+| Course Outcome | CO3 |
+| Bloom's Knowledge Level | Apply |
+| Skills Developed | Authentication/Authorization concepts, Basic Auth, JWT implementation, Token management |
+| Applications | API security, User identity verification, Secure backend services |
+| PBL Activity | Securing the Student Management API with JWT-based authentication |
+| Assessment Method | Coding project & Security implementation demonstration |
+
 ---
 
 ## 1. Introduction

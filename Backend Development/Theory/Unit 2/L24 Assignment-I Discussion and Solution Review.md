@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO2 – Review and discuss solutions for the first assignment, reinforcing concepts from Unit II.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 24 |
+| Unit | Unit 2: Database Management |
+| Topic | Assignment-I Discussion and Solution Review |
+| Course Outcome | CO2 |
+| Bloom's Knowledge Level | Evaluate |
+| Skills Developed | Code review, Architectural analysis, Problem troubleshooting, API design criticism |
+| Applications | Software quality assurance, Peer review cycles, Production debugging |
+| PBL Activity | Reviewing peer backend implementations and refactoring with a Code Review Checklist |
+| Assessment Method | Peer review evaluation & Project refactoring demonstration |
+
 ---
 
 ## 1. Introduction

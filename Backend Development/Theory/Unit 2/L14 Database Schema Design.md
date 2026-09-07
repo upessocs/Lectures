@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO2 – Design effective database schemas using ER diagrams and normalization techniques.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 14 |
+| Unit | Unit 2: Database Management |
+| Topic | Database Schema Design: ER Diagrams, Normalization, Relationships |
+| Course Outcome | CO2 |
+| Bloom's Knowledge Level | Create |
+| Skills Developed | ER diagramming, Database normalization, Relationship modeling, Schema design |
+| Applications | Database architecture, Data integrity, Efficient query design |
+| PBL Activity | Drawing ER diagrams and normalizing real-world data |
+| Assessment Method | Coding project & Normalized schema demonstration |
+
 ---
 
 ## 1. Introduction

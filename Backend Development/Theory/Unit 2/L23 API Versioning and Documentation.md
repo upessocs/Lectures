@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO3 – Implement API versioning strategies and create comprehensive API documentation.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 23 |
+| Unit | Unit 2: Database Management |
+| Topic | API Versioning and Documentation: Swagger/OpenAPI, Postman |
+| Course Outcome | CO3 |
+| Bloom's Knowledge Level | Create |
+| Skills Developed | API versioning strategies, OpenAPI/Swagger specification, Postman collection management |
+| Applications | API lifecycle management, Developer experience (DX), Team collaboration |
+| PBL Activity | Versioning the Student Management API and generating OpenAPI documentation |
+| Assessment Method | Coding project & API documentation demonstration |
+
 ---
 
 ## 1. Introduction

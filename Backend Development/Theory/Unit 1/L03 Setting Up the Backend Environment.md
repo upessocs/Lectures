@@ -4,6 +4,20 @@
 
 **Course Outcome:** CO1 – Understand HTTP fundamentals and set up a working backend development environment.
 
+## Session Implementation Plan
+
+| Parameter | Details |
+|---|---|
+| Lecture No. | 03 |
+| Unit | Unit 1: Foundations of Backend Development |
+| Topic | Setting Up the Backend Environment |
+| Course Outcome | CO1 |
+| Bloom's Knowledge Level | Apply |
+| Skills Developed | Programming, Environment setup, Debugging, API basics |
+| Applications | Web development environments |
+| PBL Activity | Building Express and Flask servers |
+| Assessment Method | Hands-on implementation & Verification |
+
 ---
 
 ## Section 1 – Introduction
