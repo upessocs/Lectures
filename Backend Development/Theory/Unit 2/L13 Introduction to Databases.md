@@ -397,3 +397,209 @@ In **L14 – Database Schema Design: ER Diagrams, Normalization, Relationships**
    - Delete a student record.
 5. Install MongoDB and create a collection named `students` with at least 3 documents.
 6. Compare the experience of inserting and querying data in MySQL vs MongoDB.
+
+---
+# Optional
+
+## PostgreSQL quick reference
+
+### Enter and exit PostgreSQL
+
+```bash
+sudo -u postgres psql
+```
+
+```sql
+\q
+```
+
+`psql` commands beginning with `\` don’t need a semicolon. SQL statements do.
+
+### Databases
+
+```sql
+\l                         -- list databases
+CREATE DATABASE school;
+\c school                  -- connect to school
+DROP DATABASE school;      -- permanently delete it
+```
+
+### Tables
+
+```sql
+\dt                        -- list tables
+\d students                -- describe a table
+```
+
+```sql
+CREATE TABLE students (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE,
+    age INTEGER CHECK (age >= 0),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+Modify or delete a table:
+
+```sql
+ALTER TABLE students ADD COLUMN active BOOLEAN DEFAULT TRUE;
+ALTER TABLE students DROP COLUMN active;
+
+DROP TABLE students;
+```
+
+### Insert data
+
+```sql
+INSERT INTO students (name, email, age)
+VALUES ('Alice', 'alice@example.com', 21);
+```
+
+Insert several rows:
+
+```sql
+INSERT INTO students (name, email, age)
+VALUES
+    ('Bob', 'bob@example.com', 19),
+    ('Carol', 'carol@example.com', 24);
+```
+
+Return the generated row:
+
+```sql
+INSERT INTO students (name, email, age)
+VALUES ('David', 'david@example.com', 20)
+RETURNING *;
+```
+
+### Read data
+
+```sql
+SELECT * FROM students;
+SELECT name, email FROM students;
+SELECT * FROM students WHERE age >= 21;
+SELECT * FROM students ORDER BY age DESC;
+SELECT * FROM students LIMIT 5;
+SELECT DISTINCT age FROM students;
+```
+
+Pattern matching:
+
+```sql
+SELECT * FROM students WHERE name LIKE 'A%';   -- case-sensitive
+SELECT * FROM students WHERE name ILIKE 'a%';  -- case-insensitive
+```
+
+### Update and delete data
+
+```sql
+UPDATE students
+SET age = 22
+WHERE id = 1;
+```
+
+```sql
+DELETE FROM students
+WHERE id = 1;
+```
+
+Always check the `WHERE` condition first:
+
+```sql
+SELECT * FROM students WHERE id = 1;
+```
+
+Without `WHERE`, `UPDATE` or `DELETE` affects every row.
+
+### Foreign keys
+
+```sql
+CREATE TABLE courses (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE enrollments (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    student_id INTEGER NOT NULL REFERENCES students(id),
+    course_id INTEGER NOT NULL REFERENCES courses(id),
+    UNIQUE (student_id, course_id)
+);
+```
+
+### Joins
+
+```sql
+SELECT s.name, c.title
+FROM enrollments e
+JOIN students s ON s.id = e.student_id
+JOIN courses c ON c.id = e.course_id;
+```
+
+### Aggregation
+
+```sql
+SELECT COUNT(*) FROM students;
+SELECT AVG(age) FROM students;
+```
+
+Count students by age:
+
+```sql
+SELECT age, COUNT(*)
+FROM students
+GROUP BY age
+ORDER BY age;
+```
+
+### Transactions
+
+```sql
+BEGIN;
+
+UPDATE students
+SET age = 23
+WHERE id = 1;
+
+COMMIT;
+```
+
+Undo before committing:
+
+```sql
+ROLLBACK;
+```
+
+### Users and permissions
+
+```sql
+\du
+CREATE USER school_user WITH PASSWORD 'strong_password';
+GRANT CONNECT ON DATABASE school TO school_user;
+GRANT SELECT, INSERT, UPDATE, DELETE ON students TO school_user;
+```
+
+### Import and export
+
+Run these from the terminal, not inside `psql`:
+
+```bash
+pg_dump school > school_backup.sql
+psql school < school_backup.sql
+```
+
+Inside `psql`, execute a SQL file with:
+
+```sql
+\i /path/to/file.sql
+```
+
+### Help
+
+```sql
+\?                         -- help for psql commands
+\h                         -- help for SQL commands
+\h CREATE TABLE            -- help for a specific statement
+```
