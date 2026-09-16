@@ -3,5 +3,5 @@
 ./Architecture and Pocketbase.md
 ./SQL_databases_v1.md
 ./SQL_databases_v2.md
-./The Complete Harness & Skills Tutorial.md
+./The Complete Harness and Skills Tutorial.md
 ./n8n roadmap.md
