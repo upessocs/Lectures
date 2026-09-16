@@ -463,13 +463,9 @@ mongoose-demo/
 ## Important Notes
 
 1. **No Encryption**: This is a learning example. Passwords are stored as plain text. In production, always use encryption libraries like bcrypt.
-
 2. **Error Handling**: The code includes basic error handling for learning purposes.
-
 3. **Database Name**: The database name is 'userdb'. MongoDB creates it automatically when you first save data.
-
 4. **Collection Name**: With model name 'User', Mongoose creates a collection named 'users' (lowercase, plural).
-
 5. **Async/Await**: All database operations are asynchronous. We use async/await to handle them.
 
 ---
