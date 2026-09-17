@@ -4,6 +4,7 @@
 ./Architecture and Pocketbase.md
 ./Django Academic Platform.md
 ./Django n DRF - A Complete Beginner's Guide.md
+./Django-bonsai.md
 ./Django_by_ornith.md
 ./SQL_databases_v1.md
 ./SQL_databases_v2.md
