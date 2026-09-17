@@ -1,6 +1,7 @@
 ./
 ./.assets
-./.dist
 ./Misc
 ./Unit 1
 ./Unit 2
+./Assignment 1.md
+./Assignment 2.md
