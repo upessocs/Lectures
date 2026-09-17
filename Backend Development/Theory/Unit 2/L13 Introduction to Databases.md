@@ -386,7 +386,7 @@ In **L14 – Database Schema Design: ER Diagrams, Normalization, Relationships**
 
 ### Lab Exercise
 
-1. Install MySQL or PostgreSQL on your system and create a database named `student_management`. 
+1. Install MySQL or PostgreSQL on your system and create a database named ` student_management `. 
    - ***try to work with PostgreSQL***
 2. Create a `students` table with columns: `id`, `name`, `branch`, `email`, `enrollment_date`.
 3. Insert at least 5 student records using SQL `INSERT` statements.
