@@ -1,5 +1,6 @@
 ./
 ./L13 Introduction to Databases.md
+./L14 B Database_Normalization.md
 ./L14 Database Schema Design.md
 ./L15 Data Modeling.md
 ./L16 CRUD Operations.md
@@ -11,3 +12,4 @@
 ./L22 Handling API Requests and Responses.md
 ./L23 API Versioning and Documentation.md
 ./L24 Assignment-I Discussion and Solution Review.md
+./temp.md
