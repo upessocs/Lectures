@@ -366,90 +366,149 @@ This is exactly the table MySQL/PostgreSQL would generate from the `Enrolls` dia
 
 ### 4.1 Problems Without Normalization
 
-Consider this unnormalized `student_courses` table:
+When designing a database, storing all information in a single, large table often leads to "flat" or "denormalized" structures that suffer from severe **data anomalies**.
 
-| student_id | student_name | student_email | course1 | course2 | course3 |
-|------------|--------------|---------------|---------|---------|---------|
-| 1 | Aarav | aarav@upes | CS301 | CS302 | MA201 |
-| 2 | Diya | diya@upes | CS301 | EC201 | NULL |
+Consider a system storing student registrations, where `registered_courses` stores multiple courses in a single cell:
 
-**Problems:**
+| student_id | student_name | student_email | registered_courses |
+|---|---|---|---|
+| S01 | Aarav | aarav@upes.ac.in | CS301, CS302 |
+| S02 | Diya | diya@upes.ac.in | CS301 |
 
-* **Data redundancy** — student name and email repeated for each course
-* **Update anomaly** — changing Aarav's email requires updating multiple rows
-* **Insertion anomaly** — cannot add a student without a course
-* **Deletion anomaly** — deleting all courses deletes the student
+If we try to flatten this into a fully tabular format, we get:
+
+| registration_id | student_id | student_name | student_email | course_code | course_name | instructor_name | instructor_email |
+|---|---|---|---|---|---|---|---|
+| 101 | S01 | Aarav | aarav@upes.ac.in | CS301 | Database Systems | Dr. Sharma | sharma@upes.ac.in |
+| 102 | S01 | Aarav | aarav@upes.ac.in | CS302 | Operating Systems | Dr. Verma | verma@upes.ac.in |
+| 103 | S02 | Diya | diya@upes.ac.in | CS301 | Database Systems | Dr. Sharma | sharma@upes.ac.in |
+
+This design suffers from these **data anomalies**:
+
+| Type of Anomaly | Description | Example from the table above |
+|---|---|---|
+| **Redundancy** | Storing the same data repeatedly. | Student `Aarav`'s details and Dr. Sharma's details are stored multiple times. |
+| **Update Anomaly** | Changing data in one place fails to update all rows, leading to inconsistency. | If Dr. Sharma changes his email, we must update row 101 AND row 103. If we miss one, the data becomes inconsistent. |
+| **Insertion Anomaly** | Inability to add data because other required data is missing. | We cannot add a new instructor to the system until they are assigned to a course, because the `course_code` would be null. |
+| **Deletion Anomaly** | Accidentally losing data when deleting other data. | If we delete registration 102, we lose all information about `CS302` and its instructor (`Dr. Verma`). |
 
 ### 4.2 Normal Forms
 
-**First Normal Form (1NF)**
+Normalization is applied progressively. A table must satisfy the previous normal form before moving to the next one.
 
-* Each column contains atomic (indivisible) values
-* Each row is unique
-* No repeating groups
+| Normal form | Requirement | Problem removed |
+|---|---|---|
+| **1NF** | Every cell contains one atomic value, there are no repeating column groups, and each row can be uniquely identified. | Lists and repeating columns such as `course1`, `course2`, and `course3`. |
+| **2NF** | The table is in 1NF, and every non-key attribute depends on the **whole** primary key. | Partial dependencies in a table with a composite key. |
+| **3NF** | The table is in 2NF, and non-key attributes depend only on the key—not on another non-key attribute. | Transitive dependencies. |
 
-Bad (violates 1NF):
+#### Step 1: Convert the unnormalized data to 1NF
 
-| id | name | courses |
-|----|------|---------|
-| 1 | Aarav | CS301, CS302, MA201 |
+This design is **not in 1NF** because `registered_courses` stores several values in one cell:
 
-Good (follows 1NF):
+| student_id | student_name | student_email | registered_courses |
+|---|---|---|---|
+| S01 | Aarav | aarav@upes.ac.in | CS301, CS302 |
+| S02 | Diya | diya@upes.ac.in | CS301 |
 
-| student_id | course_id |
-|------------|-----------|
-| 1 | CS301 |
-| 1 | CS302 |
-| 1 | MA201 |
+Store one course registration per row so that every cell contains exactly one value:
 
-**Second Normal Form (2NF)**
+| student_id | student_name | student_email | course_id | course_name | instructor_id | instructor_name | instructor_phone |
+|---|---|---|---|---|---|---|---|
+| S01 | Aarav | aarav@upes.ac.in | CS301 | Database Systems | F01 | Dr. Sharma | 9876501001 |
+| S01 | Aarav | aarav@upes.ac.in | CS302 | Operating Systems | F02 | Dr. Verma | 9876501002 |
+| S02 | Diya | diya@upes.ac.in | CS301 | Database Systems | F01 | Dr. Sharma | 9876501001 |
 
-* Must be in 1NF
-* Every non-key attribute depends on the entire primary key (no partial dependencies)
+The table is now in **1NF**, with composite primary key `(student_id, course_id)`, but it is not yet in 2NF.
 
-**Third Normal Form (3NF)**
+#### Step 2: Convert 1NF to 2NF
 
-* Must be in 2NF
-* No transitive dependencies (non-key attributes should not depend on other non-key attributes)
+The dependencies reveal the problem:
 
-### 4.3 Normalization Example
+```text
+student_id  → student_name, student_email
+course_id   → course_name, instructor_id, instructor_name, instructor_phone
+(student_id, course_id) → registration
+```
 
-**Unnormalized Table:**
+Student details depend only on `student_id`, and course details depend only on `course_id`. They do not depend on the whole composite key, so these are **partial dependencies**. Split the table as follows.
 
-| student_id | name | branch | course_id | course_name | faculty_id | faculty_name |
-|------------|------|--------|-----------|-------------|------------|--------------|
-| 1 | Aarav | CSE | CS301 | DSA | F01 | Dr. Sharma |
-| 1 | Aarav | CSE | CS302 | OS | F02 | Dr. Verma |
-| 2 | Diya | ECE | EC201 | Signals | F03 | Dr. Gupta |
+**Students**
 
-**After Normalization:**
+| student_id (PK) | student_name | student_email |
+|---|---|---|
+| S01 | Aarav | aarav@upes.ac.in |
+| S02 | Diya | diya@upes.ac.in |
 
-Students Table:
-| id | name | branch |
-|----|------|--------|
-| 1 | Aarav | CSE |
-| 2 | Diya | ECE |
+**Courses (2NF)**
 
-Courses Table:
-| id | name | faculty_id |
-|----|------|------------|
-| CS301 | DSA | F01 |
-| CS302 | OS | F02 |
-| EC201 | Signals | F03 |
+| course_id (PK) | course_name | instructor_id | instructor_name | instructor_phone |
+|---|---|---|---|---|
+| CS301 | Database Systems | F01 | Dr. Sharma | 9876501001 |
+| CS302 | Operating Systems | F02 | Dr. Verma | 9876501002 |
 
-Enrollments Table:
-| student_id | course_id |
-|------------|-----------|
-| 1 | CS301 |
-| 1 | CS302 |
-| 2 | EC201 |
+**Enrollments**
 
-Faculty Table:
-| id | name |
-|----|------|
-| F01 | Dr. Sharma |
-| F02 | Dr. Verma |
-| F03 | Dr. Gupta |
+| student_id (PK, FK) | course_id (PK, FK) |
+|---|---|
+| S01 | CS301 |
+| S01 | CS302 |
+| S02 | CS301 |
+
+All non-key attributes now depend on the whole key of their table. The design is in **2NF**, but `Courses` is not yet in 3NF.
+
+#### Step 3: Convert 2NF to 3NF
+
+In the `Courses` table, instructor details depend on `instructor_id`, not directly on `course_id`:
+
+```text
+course_id → instructor_id
+instructor_id → instructor_name, instructor_phone
+```
+
+Therefore, `course_id → instructor_id → instructor_name, instructor_phone` is a **transitive dependency**. Move instructor details to their own table.
+
+**Students**
+
+| student_id (PK) | student_name | student_email |
+|---|---|---|
+| S01 | Aarav | aarav@upes.ac.in |
+| S02 | Diya | diya@upes.ac.in |
+
+**Instructors**
+
+| instructor_id (PK) | instructor_name | instructor_phone |
+|---|---|---|
+| F01 | Dr. Sharma | 9876501001 |
+| F02 | Dr. Verma | 9876501002 |
+
+**Courses**
+
+| course_id (PK) | course_name | instructor_id (FK) |
+|---|---|---|
+| CS301 | Database Systems | F01 |
+| CS302 | Operating Systems | F02 |
+
+**Enrollments**
+
+| student_id (PK, FK) | course_id (PK, FK) |
+|---|---|
+| S01 | CS301 |
+| S01 | CS302 |
+| S02 | CS301 |
+
+This final design is in **3NF**: each fact is stored once, each table describes one subject, and the tables are connected through foreign keys.
+
+### 4.3 How the Normalized Design Solves the Problems
+
+| Original problem | Solution in the 3NF design |
+|---|---|
+| **Redundancy** | A student's details are stored once in `Students`; an instructor's details are stored once in `Instructors`. |
+| **Update anomaly** | Dr. Sharma's phone number is changed in one `Instructors` row. |
+| **Insertion anomaly** | A student, course, or instructor can be added without creating an enrollment. |
+| **Deletion anomaly** | Deleting an enrollment removes only the relationship; the student, course, and instructor remain stored. |
+
+The important idea is not merely to create more tables. Each table should store facts about **one subject**, and every non-key attribute should depend on **the key, the whole key, and nothing but the key**.
 
 ---
 
