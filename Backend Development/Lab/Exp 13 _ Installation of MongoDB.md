@@ -195,6 +195,26 @@ mongosh
 
 For more information on connecting using mongosh, such as to connect to a mongod instance running on a different host and/or port, see the mongosh documentation. https://www.mongodb.com/docs/v8.0/tutorial/getting-started/#std-label-getting-started
 
+## Using MongoDB Compass on Linux (Optional)
+
+After installing MongoDB, you can use MongoDB Compass as a graphical interface to manage your data.
+
+1.  **Download:** Go to the [official MongoDB Compass download page](https://www.mongodb.com/try/download/compass). Choose the **.deb** package (recommended for Ubuntu/Debian based systems).
+2.  **Install:**
+    Open your terminal in the directory where you downloaded the file and run:
+    ```bash
+    sudo dpkg -i mongodb-compass_*.deb
+    sudo apt-get install -f # Install missing dependencies
+    ```
+3.  **Start:** You can now search for "MongoDB Compass" in your application menu or launch it from the terminal by running:
+    ```bash
+    mongodb-compass
+    ```
+4.  **Connect:**
+    *   In the connection string field, enter `mongodb://127.0.0.1:27017`.
+    *   Click the **Connect** button.
+5.  **Usage:** You can now visualize your databases, create new collections, insert/edit documents, and run queries graphically, which is helpful for debugging and learning.
+
 
 ---
 
