@@ -1633,6 +1633,7 @@ The stages should not be memorized as arbitrary table-splitting exercises.
 
 ---
 
+# Optional Read
 # 17. Common beginner mistakes
 
 ## Mistake 1 — "Every composite value violates 1NF"
