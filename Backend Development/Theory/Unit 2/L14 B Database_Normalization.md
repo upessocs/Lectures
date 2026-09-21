@@ -23,9 +23,9 @@ A beginner may put everything into one table because it is easy to understand in
 
 The problem is **redundancy**.
 
-If Jane places five orders, her name, address, and phone may be stored five times. If Widget A appears in 1,000 order lines, its price may be stored 1,000 times.
-
-Redundancy creates three classic problems.
+> If Jane places five orders, her name, address, and phone may be stored five times. If Widget A appears in 1,000 order lines, its price may be stored 1,000 times.
+---
+## Redundancy creates three classic problems.
 
 ### Update anomaly
 
@@ -89,7 +89,7 @@ Examples:
 ```text
 CustomerID
 OrderID
-(OrderID, ProductID)
+(OrderID, ProductID) # composite key
 ```
 
 A key containing more than one attribute is called a **composite key**.
@@ -114,7 +114,7 @@ For example:
 CustomerID → CustomerName
 ```
 
-means that one customer ID can have only one customer name. If two rows contain `CustomerID = C01`, both must contain the same name. However, the arrow does not automatically work in reverse: two customers may share a name, so `CustomerName → CustomerID` may be false.
+- means that one customer ID can have only one customer name. If two rows contain `CustomerID = C01`, both must contain the same name. However, the arrow does not automatically work in reverse: two customers may share a name, so `CustomerName → CustomerID` may be false.
 
 Similarly:
 
@@ -122,7 +122,7 @@ Similarly:
 ProductID → ProductName, UnitPrice
 ```
 
-means a product ID determines both its product name and current catalog price. The left side can also contain several attributes:
+- means a product ID determines both its product name and current catalog price. The left side can also contain several attributes:
 
 ```text
 (OrderID, ProductID) → Qty
@@ -130,58 +130,151 @@ means a product ID determines both its product name and current catalog price. T
 
 Here, neither `OrderID` nor `ProductID` alone is enough. The combination identifies a particular product within a particular order and therefore determines its quantity.
 
-Functional dependencies express business rules that must always be true, not patterns that happen to appear in a small sample of data.
-
-Functional dependencies are the main reasoning tool used for 2NF, 3NF, and BCNF.
+- Functional dependencies express business rules that must always be true, not patterns that happen to appear in a small sample of data.
+- Functional dependencies are the main reasoning tool used for 2NF, 3NF, and BCNF.
 
 ---
 
-# 3. Superkey, candidate key, and prime attribute
+# 3. Superkey, candidate key, primary key, and prime attribute
 
-These terms are essential for understanding BCNF.
+These terms describe different roles that attributes can play in identifying rows. They are especially important when checking **3NF** and **BCNF**.
+
+Consider the following relation:
+
+```text
+STUDENT(StudentID, Email, StudentName, Department)
+```
+
+Assume that both `StudentID` and `Email` are unique for every student.
 
 ## Superkey
 
-A **superkey** is any set of attributes that uniquely identifies a row.
+A **superkey** is any set of one or more attributes that uniquely identifies a row.
 
-If `StudentID` uniquely identifies a student, then both of these can be superkeys:
+For the `STUDENT` relation, all of the following are superkeys:
 
 ```text
 {StudentID}
+{Email}
 {StudentID, StudentName}
+{Email, Department}
 ```
 
-The second one contains unnecessary information, but it can still uniquely identify a row.
+The last two sets contain extra attributes, but they still identify one student because they include either `StudentID` or `Email`.
+
+<div style="background:white">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" role="img" aria-label="Examples of superkeys and non-superkeys in the Student relation">
+  <rect width="1000" height="330" fill="white"/>
+  <text x="500" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1f2937">Which attribute sets uniquely identify a student?</text>
+
+  <g font-family="Arial,sans-serif">
+    <rect x="45" y="70" width="275" height="205" rx="14" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+    <text x="182" y="100" text-anchor="middle" font-size="18" font-weight="700" fill="#166534">Minimal superkeys</text>
+    <rect x="78" y="125" width="208" height="48" rx="9" fill="white" stroke="#22c55e" stroke-width="2"/>
+    <text x="182" y="155" text-anchor="middle" font-size="16" fill="#1f2937">{StudentID}</text>
+    <rect x="78" y="190" width="208" height="48" rx="9" fill="white" stroke="#22c55e" stroke-width="2"/>
+    <text x="182" y="220" text-anchor="middle" font-size="16" fill="#1f2937">{Email}</text>
+
+    <rect x="363" y="70" width="275" height="205" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="500" y="100" text-anchor="middle" font-size="18" font-weight="700" fill="#1d4ed8">Non-minimal superkeys</text>
+    <rect x="388" y="125" width="225" height="48" rx="9" fill="white" stroke="#60a5fa" stroke-width="2"/>
+    <text x="500" y="155" text-anchor="middle" font-size="15" fill="#1f2937">{StudentID, StudentName}</text>
+    <rect x="388" y="190" width="225" height="48" rx="9" fill="white" stroke="#60a5fa" stroke-width="2"/>
+    <text x="500" y="220" text-anchor="middle" font-size="15" fill="#1f2937">{Email, Department}</text>
+
+    <rect x="680" y="70" width="275" height="205" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="817" y="100" text-anchor="middle" font-size="18" font-weight="700" fill="#b91c1c">Not superkeys</text>
+    <rect x="713" y="125" width="208" height="48" rx="9" fill="white" stroke="#f87171" stroke-width="2"/>
+    <text x="817" y="155" text-anchor="middle" font-size="16" fill="#1f2937">{StudentName}</text>
+    <rect x="713" y="190" width="208" height="48" rx="9" fill="white" stroke="#f87171" stroke-width="2"/>
+    <text x="817" y="220" text-anchor="middle" font-size="16" fill="#1f2937">{Department}</text>
+
+    <text x="500" y="309" text-anchor="middle" font-size="14" fill="#4b5563">A set is a superkey if its values can point to exactly one row.</text>
+  </g>
+</svg>
+
+</div>
 
 ## Candidate key
 
-A **candidate key** is a **minimal superkey**.
+A **candidate key** is a **minimal superkey**: it uniquely identifies a row, and no attribute can be removed without losing that property.
 
-If `StudentID` alone is sufficient, then:
+Therefore, the candidate keys are:
 
 ```text
 {StudentID}
+{Email}
 ```
 
-is a candidate key, while:
+`{StudentID, StudentName}` is a superkey but **not** a candidate key. Removing `StudentName` still leaves `{StudentID}`, which is enough to identify the student. The extra attribute makes the set non-minimal.
 
-```text
-{StudentID, StudentName}
-```
-
-is not minimal.
-
-A table can have more than one candidate key.
+> **Quick test:** A candidate key must pass both tests: **unique** and **minimal**.
 
 ## Primary key
 
-The database designer chooses one candidate key as the **primary key**.
+A table can have several candidate keys, but the database designer chooses one of them as the **primary key**. The remaining candidate keys are often called **alternate keys**.
+
+For example, if `StudentID` is selected:
+
+```text
+Primary key:   {StudentID}
+Alternate key: {Email}
+```
+
+Choosing `StudentID` as the primary key does not stop `Email` from being a candidate key.
 
 ## Prime attribute
 
-An attribute is called a **prime attribute** if it belongs to at least one candidate key.
+A **prime attribute** is an attribute that belongs to **at least one candidate key**.
 
-This matters when checking 3NF.
+In this example:
+
+- `StudentID` is prime because it forms the candidate key `{StudentID}`.
+- `Email` is prime because it forms the candidate key `{Email}`.
+- `StudentName` and `Department` are non-prime because they do not belong to any candidate key.
+
+<div style="background:white">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" role="img" aria-label="Relationship between superkeys, candidate keys, the primary key, and prime attributes">
+  <rect width="1000" height="360" fill="white"/>
+  <text x="500" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1f2937">How the key terms are related</text>
+
+  <g font-family="Arial,sans-serif">
+    <rect x="45" y="62" width="570" height="245" rx="18" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="75" y="92" font-size="18" font-weight="700" fill="#1d4ed8">Superkeys</text>
+    <text x="75" y="116" font-size="13" fill="#475569">Every set here uniquely identifies a row</text>
+
+    <rect x="105" y="135" width="385" height="135" rx="16" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+    <text x="135" y="166" font-size="18" font-weight="700" fill="#15803d">Candidate keys</text>
+    <text x="135" y="188" font-size="13" fill="#475569">The minimal superkeys</text>
+
+    <rect x="160" y="207" width="145" height="42" rx="9" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="232" y="233" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">StudentID</text>
+    <text x="325" y="233" text-anchor="middle" font-size="21" fill="#64748b">or</text>
+    <rect x="350" y="207" width="105" height="42" rx="9" fill="white" stroke="#22c55e" stroke-width="2"/>
+    <text x="402" y="233" text-anchor="middle" font-size="15" font-weight="700" fill="#166534">Email</text>
+
+    <text x="505" y="175" font-size="13" fill="#1e40af">Examples with extras:</text>
+    <text x="505" y="200" font-size="13" fill="#1f2937">{StudentID, Name}</text>
+    <text x="505" y="223" font-size="13" fill="#1f2937">{Email, Department}</text>
+
+    <line x1="305" y1="228" x2="678" y2="228" stroke="#d97706" stroke-width="2"/>
+    <polygon points="678,228 666,221 666,235" fill="#d97706"/>
+
+    <rect x="680" y="163" width="270" height="130" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="815" y="194" text-anchor="middle" font-size="18" font-weight="700" fill="#92400e">Primary key</text>
+    <text x="815" y="221" text-anchor="middle" font-size="15" fill="#1f2937">The selected candidate key</text>
+    <text x="815" y="254" text-anchor="middle" font-size="19" font-weight="700" fill="#b45309">StudentID</text>
+
+    <text x="500" y="337" text-anchor="middle" font-size="14" fill="#374151">Prime attributes: StudentID and Email â€” both appear in at least one candidate key.</text>
+  </g>
+</svg>
+
+</div>
+
+The distinction is important in **3NF**: whether a dependent attribute is prime can determine if a functional dependency is allowed. In **BCNF**, every determinant must be a superkey.
+
 
 ---
 
@@ -189,21 +282,7 @@ This matters when checking 3NF.
 
 We will use an order-management example.
 
-The journey is:
-
-```text
-UNF
- ↓
-1NF
- ↓
-2NF
- ↓
-3NF
- ↓
-BCNF
-```
-
-Each stage solves a different type of dependency problem.
+> The journey is in following stages: Each stage solves a different type of dependency problem.
 
 <div style="background:white">
 
@@ -803,11 +882,17 @@ BCNF is stricter.
 
 ## Why do we need BCNF?
 
-Most beginner examples stop at 3NF. That is reasonable because 3NF removes the common partial and transitive dependency problems.
+Most normalization examples stop at **Third Normal Form (3NF)** because it removes the most common dependency problems. However, 3NF has one exception: it can allow a dependency whose determinant is not a superkey when the dependent attribute is prime.
 
-However, there are relations that satisfy 3NF but still contain a dependency that BCNF considers problematic.
+**Boyce-Codd Normal Form (BCNF)** removes that exception. It is stricter than 3NF and is especially important when a relation has overlapping candidate keys.
 
-BCNF is especially useful when a relation has **multiple candidate keys** and a determinant is not itself a superkey.
+Before stating the rule, recall these terms:
+
+- A **functional dependency (FD)**, written `X → Y`, means that one value of `X` is associated with only one value of `Y`.
+- The left side, `X`, is called the **determinant**.
+- A **superkey** is any set of attributes that uniquely identifies a complete row.
+- A **candidate key** is a minimal superkey: it has no unnecessary attribute.
+- A **prime attribute** belongs to at least one candidate key.
 
 ## Formal definition
 
@@ -817,35 +902,57 @@ A relation is in **BCNF** if, for every non-trivial functional dependency:
 X → Y
 ```
 
-`X` is a **superkey**.
+`X` is a **superkey** of the relation.
 
 In simple words:
 
-> Every determinant must be a key.
+> Every determinant must be able to identify one complete row.
 
-A **determinant** is the left-hand side of a functional dependency.
+The word **superkey** is important. A determinant may determine one attribute without determining the entire row. Such a determinant violates BCNF.
 
-So if:
+<div style="background:white">
 
-```text
-InstructorID → CourseID
-```
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" role="img" aria-label="Steps for checking whether a functional dependency satisfies BCNF">
+  <rect width="1000" height="400" fill="white"/>
+  <text x="500" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1f2937">How to Check One Functional Dependency for BCNF</text>
 
-then `InstructorID` is a determinant.
+  <g font-family="Arial,sans-serif">
+    <rect x="340" y="62" width="320" height="60" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="500" y="88" text-anchor="middle" font-size="17" font-weight="700" fill="#1d4ed8">Start with an FD: X → Y</text>
+    <text x="500" y="108" text-anchor="middle" font-size="13" fill="#475569">X is the determinant</text>
 
-For BCNF, `InstructorID` must be a superkey of that relation.
+    <line x1="500" y1="122" x2="500" y2="158" stroke="#64748b" stroke-width="2"/>
+    <polygon points="500,164 493,152 507,152" fill="#64748b"/>
+
+    <polygon points="500,164 675,238 500,312 325,238" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="500" y="229" text-anchor="middle" font-size="17" font-weight="700" fill="#92400e">Does X determine</text>
+    <text x="500" y="253" text-anchor="middle" font-size="17" font-weight="700" fill="#92400e">every attribute?</text>
+
+    <line x1="325" y1="238" x2="180" y2="238" stroke="#16a34a" stroke-width="2"/>
+    <polygon points="174,238 186,231 186,245" fill="#16a34a"/>
+    <text x="250" y="225" text-anchor="middle" font-size="14" font-weight="700" fill="#15803d">YES</text>
+    <rect x="35" y="200" width="140" height="76" rx="11" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+    <text x="105" y="230" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">X is a superkey</text>
+    <text x="105" y="252" text-anchor="middle" font-size="14" fill="#166534">BCNF satisfied</text>
+
+    <line x1="675" y1="238" x2="820" y2="238" stroke="#dc2626" stroke-width="2"/>
+    <polygon points="826,238 814,231 814,245" fill="#dc2626"/>
+    <text x="750" y="225" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">NO</text>
+    <rect x="825" y="200" width="140" height="76" rx="11" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="895" y="230" text-anchor="middle" font-size="16" font-weight="700" fill="#991b1b">X is not a key</text>
+    <text x="895" y="252" text-anchor="middle" font-size="14" fill="#991b1b">BCNF violated</text>
+
+    <text x="500" y="356" text-anchor="middle" font-size="15" fill="#374151">Repeat this test for every non-trivial functional dependency in the relation.</text>
+  </g>
+</svg>
+
+</div>
 
 ---
 
 # 10. A relation that is in 3NF but not BCNF
 
-Consider a university scheduling rule:
-
-> Each instructor teaches only one course.
-
-A student can enroll in a course, and each instructor is assigned to one course.
-
-Create this relation:
+Consider a university system that records which instructor teaches a student in a course:
 
 ```text
 StudentCourseInstructor(
@@ -854,6 +961,11 @@ StudentCourseInstructor(
     InstructorID
 )
 ```
+
+We will use these business rules:
+
+1. For a particular student and course, there is exactly one instructor.
+2. Each instructor teaches exactly one course, but can teach many students.
 
 Example data:
 
@@ -865,55 +977,181 @@ Example data:
 | S04 | C102 | I20 |
 | S05 | C103 | I30 |
 
-Assume these functional dependencies:
+## Step 1 — Write the functional dependencies
+
+The first business rule gives this FD:
 
 ```text
 (StudentID, CourseID) → InstructorID
-InstructorID → CourseID
 ```
 
-The first dependency says:
+It means that if `StudentID` and `CourseID` are known together, there can be only one matching `InstructorID`.
 
-> For a particular student and course, there is one instructor.
-
-The second says:
-
-> Each instructor teaches one course.
-
-## Candidate keys
-
-Because:
+The second business rule gives this FD:
 
 ```text
 InstructorID → CourseID
 ```
 
-the pair:
+It means that one `InstructorID` always has the same `CourseID`. The arrow does **not** work in reverse because a course can have more than one instructor.
+
+Notice that `InstructorID` determines `CourseID`, but it does not determine `StudentID`. For example, `I10` appears with both `S01` and `S02`.
+
+## Step 2 — Find the candidate keys
+
+A candidate key must determine all three attributes and must be minimal.
+
+Start with `{StudentID, CourseID}`:
 
 ```text
-(StudentID, InstructorID)
+{StudentID, CourseID}
+        ↓
+(StudentID, CourseID) → InstructorID
+        ↓
+{StudentID, CourseID, InstructorID}
 ```
 
-also determines the course.
+The pair determines the complete row. Neither attribute alone does, so it is a candidate key.
 
-Therefore there are two candidate keys:
+Now start with `{StudentID, InstructorID}`:
 
 ```text
-(StudentID, CourseID)
-(StudentID, InstructorID)
+{StudentID, InstructorID}
+        ↓
+InstructorID → CourseID
+        ↓
+{StudentID, InstructorID, CourseID}
 ```
 
-So:
+This pair also determines the complete row. Neither attribute alone does, so it is another candidate key.
 
-- `StudentID` is prime because it occurs in both candidate keys.
-- `CourseID` is prime because it occurs in the first candidate key.
-- `InstructorID` is prime because it occurs in the second candidate key.
+Therefore, the relation has two candidate keys:
 
-This is the key observation that makes the relation a useful 3NF-but-not-BCNF example.
+```text
+{StudentID, CourseID}
+{StudentID, InstructorID}
+```
 
----
+Any candidate key is automatically a superkey. A larger set such as `{StudentID, CourseID, InstructorID}` is also a superkey, but it is not a candidate key because it contains unnecessary attributes.
 
-The relation passes 3NF because `CourseID`, the attribute on the right of `InstructorID → CourseID`, is prime. It fails BCNF because `InstructorID` is not a superkey: the same instructor can appear in rows for several students. This is the only distinction to remember here—3NF allows the prime-attribute exception, while BCNF does not.
+## Step 3 — Identify the prime attributes
+
+A prime attribute appears in at least one candidate key:
+
+- `StudentID` appears in both candidate keys.
+- `CourseID` appears in `{StudentID, CourseID}`.
+- `InstructorID` appears in `{StudentID, InstructorID}`.
+
+Therefore, **all three attributes are prime**.
+
+<div style="background:white">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 475" role="img" aria-label="Deriving the candidate keys and prime attributes of Student Course Instructor">
+  <rect width="1100" height="475" fill="white"/>
+  <text x="550" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1f2937">Finding the Candidate Keys</text>
+
+  <g font-family="Arial,sans-serif">
+    <rect x="40" y="65" width="485" height="245" rx="15" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="282" y="96" text-anchor="middle" font-size="18" font-weight="700" fill="#1d4ed8">Candidate key 1</text>
+    <rect x="105" y="120" width="355" height="48" rx="9" fill="white" stroke="#60a5fa" stroke-width="2"/>
+    <text x="282" y="150" text-anchor="middle" font-size="16" fill="#1f2937">{StudentID, CourseID}</text>
+    <line x1="282" y1="168" x2="282" y2="207" stroke="#2563eb" stroke-width="2"/>
+    <polygon points="282,213 275,201 289,201" fill="#2563eb"/>
+    <text x="302" y="194" font-size="13" fill="#1d4ed8">determines InstructorID</text>
+    <rect x="80" y="213" width="405" height="58" rx="9" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="282" y="239" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">StudentID + CourseID + InstructorID</text>
+    <text x="282" y="259" text-anchor="middle" font-size="13" fill="#1e40af">All attributes are known</text>
+
+    <rect x="575" y="65" width="485" height="245" rx="15" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+    <text x="817" y="96" text-anchor="middle" font-size="18" font-weight="700" fill="#15803d">Candidate key 2</text>
+    <rect x="640" y="120" width="355" height="48" rx="9" fill="white" stroke="#4ade80" stroke-width="2"/>
+    <text x="817" y="150" text-anchor="middle" font-size="16" fill="#1f2937">{StudentID, InstructorID}</text>
+    <line x1="817" y1="168" x2="817" y2="207" stroke="#16a34a" stroke-width="2"/>
+    <polygon points="817,213 810,201 824,201" fill="#16a34a"/>
+    <text x="837" y="194" font-size="13" fill="#15803d">determines CourseID</text>
+    <rect x="615" y="213" width="405" height="58" rx="9" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="817" y="239" text-anchor="middle" font-size="15" font-weight="700" fill="#14532d">StudentID + InstructorID + CourseID</text>
+    <text x="817" y="259" text-anchor="middle" font-size="13" fill="#166534">All attributes are known</text>
+
+    <rect x="115" y="345" width="870" height="82" rx="13" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="550" y="375" text-anchor="middle" font-size="17" font-weight="700" fill="#92400e">Prime attributes</text>
+    <text x="550" y="402" text-anchor="middle" font-size="15" fill="#1f2937">StudentID, CourseID, and InstructorID are prime because each appears in a candidate key.</text>
+  </g>
+</svg>
+
+</div>
+
+## Step 4 — Check 3NF
+
+For each FD `X → A`, 3NF requires at least one of these conditions:
+
+1. `X` is a superkey, or
+2. `A` is a prime attribute.
+
+Apply the rule:
+
+| Functional dependency | Why it passes 3NF |
+|---|---|
+| `(StudentID, CourseID) → InstructorID` | `(StudentID, CourseID)` is a candidate key and therefore a superkey. |
+| `InstructorID → CourseID` | `CourseID` is a prime attribute, so the prime-attribute exception applies. |
+
+Therefore, the relation is in **3NF**.
+
+## Step 5 — Check BCNF
+
+BCNF has only one test: the determinant of every non-trivial FD must be a superkey.
+
+For the dependency:
+
+```text
+InstructorID → CourseID
+```
+
+`InstructorID` is **not** a superkey because it cannot identify one complete row. The same instructor can teach several students:
+
+```text
+I10 → (S01, C101)
+I10 → (S02, C101)
+```
+
+Knowing `I10` tells us the course, `C101`, but it does not tell us which student row is intended. Therefore, `InstructorID → CourseID` violates BCNF.
+
+<div style="background:white">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 385" role="img" aria-label="Why Student Course Instructor passes 3NF but fails BCNF">
+  <rect width="1100" height="385" fill="white"/>
+  <text x="550" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1f2937">The Same Dependency, Two Different Tests</text>
+
+  <g font-family="Arial,sans-serif">
+    <rect x="335" y="62" width="430" height="62" rx="11" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="550" y="88" text-anchor="middle" font-size="18" font-weight="700" fill="#1f2937">InstructorID → CourseID</text>
+    <text x="550" y="110" text-anchor="middle" font-size="13" fill="#475569">InstructorID is not a superkey; CourseID is prime</text>
+
+    <line x1="455" y1="124" x2="300" y2="177" stroke="#16a34a" stroke-width="2"/>
+    <polygon points="294,179 304,169 308,182" fill="#16a34a"/>
+    <line x1="645" y1="124" x2="800" y2="177" stroke="#dc2626" stroke-width="2"/>
+    <polygon points="806,179 792,182 796,169" fill="#dc2626"/>
+
+    <rect x="70" y="180" width="430" height="145" rx="15" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+    <text x="285" y="213" text-anchor="middle" font-size="20" font-weight="700" fill="#166534">3NF: PASS</text>
+    <text x="285" y="244" text-anchor="middle" font-size="15" fill="#1f2937">The determinant is not a superkey,</text>
+    <text x="285" y="267" text-anchor="middle" font-size="15" fill="#1f2937">but CourseID is a prime attribute.</text>
+    <text x="285" y="298" text-anchor="middle" font-size="14" font-weight="700" fill="#15803d">3NF allows this exception.</text>
+
+    <rect x="600" y="180" width="430" height="145" rx="15" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="815" y="213" text-anchor="middle" font-size="20" font-weight="700" fill="#991b1b">BCNF: FAIL</text>
+    <text x="815" y="244" text-anchor="middle" font-size="15" fill="#1f2937">InstructorID is not a superkey,</text>
+    <text x="815" y="267" text-anchor="middle" font-size="15" fill="#1f2937">so the dependency is not allowed.</text>
+    <text x="815" y="298" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">BCNF has no prime-attribute exception.</text>
+
+    <text x="550" y="360" text-anchor="middle" font-size="15" fill="#374151">Result: the relation is in 3NF, but it is not in BCNF.</text>
+  </g>
+</svg>
+
+</div>
+
+> **Beginner shortcut:** 3NF asks, “Is the left side a superkey, or is the right side prime?” BCNF asks only, “Is the left side a superkey?”
+
 
 ---
 
@@ -1012,17 +1250,16 @@ InstructorID → CourseID
 
 is no longer a valid functional dependency.
 
-Always establish the real business rules before deciding keys and dependencies.
+- Always establish the real business rules before deciding keys and dependencies.
 
 ---
-
 # 12. 3NF versus BCNF
 
 The easiest way to remember the difference is:
 
 ### 3NF
 
-For every non-trivial FD:
+For every non-trivial FD (**FD = Functional Dependency**, a rule `X → Y` meaning X uniquely determines Y):
 
 ```text
 X → A
@@ -1035,6 +1272,9 @@ X is a superkey
 OR
 A is a prime attribute
 ```
+
+> **superkey** = any set of one or more attributes that uniquely identifies a row.
+> **prime attribute** = an attribute that belongs to at least one candidate key (a minimal superkey).
 
 ### BCNF
 
@@ -1075,6 +1315,120 @@ but generally:
 
 In other words, every BCNF relation is in 3NF, but a 3NF relation need not be in BCNF.
 
+---
+
+## Visual example: 3NF but not BCNF
+
+Consider the relation:
+
+```text
+StudentCourseInstructor(StudentID, CourseID, InstructorID)
+```
+
+Business rules:
+
+- Each instructor teaches exactly one course.
+- A student can take a course from only one instructor.
+- A course can be taught by multiple instructors.
+
+Functional dependencies:
+
+```text
+InstructorID → CourseID          (each instructor teaches one course)
+(StudentID, CourseID) → InstructorID   (a student takes a course from one instructor)
+```
+
+Candidate keys:
+
+```text
+{StudentID, CourseID}
+{StudentID, InstructorID}
+```
+
+Prime attributes (**prime attribute** = attribute in at least one candidate key):
+
+```text
+StudentID, CourseID, InstructorID
+```
+
+Check 3NF:
+
+| FD | Determinant (X) | Is X a superkey? | Is dependent (A) prime? | 3NF? |
+|---|---|---|---|---|
+| `InstructorID → CourseID` | InstructorID | No | Yes (CourseID is prime) | Yes |
+| `(StudentID, CourseID) → InstructorID` | (StudentID, CourseID) | Yes | — | Yes |
+
+Check BCNF:
+
+| FD | Determinant (X) | Is X a superkey? | BCNF? |
+|---|---|---|---|
+| `InstructorID → CourseID` | InstructorID | No | **No** |
+| `(StudentID, CourseID) → InstructorID` | (StudentID, CourseID) | Yes | Yes |
+
+So this relation is in 3NF but **not** in BCNF, because `InstructorID → CourseID` has a determinant (`InstructorID`) that is not a superkey, even though the dependent attribute (`CourseID`) is prime.
+
+<div style="background:white">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520" role="img" aria-label="3NF but not BCNF example with StudentCourseInstructor relation">
+  <rect width="1100" height="520" fill="white"/>
+  <text x="550" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1f2937">3NF but NOT BCNF — StudentCourseInstructor</text>
+
+  <g font-family="Arial,sans-serif">
+    <!-- Relation box -->
+    <rect x="80" y="65" width="940" height="70" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+    <text x="550" y="93" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">StudentCourseInstructor(StudentID, CourseID, InstructorID)</text>
+    <text x="550" y="118" text-anchor="middle" font-size="13" fill="#475569">Candidate keys: {StudentID, CourseID} and {StudentID, InstructorID}</text>
+
+    <!-- FDs -->
+    <rect x="80" y="155" width="450" height="130" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="305" y="182" text-anchor="middle" font-size="16" font-weight="700" fill="#1d4ed8">Functional Dependencies</text>
+    <text x="110" y="210" font-size="14" fill="#1f2937">InstructorID → CourseID</text>
+    <text x="110" y="235" font-size="13" fill="#64748b">(determinant is not a superkey)</text>
+    <text x="110" y="262" font-size="14" fill="#1f2937">(StudentID, CourseID) → InstructorID</text>
+    <text x="110" y="282" font-size="13" fill="#64748b">(determinant is a superkey)</text>
+
+    <!-- Prime attributes -->
+    <rect x="570" y="155" width="450" height="130" rx="10" fill="#ecfdf5" stroke="#15803d" stroke-width="2"/>
+    <text x="795" y="182" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">Prime Attributes</text>
+    <text x="600" y="212" font-size="14" fill="#1f2937">StudentID</text>
+    <text x="600" y="237" font-size="14" fill="#1f2937">CourseID</text>
+    <text x="600" y="262" font-size="14" fill="#1f2937">InstructorID</text>
+    <text x="600" y="283" font-size="12" fill="#64748b">All appear in at least one candidate key.</text>
+
+    <!-- 3NF check -->
+    <rect x="80" y="315" width="450" height="160" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="305" y="342" text-anchor="middle" font-size="16" font-weight="700" fill="#92400e">3NF Check</text>
+    <text x="110" y="370" font-size="13" fill="#1f2937">For each FD X → A:</text>
+    <text x="110" y="395" font-size="13" fill="#1f2937">X is superkey OR A is prime?</text>
+    <text x="110" y="425" font-size="13" fill="#166534">✓ InstructorID → CourseID</text>
+    <text x="130" y="443" font-size="12" fill="#166534">CourseID is prime → allowed</text>
+    <text x="110" y="465" font-size="13" fill="#166534">✓ (StudentID, CourseID) → InstructorID</text>
+
+    <!-- BCNF check -->
+    <rect x="570" y="315" width="450" height="160" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="795" y="342" text-anchor="middle" font-size="16" font-weight="700" fill="#b91c1c">BCNF Check</text>
+    <text x="600" y="370" font-size="13" fill="#1f2937">For each FD X → Y:</text>
+    <text x="600" y="395" font-size="13" fill="#1f2937">Is X a superkey?</text>
+    <text x="600" y="425" font-size="13" fill="#b91c1c">✗ InstructorID → CourseID</text>
+    <text x="620" y="443" font-size="12" fill="#b91c1c">InstructorID is NOT a superkey</text>
+    <text x="600" y="465" font-size="13" fill="#166534">✓ (StudentID, CourseID) → InstructorID</text>
+
+    <!-- Verdict -->
+    <rect x="250" y="490" width="600" height="24" rx="6" fill="#fff8e1" stroke="#c68a00"/>
+    <text x="550" y="507" text-anchor="middle" font-size="12" fill="#92400e">Verdict: In 3NF (because CourseID is prime), but NOT in BCNF (because InstructorID is not a superkey).</text>
+  </g>
+</svg>
+
+</div>
+
+The key insight:
+
+```text
+3NF allows:   X → A   when X is not a superkey, as long as A is prime.
+BCNF allows:  X → Y   only when X is a superkey.
+```
+
+In the example above, `InstructorID → CourseID` is the FD that separates 3NF from BCNF. Because `CourseID` is a **prime attribute** (it belongs to the candidate key `{StudentID, CourseID}`), 3NF tolerates this dependency. BCNF does not, because `InstructorID` alone is **not a superkey** — it cannot uniquely identify a row in `StudentCourseInstructor`.
 ---
 
 # 13. Complete example: dependency analysis
