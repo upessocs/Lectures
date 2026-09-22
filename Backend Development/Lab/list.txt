@@ -2,7 +2,8 @@
 ./002 Exp 0 Part B Optional Git Hands-on
 ./000 List of Experiments.md
 ./001 Exp 0 Part A Git Basics.md
-./Exam 01.md
+./Exam 01 A.md
+./Exam 01 B.md
 ./Exp 01 Create a web page with all possible elements of HTML5.md
 ./Exp 02 Create a web page with all types of Cascading style sheets.md
 ./Exp 03 Create a Responsive Web page with HTML and CSS.md
