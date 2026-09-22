@@ -64,14 +64,106 @@ function greet(name) {
 
 ## Part B – Hands-On
 
-### Task 1: Arrays
-Create a script `script.js` that initializes an array of numbers, finds the sum of the elements, and prints the result.
+### Task 1: Basic JavaScript
+Create `script.js` to demonstrate arrays, objects, and functions.
 
-### Task 2: Objects
-Create an object representing a `Book` with properties like `title`, `author`, and `year`. Write a function to display the book details in a formatted string.
+```javascript
+// 1. Arrays
+const fruits = ['Apple', 'Banana', 'Mango'];
+console.log('--- Array Demonstration ---');
+console.log('Fruits array:', fruits);
+fruits.push('Orange');
+console.log('After push:', fruits);
 
-### Task 3: Node.js Execution
-Run the created `script.js` using Node.js in the terminal.
+// 2. Objects
+const student = {
+    name: 'John Doe',
+    age: 20,
+    course: 'Backend Development'
+};
+console.log('\n--- Object Demonstration ---');
+console.log('Student object:', student);
+console.log('Student Name:', student.name);
+
+// 3. Functions
+function greet(name) {
+    return `Hello, ${name}! Welcome to Backend Development Lab.`;
+}
+
+console.log('\n--- Function Demonstration ---');
+console.log(greet('Student'));
+```
+
+### Task 2: Advanced JavaScript Methods
+Create `script2.js` to demonstrate string, array, and object manipulation methods.
+
+```javascript
+// --- String Methods ---
+const str = "Backend Development";
+console.log("--- String Methods ---");
+console.log("Original:", str);
+
+// toUpperCase(): Converts all characters in a string to uppercase
+console.log("Upper Case:", str.toUpperCase());
+
+// toLowerCase(): Converts all characters in a string to lowercase
+console.log("Lower Case:", str.toLowerCase());
+
+// split(): Splits a string into an array of substrings based on a delimiter
+const words = str.split(" "); 
+console.log("Split by space:", words);
+
+// --- Array Methods (Add, Read, Update) ---
+console.log("\n--- Array Methods ---");
+let items = ['Node', 'Express'];
+
+// Add: push() adds an element to the end of an array
+items.push('MongoDB');
+console.log("After Adding:", items);
+
+// Read: Accessing an element by index
+console.log("First Item (Read):", items[0]);
+
+// Update: Changing an element by its index
+items[0] = 'Node.js';
+console.log("After Updating:", items);
+
+// --- Object Methods (Add, Read, Update) ---
+console.log("\n--- Object Methods ---");
+let user = { name: "John", role: "Dev" };
+
+// Add: Adding a new key-value pair to the object
+user.age = 25;
+console.log("After Adding Key:", user);
+
+// Read: Accessing a value using dot notation
+console.log("User Name (Read):", user.name);
+
+// Update: Modifying an existing value
+user.role = "Senior Dev";
+console.log("After Updating Role:", user);
+```
+
+### Task 3: HTML Integration
+Create `index.html` to run `script.js` in a browser.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exp 5: JavaScript Demo</title>
+</head>
+<body>
+    <h1>Exp 5: JavaScript Demo</h1>
+    <p>Open the browser console (F12) to see the results.</p>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+### Task 4: Node.js Execution
+Run `script.js` and `script2.js` using Node.js in the terminal.
 
 ---
 
