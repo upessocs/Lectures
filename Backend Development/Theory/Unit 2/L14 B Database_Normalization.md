@@ -950,6 +950,10 @@ The word **superkey** is important. A determinant may determine one attribute wi
 
 ---
 
+---
+
+# Optional: Practice Example to detect 3NF or BCNF
+
 # 10. A relation that is in 3NF but not BCNF
 
 Consider a university system that records which instructor teaches a student in a course:
