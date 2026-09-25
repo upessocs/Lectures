@@ -47,9 +47,10 @@ The **conceptual model** is a high-level overview of the data structure. It iden
 **Purpose:** Communicate with stakeholders, understand business requirements.
 
 **Components:**
-* Entities (Student, Course, Faculty)
-* Relationships (Enrolls, Teaches)
-* Attributes (name, email, branch)
+
+	- Entities (Student, Course, Faculty)
+	- Relationships (Enrolls, Teaches)
+	- Attributes (name, email, branch)
 
 **Example:**
 
@@ -66,10 +67,11 @@ The **logical model** adds detail to the conceptual model by defining attributes
 **Purpose:** Detailed design before implementation.
 
 **Components:**
-* Entities with attributes
-* Data types (INTEGER, VARCHAR, DATE)
-* Primary keys and foreign keys
-* Constraints (NOT NULL, UNIQUE)
+
+	- Entities with attributes
+	- Data types (INTEGER, VARCHAR, DATE)
+	- Primary keys and foreign keys
+	- Constraints (NOT NULL, UNIQUE)
 
 **Example:**
 
@@ -90,10 +92,11 @@ The **physical model** translates the logical model into actual database tables,
 **Purpose:** Implementation in a specific database system.
 
 **Components:**
-* Table definitions with storage details
-* Indexes for performance
-* Partitioning strategies
-* Database-specific optimizations
+
+	- Table definitions with storage details
+	- Indexes for performance
+	- Partitioning strategies
+	- Database-specific optimizations
 
 **Example (PostgreSQL):**
 
@@ -126,18 +129,19 @@ CREATE INDEX idx_students_branch ON students(branch);
 ### 3.2 Example: Student Management System
 
 **Business Requirements:**
-* Students enroll in courses
-* Courses are taught by faculty
-* Each course belongs to a department
-* Students receive grades for enrolled courses
+
+	- Students enroll in courses
+	- Courses are taught by faculty
+	- Each course belongs to a department
+	- Students receive grades for enrolled courses
 
 **Step 1: Identify Entities**
 
-* Student
-* Course
-* Faculty
-* Department
-* Enrollment
+	- Student
+	- Course
+	- Faculty
+	- Department
+	- Enrollment
 
 **Step 2: Identify Attributes**
 
@@ -149,18 +153,18 @@ Enrollment: student_id, course_id, semester, grade
 
 **Step 3: Identify Relationships**
 
-* Department 1:M Students
-* Department 1:M Faculty
-* Department 1:M Courses
-* Faculty 1:M Courses (a course has one faculty)
-* Student M:N Courses (through Enrollment)
+	- Department 1:M Students
+	- Department 1:M Faculty
+	- Department 1:M Courses
+	- Faculty 1:M Courses (a course has one faculty)
+	- Student M:N Courses (through Enrollment)
 
 **Step 4: Define Constraints**
 
-* Student email must be unique
-* Course credits must be between 1 and 6
-* Grade must be A+, A, B+, B, C+, C, D, F, or NULL
-* Enrollment date cannot be in the future
+	- Student email must be unique
+	- Course credits must be between 1 and 6
+	- Grade must be A+, A, B+, B, C+, C, D, F, or NULL
+	- Enrollment date cannot be in the future
 
 ---
 
@@ -168,11 +172,11 @@ Enrollment: student_id, course_id, semester, grade
 
 **ORM** is a technique that maps Python/JavaScript objects to database tables. Instead of writing raw SQL, you interact with objects — the ORM translates your operations into SQL behind the benefits:
 
-* Write database operations in your programming language
-* Automatic SQL generation
-* Built-in validation and type checking
-* Database-agnostic code (switch databases without changing code)
-* Relationship handling (lazy loading, eager loading)
+	- Write database operations in your programming language
+	- Automatic SQL generation
+	- Built-in validation and type checking
+	- Database-agnostic code (switch databases without changing code)
+	- Relationship handling (lazy loading, eager loading)
 
 ### 4.1 SQLAlchemy (Python)
 
@@ -188,8 +192,9 @@ pip install sqlalchemy
 
 ```python
 from sqlalchemy import create_engine, Column, Integer, String, Date, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
+from datetime import date
 
 # Create database connection
 engine = create_engine("sqlite:///students.db")
@@ -197,13 +202,23 @@ Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Define models
+# --- Models with back_populates ---
+# 'back_populates' creates a bidirectional relationship. 
+# It links the 'Student' object to the 'Department' object and vice-versa.
+# For example, if you have a 'Student' object, you can access their 'department' 
+# object directly (student.department). Conversely, if you have a 'Department' 
+# object, you can access all 'students' belonging to that department 
+# (department.students). SQLAlchemy manages the synchronization automatically 
+# when you update either side of the relationship.
+
 class Department(Base):
     __tablename__ = "departments"
     
     id = Column(Integer, primary_key=True)
     name = Column(String(100), unique=True, nullable=False)
     
+    # The relationship tells SQLAlchemy how to link Department to Student.
+    # When you query a department, you can immediately access all associated students.
     students = relationship("Student", back_populates="department")
     courses = relationship("Course", back_populates="department")
 
@@ -217,6 +232,7 @@ class Student(Base):
     enrollment_date = Column(Date)
     department_id = Column(Integer, ForeignKey("departments.id"))
     
+    # The relationship tells SQLAlchemy how to link Student back to Department.
     department = relationship("Department", back_populates="students")
     enrollments = relationship("Enrollment", back_populates="student")
 
@@ -242,38 +258,141 @@ class Enrollment(Base):
     student = relationship("Student", back_populates="enrollments")
     course = relationship("Course", back_populates="enrollments")
 
+
+
 # Create tables
 Base.metadata.create_all(engine)
+
 ```
 
-**CRUD Operations:**
+---
+## **CRUD Operations:**
 
 ```python
-# Create
+from sqlalchemy import create_engine, Column, Integer, String, Date, ForeignKey
+from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import sessionmaker, relationship
+from datetime import date
+
+# Create database connection
+engine = create_engine("sqlite:///students.db")
+Base = declarative_base()
+Session = sessionmaker(bind=engine)
+session = Session()
+
+# --- Models with back_populates ---
+# 'back_populates' creates a bidirectional relationship. 
+# It links the 'Student' object to the 'Department' object and vice-versa.
+# For example, if you have a 'Student' object, you can access their 'department' 
+# object directly (student.department). Conversely, if you have a 'Department' 
+# object, you can access all 'students' belonging to that department 
+# (department.students). SQLAlchemy manages the synchronization automatically 
+# when you update either side of the relationship.
+
+class Department(Base):
+    __tablename__ = "departments"
+    
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100), unique=True, nullable=False)
+    
+    # The relationship tells SQLAlchemy how to link Department to Student.
+    # When you query a department, you can immediately access all associated students.
+    students = relationship("Student", back_populates="department")
+    courses = relationship("Course", back_populates="department")
+
+class Student(Base):
+    __tablename__ = "students"
+    
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100), nullable=False)
+    email = Column(String(100), unique=True, nullable=False)
+    branch = Column(String(50))
+    enrollment_date = Column(Date)
+    department_id = Column(Integer, ForeignKey("departments.id"))
+    
+    # The relationship tells SQLAlchemy how to link Student back to Department.
+    department = relationship("Department", back_populates="students")
+    enrollments = relationship("Enrollment", back_populates="student")
+
+class Course(Base):
+    __tablename__ = "courses"
+    
+    id = Column(String(10), primary_key=True)
+    title = Column(String(100), nullable=False)
+    credits = Column(Integer, nullable=False)
+    department_id = Column(Integer, ForeignKey("departments.id"))
+    
+    department = relationship("Department", back_populates="courses")
+    enrollments = relationship("Enrollment", back_populates="course")
+
+class Enrollment(Base):
+    __tablename__ = "enrollments"
+    
+    student_id = Column(Integer, ForeignKey("students.id"), primary_key=True)
+    course_id = Column(String(10), ForeignKey("courses.id"), primary_key=True)
+    semester = Column(String(20))
+    grade = Column(String(2))
+    
+    student = relationship("Student", back_populates="enrollments")
+    course = relationship("Course", back_populates="enrollments")
+
+
+
+# Create tables
+Base.metadata.create_all(engine)
+
+# --- CRUD Operations ---
+
+# CREATE: Adding new data
+print("\n--- CREATE ---")
 new_student = Student(
     name="Aarav",
-    email="aarav@upes.ac.in",
+    email="Aarav@upes.ac.in",  # Changed to be unique
     branch="CSE",
     enrollment_date=date(2024, 8, 1),
-    department_id=1
+    department_id=1  # Ensure this department ID exists in departments table
 )
 session.add(new_student)
+# session.commit() is essential. Without it, the changes remain in memory 
+# and are not written to the 'students.db' file.
 session.commit()
+print("Student added and committed to the database.")
 
-# Read
+# READ: Retrieving data
+print("\n--- READ ---")
 students = session.query(Student).filter(Student.branch == "CSE").all()
+# Fetching the first student to demonstrate
 student = session.query(Student).filter_by(id=1).first()
 
-# Update
-student.branch = "ECE"
-session.commit()
+print(f"Retrieved student (ID 1): {student.name if student else 'Not Found'}")
+print(f"Retrieved all CSE students: {[s.name for s in students]}")
 
-# Delete
-session.delete(student)
-session.commit()
+# UPDATE: Modifying data
+print("\n--- UPDATE ---")
+if student:
+    # Modify the object in memory
+    student.branch = "ECE"
+    # Commit to persist the change in the database file
+    session.commit()
+    print(f"Student {student.name} branch updated to ECE in the database.")
+
+# DELETE: Removing data
+print("\n--- DELETE ---")
+# Let's delete the student we just created (assuming it's the one with id=2 or similar)
+# We need to find the student first
+student_to_delete = session.query(Student).filter_by(name="Aarav").first()
+if student_to_delete:
+    session.delete(student_to_delete)
+    # Commit to finalize the deletion in the database file
+    session.commit()
+    print("Student 'Aarav' deleted from the database.")
+else:
+    print("Student 'Aarav' not found for deletion.")
+
 ```
-
-### 4.2 Mongoose (Node.js)
+---
+# Object Document Modeling (ODM)
+## 4.2 Mongoose (Node.js)
 
 Mongoose is the most popular ODM (Object Document Modeling) for MongoDB with Node.js.
 
@@ -429,21 +548,21 @@ const studentSchema = new mongoose.Schema({
 
 ## 7. Summary
 
-* **Data modeling** translates business requirements into structured database designs at three levels: conceptual, logical, and physical.
-* **ORM/ODM frameworks** (SQLAlchemy, Mongoose) allow developers to interact with databases using objects instead of raw SQL.
-* **Validation** (Pydantic, Mongoose schemas) ensures data integrity before storage.
-* Proper data modeling is essential for building maintainable, scalable backend applications.
-* Always design your data models before writing application code.
+	- **Data modeling** translates business requirements into structured database designs at three levels: conceptual, logical, and physical.
+	- **ORM/ODM frameworks** (SQLAlchemy, Mongoose) allow developers to interact with databases using objects instead of raw SQL.
+	- **Validation** (Pydantic, Mongoose schemas) ensures data integrity before storage.
+	- Proper data modeling is essential for building maintainable, scalable backend applications.
+	- Always design your data models before writing application code.
 
 ### Key Takeaways
 
-* Data modeling has three levels: conceptual, logical, and physical.
-* ORM maps objects to database tables; ODM maps objects to documents.
-* SQLAlchemy (Python) and Mongoose (Node.js) are popular ORM/ODM frameworks.
-* Validation prevents invalid data from entering the database.
-* Good data models are self-documenting and support future growth.
+	- Data modeling has three levels: conceptual, logical, and physical.
+	- ORM maps objects to database tables; ODM maps objects to documents.
+	- SQLAlchemy (Python) and Mongoose (Node.js) are popular ORM/ODM frameworks.
+	- Validation prevents invalid data from entering the database.
+	- Good data models are self-documenting and support future growth.
 
-In **L16 – CRUD Operations: Create, Read, Update, Delete in Databases**, you will implement full CRUD functionality using your data models.
+In **L16 - CRUD Operations: Create, Read, Update, Delete in Databases**, you will implement full CRUD functionality using your data models.
 
 ---
 

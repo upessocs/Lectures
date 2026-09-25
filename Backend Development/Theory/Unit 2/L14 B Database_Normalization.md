@@ -948,9 +948,15 @@ The word **superkey** is important. A determinant may determine one attribute wi
 
 </div>
 
----
+
+
 
 ---
+# Optional
+
+
+---
+
 
 # Optional: Practice Example to detect 3NF or BCNF
 
