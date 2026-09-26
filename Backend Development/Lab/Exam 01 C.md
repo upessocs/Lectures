@@ -397,4 +397,3 @@ cms-lab/
 9. Empty title, content, or author values must not be accepted.
 10. Authentication, REST APIs, user accounts, and frontend frameworks are **not required**.
 
-This makes it structurally different from **Exam A (Notes App)** and **Exam B (Eisenhower Todo)** while testing the same core skills: **routing, form handling, MongoDB persistence, server-side rendering, and dynamic URL-based resource retrieval**.
