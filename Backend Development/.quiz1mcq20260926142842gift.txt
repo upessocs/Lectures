@@ -1,0 +1,559 @@
+::L01_MCSA_01_Backend_Role::Which responsibility belongs primarily to backend development? {
+~%100%Executing business logic and managing application data
+~%-33.33333%Choosing the visual spacing between page elements
+~%-33.33333%Drawing browser icons for a toolbar
+~%-33.33334%Selecting a monitor's display resolution
+}
+
+::L01_MCMA_02_Backend_Responsibilities::Select all that apply. Which tasks are typical backend responsibilities? {
+~%50%Authenticating users
+~%50%Communicating with databases
+~%-50%Rendering pixels on a user's monitor
+~%-50%Designing a physical keyboard layout
+}
+
+::L01_MCSA_03_Scalability::Which backend quality means that a system continues to function efficiently as its number of users grows? {
+~%100%Scalability
+~%-33.33333%Typography
+~%-33.33333%Portability of screen colors
+~%-33.33334%Static presentation
+}
+
+::L01_MCMA_04_Dynamic_Websites::Select all that apply. Which capabilities distinguish dynamic websites from early static websites? {
+~%50%User authentication
+~%50%Database-backed personalized content
+~%-50%Identical fixed content for every visitor
+~%-50%Operation without any server-side processing
+}
+
+::L01_MCSA_05_Backend_Technology::Which item is a backend framework discussed in the lecture? {
+~%100%Django
+~%-33.33333%PostgreSQL
+~%-33.33333%Git
+~%-33.33334%Nginx
+}
+
+::L01_MCMA_06_Good_Backend::Select all that apply. Which are characteristics of a good backend system? {
+~%50%Reliability
+~%50%Maintainability
+~%-50%Mandatory downtime during every request
+~%-50%Dependence on a single fixed number of users
+}
+
+::L02_MCSA_07_Client_Definition::In client-server architecture, which component normally initiates communication? {
+~%100%Client
+~%-33.33333%Database schema
+~%-33.33333%Server rack fan
+~%-33.33334%Backup archive
+}
+
+::L02_MCMA_08_Server_Tasks::Select all that apply. Which operations are commonly performed by a backend server? {
+~%50%Processing business rules
+~%50%Performing database operations
+~%-50%Physically pressing keys for the user
+~%-50%Changing the client's monitor hardware
+}
+
+::L02_MCSA_09_Three_Tier::Which layer in a three-tier architecture contains backend application logic? {
+~%100%Application layer
+~%-33.33333%Presentation layer
+~%-33.33333%Data layer
+~%-33.33334%Electrical layer
+}
+
+::L02_MCMA_10_HTTPS::Select all that apply. Which benefits are provided by HTTPS? {
+~%50%Confidentiality through encrypted communication
+~%50%Protection of data integrity in transit
+~%-50%Guaranteed correctness of all business logic
+~%-50%Automatic removal of every database duplicate
+}
+
+::L02_MCSA_11_WebSocket::Which protocol supports continuous bidirectional client-server communication? {
+~%100%WebSocket
+~%-33.33333%SMTP
+~%-33.33333%FTP
+~%-33.33334%Static HTML
+}
+
+::L02_MCMA_12_Architecture_Benefits::Select all that apply. Which are advantages of separating clients and servers? {
+~%50%Centralized data management
+~%50%Easier maintenance of application logic
+~%-50%Elimination of all network latency
+~%-50%No need for security controls
+}
+
+::L03_MCSA_13_Request_Response::What does a server send after processing an HTTP request? {
+~%100%An HTTP response
+~%-33.33333%A keyboard event
+~%-33.33333%A database entity diagram
+~%-33.33334%A source-control branch
+}
+
+::L03_MCMA_14_HTTP_Request_Parts::Select all that apply. Which can be parts of an HTTP request? {
+~%50%Headers
+~%50%Body
+~%-50%Screen brightness
+~%-50%Database normalization level
+}
+
+::L03_MCSA_15_Status_404::What does HTTP status code 404 normally indicate? {
+~%100%The requested resource was not found
+~%-33.33333%The request succeeded and returned content
+~%-33.33333%A new resource was created
+~%-33.33334%The server permanently stopped using HTTP
+}
+
+::L03_MCMA_16_URL_Components::Select all that apply. Which elements can appear in a URL? {
+~%50%Host name
+~%50%Port number
+~%-50%HTTP response body
+~%-50%Database transaction log
+}
+
+::L03_MCSA_17_Express_JSON::Which Express response method sends a JavaScript value as JSON? {
+~%100%res.json()
+~%-33.33333%res.monitor()
+~%-33.33333%req.listen()
+~%-33.33334%npm.route()
+}
+
+::L03_MCMA_18_Backend_Setup::Select all that apply. Which pairings are correct? {
+~%50%Node.js projects commonly use npm
+~%50%Python projects commonly use pip and virtual environments
+~%-50%Express is a PostgreSQL normalization command
+~%-50%Flask is a browser Network-tab filter
+}
+
+::L04_MCSA_19_Request_Line::Which information appears in an HTTP request line? {
+~%100%Method, target path, and HTTP version
+~%-33.33333%Only the response status code
+~%-33.33333%Only database credentials
+~%-33.33334%Screen size and color depth
+}
+
+::L04_MCMA_20_DevTools_Network::Select all that apply. What can the browser Network tab help inspect? {
+~%50%Request headers
+~%50%Response status and body
+~%-50%The server's physical disk temperature
+~%-50%The user's database normalization design
+}
+
+::L04_MCSA_21_Curl_Include::Which curl option includes response headers in the displayed output? {
+~%100%-i
+~%-33.33333%-X
+~%-33.33333%-d
+~%-33.33334%-H
+}
+
+::L04_MCMA_22_Post_Request::Select all that apply. Which are normally needed when sending JSON in a POST request? {
+~%50%A Content-Type header for application/json
+~%50%A serialized JSON request body
+~%-50%A 404 status selected before transmission
+~%-50%A database table dropped in advance
+}
+
+::L04_MCSA_23_Fetch_JSON::After a successful fetch response, which expression parses a JSON response body asynchronously? {
+~%100%response.json()
+~%-33.33333%response.listen()
+~%-33.33333%fetch.stringify()
+~%-33.33334%request.render()
+}
+
+::L04_MCMA_24_HTTP_Tools::Select all that apply. Which tools can directly send or inspect HTTP requests as covered in the lecture? {
+~%50%curl
+~%50%Postman
+~%-50%SQL normalization
+~%-50%An ER cardinality symbol
+}
+
+::L05_MCSA_25_REST_Resource::In REST, what should a URI primarily identify? {
+~%100%A resource
+~%-33.33333%A programming language compiler
+~%-33.33333%A physical network cable
+~%-33.33334%A database backup schedule
+}
+
+::L05_MCMA_26_REST_Constraints::Select all that apply. Which are REST architectural constraints? {
+~%50%Stateless communication
+~%50%Uniform interface
+~%-50%Mandatory SOAP envelopes
+~%-50%Permanent client-side database ownership
+}
+
+::L05_MCSA_27_REST_Naming::Which URI best follows REST resource naming conventions for a collection? {
+~%100%/students
+~%-33.33333%/getAllStudentsNow
+~%-33.33333%/executeStudentRetrieval
+~%-33.33334%/studentsActionVerb
+}
+
+::L05_MCMA_28_REST_Methods::Select all that apply. Which method-operation mappings are RESTful? {
+~%50%POST on /students to create a student
+~%50%DELETE on /students/7 to remove student 7
+~%-50%GET on /students to delete all students
+~%-50%PUT on /students/7 only to retrieve student 7
+}
+
+::L05_MCSA_29_FastAPI_Docs::Which FastAPI feature provides an interactive API interface generated from the application definition? {
+~%100%Swagger UI
+~%-33.33333%Cookie expiration
+~%-33.33333%Database denormalization
+~%-33.33334%SMTP delivery
+}
+
+::L05_MCMA_30_REST_Best_Practices::Select all that apply. Which are REST API best practices? {
+~%50%Use appropriate HTTP status codes
+~%50%Use consistent resource-oriented URLs
+~%-50%Store client session state inside every REST server request history
+~%-50%Return the same success code for every error
+}
+
+::L06_MCSA_31_Session_Definition::Where is session data primarily maintained in a traditional server-side session design? {
+~%100%On the server
+~%-33.33333%Only in the URL path
+~%-33.33333%Inside the monitor firmware
+~%-33.33334%In an ER diagram
+}
+
+::L06_MCMA_32_Cookie_Attributes::Select all that apply. Which cookie attributes improve security? {
+~%50%HttpOnly
+~%50%Secure
+~%-50%AlwaysPublic
+~%-50%DisableEncryption
+}
+
+::L06_MCSA_33_Query_String::Which URL portion commonly carries query-string parameters? {
+~%100%The portion following the question mark
+~%-33.33333%The HTTP status line
+~%-33.33333%The response body only
+~%-33.33334%The server's database file header
+}
+
+::L06_MCMA_34_State_Choices::Select all that apply. Which statements correctly compare sessions and cookies? {
+~%50%A session can keep application state on the server
+~%50%A cookie is stored by the client and sent with matching requests
+~%-50%A every cookie is automatically inaccessible to JavaScript
+~%-50%A sessions eliminate the need for a session identifier
+}
+
+::L06_MCSA_35_Express_Session::Which Express middleware is used in the lecture to manage server-side sessions? {
+~%100%express-session
+~%-33.33333%express-static-only
+~%-33.33333%mongoose-template
+~%-33.33334%curl-session
+}
+
+::L06_MCMA_36_Query_Use::Select all that apply. Which are suitable uses of query strings? {
+~%50%Filtering a resource collection
+~%50%Specifying pagination values
+~%-50%Sending passwords as a recommended secure practice
+~%-50%Replacing all server-side authorization
+}
+
+::L07_MCSA_37_Web_Storage_Persistence::Which Web Storage mechanism normally persists after the browser is closed and reopened? {
+~%100%localStorage
+~%-33.33333%sessionStorage
+~%-33.33333%A local JavaScript variable
+~%-33.33334%The current call stack
+}
+
+::L07_MCMA_38_Storage_Methods::Select all that apply. Which methods exist on both localStorage and sessionStorage? {
+~%50%setItem()
+~%50%removeItem()
+~%-50%commitTransaction()
+~%-50%createTable()
+}
+
+::L07_MCSA_39_JSON_Stringify::What is the purpose of JSON.stringify()? {
+~%100%Convert a JavaScript value into a JSON string
+~%-33.33333%Convert a JSON string into a database table
+~%-33.33333%Delete all Web Storage values
+~%-33.33334%Open a server socket
+}
+
+::L07_MCMA_40_Storage_Safety::Select all that apply. Which practices correctly handle structured Web Storage data? {
+~%50%Use JSON.stringify() before storing an object
+~%50%Check for a missing value before accessing parsed properties
+~%-50%Assume getItem() returns the original numeric type
+~%-50%Store sensitive credentials because localStorage is server-encrypted
+}
+
+::L07_MCSA_41_Missing_Key::What does localStorage.getItem() return when the requested key does not exist? {
+~%100%null
+~%-33.33333%undefined in every browser
+~%-33.33333%An empty object
+~%-33.33334%A rejected Promise
+}
+
+::L07_MCMA_42_Local_vs_Session::Select all that apply. Which statements about Web Storage are correct? {
+~%50%localStorage can be shared by same-origin pages
+~%50%sessionStorage is scoped to a browser tab session
+~%-50%Web Storage automatically stores objects without conversion
+~%-50%localStorage is a secure replacement for a backend database
+}
+
+::L08_MCSA_43_SSR_Definition::What happens in server-side rendering? {
+~%100%The server generates HTML before sending it to the client
+~%-33.33333%The database directly draws the browser window
+~%-33.33333%The client compiles the server operating system
+~%-33.33334%The browser permanently stores every response
+}
+
+::L08_MCMA_44_SSR_Benefits::Select all that apply. Which are common benefits of server-side rendering? {
+~%50%Search engines can receive ready-to-index HTML
+~%50%Users can receive meaningful initial content quickly
+~%-50%All server processing is eliminated
+~%-50%No network request is ever required
+}
+
+::L08_MCSA_45_EJS_Output::[html]Which EJS syntax outputs an escaped value into HTML? {
+~%100%&lt;%\= value %&gt;
+~%-33.33333%&lt;% value %&gt;
+~%-33.33333%\{\{ value \}\}
+~%-33.33334%JSON.parse(value)
+}
+
+::L08_MCMA_46_Template_Engines::Select all that apply. Which framework-template pairings are covered in the lecture? {
+~%50%Express with EJS
+~%50%FastAPI with Jinja2
+~%-50%PostgreSQL with curl templates
+~%-50%SMTP with Mongoose views
+}
+
+::L08_MCSA_47_Static_Files::Which content is best classified as a static file? {
+~%100%A CSS stylesheet
+~%-33.33333%A database query result generated per user
+~%-33.33333%A session object stored on the server
+~%-33.33334%A calculated API response
+}
+
+::L08_MCMA_48_Template_Features::Select all that apply. Which features are commonly supported by templating engines? {
+~%50%Conditionals
+~%50%Loops over collections
+~%-50%Automatic replacement of the database server
+~%-50%Physical allocation of network ports
+}
+
+::L13_MCSA_49_DBMS::What is a DBMS? {
+~%100%Software used to define, store, retrieve, and manage data in databases
+~%-33.33333%A protocol used only for sending email
+~%-33.33333%A CSS engine for rendering webpages
+~%-33.33334%A browser-only storage key
+}
+
+::L13_MCMA_50_Database_Benefits::Select all that apply. Why do applications use databases? {
+~%50%To provide persistent structured storage
+~%50%To support controlled concurrent data access
+~%-50%To guarantee that application code has no defects
+~%-50%To replace every network protocol
+}
+
+::L13_MCSA_51_Relational_Structure::How is data primarily organized in a relational database? {
+~%100%Tables containing rows and columns
+~%-33.33333%Only as image pixels
+~%-33.33333%Only as unconnected text files
+~%-33.33334%As browser tabs
+}
+
+::L13_MCMA_52_ACID::Select all that apply. Which terms are ACID transaction properties? {
+~%50%Atomicity
+~%50%Isolation
+~%-50%Iteration
+~%-50%Decoration
+}
+
+::L13_MCSA_53_Document_Database::Which database is presented as a document-oriented NoSQL database? {
+~%100%MongoDB
+~%-33.33333%PostgreSQL
+~%-33.33333%MySQL
+~%-33.33334%SQLite
+}
+
+::L13_MCMA_54_NoSQL_Types::Select all that apply. Which are categories of NoSQL databases? {
+~%50%Key-value stores
+~%50%Graph databases
+~%-50%HTML stylesheet stores
+~%-50%SMTP-only stores
+}
+
+::L13_MCSA_55_Foreign_Key::What is the main purpose of a foreign key? {
+~%100%Reference a key in another table and maintain relationships
+~%-33.33333%Encrypt every value in a table
+~%-33.33333%Render a template in the browser
+~%-33.33334%Start an HTTP server
+}
+
+::L13_MCMA_56_Relational_Use::Select all that apply. When is a relational database often a strong choice? {
+~%50%The data has well-defined relationships
+~%50%Transactions require strong consistency
+~%-50%The application must avoid all schemas by definition
+~%-50%The only requirement is temporary tab-scoped storage
+}
+
+::L13_MCSA_57_SQL_Update::Which SQL command changes existing rows? {
+~%100%UPDATE
+~%-33.33333%SELECT
+~%-33.33333%CREATE
+~%-33.33334%JOIN
+}
+
+::L13_MCMA_58_DB_Selection::Select all that apply. Which factors should influence database selection? {
+~%50%Data structure and relationship complexity
+~%50%Consistency and scalability requirements
+~%-50%The developer's preferred screen wallpaper
+~%-50%The order of browser bookmarks
+}
+
+::L14_MCSA_59_Entity::In an ER diagram, what does an entity represent? {
+~%100%A distinguishable real-world object or concept about which data is stored
+~%-33.33333%An HTTP status code
+~%-33.33333%A CSS animation
+~%-33.33334%A browser session timeout
+}
+
+::L14_MCMA_60_ER_Components::Select all that apply. Which are fundamental ER-model components? {
+~%50%Entities
+~%50%Relationships
+~%-50%HTTP response bodies
+~%-50%Package-manager scripts
+}
+
+::L14_MCSA_61_One_To_Many::Which scenario is naturally modeled as a one-to-many relationship? {
+~%100%One department has many students
+~%-33.33333%Many students enroll in many courses without an associative entity
+~%-33.33333%One person has exactly one passport in both directions
+~%-33.33334%One row has no attributes
+}
+
+::L14_MCMA_62_Many_To_Many::Select all that apply. Which statements about a many-to-many relational design are correct? {
+~%50%It is commonly resolved with an associative table
+~%50%The associative table can store attributes of the relationship
+~%-50%It requires placing every course inside one student column
+~%-50%It eliminates the need for primary and foreign keys
+}
+
+::L14_MCSA_63_First_Normal_Form::Which requirement is central to First Normal Form? {
+~%100%Each field contains an atomic value for the chosen design
+~%-33.33333%Every determinant must be a superkey
+~%-33.33333%All transitive dependencies must remain
+~%-33.33334%Every table must contain repeating groups
+}
+
+::L14_MCMA_64_Anomalies::Select all that apply. Which anomalies can result from redundant unnormalized data? {
+~%50%Update anomaly
+~%50%Deletion anomaly
+~%-50%Rendering anomaly
+~%-50%Routing anomaly
+}
+
+::L14_MCSA_65_Second_Normal_Form::What dependency does Second Normal Form remove? {
+~%100%Partial dependency on part of a composite candidate key
+~%-33.33333%Every functional dependency
+~%-33.33333%All dependencies on a whole key
+~%-33.33334%Dependencies between HTTP headers
+}
+
+::L14_MCMA_66_Functional_Dependency::Select all that apply. Which statements about a functional dependency X → Y are correct? {
+~%50%A given X value determines one Y value
+~%50%Functional dependencies express semantic constraints in a relation
+~%-50%Y must always determine X
+~%-50%The notation means X is an HTTP client
+}
+
+::L14_MCSA_67_Third_Normal_Form::Which problem is primarily addressed when moving a suitable 2NF relation to 3NF? {
+~%100%Transitive dependency involving non-key attributes
+~%-33.33333%The existence of any primary key
+~%-33.33333%The use of rows and columns
+~%-33.33334%The presence of an HTTP method
+}
+
+::L14_MCMA_68_Candidate_Keys::Select all that apply. Which statements about candidate keys are correct? {
+~%50%A candidate key uniquely identifies a tuple
+~%50%A candidate key is minimal, so no proper subset is also a superkey
+~%-50%Every superkey is necessarily minimal
+~%-50%A relation can never have more than one candidate key
+}
+
+::L14_MCSA_69_BCNF::Which rule defines Boyce-Codd Normal Form? {
+~%100%Every determinant of a non-trivial functional dependency is a superkey
+~%-33.33333%Every table must contain exactly two columns
+~%-33.33333%Every dependent attribute must be non-prime
+~%-33.33334%Every relation must avoid foreign keys
+}
+
+::L14_MCMA_70_Decomposition_Quality::Select all that apply. Which properties should be checked after decomposing a relation? {
+~%50%Lossless join
+~%50%Dependency preservation where important
+~%-50%Guaranteed removal of all indexes
+~%-50%Conversion of all keys into query strings
+}
+
+::L15_MCSA_71_Conceptual_Model::Which data-model level focuses on high-level entities and relationships for communication with stakeholders? {
+~%100%Conceptual model
+~%-33.33333%Physical model
+~%-33.33333%Transaction log
+~%-33.33334%HTTP model
+}
+
+::L15_MCMA_72_Logical_Model::Select all that apply. Which details normally belong in a logical data model? {
+~%50%Attributes and data types
+~%50%Primary and foreign keys
+~%-50%DBMS-specific storage pages
+~%-50%Server rack placement
+}
+
+::L15_MCSA_73_Physical_Model::Which model translates a logical design into tables, indexes, and DBMS-specific structures? {
+~%100%Physical data model
+~%-33.33333%Conceptual data model
+~%-33.33333%Client-side view model
+~%-33.33334%HTTP request model
+}
+
+::L15_MCMA_74_Modeling_Process::Select all that apply. Which steps belong to translating business requirements into a data model? {
+~%50%Identify entities and attributes
+~%50%Define relationships and constraints
+~%-50%Choose random column names before reading requirements
+~%-50%Remove every business rule from the design
+}
+
+::L15_MCSA_75_ORM::What does an ORM primarily map? {
+~%100%Programming-language objects to relational database tables
+~%-33.33333%HTTP status codes to CSS selectors
+~%-33.33333%Browser tabs to email servers
+~%-33.33334%Cookies to physical memory chips
+}
+
+::L15_MCMA_76_SQLAlchemy_Relationships::Select all that apply. Which statements match the SQLAlchemy model shown in the lecture? {
+~%50%ForeignKey links a column to a referenced table column
+~%50%back_populates configures both sides of a relationship
+~%-50%session.commit() discards pending changes
+~%-50%Base.metadata.create_all() deletes all model tables
+}
+
+::L15_MCSA_77_Commit::Why is session.commit() used after adding or changing a SQLAlchemy object? {
+~%100%To persist the transaction's changes to the database
+~%-33.33333%To convert the model into an EJS template
+~%-33.33333%To close every browser tab
+~%-33.33334%To generate an HTTP 404 response
+}
+
+::L15_MCMA_78_Mongoose_Validation::Select all that apply. Which are Mongoose schema validation features shown in the lecture? {
+~%50%required
+~%50%enum
+~%-50%httpStatus
+~%-50%templateLoop
+}
+
+::L15_MCSA_79_Pydantic::What role does Pydantic play in the FastAPI example? {
+~%100%It validates and structures request data
+~%-33.33333%It serves CSS files as a web server
+~%-33.33333%It replaces MongoDB with localStorage
+~%-33.33334%It sends SMTP messages
+}
+
+::L15_MCMA_80_Modeling_Best_Practices::Select all that apply. Which are recommended data-modeling practices? {
+~%50%Use meaningful names
+~%50%Index frequently queried fields when appropriate
+~%-50%Ignore future data growth
+~%-50%Store every concept in one unstructured column
+}

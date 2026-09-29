@@ -476,33 +476,193 @@ Validating data before storing it in the database prevents corruption and ensure
 Pydantic is used with FastAPI for request validation:
 
 ```python
+from fastapi import FastAPI
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 from datetime import date
 
+
+app = FastAPI()
+
+
+# ---------------------------------------------------------
+# 1. Pydantic model for incoming student data
+# ---------------------------------------------------------
 class StudentCreate(BaseModel):
-    name: str = Field(..., min_length=1, max_length=100)
+    # Required string.
+    # min_length=1 prevents an empty string.
+    # max_length=100 prevents excessively long names.
+    name: str = Field(
+        ...,
+        min_length=1,
+        max_length=100
+    )
+
+    # EmailStr validates that the value has a valid email format.
     email: EmailStr
-    branch: str = Field(..., pattern=r'^(CSE|ECE|IT|ME|CE)$')
+
+    # pattern restricts branch to one of the allowed values.
+    # Valid: CSE, ECE, IT, ME, CE
+    # Invalid: cse, CS, BCA, ABC, etc.
+    branch: str = Field(
+        ...,
+        pattern=r"^(CSE|ECE|IT|ME|CE)$"
+    )
+
+    # Optional field.
+    # If omitted, its value will be None.
     enrollment_date: Optional[date] = None
 
+
+# ---------------------------------------------------------
+# 2. Pydantic model for API response
+# ---------------------------------------------------------
 class StudentResponse(BaseModel):
     id: int
     name: str
     email: str
     branch: str
+
+    # The response expects a date.
     enrollment_date: date
 
-# FastAPI endpoint
-@app.post("/students", response_model=StudentResponse, status_code=201)
+
+# ---------------------------------------------------------
+# 3. Example database model
+# ---------------------------------------------------------
+# In a real application this would normally be a SQLAlchemy
+# model. It is shown here only to complete the example.
+class Student:
+    _id = 0
+
+    def __init__(
+        self,
+        name: str,
+        email: EmailStr,
+        branch: str,
+        enrollment_date: Optional[date]
+    ):
+        Student._id += 1
+
+        self.id = Student._id
+        self.name = name
+        self.email = email
+        self.branch = branch
+
+        # If no enrollment date is supplied, use today's date.
+        self.enrollment_date = (
+            enrollment_date or date.today()
+        )
+
+
+# ---------------------------------------------------------
+# 4. Create endpoint
+# ---------------------------------------------------------
+@app.post(
+    "/students",
+    response_model=StudentResponse,
+    status_code=201
+)
 def create_student(student: StudentCreate):
-    # Pydantic validates the request body automatically
-    db_student = Student(**student.model_dump())
-    session.add(db_student)
-    session.commit()
+
+    # FastAPI automatically converts the JSON request body
+    # into a StudentCreate object.
+    #
+    # Before this function executes, Pydantic validates:
+    #   - name
+    #   - email
+    #   - branch
+    #   - enrollment_date
+
+    # Convert the Pydantic object into a dictionary.
+    student_data = student.model_dump()
+
+    # Create the database object.
+    db_student = Student(**student_data)
+
+    # Normally we would save it using SQLAlchemy:
+    #
+    # session.add(db_student)
+    # session.commit()
+    # session.refresh(db_student)
+
     return db_student
 ```
 
+
+## You can test the FastAPI endpoint from a browser console or any JavaScript application using `fetch()`.
+
+### JavaScript `fetch()` example
+
+```javascript
+// Send a POST request to the FastAPI endpoint
+fetch("http://127.0.0.1:8000/students", {
+    method: "POST",
+
+    // Tell FastAPI that the request body contains JSON
+    headers: {
+        "Content-Type": "application/json"
+    },
+
+    // Convert the JavaScript object into a JSON string
+    body: JSON.stringify({
+        name: "Rahul",
+        email: "rahul@example.com",
+        branch: "CSE",
+        enrollment_date: "2026-09-29"
+    })
+})
+    // Convert the response from JSON into a JavaScript object
+    .then(response => response.json())
+
+    // Display the response
+    .then(data => console.log(data))
+
+    // Handle network or other errors
+    .catch(error => console.error("Error:", error));
+```
+
+### Expected response
+
+If your endpoint successfully creates the student, you should receive something similar to:
+
+```json
+{
+    "id": 1,
+    "name": "Rahul",
+    "email": "rahul@example.com",
+    "branch": "CSE",
+    "enrollment_date": "2026-09-29"
+}
+```
+
+### Testing validation
+
+You can deliberately change the request to test Pydantic validation:
+
+```javascript
+fetch("http://127.0.0.1:8000/students", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        name: "",
+        email: "invalid-email",
+        branch: "BCA",
+        enrollment_date: "invalid-date"
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+
+This should produce a **422 validation error**, demonstrating that FastAPI/Pydantic validates the request **before the endpoint function executes**.
+
+> Try postman or insomnia to test same
+
+
+---
 ### 5.2 Validation with Mongoose (Node.js)
 
 Mongoose provides built-in validation:
