@@ -9,13 +9,13 @@
 | Parameter | Details |
 |---|---|
 | Lecture No. | 20 |
-| Unit | Unit 2: Database Management |
+| Unit | Unit 2: Backend Development |
 | Topic | Authentication Mechanisms: Basic Auth, Token-based Auth, JWT |
 | Course Outcome | CO3 |
 | Bloom's Knowledge Level | Apply |
-| Skills Developed | Authentication/Authorization concepts, Basic Auth, JWT implementation, Token management |
+| Skills Developed | Authentication/Authorization concepts, Basic Auth, JWT implementation, Token management, NodeJS setup |
 | Applications | API security, User identity verification, Secure backend services |
-| PBL Activity | Securing the Student Management API with JWT-based authentication |
+| PBL Activity | Securing the Student Management API with JWT-based authentication in both Python and Node.js |
 | Assessment Method | Coding project & Security implementation demonstration |
 
 ---
@@ -30,9 +30,8 @@ By the end of this lecture, you will have:
 
 1. Understanding of different authentication methods and their trade-offs.
 2. Knowledge of how HTTP Basic Authentication works.
-3. Skills to implement token-based authentication.
-4. Ability to implement JWT (JSON Web Tokens) for stateless authentication.
-5. Hands-on experience securing API endpoints.
+3. Skills to implement token-based authentication using JWT.
+4. Ability to implement JWT authentication in both Python and Node.js.
 
 ---
 
@@ -84,28 +83,35 @@ By the end of this lecture, you will have:
 The simplest authentication method. Credentials are sent with every request encoded in Base64.
 
 **How it works:**
+1. Client sends `Authorization: Basic base64(username:password)` header.
+2. Server decodes and verifies credentials.
+3. Server responds with data or 401 Unauthorized.
 
-1. Client sends `Authorization: Basic base64(username:password)` header
-2. Server decodes and verifies credentials
-3. Server responds with data or 401 Unauthorized
+**Implementation (Python):**
 
-**Implementation:**
+```bash
+# Set up environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install fastapi uvicorn
+```
 
 ```python
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 import base64
 
+# Defines the security scheme for FastAPI, which will handle the Basic Auth header parsing
 security = HTTPBasic()
 
 def verify_basic_auth(credentials: HTTPBasicCredentials = Depends(security)):
+    # Simple hardcoded check (NOT FOR PRODUCTION)
     correct_username = "admin"
     correct_password = "secret123"
     
-    username_correct = credentials.username == correct_username
-    password_correct = credentials.password == correct_password
-    
-    if not (username_correct and password_correct):
+    # Check if credentials match
+    if not (credentials.username == correct_username and credentials.password == correct_password):
+        # Raise 401 Unauthorized if check fails
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid credentials",
@@ -119,14 +125,16 @@ def protected_route(username: str = Depends(verify_basic_auth)):
 ```
 
 **Pros:**
-* Simple to implement
-* Works with all HTTP clients
+
+- Simple to implement
+- Works with all HTTP clients
 
 **Cons:**
-* Credentials sent with every request
-* No logout mechanism (credentials cached by browser)
-* No expiration
-* Not suitable for production
+
+- Credentials sent with every request
+- No logout mechanism (credentials cached by browser)
+- No expiration
+- Not suitable for production
 
 ---
 
@@ -242,13 +250,16 @@ xxxxx.yyyyy.zzzzz
 
 ## 6. Implementing JWT Authentication
 
-### 6.1 Install Dependencies
+### 6.1 Python Implementation
 
+**Setup Environment:**
 ```bash
-pip install python-jose[cryptography] passlib[bcrypt] python-multipart
+# Set up virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Install dependencies
+pip install fastapi uvicorn python-jose[cryptography] passlib[bcrypt] python-multipart sqlalchemy
 ```
-
-### 6.2 Create Auth Module
 
 **auth.py:**
 
@@ -260,6 +271,7 @@ from passlib.context import CryptContext
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
+# Assume models and database are defined in your project
 from database import get_db
 from models import Student
 
@@ -268,33 +280,36 @@ SECRET_KEY = "your-secret-key-keep-it-secret"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
-# Password hashing
+# CryptContext used for password hashing/verification
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# OAuth2 scheme
+# OAuth2PasswordBearer extracts the token from the Authorization header
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
+    # Compares plain password with the stored hash
     return pwd_context.verify(plain_password, hashed_password)
 
 def get_password_hash(password: str) -> str:
+    # Hashes the password before storage
     return pwd_context.hash(password)
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
     to_encode = data.copy()
     expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
     to_encode.update({"exp": expire})
+    # Encodes the JWT with payload, secret key, and algorithm
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 def decode_token(token: str) -> dict:
     try:
+        # Decodes the JWT to verify signature and expiration
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         return payload
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token",
-            headers={"WWW-Authenticate": "Bearer"},
         )
 
 async def get_current_user(
@@ -305,91 +320,122 @@ async def get_current_user(
     user_id = payload.get("sub")
     
     if user_id is None:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token payload"
-        )
+        raise HTTPException(status_code=401, detail="Invalid token payload")
     
     user = db.query(Student).filter(Student.id == user_id).first()
     if user is None:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="User not found"
-        )
+        raise HTTPException(status_code=401, detail="User not found")
     
     return user
-```
 
-### 6.3 Add Login Endpoint
+### 6.2 Python Implementation - Login & Endpoints
 
 **main.py:**
 
 ```python
+from fastapi import FastAPI, Depends, HTTPException, status
+from sqlalchemy.orm import Session
 from auth import (
-    verify_password, get_password_hash, create_access_token,
+    verify_password, create_access_token,
     get_current_user, ACCESS_TOKEN_EXPIRE_MINUTES
 )
 from pydantic import BaseModel
+from database import get_db
+from models import Student
+from datetime import timedelta
+
+app = FastAPI()
 
 class LoginRequest(BaseModel):
     email: str
     password: str
 
-class TokenResponse(BaseModel):
-    access_token: str
-    token_type: str
-
-@app.post("/login", response_model=TokenResponse)
+# Login endpoint: validates credentials and returns a JWT
+@app.post("/login")
 def login(request: LoginRequest, db: Session = Depends(get_db)):
     user = db.query(Student).filter(Student.email == request.email).first()
     
+    # Validate user existence and password
     if not user or not verify_password(request.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid email or password"
         )
     
+    # Create and return JWT
     access_token = create_access_token(
         data={"sub": user.id, "email": user.email},
         expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     )
     
-    return {
-        "access_token": access_token,
-        "token_type": "bearer"
-    }
+    return {"access_token": access_token, "token_type": "bearer"}
 
+# Protected route: requires a valid JWT
 @app.get("/protected")
 def protected_route(current_user: Student = Depends(get_current_user)):
-    return {
-        "message": f"Hello, {current_user.name}!",
-        "user_id": current_user.id
-    }
+    return {"message": f"Hello, {current_user.name}!"}
 ```
 
-### 6.4 Secure Existing Endpoints
+---
+### 6.2 NodeJS Implementation
 
-```python
-@app.delete("/students/{student_id}", status_code=204)
-def delete_student(
-    student_id: int, 
-    current_user: Student = Depends(get_current_user),
-    db: Session = Depends(get_db)
-):
-    # Only admins or the student themselves can delete
-    if current_user.role != "admin" and current_user.id != student_id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Not authorized to delete this student"
-        )
+**Setup Process:**
+1. Initialize project: `npm init -y`
+2. Install dependencies: `npm install express jsonwebtoken bcryptjs`
+
+**app.js:**
+
+```javascript
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+const app = express();
+app.use(express.json());
+
+const SECRET_KEY = "your-secret-key-keep-it-secret";
+
+// User database simulation
+const users = [];
+
+// Register user
+app.post('/register', async (req, res) => {
+    const hashedPassword = await bcrypt.hash(req.body.password, 8); // Hashing password
+    users.push({ email: req.body.email, password: hashedPassword });
+    res.status(201).send("User registered");
+});
+
+// Login and get token
+app.post('/login', async (req, res) => {
+    const user = users.find(u => u.email === req.body.email);
+    if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
+        return res.status(401).send("Invalid credentials");
+    }
+    // Signing the token with payload and secret
+    const token = jwt.sign({ email: user.email }, SECRET_KEY, { expiresIn: '30m' });
+    res.json({ access_token: token, token_type: "bearer" });
+});
+
+// Middleware to protect routes
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Extract token from "Bearer <token>"
     
-    db_student = db.query(Student).filter(Student.id == student_id).first()
-    if not db_student:
-        raise HTTPException(status_code=404, detail="Student not found")
+    if (!token) return res.sendStatus(401);
     
-    db.delete(db_student)
-    db.commit()
-    return None
+    // Verify token
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+};
+
+app.get('/protected', authenticateToken, (req, res) => {
+    res.json({ message: `Hello, ${req.user.email}!` });
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));
 ```
 
 ---

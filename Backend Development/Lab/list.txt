@@ -8,9 +8,12 @@
 ./Exp 03 Create a Responsive Web page with HTML and CSS.md
 ./Exp 04 Create Responsive web page with Bootstrap.md
 ./Exp 05 Programs to demonstrate JavaScript array, object and functions.md
+./Exp 07_08 ES6, DOM Manipulation, and Event Handling.md
 ./Exp 12 A Nodejs npm express nodemon and ejs.md
 ./Exp 12 B (Optional) State Management.md
 ./Exp 13 A MongoDB, Mongoose, and Express User registration and login system.md
 ./Exp 13 B (Optional) User registration and ToDo App with express and mongodb .md
 ./Exp 13 _ Installation of MongoDB.md
 ./Exp 14 (Optional) Postgresql.md
+./Exp 15 Django Todo App.md
+./batch status.csv

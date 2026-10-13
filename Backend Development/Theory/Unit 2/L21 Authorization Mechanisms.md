@@ -121,7 +121,42 @@ THEN allow access
 | Course:CS301 | Faculty | read, update |
 
 ---
+---
 
+## 6. Authorization Best Practices
+
+| Practice | Description |
+|----------|-------------|
+| **Principle of least privilege** | Grant minimum permissions needed |
+| **Deny by default** | Deny access unless explicitly allowed |
+| **Centralize authorization** | Use middleware or decorators, not scattered checks |
+| **Audit logging** | Log all authorization decisions |
+| **Separate concerns** | Don't mix authentication and authorization logic |
+| **Use RBAC for simplicity** | ABAC for complex requirements |
+| **Test authorization** | Verify users cannot access unauthorized resources |
+
+---
+
+## 7. Summary
+
+* **Authorization** determines what authenticated users can do.
+* **RBAC** assigns permissions to roles; users inherit permissions through roles.
+* **Ownership checks** ensure users can only access their own resources.
+* **Permission-based** and **role-based** approaches can be combined for fine-grained control.
+* Always apply the **principle of least privilege** — grant minimum necessary permissions.
+
+### Key Takeaways
+
+* RBAC is the most common authorization model for web applications.
+* Permissions should be specific (e.g., `students:read`, `courses:delete`).
+* Ownership checks prevent users from accessing other users' data.
+* Centralize authorization logic for maintainability.
+* Test authorization thoroughly to prevent security vulnerabilities.
+
+
+
+---
+# Optional Read
 ## 3. Implementing RBAC
 
 ### 3.1 Database Schema for Roles
@@ -306,13 +341,14 @@ def update_student(
 
 ## 5. Authorization in FastAPI
 
-### 5.1 Complete Authorization Example
+### 5.1 Complete Authorization Example (Python)
 
 ```python
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
 
+# Assume models, database, and auth (get_current_user) are imported
 app = FastAPI()
 
 # Dependency to check permissions
@@ -322,10 +358,12 @@ def check_permission(resource: str, action: str):
     ):
         required_permission = f"{resource}:{action}"
         
+        # Collect all permissions from user's roles
         user_permissions = []
         for role in current_user.roles:
             user_permissions.extend([p.name for p in role.permissions])
         
+        # Deny if permission is missing
         if required_permission not in user_permissions:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
@@ -335,7 +373,7 @@ def check_permission(resource: str, action: str):
         return current_user
     return permission_checker
 
-# Protected endpoints
+# Protected endpoints using the dependency
 @app.get("/students", response_model=List[StudentResponse])
 def list_students(
     current_user: User = Depends(check_permission("students", "read")),
@@ -368,51 +406,57 @@ def delete_student(
     db.commit()
     return None
 ```
-
 ---
+### 5.2 NodeJS Implementation
 
-## 6. Authorization Best Practices
+**Setup Process:**
+1. Initialize project (if not done): `mkdir auth-app && cd auth-app && npm init -y`
+2. Install dependencies: `npm install express jsonwebtoken`
 
-| Practice | Description |
-|----------|-------------|
-| **Principle of least privilege** | Grant minimum permissions needed |
-| **Deny by default** | Deny access unless explicitly allowed |
-| **Centralize authorization** | Use middleware or decorators, not scattered checks |
-| **Audit logging** | Log all authorization decisions |
-| **Separate concerns** | Don't mix authentication and authorization logic |
-| **Use RBAC for simplicity** | ABAC for complex requirements |
-| **Test authorization** | Verify users cannot access unauthorized resources |
+**app.js (Authorization Middleware):**
 
----
+```javascript
+const express = require('express');
+const app = express();
+app.use(express.json());
 
-## 7. Summary
+// Simulation of a database with users and roles
+const users = [
+    { id: 1, email: 'student@upes.ac.in', role: 'student' },
+    { id: 2, email: 'admin@upes.ac.in', role: 'admin' }
+];
 
-* **Authorization** determines what authenticated users can do.
-* **RBAC** assigns permissions to roles; users inherit permissions through roles.
-* **Ownership checks** ensure users can only access their own resources.
-* **Permission-based** and **role-based** approaches can be combined for fine-grained control.
-* Always apply the **principle of least privilege** — grant minimum necessary permissions.
+// Authorization Middleware
+// Takes an array of roles allowed to access the route
+const authorize = (allowedRoles) => {
+    return (req, res, next) => {
+        // Assume req.user is populated by an authentication middleware (e.g., JWT verify)
+        if (!req.user || !allowedRoles.includes(req.user.role)) {
+            return res.status(403).send("Forbidden: Insufficient permissions");
+        }
+        next();
+    };
+};
 
-### Key Takeaways
+// Protected routes
+app.get('/students', (req, res) => {
+    res.send("List of students");
+});
 
-* RBAC is the most common authorization model for web applications.
-* Permissions should be specific (e.g., `students:read`, `courses:delete`).
-* Ownership checks prevent users from accessing other users' data.
-* Centralize authorization logic for maintainability.
-* Test authorization thoroughly to prevent security vulnerabilities.
+// Admin-only route: Only admins can delete
+app.delete('/students/:id', authorize(['admin']), (req, res) => {
+    res.send(`Student ${req.params.id} deleted by Admin`);
+});
 
-In **L22 – Handling API Requests and Responses: Validation, Serialization**, you will learn advanced techniques for processing API data.
+// Example route with role check and ownership
+app.put('/students/:id', authorize(['admin', 'student']), (req, res) => {
+    // Logic to check ownership if role is 'student'
+    if (req.user.role === 'student' && req.user.id !== parseInt(req.params.id)) {
+        return res.status(403).send("Forbidden: Can only edit your own profile");
+    }
+    res.send(`Student ${req.params.id} updated`);
+});
 
----
+app.listen(3000, () => console.log('Server running on port 3000'));
+```
 
-### Lab Exercise
-
-1. Implement RBAC for the Student Management API with three roles: Admin, Faculty, Student.
-2. Create permissions for each resource (students:read, students:write, students:delete, etc.).
-3. Add role checks to all API endpoints.
-4. Implement ownership checks so students can only update their own profiles.
-5. Test the authorization by:
-   - Creating users with different roles
-   - Attempting to access endpoints without proper permissions
-   - Verifying that ownership checks prevent unauthorized access
-6. Create an admin-only endpoint for managing courses.
