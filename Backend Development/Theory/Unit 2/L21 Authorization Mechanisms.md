@@ -121,7 +121,6 @@ THEN allow access
 | Course:CS301 | Faculty | read, update |
 
 ---
----
 
 ## 6. Authorization Best Practices
 
