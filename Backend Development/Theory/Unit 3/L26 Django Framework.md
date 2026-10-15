@@ -215,8 +215,8 @@ student_system/             # Root directory
 |---|---|---|
 | Full form | Web Server Gateway Interface | Asynchronous Server Gateway Interface |
 | Protocol | Synchronous | Asynchronous |
-| Supports WebSockets | ❌ | ✅ |
-| Supports async views | ❌ | ✅ |
+| Supports WebSockets | No | Yes |
+| Supports async views | No | Yes |
 | Typical servers | Gunicorn, uWSGI | Daphne, Uvicorn |
 | Use case | Traditional web apps | Real-time, chat, streaming apps |
 
