@@ -452,3 +452,10 @@ In this experiment, you have:
 - Implemented full CRUD operations
 
 Django's built-in ORM and admin interface allow rapid development without writing raw SQL. The same patterns — models, views, URLs, templates — apply to any Django application you build in the future.
+
+---
+# Lab Assignment Task
+## Extend your todo application 
+
+- To show use of `static` dir *Showing how to serve static files*.
+- To show the use of `extend` and `include` in templating to make templating modular and reusable.

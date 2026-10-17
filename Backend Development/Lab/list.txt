@@ -15,5 +15,6 @@
 ./Exp 13 B (Optional) User registration and ToDo App with express and mongodb .md
 ./Exp 13 _ Installation of MongoDB.md
 ./Exp 14 (Optional) Postgresql.md
-./Exp 15 Django Todo App.md
+./Exp 15 Django Todo App v1 Basic.md
+./Exp 15 Django Todo App v2.md
 ./batch status.csv
