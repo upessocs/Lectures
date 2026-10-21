@@ -371,6 +371,11 @@ Run the server and visit `http://127.0.0.1:8000/` — you'll see JSON output.
 - **WSGI** handles synchronous requests; **ASGI** handles asynchronous and WebSocket connections.
 - `manage.py` is the central command-line tool for all Django operations.
 
+---
+# Important 
+
+> For better understanding complete [Experiment 15](https://upessocs.github.io/#d=/Lectures/Backend%20Development/Lab/&f=Exp%2015%20Django%20Todo%20App%20v2.md) 
+
 ### Next Lecture
 **L27 – Working with Middleware in Django.**
 
