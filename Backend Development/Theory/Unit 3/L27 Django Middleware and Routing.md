@@ -211,6 +211,168 @@ MIDDLEWARE = [
 ]
 ```
 
+
+---
+## Part B - Middlerware (Alternative Simplified middleware implementation)
+
+Create `students/middleware.py`:
+
+```
+import time
+
+
+class SimpleLoggingMiddleware:
+    def __init__(self, get_response):
+        # Store the next middleware or Django's view handler.
+        self.get_response = get_response
+
+    def __call__(self, request):
+        # This method receives the incoming HTTP request.
+        start_time = time.perf_counter()
+
+        print("Request:", request.method, request.path)
+
+        # Pass the request forward and receive the HTTP response.
+        response = self.get_response(request)
+
+        # This code runs after the response comes back.
+        duration = (time.perf_counter() - start_time) * 1000
+        print("Response:", response.status_code)
+        print("Time taken:", round(duration, 2), "ms")
+
+        # Return the response to the previous middleware or client.
+        return response
+```
+
+## 2. How middleware works
+
+```
+1. HTTP Request
+
+Browser sends a request
+
+2. `__call__(request)`
+
+Inspect or modify the request
+
+3. `self.get_response(request)`
+
+Pass request forward; receive response
+
+4. Process the response
+
+Inspect or modify the response
+
+5. `return response`
+
+Send response back to the browser
+
+```
+
+
+## 3. Can middleware modify requests and responses?
+
+Yes. Middleware can inspect or modify both.
+
+Modify the request before passing it forward:
+
+```
+def __call__(self, request):
+    # Add a custom attribute that a view can access.
+    request.course_name = "Django"
+
+    response = self.get_response(request)
+
+    return response
+```
+
+A view can then access `request.course_name`. This adds an attribute to the request object; it does not change the original HTTP message sent by the browser.
+
+Modify the response before returning it:
+
+```
+def __call__(self, request):
+    response = self.get_response(request)
+
+    # Add a custom HTTP response header.
+    response["X-Course"] = "Django"
+
+    return response
+```
+
+The browser receives the additional `X-Course` header.
+
+## 4. Register the middleware
+
+Add your middleware to `student_system/settings.py`, keeping Django's default entries:
+
+```
+MIDDLEWARE = [
+    "students.middleware.SimpleLoggingMiddleware",
+    # Keep all existing Django middleware entries below.
+    # ...
+]
+```
+
+Run the development server and request `/api/health/`. The request method, path, response status code, and processing time will appear in the terminal.
+
+Key concept: `__init__()` receives and stores the next handler, while `__call__()` processes each request and its response. The call to `self.get_response(request)` is the point where control passes to the next handler and eventually returns with a response.
+
+
+### Django middleware intercepts both incomming request and outgoing response 
+
+Django middleware intercepts both: when the request comes in and when the response goes out. It does this within the same `__call__()` method.
+
+```
+def __call__(self, request):
+    # 1. Incoming request: runs before the view.
+    print("Request received:", request.path)
+
+    # 2. Pass the request forward to the next handler.
+    response = self.get_response(request)
+
+    # 3. Outgoing response: runs after the view returns.
+    print("Response status:", response.status_code)
+
+    # 4. Send the response back.
+    return response
+```
+
+## Execution flow
+```
+Browser sends request
+
+Middleware: before `get_response()`
+
+Inspect or modify the request
+
+View processes request
+
+Django generates a response
+
+Middleware: after `get_response()`
+
+Inspect or modify the response
+
+Browser receives response
+```
+
+The important distinction is:
+
+- Before `self.get_response(request)`: the request is travelling inward toward the view.
+- After `self.get_response(request)`: the response is travelling outward from the view.
+- `return response`: hands the response back to the preceding middleware or Django's server interface.
+
+> Note that `get_response()` does not necessarily call the view directly. It invokes the next handler in the middleware chain, which eventually reaches the view.
+
+
+
+
+
+---
+## Testing middleware with a route
+
+
 Do not remove Django’s default middleware. Start the server and request `/api/health/`; observe the messages in the server terminal.
 
 ### Task 3: Create App-Level Routes
@@ -269,6 +431,18 @@ Test `GET /api/students/` and `GET /api/students/42/`.
 | `TypeError` about `student_id` | Route parameter and view argument do not match |
 | Middleware does not log | Incorrect dotted path or server not restarted |
 | No log output | Logger configuration or level filters the message |
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
