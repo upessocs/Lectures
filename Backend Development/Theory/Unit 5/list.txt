@@ -1,12 +1,6 @@
 ./
-./L49 Real-Time Communication WebSockets.md
-./L50 Socket.io Implementation.md
-./L51 Microservices Architecture.md
-./L52 Service Discovery and Registration.md
-./L53 Microservices Communication REST.md
-./L54 Microservices Messaging Async.md
-./L55 Serverless Architecture FaaS.md
-./L56 AWS Lambda and Google Cloud Functions.md
-./L57 Event-Driven Serverless Architecture.md
+./L49 Real-Time Communication WebSockets, Sockets.io Mo=icroservices Architecture.md
+./L52 Service Discovery and Registration, Microservices Communication REST, and messaging async.md
+./L55 Serverless Architecture FaaS, AWS Lambda, Event-Driven Serverless.md
 ./L58 Performance Profiling.md
 ./L59 Assignment III Presentation Architecture.md
