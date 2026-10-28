@@ -1,13 +1,8 @@
 ./
-./L37 Overview of Deployment Environments.md
-./L38 Containerization Basics.md
-./L39 Working with Docker.md
-./L40 Monitoring Backend Applications.md
-./L41 Scaling Backend Applications.md
-./L42 Continuous Integration (CI).md
-./L43 Continuous Deployment (CD).md
-./L44 Building and Packaging Applications.md
-./L45 Automated Testing in CI_CD.md
-./L46 Managing Infrastructure Configurations.md
-./L47 Release Strategies.md
+./.res
+./L37-L39 Deployment, Containerization and Docker Hands-on.md
+./L40-L41 Monitoring and Scaling Backend Applications.md
+./L42-L43 Continuous Integration and Deployment with GitHub Actions.md
+./L44-L45 Github Actions Test Automation Backend API testing.md
+./L46-L47 Infrastructure Configuration and Release Strategies.md
 ./L48 Assignment-II Discussion and Solution Review.md
