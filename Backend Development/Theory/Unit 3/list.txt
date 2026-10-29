@@ -6,3 +6,4 @@
 ./L29 Testing and Debugging Django Applications.md
 ./L30 Security, Authentication, and Authorization in Django.md
 ./L31 Caching and Performance Optimization.md
+./L32 Django Forms.md
