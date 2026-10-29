@@ -39,32 +39,113 @@ For example, a college dashboard may display the same student statistics to hund
 
 #### 3.1 How caching works
 
-\<svg viewBox="0 0 340 280" width="100%" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)">\
-&#x20; \<rect x="105" y="8" width="130" height="34" rx="6" fill="#ffffff" stroke="#64748b"/>\
-&#x20; \<text x="170" y="29" textAnchor="middle" fontSize="12" fill="#111827">Client Request\</text>\
-&#x20; \<path d="M170 42 V60" stroke="#64748b" strokeWidth="1.5" fill="none"/>\
-&#x20; \<path d="M165 54 L170 60 L175 54" stroke="#64748b" strokeWidth="1.5" fill="none"/>\
-&#x20; \<rect x="95" y="61" width="150" height="36" rx="6" fill="#ffffff" stroke="#64748b"/>\
-&#x20; \<text x="170" y="83" textAnchor="middle" fontSize="12" fill="#111827">Django Cache\</text>\
-&#x20; \<path d="M95 79 H55 V117" stroke="#64748b" strokeWidth="1.5" fill="none"/>\
-&#x20; \<path d="M50 111 L55 117 L60 111" stroke="#64748b" strokeWidth="1.5" fill="none"/>\
-&#x20; \<text x="48" y="108" textAnchor="middle" fontSize="10" fill="#374151">Miss\</text>\
-&#x20; \<path d="M245 79 H285 V117" stroke="#64748b" strokeWidth="1.5" fill="none"/>\
-&#x20; \<path d="M280 111 L285 117 L290 111" stroke="#64748b" strokeWidth="1.5" fill="none"/>\
-&#x20; \<text x="292" y="108" textAnchor="middle" fontSize="10" fill="#374151">Hit\</text>\
-&#x20; \<rect x="8" y="118" width="95" height="38" rx="6" fill="#ffffff" stroke="#64748b"/>\
-&#x20; \<text x="55" y="134" textAnchor="middle" fontSize="11" fill="#111827">Database\</text>\
-&#x20; \<text x="55" y="147" textAnchor="middle" fontSize="10" fill="#374151">Fetch data\</text>\
-&#x20; \<rect x="237" y="118" width="96" height="38" rx="6" fill="#ffffff" stroke="#64748b"/>\
-&#x20; \<text x="285" y="134" textAnchor="middle" fontSize="11" fill="#111827">Cached Result\</text>\
-&#x20; \<text x="285" y="147" textAnchor="middle" fontSize="10" fill="#374151">Reuse data\</text>\
-&#x20; \<path d="M55 156 V178 H170 V194" stroke="#64748b" strokeWidth="1.5" fill="none"/>\
-&#x20; \<path d="M285 156 V178 H170" stroke="#64748b" strokeWidth="1.5" fill="none"/>\
-&#x20; \<path d="M165 188 L170 194 L175 188" stroke="#64748b" strokeWidth="1.5" fill="none"/>\
-&#x20; \<rect x="105" y="195" width="130" height="34" rx="6" fill="#ffffff" stroke="#64748b"/>\
-&#x20; \<text x="170" y="216" textAnchor="middle" fontSize="12" fill="#111827">HTTP Response\</text>\
-&#x20; \<text x="170" y="253" textAnchor="middle" fontSize="11" fill="#374151">Cache hit: avoid repeated database work\</text>\
-\</svg>
+<svg
+  viewBox="0 0 340 280"
+  width="100%"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <marker
+      id="arrow"
+      viewBox="0 0 10 10"
+      refX="8"
+      refY="5"
+      markerWidth="6"
+      markerHeight="6"
+      orient="auto-start-reverse"
+    >
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <rect x="105" y="8" width="130" height="34" rx="6"
+        fill="#ffffff" stroke="#64748b" />
+
+  <text x="170" y="29" text-anchor="middle"
+        font-size="12" fill="#111827">
+    Client Request
+  </text>
+
+  <path d="M170 42 V60"
+        stroke="#64748b" stroke-width="1.5"
+        fill="none" marker-end="url(#arrow)" />
+
+  <rect x="95" y="61" width="150" height="36" rx="6"
+        fill="#ffffff" stroke="#64748b" />
+
+  <text x="170" y="83" text-anchor="middle"
+        font-size="12" fill="#111827">
+    Django Cache
+  </text>
+
+  <!-- Cache miss -->
+  <path d="M95 79 H55 V118"
+        stroke="#64748b" stroke-width="1.5"
+        fill="none" marker-end="url(#arrow)" />
+
+  <text x="48" y="108" text-anchor="middle"
+        font-size="10" fill="#374151">
+    Miss
+  </text>
+
+  <!-- Cache hit -->
+  <path d="M245 79 H285 V118"
+        stroke="#64748b" stroke-width="1.5"
+        fill="none" marker-end="url(#arrow)" />
+
+  <text x="292" y="108" text-anchor="middle"
+        font-size="10" fill="#374151">
+    Hit
+  </text>
+
+  <rect x="8" y="118" width="95" height="38" rx="6"
+        fill="#ffffff" stroke="#64748b" />
+
+  <text x="55" y="134" text-anchor="middle"
+        font-size="11" fill="#111827">
+    Database
+  </text>
+
+  <text x="55" y="147" text-anchor="middle"
+        font-size="10" fill="#374151">
+    Fetch data
+  </text>
+
+  <rect x="237" y="118" width="96" height="38" rx="6"
+        fill="#ffffff" stroke="#64748b" />
+
+  <text x="285" y="134" text-anchor="middle"
+        font-size="11" fill="#111827">
+    Cached Result
+  </text>
+
+  <text x="285" y="147" text-anchor="middle"
+        font-size="10" fill="#374151">
+    Reuse data
+  </text>
+
+  <!-- Both paths lead to the response -->
+  <path d="M55 156 V178 H170 V195"
+        stroke="#64748b" stroke-width="1.5"
+        fill="none" marker-end="url(#arrow)" />
+
+  <path d="M285 156 V178 H170 V195"
+        stroke="#64748b" stroke-width="1.5"
+        fill="none" marker-end="url(#arrow)" />
+
+  <rect x="105" y="195" width="130" height="34" rx="6"
+        fill="#ffffff" stroke="#64748b" />
+
+  <text x="170" y="216" text-anchor="middle"
+        font-size="12" fill="#111827">
+    HTTP Response
+  </text>
+
+  <text x="170" y="253" text-anchor="middle"
+        font-size="11" fill="#374151">
+    Cache hit: avoid repeated database work
+  </text>
+</svg>
 
 The diagram illustrates the general caching process. The exact flow depends on the caching mechanism being used.
 
