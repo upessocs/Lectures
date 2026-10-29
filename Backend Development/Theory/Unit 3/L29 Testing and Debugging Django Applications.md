@@ -2,7 +2,7 @@
 
 # Testing and Debugging Django Applications
 
-**Course Outcome:** CO4 – Apply security best practices and conduct testing.
+**Course Outcome:** CO4 - Apply security best practices and conduct testing.
 
 ## Session Implementation Plan
 
@@ -11,7 +11,7 @@
 | Lecture No. | 29 |
 | Unit | Unit 3: Frameworks and Performance Optimization |
 | Topic | Testing and Debugging Django Applications |
-| Course Outcome | CO4 – Apply security best practices and conduct testing |
+| Course Outcome | CO4 - Apply security best practices and conduct testing |
 | Bloom's Knowledge Level | Analyze |
 | Skills Developed | Writing unit and integration tests, using the Django test client, isolating database tests, interpreting failures, and using logging |
 | Applications | Regression prevention, production stability, API quality, and systematic defect diagnosis |
@@ -20,7 +20,7 @@
 
 ---
 
-## Part A – Theory
+## Part A - Theory
 
 ### 1. Learning Objectives
 
@@ -54,6 +54,10 @@ Tests help developers:
 | Model test | Model validation and database behavior | A `Student` record is saved correctly |
 
 Django’s `TestCase` creates a separate temporary test database. Tests can create and change records without modifying the development database.
+
+> **Beginner note:** A test is not normally run by opening a browser and clicking buttons. Django creates a test client that behaves like a small browser. It can send `GET`, `POST`, `PUT`, and `DELETE` requests to your views and lets you inspect the response.
+
+> **Important distinction:** `TestCase` is used when a test needs Django’s database. `SimpleTestCase` is used when the test does not need database access, such as testing a utility function or a mocked external service. Choosing the simpler class makes the purpose of the test clearer.
 
 ### 4. Testing and Debugging Workflow
 
@@ -142,17 +146,31 @@ def student_detail(request, student_id):
     # application logic...
 ```
 
+The line `logging.getLogger(__name__)` creates a logger named after the current Python module. `logger.info()` writes a normal informational message; it does not stop the program. During debugging, `logger.debug()` can provide more detail, while `logger.error()` and `logger.exception()` are appropriate for failures.
+
+> **Beginner note:** `print()` may appear in the terminal during development, but logging is preferred because messages can later be filtered, formatted, and sent to a file or monitoring system. A log message helps you observe what the program received and what decision it made.
+
 Do not log passwords, tokens, session cookies, or sensitive personal data. In production, use appropriate log levels and a central log destination.
 
 #### Django Debug Toolbar
 
 The Django Debug Toolbar can display SQL queries, request timing, templates, cache activity, and headers during local development. It is useful for investigation but should not be enabled for public production traffic.
 
+To install it in a development environment:
+
+```bash
+python -m pip install django-debug-toolbar
+```
+
+Add `debug_toolbar` to `INSTALLED_APPS`, add its URLs to the project URL configuration, and configure its middleware according to the version of Django being used. Keep `DEBUG = True` and restrict the toolbar to trusted local users. Never expose debugging information publicly because it may reveal settings, SQL queries, file paths, or request data.
+
 ---
 
-## Part B – Hands-On
+## Part B - Hands-On
 
 ### Task 1: Test the Health Endpoint
+
+Create the file `students/tests.py` inside the Django app. Django automatically discovers test files whose names begin with `test` or the conventional `tests.py` file. The `students` part below must be replaced with the actual name of your app.
 
 In `students/tests.py`:
 
@@ -163,19 +181,33 @@ from django.urls import reverse
 
 class StudentAPITest(TestCase):
     def test_health_endpoint(self):
+        # self.client sends a request to Django without starting a real server.
+        # reverse() finds the URL from its name, so this test still works if
+        # the path changes from /health/ to another path later.
         response = self.client.get(reverse("health-check"))
 
+        # status_code is the HTTP result, such as 200, 404, or 500.
         self.assertEqual(response.status_code, 200)
+        # response.json() converts a JSON response into a Python dictionary.
         self.assertEqual(response.json()["status"], "ok")
 ```
 
 This uses the route name already created in Lecture 26. Using `reverse()` avoids hard-coding the URL path in the test.
+
+For this test to work, the URL must have the matching name:
+
+```python
+path("health/", views.health_check, name="health-check")
+```
+
+The string passed to `reverse()` is the `name`, not the path and not the view function name. If Django raises `NoReverseMatch`, check the spelling of the name, the URL namespace, and any required parameters.
 
 ### Task 2: Test a Parameterized Endpoint
 
 ```python
 class StudentRouteTest(TestCase):
     def test_student_detail_returns_id(self):
+        # kwargs supplies the value for <student_id> in the URL pattern.
         response = self.client.get(
             reverse("student-detail", kwargs={"student_id": 42})
         )
@@ -183,6 +215,20 @@ class StudentRouteTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["student_id"], 42)
 ```
+
+The matching URL pattern could be:
+
+```python
+path(
+    "students/<int:student_id>/",
+    views.student_detail,
+    name="student-detail",
+)
+```
+
+Here, `<int:student_id>` means Django converts the value in the URL to an integer before passing it to the view. The dictionary key in `kwargs` must have exactly the same name: `student_id`.
+
+> **Common mistake:** `reverse("student-detail")` is incomplete for a parameterized URL. Django cannot build the URL unless you provide `student_id` through `kwargs` or `args`.
 
 ### Task 3: Run the Tests
 
@@ -196,6 +242,20 @@ Run one test class or method while debugging:
 python manage.py test students.tests.StudentAPITest
 python manage.py test students.tests.StudentAPITest.test_health_endpoint
 ```
+
+Run these commands from the folder that contains `manage.py`. A successful result such as `OK` means the assertions passed; it does not necessarily mean that every possible behavior has been tested. A failure means that the actual result differed from the expected result, or that the application raised an exception.
+
+Useful options include:
+
+```bash
+# Show more detail about each test
+python manage.py test -v 2
+
+# Stop after the first failure
+python manage.py test --failfast
+```
+
+> **Reading a failure:** Start with the final exception message, then locate the test assertion that failed. Compare the expected value with the actual value. For example, `200 != 404` tells you that the view returned a different HTTP status from the one the test expected.
 
 ### Task 4: Test a Service with a Mock
 
@@ -213,6 +273,8 @@ from .utils import get_external_data
 class ExternalServiceTest(SimpleTestCase):
     @patch("students.utils.requests.get")
     def test_timeout_returns_safe_error(self, mock_get):
+        # Replace requests.get with a fake object for this test only.
+        # No real internet request is made.
         mock_get.side_effect = requests.Timeout
 
         result = get_external_data(1)
@@ -223,13 +285,42 @@ class ExternalServiceTest(SimpleTestCase):
 
 Add `import requests` to the test file when using `requests.Timeout`. This test exposes a common mistake: forgetting to handle a dependency failure.
 
+The patch target must be the location where the code looks up the dependency. If `utils.py` contains `requests.get(...)`, patch `students.utils.requests.get`; patching a different import path may leave the real network call active. A mock makes the test fast and repeatable because the test controls the dependency’s behavior.
+
+You should normally test at least two outcomes for an external service:
+
+```python
+@patch("students.utils.requests.get")
+def test_success_returns_data(self, mock_get):
+    mock_get.return_value.json.return_value = {"name": "Aarav"}
+    mock_get.return_value.raise_for_status.return_value = None
+
+    result = get_external_data(1)
+
+    self.assertEqual(result["data"]["name"], "Aarav")
+    self.assertIsNone(result["error"])
+```
+
+The first test checks the success path; the original timeout test checks an error path. Testing both is important because error-handling code is often missed.
+
 ### Task 5: Introduce and Diagnose a Defect
 
 Temporarily change the health view to return status `201` instead of `200`. Run the test, read the assertion failure, identify the incorrect status, restore `200`, and run the test again.
 
+This demonstrates a useful debugging cycle:
+
+1. Write down the expected behavior.
+2. Reproduce the problem with a test.
+3. Read the failure and traceback from the bottom upward.
+4. Inspect the first application line related to the failure.
+5. Fix the code and run the focused test again.
+6. Run the complete test suite to check for regressions.
+
+> **Do not weaken the test just to make it pass.** If the requirement is that the endpoint returns `200`, change the view or configuration that produced `201`. A test should describe the required behavior, not hide a defect.
+
 ---
 
-## Part C – PBL Activity
+## Part C - PBL Activity
 
 ### Problem Scenario
 
@@ -241,6 +332,25 @@ A new feature was added to the Student Management API, but an existing endpoint 
 2. Add model tests if a `Student` model is available.
 3. Mock the external service and test both success and timeout cases.
 4. Diagnose one intentionally introduced defect using the test output and logs.
+
+Before writing tests, inspect the existing URL patterns, view functions, and model fields. Tests must match the application’s real route names and response format. If an endpoint returns a list, test the list length and important fields; if it returns an error, test both the status code and the error message.
+
+For database tests, create records inside the test rather than depending on data that happens to exist in your development database:
+
+```python
+student = Student.objects.create(
+    name="Aarav",
+    email="aarav@example.com",
+)
+response = self.client.get(
+    reverse("student-detail", kwargs={"student_id": student.id})
+)
+
+self.assertEqual(response.status_code, 200)
+self.assertEqual(response.json()["name"], "Aarav")
+```
+
+The test database is recreated and cleaned by Django. This keeps tests independent: one test should not rely on another test running first or on records manually inserted into the development database.
 
 ### Expected Learning
 
@@ -270,4 +380,4 @@ Coding exercise and debugging task.
 
 ### Next Lecture
 
-**L30 – Security, Authentication, and Authorization in Django.**
+**L30 - Security, Authentication, and Authorization in Django.**
