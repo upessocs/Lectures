@@ -2021,7 +2021,7 @@ At this point, students should understand why Django provides multiple ways to p
 
 ## Student Management Portal
 
-> Students should now build a complete application integrating the concepts from every stage.
+> Build a complete application integrating the concepts from every stage.
 
 ### Functional requirements
 
@@ -2068,26 +2068,5 @@ At this point, students should understand why Django provides multiple ways to p
 <text x="380" y="487" font-size="12" fill="#596579">Django manages the complete request-response and data workflow.</text>
 </g>
 </svg>
-
-## Recommended Session Sequence
-
-For a 14-session practical course:
-
-| Session | Topic | Practical output |
-|---|---|---|
-| 1 | HTML forms, action, GET and POST | Basic registration form |
-| 2 | Django request-response handling | Receive form data |
-| 3 | Server-side validation and security | Manual validation |
-| 4 | Django models and ORM | Save and retrieve records |
-| 5 | Django Forms | Create and render forms |
-| 6 | Form validation and custom cleaning | Validated admission form |
-| 7 | Displaying records using templates | Student listing |
-| 8 | Introduction to APIs and JSON | GET and POST APIs |
-| 9 | ModelForms | Model-based registration |
-| 10 | ModelForm CRUD | Create, update and delete |
-| 11 | File uploads and advanced widgets | Student photographs |
-| 12 | Django User Registration and Login | Authentication |
-| 13 | Sessions, CSRF and authorization | Protected dashboard |
-| 14 | Integration and testing | Complete Student Management Portal |
 
 
