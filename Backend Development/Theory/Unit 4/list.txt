@@ -1,5 +1,6 @@
 ./
 ./.res
+./Docker Handson
 ./L37-L39 Deployment, Containerization and Docker Hands-on.md
 ./L40-L41 Monitoring and Scaling Backend Applications.md
 ./L42-L43 Continuous Integration and Deployment with GitHub Actions.md
