@@ -24,7 +24,7 @@ The tutorial will use three approaches:
 - Approach 3: Django ModelForms (`forms.ModelForm`).
 
 We will also understand where APIs fit into this architecture.
-
+---
 # Part 1: Understanding the Basic Form Workflow
 
 ## Stage 1: How HTML Forms Work
@@ -170,7 +170,7 @@ Typical uses:
 - Submitting sensitive or large form data
 
 POST does not automatically encrypt data. HTTPS is required to protect data during transmission.
-
+---
 ### 1.4 Understand the complete workflow
 
 The following diagram illustrates the basic form submission process.
@@ -199,7 +199,7 @@ The following diagram illustrates the basic form submission process.
 The important point is that the browser does not directly communicate with the database.
 
 The Django server acts as an intermediary.
-
+---
 ## Stage 2: Receive HTML Form Data in Django
 
 Now we will create a Django project and receive the submitted form data.
@@ -373,8 +373,8 @@ This retrieves the submitted value corresponding to:
 ```html
 <input type="text" name="name">
 ```
-
-**Hands-on exercise 1**
+---
+**Optional exercise 1**
 
 Create a course enquiry form with:
 
@@ -385,7 +385,7 @@ Create a course enquiry form with:
 - Message
 
 Receive the submitted values in Django and display them on a success page.
-
+---
 # Part 2: Validation, Security and Database Storage
 
 ## Stage 3: Why Receiving Data Is Not Enough
@@ -513,7 +513,7 @@ Django generates a CSRF token and validates it when the POST request arrives.
 The token helps Django distinguish legitimate form submissions from unauthorized cross-site requests.
 
 **Important:** CSRF protection is not the same as authentication or input validation.
-
+---
 ### 4.2 SQL Injection
 
 Never construct SQL queries by directly concatenating user input.
@@ -532,7 +532,7 @@ Student.objects.filter(name=name)
 ```
 
 The ORM handles parameterized database queries.
-
+---
 ### 4.3 Cross-Site Scripting (XSS)
 
 Suppose a user submits this value:
@@ -548,7 +548,7 @@ Django templates automatically escape variable output in normal template renderi
 ```
 
 Do not use `safe` or disable autoescaping on untrusted user input.
-
+---
 ### 4.4 Other important security concerns
 
 | Security concern | Django protection or approach |
@@ -565,7 +565,7 @@ Do not use `safe` or disable autoescaping on untrusted user input.
 | File upload attacks | File validation, size limits and safe storage |
 
 Security is not achieved by using Django Forms alone. Forms provide validation facilities, while other Django components and secure development practices provide additional protections.
-
+---
 ## Stage 5: Store Data in the Database
 
 Now that we understand how to receive and validate data, let's save it.
@@ -647,8 +647,8 @@ For example, a malicious client could submit an invalid age or an excessively lo
 
 **Never treat data received from a browser as trusted.**
 
-In the next stage, we will solve this problem using Django Forms.
-
+> In the next stage, we will solve this problem using Django Forms.
+---
 # Part 3: Django Forms (`forms.Form`)
 
 ## Stage 6: Understanding Django Forms
@@ -867,7 +867,7 @@ This conversion is performed by Django's form field.
 <text x="380" y="438" font-size="12" fill="#596579">Valid data is then passed to the database operation.</text>
 </g>
 </svg>
-
+---
 ### 6.7 Custom validation
 
 Django supports two important validation methods.
@@ -918,7 +918,7 @@ class StudentForm(forms.Form):
 
         return cleaned_data
 ```
-
+---
 ### 6.8 Challenges and benefits of using forms.Form
 
 | Benefits | Challenges |
@@ -938,7 +938,7 @@ class StudentForm(forms.Form):
 - Calculators.
 - Data that does not directly correspond to a database model.
 - Multi-step forms and custom workflows.
-
+---
 # Part 4: Retrieving and Displaying Data
 
 ## Stage 7: Display Database Records in HTML
@@ -1040,7 +1040,7 @@ urlpatterns = [
 **Important concept:** In this approach, the Django view retrieves database records and passes them directly to the template.
 
 An API is not required when the Django application itself is responsible for rendering the HTML page.
-
+---
 # Part 5: Understanding APIs and Their Role
 
 ## Stage 8: What If We Want to Use an API?
@@ -1343,7 +1343,7 @@ APIs also need protection.
 - A token-authenticated API using credentials that the browser does not automatically attach to cross-site requests has a different CSRF risk profile. Other token-storage and authorization risks still need to be addressed.
 
 For a production API, Django REST Framework is generally preferable to writing all the JSON parsing, validation and response handling manually.
-
+---
 # Part 6: Django ModelForms
 
 ## Stage 9: Why Do We Need ModelForms?
@@ -1393,7 +1393,7 @@ If we change the model, we may also need to update the form.
 This introduces duplication and maintenance challenges.
 
 **ModelForm solves this problem by generating form fields from an existing Django model.**
-
+---
 ## Stage 10: Create Your First ModelForm
 
 ### 10.1 Create the model
@@ -1644,7 +1644,7 @@ def add_student(request):
 This is an important concept for applications involving authentication and ownership.
 
 The `created_by` field should not be exposed as an ordinary editable form field. The server assigns it from the authenticated request.
-
+---
 # Part 7: Complete CRUD with ModelForms
 
 ## Stage 13: Implement CRUD Operations
@@ -1781,7 +1781,7 @@ Deletion should be performed through POST rather than a GET link.
 
 </table>
 ```
-
+---
 # Part 8: User Registration, Login and Authorization
 
 ## Stage 14: Integrate Django Authentication
@@ -1997,7 +1997,7 @@ def student_list(request):
 ```
 
 Similarly, update and delete views must check ownership before modifying a record.
-
+---
 # Part 9: Comparison of All Three Approaches
 
 At this point, students should understand why Django provides multiple ways to process form data.
@@ -2016,12 +2016,12 @@ At this point, students should understand why Django provides multiple ways to p
 | Best suited for | Understanding HTTP and simple custom interfaces | Login, search and custom input | Database CRUD applications |
 
 **Important:** All three approaches ultimately receive HTTP requests. ModelForms do not replace the HTTP request-response mechanism; they simplify how submitted data is validated and mapped to models.
-
-# Part 10: Final Practical Assignment
+---
+# Part 10 Optional Assignment
 
 ## Student Management Portal
 
-Students should now build a complete application integrating the concepts from every stage.
+> Students should now build a complete application integrating the concepts from every stage.
 
 ### Functional requirements
 
@@ -2090,21 +2090,4 @@ For a 14-session practical course:
 | 13 | Sessions, CSRF and authorization | Protected dashboard |
 | 14 | Integration and testing | Complete Student Management Portal |
 
-## Final Teaching Recommendation
 
-The most important pedagogical decision is to **teach the data flow before teaching Django's abstractions**.
-
-Students should first understand:
-
-1. HTML form → HTTP request.
-2. HTTP request → Django view.
-3. Django view → validation.
-4. Validation → database.
-5. Database → Django view.
-6. Django view → HTML response.
-
-Then introduce Django Forms as a better way of handling input and validation, and ModelForms as a way of connecting forms with database models.
-
-Finally, introduce APIs as an alternative communication mechanism between frontend and backend.
-
-This sequence gives students an understanding of not just *how to write Django code*, but *why Django provides Forms, ModelForms, ORM, authentication, CSRF middleware and API frameworks in the first place*.
