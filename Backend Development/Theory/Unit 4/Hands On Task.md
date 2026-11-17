@@ -18,6 +18,8 @@ We'll progress from the simplest manual workflow to a fully automated CI/CD pipe
 8. **Part 8 — Verifying the Full CI/CD + Monitoring Flow**
 9. **Part 9 — Troubleshooting Cheat Sheet**
 
+[Demo Repository https://github.com/upessocs/fastapiDockerImageAction](https://github.com/upessocs/fastapiDockerImageAction)
+
 ---
 
 # Part 1 — Theory: Why Monitoring and Scaling Matter
