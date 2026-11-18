@@ -20,6 +20,11 @@ We'll progress from the simplest manual workflow to a fully automated CI/CD pipe
 
 [Demo Repository https://github.com/upessocs/fastapiDockerImageAction](https://github.com/upessocs/fastapiDockerImageAction)
 
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;border-radius:12px">
+  <iframe src="https://www.youtube-nocookie.com/embed/vCpj3W-yHes?modestbranding=1&amp;rel=0" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<p style="margin:4px 0 0;text-align:right;font-size:11px;opacity:0.6"><a href="https://www.freewebtools.com/youtube-embed-generator/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">⚡ Enhanced by FreeWebTools</a></p>
+
 ---
 
 # Part 1 — Theory: Why Monitoring and Scaling Matter
