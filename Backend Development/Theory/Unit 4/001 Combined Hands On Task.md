@@ -722,6 +722,6 @@ Code Change → Git Push → GitHub Actions → Docker Build → Docker Push
 
 1. replace main soruce with any previous project like todo/notes/blog/cms or student management app designed using express fastapi or django.
 2. Containerize this app using Dockerfile
-3. Add docker-compose.yml to run this service
-4. create automationTesting.py to test all routes.
+3. Add docker-compose.yml to run this service [Read more about docker compose](https://upessocs.github.io/#d=/Lectures/Backend%20Development/Theory/Unit%204/Docker%20Handson/&f=5%20Docker%20Compose%20vs%20Docker%20Run.md)
+4. create automationTesting.py to test all routes [Read more on test automation](https://upessocs.github.io/#d=/Lectures/Backend%20Development/Theory/Unit%204/&f=L44-L45%20Github%20Actions%20Test%20Automation%20Backend%20API%20testing.md). 
 5. create github action in to test code (automationTesting) and then build and push image to docker hub
