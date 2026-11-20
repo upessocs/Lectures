@@ -714,3 +714,14 @@ Code Change → Git Push → GitHub Actions → Docker Build → Docker Push
 **Mental model to walk away with:**
 
 > **Monitoring gives you evidence. Scaling changes capacity. CI/CD keeps capacity consistent with the code.** All three meet at the same artifact — the Docker image — which GitHub Actions builds once and Docker Hub distributes everywhere.
+
+
+---
+
+# PBL
+
+1. replace main soruce with any previous project like todo/notes/blog/cms or student management app designed using express fastapi or django.
+2. Containerize this app using Dockerfile
+3. Add docker-compose.yml to run this service
+4. create automationTesting.py to test all routes.
+5. create github action in to test code (automationTesting) and then build and push image to docker hub
